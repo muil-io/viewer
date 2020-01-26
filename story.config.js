@@ -1,0 +1,58 @@
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+
+const paths = {
+  src: path.resolve(__dirname, 'src'),
+  html: `${path.resolve(__dirname, 'src')}/index.html`,
+  node_modules: path.resolve(__dirname, 'node_modules'),
+};
+
+module.exports = ({ rootDir }) => ({
+  entry: [paths.src],
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: paths.node_modules,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-proposal-nullish-coalescing-operator', '@babel/plugin-proposal-optional-chaining'],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        use: ['url-loader'],
+      },
+      {
+        test: /\.(eot|otf|woff|woff2|ttf)?$/,
+        use: ['url-loader'],
+      },
+    ],
+  },
+  devServer: {
+    open: true,
+    hotOnly: true,
+  },
+  devtool: 'cheap-module-source-map',
+  plugins: [
+    new ErrorOverlayPlugin(),
+    new HtmlWebPackPlugin({
+      template: paths.html,
+    }),
+    new webpack.ContextReplacementPlugin(/templates/, path.resolve(rootDir, 'templates')),
+  ],
+});
