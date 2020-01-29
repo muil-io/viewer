@@ -8,11 +8,11 @@ const Wrapper = styled.div`
   color: white;
 
   @media only screen and (max-width: 700px) {
-    background: green;
+    background: green !important;
   }
 
   @media only screen and (max-width: 400px) {
-    background: blue;
+    background: blue !important;
   }
 `;
 

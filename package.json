@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node ./cli dev",
     "build": "webpack --mode production --env.rootDir=\".\"",
-    "upload": "node ./cli publish"
+    "upload": "node ./cli publish",
+    "email": "node ./cli email"
   },
   "bin": {
     "muil": "./cli/index.js"

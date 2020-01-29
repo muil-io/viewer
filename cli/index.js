@@ -10,7 +10,7 @@
 
 const runDevServer = require('./devServer');
 const runCompiler = require('./compiler');
-const { login, upload } = require('./api');
+const { login, upload, sendEmail } = require('./api');
 const ask = require('./question');
 
 const defaultCommand = 'dev';
@@ -43,6 +43,25 @@ const commands = {
       console.log('Uploading templates...');
       await upload({ rootDir, token });
       console.log(successColor, 'Successfully uploaded!\n');
+
+      await sendEmail({ token });
+    } catch (err) {
+      console.log(errorColor, err);
+    }
+  },
+  email: async args => {
+    try {
+      console.log('Please enter email and password to login');
+      const email = await ask('Email: ', 'Must enter email');
+      const password = await ask('Password: ', 'Must enter password', true);
+
+      console.log('\nLogin...');
+      const token = await login({ email, password });
+      console.log(successColor, 'Successfully logged in!\n');
+
+      console.log('Sending email...');
+      await sendEmail({ token, template: args[1] });
+      console.log(successColor, 'Successfully sent!\n');
     } catch (err) {
       console.log(errorColor, err);
     }
@@ -51,4 +70,4 @@ const commands = {
 
 const args = process.argv.slice(2);
 
-commands[args.length ? args[0] : defaultCommand]();
+commands[args.length ? args[0] : defaultCommand](args);
