@@ -8,7 +8,6 @@ import Knobs from './Knobs';
 const Wrapper = styled.div`
   grid-column: 3;
   background: ${({ theme }) => theme.app.secondaryBackground};
-  color: #fff;
   width: 350px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   position: relative;
