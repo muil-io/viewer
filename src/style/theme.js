@@ -24,6 +24,9 @@ const theme = {
     linkIndicator: colors.primary,
     linkBackground: 'rgba(74, 168, 226, 0.1)',
   },
+  options: {
+    color: colors.dark,
+  },
 };
 
 export default theme;

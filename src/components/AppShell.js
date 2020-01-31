@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import SideBar from './SideBar';
 import Page from './Page';
 import Content from './Content';
-// import Options from './Options';
+import Options from './Options';
 import getTemplates from '../config';
 import useKnobs from '../hooks/useKnobs';
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 300px 1fr auto;
   height: 100vh;
   overflow: hidden;
 `;
@@ -23,11 +23,11 @@ const AppShell = () => {
   return (
     <Wrapper>
       <SideBar templates={templates} />
-      <Page selectedSize={selectedSize} setSelectedSize={setSelectedSize}>
+      <Page templates={templates} selectedSize={selectedSize} setSelectedSize={setSelectedSize}>
         <Content templates={templates} />
       </Page>
 
-      {/* <Options templates={templates} onChangeKnob={handleChangeKnob} /> */}
+      <Options templates={templates} onChangeKnob={handleChangeKnob} />
     </Wrapper>
   );
 };

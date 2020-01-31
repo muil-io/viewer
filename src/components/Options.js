@@ -4,12 +4,10 @@ import { useParams } from 'react-router-dom';
 import ArrowIcon from '../assets/arrow.svg';
 import scrollbar from '../style/scrollbar';
 import Knobs from './Knobs';
-import MailInfo from './MailInfo';
 
 const Wrapper = styled.div`
   grid-column: 3;
-  grid-row: 2;
-  background-color: #252526;
+  background: ${({ theme }) => theme.app.secondaryBackground};
   color: #fff;
   width: 350px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
@@ -31,7 +29,7 @@ const ToggleButton = styled.div`
   position: absolute;
   width: 50px;
   height: 25px;
-  background: #252526;
+  background: ${({ theme }) => theme.app.secondaryBackground};
   top: 30px;
   left: -37px;
   box-shadow: 2px -4px 8px -3px rgba(0, 0, 0, 0.3);
@@ -43,7 +41,7 @@ const ToggleButton = styled.div`
 const Arrow = styled(({ isVisible, ...props }) => <ArrowIcon {...props} />)`
   transform: rotate(${({ isVisible }) => (isVisible ? 0 : 180)}deg);
   path {
-    fill: #fff;
+    fill: ${({ theme }) => theme.options.color};
   }
 `;
 
@@ -69,7 +67,6 @@ const Options = ({ templates, onChangeKnob }) => {
       </ToggleButton>
 
       <Content>
-        <MailInfo knobs={knobs} />
         <Knobs knobs={knobs} onChangeKnob={value => onChangeKnob({ templateId, value })} />
       </Content>
     </Wrapper>
