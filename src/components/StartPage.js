@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 20px;
 `;
 
 const Content = styled.div`
@@ -20,15 +21,13 @@ const SubTitle = styled.h2`
   font-size: 16px;
 `;
 
-const StartPage = () => {
-  return (
-    <Wrapper>
-      <Content>
-        <Title>No Template Selected</Title>
-        <SubTitle>Press on template to show</SubTitle>
-      </Content>
-    </Wrapper>
-  );
-};
+const StartPage = () => (
+  <Wrapper>
+    <Content>
+      <Title>No Template Selected</Title>
+      <SubTitle>Press on template to show</SubTitle>
+    </Content>
+  </Wrapper>
+);
 
 export default StartPage;
