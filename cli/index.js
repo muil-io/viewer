@@ -43,8 +43,6 @@ const commands = {
       console.log('Uploading templates...');
       await upload({ rootDir, token });
       console.log(successColor, 'Successfully uploaded!\n');
-
-      await sendEmail({ token });
     } catch (err) {
       console.log(errorColor, err);
     }
