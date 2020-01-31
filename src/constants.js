@@ -7,7 +7,7 @@ export const SCREEN_SIZES = {
   small: { size: '360px', icon: MobileIcon },
   medium: { size: '640px', icon: TabletIcon },
   big: { size: '870px', icon: MonitorIcon },
-  full: { size: '100%', icon: FullIcon },
+  full: { size: 'calc(100% - 160px)', icon: FullIcon },
 };
 
 export const NOT_ALLOWED_HTML_TAGS = [

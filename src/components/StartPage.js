@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  color: #fff;
+  color: ${({ theme }) => theme.page.color};
 `;
 
 const Title = styled.h1`

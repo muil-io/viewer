@@ -1,21 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Link as BaseLink } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+import { NavLink as BaseLink } from 'react-router-dom';
+
+const activeLink = css`
+  text-decoration: none;
+  background: ${({ theme }) => theme.sidebar.linkBackground};
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: ${({ theme }) => theme.sidebar.linkIndicator};
+  }
+`;
 
 const Wrapper = styled.div`
+  position: relative;
   display: block;
-  padding: 4px 0;
+  padding: 10px 30px;
+  font-size: 16px;
   cursor: pointer;
-  color: #fff;
+  color: ${({ theme }) => theme.sidebar.linkColor};
 
-  &:hover {
-    color: #bdafaf;
-    text-decoration: none;
+  &:hover,
+  &.active {
+    ${activeLink};
   }
 `;
 
 const Link = ({ link, text }) => (
-  <Wrapper as={BaseLink} to={link}>
+  <Wrapper as={BaseLink} to={link} activeClassName="active">
     {text}
   </Wrapper>
 );

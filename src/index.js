@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import AppShell from './components/AppShell';
+import theme from './style/theme';
 
 const App = () => (
-  <Router>
-    <Switch>
-      <Route path="/:templateId?" component={AppShell} />
-    </Switch>
-  </Router>
+  <ThemeProvider theme={theme}>
+    <Router>
+      <Switch>
+        <Route path="/:templateId?" component={AppShell} />
+      </Switch>
+    </Router>
+  </ThemeProvider>
 );
 
 const rootElement = document.getElementById('root');
