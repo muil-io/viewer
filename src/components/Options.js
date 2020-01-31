@@ -51,7 +51,7 @@ const Content = styled.div`
 `;
 
 const Options = ({ templates, onChangeKnob }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const { templateId } = useParams();
   const { knobs } = templates[templateId] || {};
 
