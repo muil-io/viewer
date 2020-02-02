@@ -8,16 +8,15 @@ const Wrapper = styled.div`
 
 const ScreenLink = styled.div`
   display: inline-block;
-  margin-left: 10px;
   cursor: pointer;
 
   > svg {
-    border-radius: 100%;
     padding: 5px;
     box-sizing: content-box;
 
-    ${({ active, theme }) => active && `background: ${theme.page.screenInactiveColor}`};
-
+    circle {
+      fill: ${({ active, theme }) => (!active ? theme.page.screenActiveColor : theme.page.screenInactiveColor)};
+    }
     path {
       fill: ${({ active, theme }) => (active ? theme.page.screenActiveColor : theme.page.screenInactiveColor)};
     }

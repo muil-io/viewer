@@ -5,17 +5,18 @@ import Link from './Link';
 const Wrapper = styled.div`
   grid-column: 1;
   background: ${({ theme }) => theme.app.contentBackground};
-  box-shadow: 1px 0 1px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 2px 5px #0000003d;
+  z-index: 1;
 `;
 
 const Logo = styled.div`
   color: ${({ theme }) => theme.sidebar.color};
-  background: ${({ theme }) => theme.app.secondaryBackground};
+  background: ${({ theme }) => theme.app.contentBackground};
   font-size: 32px;
   text-align: center;
   margin-bottom: 30px;
-  padding: 40px;
-  box-shadow: 3px 2px 6px #0000001f;
+  padding: 37px;
+  border: 1px solid #e6e6e6;
 `;
 
 const SideBar = ({ templates }) => {
