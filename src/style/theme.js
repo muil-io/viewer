@@ -19,6 +19,7 @@ const theme = {
     color: colors.primary,
   },
   sidebar: {
+    logoColor: colors.white,
     color: colors.primary,
     linkColor: colors.dark,
     linkIndicator: colors.primary,

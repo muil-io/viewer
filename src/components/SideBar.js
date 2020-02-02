@@ -26,6 +26,11 @@ const Logo = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
+  > span {
+    background: ${({ theme }) => theme.app.primaryBackground};
+    color: ${({ theme }) => theme.sidebar.logoColor};
+    padding: 5px 11px;
+  }
 `;
 
 const SideBar = ({ templates }) => {
@@ -33,7 +38,10 @@ const SideBar = ({ templates }) => {
 
   return (
     <Wrapper>
-      <Logo>mUIL</Logo>
+      <Logo>
+        <span>M</span>
+        UIL
+      </Logo>
       {links.map(({ key, name }) => (
         <Link key={key} link={key} text={name} />
       ))}
