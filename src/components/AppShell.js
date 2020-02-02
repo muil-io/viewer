@@ -6,12 +6,14 @@ import Content from './Content';
 import Options from './Options';
 import getTemplates from '../config';
 import useKnobs from '../hooks/useKnobs';
+import '../style/fonts.css';
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr auto;
   height: 100vh;
   overflow: hidden;
+  font-family: HelveticaNeue;
 `;
 
 const AppShell = () => {
