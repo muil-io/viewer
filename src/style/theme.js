@@ -1,6 +1,6 @@
 const colors = {
-  primary: '#5248f6',
-  primaryDark: '#5746f7',
+  primary: '#6735E0',
+  primaryDark: '#332557',
   secondary: '#f8f8f8',
   white: '#ffffff',
   dark: '#424242',
@@ -8,7 +8,7 @@ const colors = {
 
 const theme = {
   app: {
-    primaryBackground: `linear-gradient(to right, ${colors.primary}, ${colors.primaryDark})`,
+    primaryBackground: `linear-gradient(to top right, ${colors.primaryDark}, ${colors.primary})`,
     secondaryBackground: colors.secondary,
     contentBackground: colors.white,
   },
@@ -23,7 +23,7 @@ const theme = {
     color: colors.primary,
     linkColor: colors.dark,
     linkIndicator: colors.primary,
-    linkBackground: 'rgba(74, 168, 226, 0.1)',
+    linkBackground: 'rgba(103,53,224, 0.1)',
   },
   options: {
     color: colors.dark,

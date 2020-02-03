@@ -5,6 +5,7 @@ import { NavLink as BaseLink } from 'react-router-dom';
 const activeLink = css`
   text-decoration: none;
   background: ${({ theme }) => theme.sidebar.linkBackground};
+  color: ${({ theme }) => theme.sidebar.color};
 
   &:before {
     content: '';

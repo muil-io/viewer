@@ -20,7 +20,7 @@ const TopBar = styled.div`
   right: 0;
   background: ${({ theme }) => theme.app.primaryBackground};
   height: 250px;
-  padding: 50px 80px;
+  padding: 32px 80px;
   display: flex;
   justify-content: space-between;
 `;
@@ -32,7 +32,7 @@ const TemplateName = styled.div`
 
 const Container = styled.div`
   background: ${({ theme }) => theme.app.contentBackground};
-  margin: 125px 80px 40px;
+  margin: 110px 80px 40px;
   border-radius: 8px;
   width: ${({ selectedSize }) => SCREEN_SIZES[selectedSize].size};
   height: 100%;

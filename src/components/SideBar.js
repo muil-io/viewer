@@ -18,8 +18,8 @@ const Logo = styled.div`
   background: ${({ theme }) => theme.app.contentBackground};
   font-size: 32px;
   text-align: center;
-  margin-bottom: 30px;
-  padding: 37px;
+  margin-bottom: 20px;
+  padding: 32px 0 28px 0;
   border: 1px solid #e6e6e6;
   position: sticky;
   top: 0;
@@ -29,7 +29,8 @@ const Logo = styled.div`
   > span {
     background: ${({ theme }) => theme.app.primaryBackground};
     color: ${({ theme }) => theme.sidebar.logoColor};
-    padding: 5px 11px;
+    padding: 5px 10px;
+    margin-right: 2px;
   }
 `;
 
@@ -40,7 +41,7 @@ const SideBar = ({ templates }) => {
     <Wrapper>
       <Logo>
         <span>M</span>
-        UIL
+        uil
       </Logo>
       {links.map(({ key, name }) => (
         <Link key={key} link={key} text={name} />
