@@ -17,15 +17,10 @@ const Title = styled.h1`
   font-size: 40px;
 `;
 
-const SubTitle = styled.h2`
-  font-size: 16px;
-`;
-
 const StartPage = () => (
   <Wrapper>
     <Content>
       <Title>No Template Selected</Title>
-      <SubTitle>Press on template to show</SubTitle>
     </Content>
   </Wrapper>
 );
