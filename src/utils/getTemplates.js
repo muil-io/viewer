@@ -1,4 +1,4 @@
-const templateContext = require.context(process.env.rootDirectory, true, /\.template\.js$/);
+const templateContext = require.context(process.env.rootDirectory, true, /^((?!node_modules).)*\.template\.js$/);
 
 export default () => {
   const templateFiles = templateContext.keys();
