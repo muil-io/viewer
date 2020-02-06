@@ -9,7 +9,7 @@ const paths = {
   node_modules: path.resolve(__dirname, 'node_modules'),
 };
 
-module.exports = () => ({
+module.exports = ({ templatesDirectory }) => ({
   entry: [paths.src],
   mode: 'development',
   module: {
@@ -53,6 +53,10 @@ module.exports = () => ({
     new HtmlWebPackPlugin({
       template: paths.html,
     }),
-    new webpack.DefinePlugin({ 'process.env.rootDirectory': JSON.stringify(process.env.INIT_CWD || __dirname) }),
+    new webpack.DefinePlugin({
+      'process.env.templatesDirectory': JSON.stringify(
+        path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
+      ),
+    }),
   ],
 });

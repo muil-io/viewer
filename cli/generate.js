@@ -14,7 +14,8 @@ program
 program
   .command('editor')
   .description('Starting Muil editor.')
-  .option('-p --port <port>', 'Editor port')
+  .option('-p --port <port>', 'Editor port, default: 8000')
+  .option('-t --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
   .action(options => editor(options));
 
 program
