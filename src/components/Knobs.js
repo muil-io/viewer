@@ -5,7 +5,8 @@ import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-textmate';
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: calc(100% - 120px);
+  margin-left: 6px;
   .ace-twilight {
     background-color: transparent;
   }

@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ArrowIcon from '../assets/arrow.svg';
+import BaseSideBarHeader from './SideBarHeader';
+import { Tabs, Tab } from './core/Tabs';
 import scrollbar from '../style/scrollbar';
 import Knobs from './Knobs';
 
 const Wrapper = styled.div`
   grid-column: 3;
-  background: ${({ theme }) => theme.app.secondaryBackground};
+  background: ${({ theme }) => theme.app.contentBackground};
   width: 350px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -28,7 +30,7 @@ const ToggleButton = styled.div`
   position: absolute;
   width: 50px;
   height: 25px;
-  background: ${({ theme }) => theme.app.secondaryBackground};
+  background: ${({ theme }) => theme.app.contentBackground};
   top: 30px;
   left: -37px;
   box-shadow: 2px -4px 8px -3px rgba(0, 0, 0, 0.3);
@@ -44,6 +46,12 @@ const Arrow = styled(({ isVisible, ...props }) => <ArrowIcon {...props} />)`
   }
 `;
 
+const SideBarHeader = styled(BaseSideBarHeader)`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
+
 const Content = styled.div`
   overflow: hidden auto;
   height: 100%;
@@ -51,7 +59,8 @@ const Content = styled.div`
 `;
 
 const Options = ({ templates, onChangeKnob }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [activeTab, setActiveTab] = useState('props');
   const { templateId } = useParams();
   const { knobs } = templates[templateId] || {};
 
@@ -66,7 +75,14 @@ const Options = ({ templates, onChangeKnob }) => {
       </ToggleButton>
 
       <Content>
-        <Knobs knobs={knobs} onChangeKnob={value => onChangeKnob({ templateId, value })} />
+        <SideBarHeader>
+          <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
+            <Tab name="props">Props</Tab>
+            <Tab name="api">API</Tab>
+          </Tabs>
+        </SideBarHeader>
+
+        {activeTab === 'props' && <Knobs knobs={knobs} onChangeKnob={value => onChangeKnob({ templateId, value })} />}
       </Content>
     </Wrapper>
   );

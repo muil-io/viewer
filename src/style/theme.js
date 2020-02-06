@@ -4,6 +4,8 @@ const colors = {
   secondary: '#f8f8f8',
   white: '#ffffff',
   dark: '#424242',
+  shadow: '#0000003d',
+  light: '#e6e6e6',
 };
 
 const theme = {
@@ -24,9 +26,20 @@ const theme = {
     linkColor: colors.dark,
     linkIndicator: colors.primary,
     linkBackground: 'rgba(103,53,224, 0.1)',
+    shadowColors: colors.shadow,
+    border: colors.light,
+  },
+  tabs: {
+    border: colors.primary,
+  },
+  button: {
+    background: colors.primary,
+    color: colors.white,
+    shadowColors: colors.shadow,
   },
   options: {
     color: colors.dark,
+    border: colors.light,
   },
 };
 
