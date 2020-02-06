@@ -9,6 +9,7 @@ program
   .command('init')
   .description('Initialize Muil into project.')
   .option('-n --use-npm', 'Use npm to install deps')
+  .option('-d --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
   .action(options => initiate(options));
 
 program
