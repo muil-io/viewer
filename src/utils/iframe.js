@@ -15,21 +15,13 @@ const cleanHtml = html => {
   return newHtml;
 };
 
-const checkCSS = css => {
-  if (USE_WITH_CAUTION_CSS_PROPERTIES.some(prop => css.includes(prop))) {
-    console.warn(`Not all email clients support these css properties: background image and gif.`);
-  }
-
-  return css;
-};
-
 const getBlobURL = (code, type) => {
   const blob = new Blob([code], { type });
   return URL.createObjectURL(blob);
 };
 
 const getGeneratedPageURL = ({ html, css }) => {
-  const cssURL = getBlobURL(checkCSS(css), 'text/css');
+  const cssURL = getBlobURL(css, 'text/css');
 
   const source = `
     <html>
