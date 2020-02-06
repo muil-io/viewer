@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ArrowIcon from '../assets/arrow.svg';
+import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
 import { Tabs, Tab } from './core/Tabs';
 import scrollbar from '../style/scrollbar';
@@ -39,8 +40,18 @@ const ToggleButton = styled.div`
   cursor: pointer;
 `;
 
-const Arrow = styled(({ isVisible, ...props }) => <ArrowIcon {...props} />)`
-  transform: rotate(${({ isVisible }) => (isVisible ? 0 : 180)}deg);
+const Arrow = styled(ArrowIcon)`
+  transform: rotate(180deg);
+  path {
+    fill: ${({ theme }) => theme.options.color};
+  }
+`;
+
+const CloseButton = styled(CloseIcon)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
   path {
     fill: ${({ theme }) => theme.options.color};
   }
@@ -70,12 +81,16 @@ const Options = ({ templates, onChangeKnob }) => {
 
   return (
     <Wrapper isVisible={isVisible}>
-      <ToggleButton onClick={() => setIsVisible(!isVisible)}>
-        <Arrow isVisible={isVisible} />
-      </ToggleButton>
+      {!isVisible && (
+        <ToggleButton onClick={() => setIsVisible(true)}>
+          <Arrow />
+        </ToggleButton>
+      )}
 
       <Content>
         <SideBarHeader>
+          <CloseButton onClick={() => setIsVisible(false)} />
+
           <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
             <Tab name="props">Props</Tab>
             <Tab name="api">API</Tab>
