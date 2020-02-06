@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { HEADER_HEIGHT } from '../constants';
 
 const Wrapper = styled.div`
   color: ${({ theme }) => theme.sidebar.color};
   background: ${({ theme }) => theme.app.contentBackground};
   border-bottom: 1px solid ${({ theme }) => theme.sidebar.border};
-  height: 110px;
+  height: ${HEADER_HEIGHT}px;
   margin-bottom: 10px;
   position: sticky;
   top: 0;

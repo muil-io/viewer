@@ -10,7 +10,7 @@ import Knobs from './Knobs';
 
 const Wrapper = styled.div`
   grid-column: 3;
-  background: ${({ theme }) => theme.app.contentBackground};
+  background: ${({ theme }) => theme.app.secondaryBackground};
   width: 350px;
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -32,12 +32,13 @@ const ToggleButton = styled.div`
   width: 50px;
   height: 25px;
   background: ${({ theme }) => theme.app.contentBackground};
-  top: 30px;
+  top: 103px;
   left: -37px;
   box-shadow: 2px -4px 8px -3px rgba(0, 0, 0, 0.3);
   transform: rotate(-90deg);
   z-index: 1;
   cursor: pointer;
+  border-radius: 4px 4px 0 0;
 `;
 
 const Arrow = styled(ArrowIcon)`

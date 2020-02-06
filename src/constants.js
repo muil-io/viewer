@@ -10,6 +10,8 @@ export const SCREEN_SIZES = {
   full: { size: 'calc(100% - 160px)', icon: FullIcon },
 };
 
+export const HEADER_HEIGHT = 90;
+
 export const NOT_ALLOWED_HTML_TAGS = [
   'script',
   'iframe',

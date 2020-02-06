@@ -5,9 +5,8 @@ import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-textmate';
 
 const Wrapper = styled.div`
-  height: calc(100% - 120px);
-  margin-left: 6px;
-  .ace-twilight {
+  height: calc(100% - 100px);
+  .ace-tm {
     background-color: transparent;
   }
 `;
@@ -29,6 +28,7 @@ const Request = ({ knobs = {}, onChangeKnob }) => {
       <AceEditor
         mode="json"
         height="inherit"
+        width="100%"
         theme="twilight"
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
