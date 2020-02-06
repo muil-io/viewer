@@ -29,12 +29,13 @@ const Request = ({ knobs = {}, onChangeKnob }) => {
         mode="json"
         height="inherit"
         width="100%"
-        theme="twilight"
+        theme="textmate"
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
         showGutter={false}
         value={JSON.stringify(knobs, null, 4)}
         onChange={handleChangeValue}
+        setOptions={{ useWorker: false }}
       />
     </Wrapper>
   );
