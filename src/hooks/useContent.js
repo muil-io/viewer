@@ -12,7 +12,7 @@ const useContent = ({ templates, templateId }) => {
 
     const { Template, knobs = {} } = template;
 
-    const html = renderToStaticMarkup(<Template {...knobs.props} />);
+    const html = renderToStaticMarkup(<Template {...knobs} />);
 
     const css = [...document.styleSheets]
       .slice(1)

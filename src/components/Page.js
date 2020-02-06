@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ScreenOptions from './ScreenOptions';
 import { SCREEN_SIZES, HEADER_HEIGHT } from '../constants';
+import ellipsis from '../style/ellipsis';
 
 const Wrapper = styled.div`
   position: relative;
@@ -28,6 +29,7 @@ const TopBar = styled.div`
 const TemplateName = styled.div`
   color: ${({ theme }) => theme.page.templateNameColor};
   font-size: 32px;
+  ${ellipsis};
 `;
 
 const Container = styled.div`

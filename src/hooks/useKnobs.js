@@ -22,11 +22,7 @@ const useKnobs = ({ defaultTemplates }) => {
           ...prevTemplates,
           [templateId]: {
             ...defaultTemplates[templateId],
-            knobs: {
-              to: 'test@muil.io',
-              subject: defaultTemplates[templateId].name,
-              props: defaultTemplates[templateId].knobs,
-            },
+            knobs: defaultTemplates[templateId].knobs,
           },
         }),
         {},
