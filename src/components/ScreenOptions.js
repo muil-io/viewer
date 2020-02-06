@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { SCREEN_SIZES } from '../constants';
 
 const Wrapper = styled.div`
-  margin-top: 14px;
+  margin-top: 6px;
+  min-width: 168px;
 `;
 
 const ScreenLink = styled.div`

@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ScreenOptions from './ScreenOptions';
-import { SCREEN_SIZES } from '../constants';
+import { SCREEN_SIZES, HEADER_HEIGHT } from '../constants';
+import ellipsis from '../style/ellipsis';
 
 const Wrapper = styled.div`
   position: relative;
@@ -19,8 +20,8 @@ const TopBar = styled.div`
   left: 0;
   right: 0;
   background: ${({ theme }) => theme.app.primaryBackground};
-  height: 250px;
-  padding: 32px 80px;
+  height: 230px;
+  padding: 19px 80px;
   display: flex;
   justify-content: space-between;
 `;
@@ -28,11 +29,12 @@ const TopBar = styled.div`
 const TemplateName = styled.div`
   color: ${({ theme }) => theme.page.templateNameColor};
   font-size: 32px;
+  ${ellipsis};
 `;
 
 const Container = styled.div`
   background: ${({ theme }) => theme.app.contentBackground};
-  margin: 110px 80px 40px;
+  margin: ${HEADER_HEIGHT}px 80px 40px;
   border-radius: 8px;
   width: ${({ selectedSize }) => SCREEN_SIZES[selectedSize].size};
   height: 100%;

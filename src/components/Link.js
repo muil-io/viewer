@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { NavLink as BaseLink } from 'react-router-dom';
+import ellipsis from '../style/ellipsis';
 
 const activeLink = css`
   text-decoration: none;
@@ -25,6 +26,7 @@ const Wrapper = styled.div`
   font-size: 16px;
   cursor: pointer;
   color: ${({ theme }) => theme.sidebar.linkColor};
+  ${ellipsis};
 
   &:hover,
   &.active {
