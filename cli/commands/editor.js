@@ -3,10 +3,10 @@ import webpack from 'webpack';
 import * as logger from '../utils/logger';
 import storyConfig from '../../webpack.config.js';
 
-export default async ({ port = 8000, templatesDirectory = './templates', templatesExtension = /\.template\.js$/ }) => {
+export default async ({ port = 8000, templatesDirectory = './templates' }) => {
   logger.title('\n Starting Muil editor... \n');
 
-  const compiler = webpack(storyConfig({ templatesDirectory, templatesExtension }));
+  const compiler = webpack(storyConfig({ templatesDirectory }));
   const server = new WebpackDevServer(compiler, {
     quiet: true,
     overlay: true,
