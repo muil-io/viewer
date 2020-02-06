@@ -7,7 +7,7 @@ import * as logger from '../utils/logger';
 
 const rootDir = process.env.INIT_CWD || '.';
 
-export default async () => {
+export default async ({ templatesDirectory = './templates' }) => {
   const credentialsFile = `${homedir()}/.muil/credentials`;
   if (!fs.existsSync(credentialsFile)) {
     logger.error(`You are not logged in\nPlease login first with command 'yarn muil-login'`);
@@ -15,7 +15,7 @@ export default async () => {
   }
 
   logger.info('Compiling templates...');
-  const compiler = webpack(webpackConfig({ rootDir }));
+  const compiler = webpack(webpackConfig({ templatesDirectory }));
   await compiler.run(async () => {
     logger.success('Templates compiled successfully\n');
 

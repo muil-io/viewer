@@ -15,7 +15,7 @@ program
   .command('editor')
   .description('Starting Muil editor.')
   .option('-p --port <port>', 'Editor port, default: 8000')
-  .option('-t --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
+  .option('-d --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
   .action(options => editor(options));
 
 program
@@ -34,6 +34,7 @@ program
   .command('publish')
   .description('Publish email templates.')
   .option('-t --template <templates>', 'Templates ID')
+  .option('-d --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
   .action(options => publish(options));
 
 program.usage('<command> [options]').parse(process.argv);
