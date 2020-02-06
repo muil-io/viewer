@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
 const AppShell = () => {
   const defaultTemplates = useMemo(() => getTemplates(), []);
+  console.log(defaultTemplates);
   const [selectedSize, setSelectedSize] = useState('full');
 
   const { templates, handleChangeKnob } = useKnobs({ defaultTemplates });

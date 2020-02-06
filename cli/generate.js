@@ -1,6 +1,7 @@
 import program from 'commander';
 import initiate from './commands/init';
 import login from './commands/login';
+import logout from './commands/logout';
 import publish from './commands/publish';
 import editor from './commands/editor';
 
@@ -24,12 +25,16 @@ program
   .action(options => login(options));
 
 program
+  .command('logout')
+  .description('Logout from Muil.')
+  .action(() => logout());
+
+program
   .command('publish')
   .description('Publish email templates.')
+  .option('-t --template <templates>', 'Templates ID')
   .action(options => publish(options));
 
 program.usage('<command> [options]').parse(process.argv);
 
-// editor
-// logout
 // unpublish

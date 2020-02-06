@@ -1,7 +1,7 @@
 import fs from 'fs';
-import chalk from 'chalk';
 import { homedir } from 'os';
 import { login } from '../services/firebase';
+import * as logger from '../utils/logger';
 import ask from '../utils/ask';
 
 export default async ({ user, pass }) => {
@@ -10,7 +10,7 @@ export default async ({ user, pass }) => {
 
   const token = await login({ email, password });
   if (typeof token !== 'string') {
-    console.log(chalk.red('Invalid username or password'));
+    logger.error('Invalid username or password');
     return;
   }
 
@@ -24,5 +24,5 @@ export default async ({ user, pass }) => {
     flag: 'w',
   });
 
-  console.log(chalk.green('Logged in successfully'));
+  logger.success('Logged in successfully');
 };

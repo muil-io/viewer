@@ -9,7 +9,7 @@ const paths = {
   node_modules: path.resolve(__dirname, 'node_modules'),
 };
 
-module.exports = ({ rootDir }) => ({
+module.exports = () => ({
   entry: [paths.src],
   mode: 'development',
   module: {
@@ -53,6 +53,6 @@ module.exports = ({ rootDir }) => ({
     new HtmlWebPackPlugin({
       template: paths.html,
     }),
-    new webpack.ContextReplacementPlugin(/templates/, path.resolve(rootDir, 'templates')),
+    new webpack.DefinePlugin({ 'process.env.rootDirectory': JSON.stringify(process.env.INIT_CWD || '../') }),
   ],
 });
