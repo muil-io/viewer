@@ -2,6 +2,7 @@ import axios from 'axios';
 import FormData from 'form-data';
 import fs from 'fs';
 import path from 'path';
+import { buildDirectory } from '../utils/paths';
 
 export const login = async ({ email, password }) => {
   const { data: token } = await axios.post('https://us-central1-muil-io.cloudfunctions.net/auth/login', {
@@ -12,11 +13,11 @@ export const login = async ({ email, password }) => {
   return token;
 };
 
-export const upload = async ({ rootDir, token }) => {
+export const upload = async ({ token }) => {
   const bodyData = new FormData();
-  const files = await fs.readdirSync(path.resolve(rootDir, 'build'));
+  const files = await fs.readdirSync(buildDirectory);
 
-  files.forEach(file => bodyData.append('templateFile', fs.createReadStream(path.resolve(rootDir, 'build', file))));
+  files.forEach(file => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
 
   await axios.post('https://us-central1-muil-io.cloudfunctions.net/templates', bodyData, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },

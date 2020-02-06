@@ -34,8 +34,8 @@ program
 program
   .command('publish')
   .description('Publish email templates.')
-  .option('-t --template <templates>', 'Templates ID')
   .option('-d --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
+  .option('-t --template <template>', 'Templates ID')
   .action(options => publish(options));
 
 program.usage('<command> [options]').parse(process.argv);

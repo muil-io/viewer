@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const { getTemplatesDirectory } = require('./cli/utils/paths');
 
 const paths = {
   src: path.resolve(__dirname, 'src'),
@@ -54,9 +55,7 @@ module.exports = ({ templatesDirectory }) => ({
       template: paths.html,
     }),
     new webpack.DefinePlugin({
-      'process.env.templatesDirectory': JSON.stringify(
-        path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
-      ),
+      'process.env.templatesDirectory': JSON.stringify(getTemplatesDirectory(templatesDirectory)),
     }),
   ],
 });

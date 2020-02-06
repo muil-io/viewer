@@ -2,14 +2,14 @@ const path = require('path');
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { rootDir, getTemplatesDirectory, buildDirectory } = require('./cli/utils/paths');
 
-module.exports = ({ templatesDirectory }) => {
-  const rootDir = process.env.INIT_CWD || __dirname;
-  const templatesDir = path.resolve(rootDir, templatesDirectory);
+module.exports = ({ templatesDirectory, template = '*' }) => {
+  const templatesDir = getTemplatesDirectory(templatesDirectory);
 
   return {
     mode: 'production',
-    entry: glob.sync(`${templatesDir}/**/*.template.js`).reduce(
+    entry: glob.sync(`${templatesDir}/**/${template}.template.js`).reduce(
       (obj, el) => ({
         ...obj,
         [path.parse(el).name]: el,
@@ -17,7 +17,7 @@ module.exports = ({ templatesDirectory }) => {
       {},
     ),
     output: {
-      path: path.resolve(rootDir, '.muil/build'),
+      path: buildDirectory,
       filename: '[name].js',
       libraryTarget: 'commonjs2',
     },
