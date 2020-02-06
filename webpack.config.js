@@ -1,27 +1,22 @@
 const path = require('path');
-const glob = require('glob');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+
+const paths = {
+  src: path.resolve(__dirname, 'src'),
+  html: `${path.resolve(__dirname, 'src')}/index.html`,
+  node_modules: path.resolve(__dirname, 'node_modules'),
+};
 
 module.exports = ({ rootDir }) => ({
-  mode: 'production',
-  entry: glob.sync(`${rootDir}/templates/**.js`).reduce(
-    (obj, el) => ({
-      ...obj,
-      [path.parse(el).name]: el,
-    }),
-    {},
-  ),
-  output: {
-    path: path.resolve(rootDir, 'build'),
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
-  },
-  target: 'node',
+  entry: [paths.src],
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
+        exclude: paths.node_modules,
         use: {
           loader: 'babel-loader',
           options: {
@@ -29,44 +24,35 @@ module.exports = ({ rootDir }) => ({
             plugins: ['@babel/plugin-proposal-nullish-coalescing-operator', '@babel/plugin-proposal-optional-chaining'],
           },
         },
-        exclude: path.resolve(rootDir, 'node_modules'),
       },
       {
-        test: /\.css/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
-        include: [path.resolve(rootDir)],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
         use: ['url-loader'],
       },
       {
         test: /\.(eot|otf|woff|woff2|ttf)?$/,
-        include: [path.resolve(rootDir)],
         use: ['url-loader'],
       },
     ],
   },
-  externals: {
-    react: 'react',
-    'react-dom': 'react-dom',
-    'styled-components': 'styled-components',
+  devServer: {
+    open: true,
+    hotOnly: true,
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       vendors: {
-  //         test: path.resolve(rootDir, 'node_modules'),
-  //         name: 'vendors',
-  //         chunks: 'all',
-  //         enforce: true,
-  //       },
-  //     },
-  //   },
-  // },
-  plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin('[name].css')],
+  devtool: 'cheap-module-source-map',
+  plugins: [
+    new ErrorOverlayPlugin(),
+    new HtmlWebPackPlugin({
+      template: paths.html,
+    }),
+    new webpack.ContextReplacementPlugin(/templates/, path.resolve(rootDir, 'templates')),
+  ],
 });

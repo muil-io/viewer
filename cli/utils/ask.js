@@ -1,6 +1,6 @@
-const readline = require('readline');
+import readline from 'readline';
 
-const ask = async (question, errorMessage, hideOutput) =>
+export default async (question, hideOutput = false) =>
   new Promise((resolve, reject) => {
     const rl = readline.createInterface({
       input: process.stdin,
@@ -30,11 +30,9 @@ const ask = async (question, errorMessage, hideOutput) =>
 
     rl.question(question, answer => {
       if (!answer) {
-        reject(new Error(errorMessage));
+        reject();
       }
       resolve(answer);
       rl.close();
     });
   });
-
-module.exports = ask;
