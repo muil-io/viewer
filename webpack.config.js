@@ -53,6 +53,6 @@ module.exports = () => ({
     new HtmlWebPackPlugin({
       template: paths.html,
     }),
-    new webpack.DefinePlugin({ 'process.env.rootDirectory': JSON.stringify(process.env.INIT_CWD || '../../') }),
+    new webpack.DefinePlugin({ 'process.env.rootDirectory': JSON.stringify(process.env.INIT_CWD || __dirname) }),
   ],
 });
