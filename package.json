@@ -4,10 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node ./cli dev",
+    "start": "npm run cli editor",
     "build": "webpack --mode production --env.rootDir=\".\"",
-    "upload": "node ./cli publish",
-    "email": "node ./cli email"
+    "cli": "node ./cli"
   },
   "bin": {
     "muil": "./cli/bin/index.js"

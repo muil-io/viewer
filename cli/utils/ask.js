@@ -1,13 +1,11 @@
 import readline from 'readline';
 
-export default async (question, hideOutput = false) =>
-  new Promise((resolve, reject) => {
+const ask = async (question, hideOutput = false) =>
+  new Promise(resolve => {
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
     });
-
-    const stdin = process.openStdin();
 
     if (hideOutput) {
       process.stdin.on('data', char => {
@@ -17,7 +15,6 @@ export default async (question, hideOutput = false) =>
           case '\n':
           case '\r':
           case '\u0004':
-            stdin.pause();
             break;
           default:
             process.stdout.clearLine();
@@ -28,11 +25,16 @@ export default async (question, hideOutput = false) =>
       });
     }
 
-    rl.question(question, answer => {
+    rl.question(question, async answer => {
       if (!answer) {
-        reject();
+        rl.close();
+        const innerAnswer = await ask(question, hideOutput);
+        resolve(innerAnswer);
+      } else {
+        resolve(answer);
+        rl.close();
       }
-      resolve(answer);
-      rl.close();
     });
   });
+
+export default ask;
