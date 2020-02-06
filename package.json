@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run cli editor",
-    "build": "webpack --mode production --env.rootDir=\".\"",
     "cli": "node ./cli"
   },
   "bin": {
