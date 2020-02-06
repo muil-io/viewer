@@ -1,6 +1,6 @@
 const templateContext = require.context(process.env.rootDirectory, true, /\.template\.js$/);
 
-const getTemplates = () => {
+export default () => {
   const templateFiles = templateContext.keys();
   return templateFiles.reduce((templates, templateFileName) => {
     const templateName = templateFileName.split('/');
@@ -16,5 +16,3 @@ const getTemplates = () => {
     };
   }, {});
 };
-
-export default getTemplates;

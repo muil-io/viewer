@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 import Page from './Page';
 import Content from './Content';
 import Options from './Options';
-import getTemplates from '../config';
+import getTemplates from '../utils/getTemplates';
 import useKnobs from '../hooks/useKnobs';
 import '../style/fonts.css';
 
@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 
 const AppShell = () => {
   const defaultTemplates = useMemo(() => getTemplates(), []);
-  console.log(defaultTemplates);
   const [selectedSize, setSelectedSize] = useState('full');
 
   const { templates, handleChangeKnob } = useKnobs({ defaultTemplates });
