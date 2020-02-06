@@ -9,8 +9,6 @@ const Wrapper = styled.div`
   flex: 1;
   cursor: pointer;
   border-bottom: 2px solid transparent;
-
-  border-color: ${({ activeTab, theme }) => (activeTab ? theme.tabs.border : 'transparent')};
 `;
 
 const Tab = ({ activeTab, onClick, children }) => (
