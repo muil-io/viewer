@@ -1,6 +1,5 @@
 export default () => {
   try {
-    console.log(process.env.templatesDirectory);
     const templateContext = require.context(process.env.templatesDirectory, true, /\.template\.js$/);
     const templateFiles = templateContext.keys();
 
