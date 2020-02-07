@@ -32,6 +32,14 @@ const Logo = styled.div`
   }
 `;
 
+const Empty = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.sidebar.emptyColor};
+  padding: 20px;
+`;
+
 const SideBar = ({ templates }) => {
   const links = useMemo(() => Object.keys(templates).map(key => ({ key, name: templates[key].name })), [templates]);
 
@@ -47,6 +55,8 @@ const SideBar = ({ templates }) => {
       {links.map(({ key, name }) => (
         <Link key={key} link={key} text={name} />
       ))}
+
+      {links.length === 0 && <Empty>No Templates</Empty>}
     </Wrapper>
   );
 };

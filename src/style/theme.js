@@ -4,6 +4,7 @@ const colors = {
   secondary: '#f8f8f8',
   white: '#ffffff',
   dark: '#424242',
+  lightDark: '#adadad',
   shadow: '#0000003d',
   light: '#e6e6e6',
 };
@@ -28,6 +29,7 @@ const theme = {
     linkBackground: 'rgba(103,53,224, 0.1)',
     shadowColors: colors.shadow,
     border: colors.light,
+    emptyColor: colors.lightDark,
   },
   tabs: {
     border: colors.primary,
