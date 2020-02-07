@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SideBarHeader from './SideBarHeader';
 import scrollbar from '../style/scrollbar';
 import Link from './Link';
+import EmptyState from './EmptyState';
 
 const Wrapper = styled.div`
   grid-column: 1;
@@ -32,14 +33,6 @@ const Logo = styled.div`
   }
 `;
 
-const Empty = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.sidebar.emptyColor};
-  padding: 20px;
-`;
-
 const SideBar = ({ templates }) => {
   const links = useMemo(() => Object.keys(templates).map(key => ({ key, name: templates[key].name })), [templates]);
 
@@ -56,7 +49,7 @@ const SideBar = ({ templates }) => {
         <Link key={key} link={key} text={name} />
       ))}
 
-      {links.length === 0 && <Empty>No Templates</Empty>}
+      {links.length === 0 && <EmptyState>No Templates</EmptyState>}
     </Wrapper>
   );
 };
