@@ -6,7 +6,7 @@ import { login, upload } from '../services/firebase';
 import * as logger from '../utils/logger';
 
 // TODO: publish all templates or specific template
-export default async ({ templatesDirectory = './templates', template }) => {
+export default async ({ templatesDirectory, template }) => {
   const credentialsFile = `${homedir()}/.muil/credentials`;
   if (!fs.existsSync(credentialsFile)) {
     logger.error(`You are not logged in\nPlease login first with command 'yarn muil-login'`);
