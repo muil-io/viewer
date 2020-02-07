@@ -49,6 +49,7 @@ module.exports = ({ templatesDirectory }) => ({
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
+      favicon: './src/assets/favicon.ico',
     }),
     new webpack.DefinePlugin({
       'process.env.templatesDirectory': JSON.stringify(getTemplatesDirectory(templatesDirectory)),

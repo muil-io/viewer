@@ -25,7 +25,9 @@ const Logo = styled.div`
   > span {
     background: ${({ theme }) => theme.app.primaryBackground};
     color: ${({ theme }) => theme.sidebar.logoColor};
-    padding: 5px 10px;
+    height: 44px;
+    width: 44px;
+    line-height: 45px;
     margin-right: 2px;
   }
 `;
