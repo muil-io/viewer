@@ -10,7 +10,8 @@ export default async ({ port = 8000, templatesDirectory = './templates' }) => {
   const server = new WebpackDevServer(compiler, {
     quiet: true,
     overlay: true,
-    open: 'chrome',
+    hotOnly: true,
+    open: process.platform === 'win32' ? 'chrome' : process.platform === 'darwin' ? 'Google Chrome' : 'google-chrome',
   });
 
   server.listen(port, 'localhost', () => logger.info(`Muil editor is running at http://localhost:${port}/`));

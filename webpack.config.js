@@ -13,6 +13,7 @@ const paths = {
 module.exports = ({ templatesDirectory }) => ({
   entry: [paths.src],
   mode: 'development',
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -44,11 +45,6 @@ module.exports = ({ templatesDirectory }) => ({
       },
     ],
   },
-  devServer: {
-    open: true,
-    hotOnly: true,
-  },
-  devtool: 'cheap-module-source-map',
   plugins: [
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({

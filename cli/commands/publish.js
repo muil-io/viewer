@@ -1,10 +1,11 @@
 import { homedir } from 'os';
 import fs from 'fs';
 import webpack from 'webpack';
-import webpackConfig from '../../webpack.config.templates.js';
+import webpackConfig from '../config/webpack.config.templates.js';
 import { login, upload } from '../services/firebase';
 import * as logger from '../utils/logger';
 
+// TODO: publish all templates or specific template
 export default async ({ templatesDirectory = './templates', template }) => {
   const credentialsFile = `${homedir()}/.muil/credentials`;
   if (!fs.existsSync(credentialsFile)) {
@@ -25,5 +26,3 @@ export default async ({ templatesDirectory = './templates', template }) => {
     logger.success('Templates uploaded successfully\n');
   });
 };
-
-// TODO: publish all templates or specific template
