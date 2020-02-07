@@ -11,7 +11,7 @@ export default () => {
       [templateId]: {
         name: Template.displayName || templateFileName,
         Template,
-        knobs: Template.knobs,
+        dynamicProps: Template.dynamicProps,
       },
     };
   }, {});

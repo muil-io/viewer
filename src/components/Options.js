@@ -6,7 +6,7 @@ import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
 import { Tabs, Tab } from './core/Tabs';
 import scrollbar from '../style/scrollbar';
-import Knobs from './Knobs';
+import DynamicProps from './DynamicProps';
 
 const Wrapper = styled.div`
   grid-column: 3;
@@ -74,7 +74,7 @@ const Options = ({ templates, onChangeKnob }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
   const { templateId } = useParams();
-  const { knobs } = templates[templateId] || {};
+  const { dynamicProps } = templates[templateId] || {};
 
   if (!templateId) {
     return null;
@@ -93,12 +93,14 @@ const Options = ({ templates, onChangeKnob }) => {
           <CloseButton onClick={() => setIsVisible(false)} />
 
           <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
-            <Tab name="props">Props</Tab>
+            <Tab name="props">Dynamic Props</Tab>
             <Tab name="api">API</Tab>
           </Tabs>
         </SideBarHeader>
 
-        {activeTab === 'props' && <Knobs knobs={knobs} onChangeKnob={value => onChangeKnob({ templateId, value })} />}
+        {activeTab === 'props' && (
+          <DynamicProps dynamicProps={dynamicProps} onChangeKnob={value => onChangeKnob({ templateId, value })} />
+        )}
       </Content>
     </Wrapper>
   );

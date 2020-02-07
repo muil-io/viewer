@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Request = ({ knobs = {}, onChangeKnob }) => {
+const DynamicProps = ({ dynamicProps = {}, onChangeKnob }) => {
   const handleChangeValue = useCallback(
     value => {
       try {
@@ -33,7 +33,7 @@ const Request = ({ knobs = {}, onChangeKnob }) => {
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
         showGutter={false}
-        value={JSON.stringify(knobs, null, 4)}
+        value={JSON.stringify(dynamicProps, null, 4)}
         onChange={handleChangeValue}
         setOptions={{ useWorker: false }}
       />
@@ -41,4 +41,4 @@ const Request = ({ knobs = {}, onChangeKnob }) => {
   );
 };
 
-export default Request;
+export default DynamicProps;
