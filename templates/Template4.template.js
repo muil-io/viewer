@@ -23,9 +23,9 @@ const Template4 = ({ isActive, user, years, person }) => (
   </div>
 );
 
-Template4.displayName = 'Template with Knobs';
+Template4.displayName = 'Template with Dynamic Props';
 
-Template4.knobs = {
+Template4.dynamicProps = {
   user: 'username',
   person: { firstName: 'Nir', lastName: 'Test' },
   isActive: true,

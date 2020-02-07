@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-textmate';
+import EmptyState from './EmptyState';
 
 const Wrapper = styled.div`
   height: calc(100% - 100px);
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Request = ({ knobs = {}, onChangeKnob }) => {
+const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
   const handleChangeValue = useCallback(
     value => {
       try {
@@ -25,20 +26,24 @@ const Request = ({ knobs = {}, onChangeKnob }) => {
 
   return (
     <Wrapper>
-      <AceEditor
-        mode="json"
-        height="inherit"
-        width="100%"
-        theme="textmate"
-        name="UNIQUE_ID_OF_DIV"
-        editorProps={{ $blockScrolling: true }}
-        showGutter={false}
-        value={JSON.stringify(knobs, null, 4)}
-        onChange={handleChangeValue}
-        setOptions={{ useWorker: false }}
-      />
+      {dynamicProps ? (
+        <AceEditor
+          mode="json"
+          height="inherit"
+          width="100%"
+          theme="textmate"
+          name="UNIQUE_ID_OF_DIV"
+          editorProps={{ $blockScrolling: true }}
+          showGutter={false}
+          value={JSON.stringify(dynamicProps, null, 4)}
+          onChange={handleChangeValue}
+          setOptions={{ useWorker: false }}
+        />
+      ) : (
+        <EmptyState>No Dynamic props defined</EmptyState>
+      )}
     </Wrapper>
   );
 };
 
-export default Request;
+export default DynamicProps;

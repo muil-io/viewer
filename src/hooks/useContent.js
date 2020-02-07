@@ -10,9 +10,9 @@ const useContent = ({ templates, templateId }) => {
       return null;
     }
 
-    const { Template, knobs = {} } = template;
+    const { Template, dynamicProps = {} } = template;
 
-    const html = renderToStaticMarkup(<Template {...knobs} />);
+    const html = renderToStaticMarkup(<Template {...dynamicProps} />);
 
     const css = [...document.styleSheets]
       .slice(1)

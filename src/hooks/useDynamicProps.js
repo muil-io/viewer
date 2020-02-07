@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const useKnobs = ({ defaultTemplates }) => {
+const useDynamicProps = ({ defaultTemplates }) => {
   const [templates, setTemplates] = useState({});
 
   const handleChangeKnob = useCallback(
@@ -9,7 +9,7 @@ const useKnobs = ({ defaultTemplates }) => {
         ...prevTemplates,
         [templateId]: {
           ...prevTemplates[templateId],
-          knobs: value,
+          dynamicProps: value,
         },
       })),
     [],
@@ -22,7 +22,7 @@ const useKnobs = ({ defaultTemplates }) => {
           ...prevTemplates,
           [templateId]: {
             ...defaultTemplates[templateId],
-            knobs: defaultTemplates[templateId].knobs,
+            dynamicProps: defaultTemplates[templateId].dynamicProps,
           },
         }),
         {},
@@ -33,4 +33,4 @@ const useKnobs = ({ defaultTemplates }) => {
   return { templates, handleChangeKnob };
 };
 
-export default useKnobs;
+export default useDynamicProps;

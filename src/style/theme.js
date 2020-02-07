@@ -4,6 +4,7 @@ const colors = {
   secondary: '#f8f8f8',
   white: '#ffffff',
   dark: '#424242',
+  lightDark: '#adadad',
   shadow: '#0000003d',
   light: '#e6e6e6',
 };
@@ -40,6 +41,9 @@ const theme = {
   options: {
     color: colors.dark,
     border: colors.light,
+  },
+  emptyState: {
+    color: colors.lightDark,
   },
 };
 

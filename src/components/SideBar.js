@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SideBarHeader from './SideBarHeader';
 import scrollbar from '../style/scrollbar';
 import Link from './Link';
+import EmptyState from './EmptyState';
 
 const Wrapper = styled.div`
   grid-column: 1;
@@ -25,7 +26,9 @@ const Logo = styled.div`
   > span {
     background: ${({ theme }) => theme.app.primaryBackground};
     color: ${({ theme }) => theme.sidebar.logoColor};
-    padding: 5px 10px;
+    height: 44px;
+    width: 44px;
+    line-height: 45px;
     margin-right: 2px;
   }
 `;
@@ -45,6 +48,8 @@ const SideBar = ({ templates }) => {
       {links.map(({ key, name }) => (
         <Link key={key} link={key} text={name} />
       ))}
+
+      {links.length === 0 && <EmptyState>No Templates</EmptyState>}
     </Wrapper>
   );
 };
