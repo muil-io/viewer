@@ -7,6 +7,7 @@ const { getTemplatesDirectory } = require('./cli/utils/paths');
 const paths = {
   src: path.resolve(__dirname, 'src'),
   html: `${path.resolve(__dirname, 'src')}/index.html`,
+  favicon: `${path.resolve(__dirname, 'src')}/favicon.ico`,
   node_modules: path.resolve(__dirname, 'node_modules'),
 };
 
@@ -49,7 +50,7 @@ module.exports = ({ templatesDirectory }) => ({
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
-      favicon: './src/assets/favicon.ico',
+      favicon: paths.favicon,
     }),
     new webpack.DefinePlugin({
       'process.env.templatesDirectory': JSON.stringify(getTemplatesDirectory(templatesDirectory)),
