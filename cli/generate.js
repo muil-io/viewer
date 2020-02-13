@@ -3,6 +3,7 @@ import initiate from './commands/init';
 import login from './commands/login';
 import logout from './commands/logout';
 import publish from './commands/publish';
+import unpublish from './commands/unpublish';
 import editor from './commands/editor';
 import build from './commands/build';
 
@@ -51,6 +52,12 @@ program
   )
   .option('-b --branch <branch>', 'templates branch')
   .action(options => publish(options));
+
+program
+  .command('unpublish')
+  .description('Unpublish email templates')
+  .option('-b --branch <branch>', 'templates branch')
+  .action(options => unpublish(options));
 
 program
   .command('build')

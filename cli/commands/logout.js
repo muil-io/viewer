@@ -1,13 +1,10 @@
 import fs from 'fs';
-import { homedir } from 'os';
+import { getCredentialsFile } from '../utils/credentials';
 import * as logger from '../utils/logger';
 
 export default async () => {
-  const credentialsFile = `${homedir()}/.muil/credentials`;
-  if (!fs.existsSync(credentialsFile)) {
-    logger.error('You are not logged in');
-    return;
-  }
+  const credentialsFile = getCredentialsFile();
+  if (!credentialsFile) return;
 
   const { email } = JSON.parse(fs.readFileSync(credentialsFile, 'utf8'));
   fs.unlinkSync(credentialsFile);

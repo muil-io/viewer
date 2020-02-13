@@ -13,13 +13,21 @@ export const login = async ({ email, password }) => {
   return token;
 };
 
-export const upload = async ({ token, branch = '' }) => {
+export const publish = async ({ token, branch = '' }) => {
   const bodyData = new FormData();
   const files = await fs.readdirSync(buildDirectory);
 
   files.forEach(file => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
 
   await axios.post(`https://us-central1-muil-io.cloudfunctions.net/templates/${branch}`, bodyData, {
+    headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
+  });
+};
+
+export const unpublish = async ({ token, branch = '' }) => {
+  const bodyData = new FormData();
+
+  await axios.delete(`https://us-central1-muil-io.cloudfunctions.net/templates/${branch}`, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
   });
 };

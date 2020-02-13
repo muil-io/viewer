@@ -1,7 +1,6 @@
-import fs from 'fs';
-import { homedir } from 'os';
 import prompts from 'prompts';
 import { login } from '../services/api';
+import { setCredentialsFile } from '../utils/credentials';
 import * as logger from '../utils/logger';
 
 export default async ({ user, pass }) => {
@@ -34,15 +33,7 @@ export default async ({ user, pass }) => {
     return;
   }
 
-  const configurationDirectory = `${homedir()}/.muil`;
-  if (!fs.existsSync(configurationDirectory)) {
-    fs.mkdirSync(configurationDirectory);
-  }
-
-  fs.writeFileSync(`${configurationDirectory}/credentials`, `${JSON.stringify({ email, password }, null, 2)}\n`, {
-    encoding: 'utf8',
-    flag: 'w',
-  });
+  setCredentialsFile({ email, password });
 
   logger.success('Logged in successfully');
 };
