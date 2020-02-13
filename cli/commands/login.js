@@ -1,12 +1,32 @@
 import fs from 'fs';
 import { homedir } from 'os';
-import { login } from '../services/firebase';
+import prompts from 'prompts';
+import { login } from '../services/api';
 import * as logger from '../utils/logger';
-import ask from '../utils/ask';
 
 export default async ({ user, pass }) => {
-  const email = user || (await ask('Muil Username: '));
-  const password = pass || (await ask('Muil Password: ', true));
+  prompts.override({ email: user, password: pass });
+  const { email, password } = await prompts(
+    [
+      {
+        type: 'text',
+        name: 'email',
+        message: 'username:',
+        validate: e => (e !== '' ? true : 'Please enter a username'),
+      },
+      {
+        type: 'password',
+        name: 'password',
+        message: 'password:',
+        validate: e => (e !== '' ? true : 'Please enter a password'),
+      },
+    ],
+    {
+      onCancel: () => {
+        process.exit();
+      },
+    },
+  );
 
   const token = await login({ email, password });
   if (typeof token !== 'string') {

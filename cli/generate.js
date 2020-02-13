@@ -4,12 +4,13 @@ import login from './commands/login';
 import logout from './commands/logout';
 import publish from './commands/publish';
 import editor from './commands/editor';
+import build from './commands/build';
 
 program
   .command('init')
   .description('Initialize Muil into project')
   .option('-n --use-npm', 'Use npm to install deps')
-  .option('-d --templatesDirectory <templatesDirectory>', "Templates root directory, default: 'templates'")
+  .option('-d --templatesDirectory <templatesDirectory>', "Templates root directory, default: './templates'")
   .action(options => initiate(options));
 
 program
@@ -43,8 +44,28 @@ program
     "Templates root directory, default: './templates'",
     './templates',
   )
-  .option('-t --template <template>', 'Templates ID')
+  .option(
+    '-e --templatesExtension <templatesExtension>',
+    "comma separated list of templates path, default 'template.js'",
+    'template.js',
+  )
+  .option('-b --branch <branch>', 'templates branch')
   .action(options => publish(options));
+
+program
+  .command('build')
+  .description('Build email templates')
+  .option(
+    '-d --templatesDirectory <templatesDirectory>',
+    "Templates root directory, default: './templates'",
+    './templates',
+  )
+  .option(
+    '-e --templatesExtension <templatesExtension>',
+    "comma separated list of templates path, default 'template.js'",
+    'template.js',
+  )
+  .action(options => build(options));
 
 program
   .name('muil')
@@ -54,5 +75,3 @@ program
 if (program.rawArgs.length < 3) {
   program.help();
 }
-
-// unpublish

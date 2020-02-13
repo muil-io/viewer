@@ -4,15 +4,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { rootDir, getTemplatesDirectory, buildDirectory } = require('../utils/paths');
 
-module.exports = ({ templatesDirectory, template = '*' }) => {
+module.exports = ({ templatesDirectory, templatesExtension }) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
 
   return {
     mode: 'production',
-    entry: glob.sync(`${templatesDir}/**/${template}.template.js`).reduce(
+    entry: glob.sync(`${templatesDir}/**/*.${templatesExtension}`).reduce(
       (obj, el) => ({
         ...obj,
-        [path.parse(el).name]: el,
+        [path.parse(el).base.slice(0, -(templatesExtension.length + 1))]: el,
       }),
       {},
     ),
