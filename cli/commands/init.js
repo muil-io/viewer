@@ -24,9 +24,9 @@ export default async ({ useNpm, templatesDirectory }) => {
   packageJson.scripts['muil-publish'] = `muil publish${templatesDirectoryArg}`;
   writePackageJson(packageJson);
 
-  if (!fs.existsSync(getTemplatesDirectory(templatesDirectory || '/templates'))) {
-    fs.mkdirSync(getTemplatesDirectory(templatesDirectory || '/templates'));
-    logger.success('Templates directory created');
+  if (!fs.existsSync(getTemplatesDirectory(templatesDirectory || './templates'))) {
+    fs.mkdirSync(getTemplatesDirectory(templatesDirectory || './templates'));
+    logger.success('Templates directory created\n');
   }
 
   logger.success('Muil installed successfully 💪');
