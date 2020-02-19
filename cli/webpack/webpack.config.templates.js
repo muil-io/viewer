@@ -39,7 +39,11 @@ module.exports = ({ templatesDirectory, templatesExtension, token }) => {
           exclude: path.resolve(rootDir, 'node_modules'),
         },
         {
-          test: /\.jpg$/,
+          test: /\.css/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
+        {
+          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.eot$/, /\.otf$/, /\.woff$/, /\.woff2$/, /\.ttf$/],
           use: [
             {
               loader: path.resolve('cli/webpack/muil-asset-loader.js'),
