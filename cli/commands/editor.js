@@ -26,7 +26,7 @@ export default async ({ port, templatesDirectory }) => {
   app.use(express.static(dist));
 
   middleware.waitUntilValid(() => {
-    app.listen(port, () => logger.info(`Muil editor is running at http://localhost:${port}/`));
+    app.listen(port, () => console.log(`✨ Muil editor is running at http://localhost:${port}/`));
     opn(`http://localhost:${port}`);
   });
 };

@@ -22,10 +22,10 @@ export default async ({ templatesDirectory, templatesExtension, branch }) => {
     if (err || stats.hasErrors()) {
       return;
     }
+    logger.infoSuccess();
 
-    logger.success('Templates compiled successfully\n');
     logger.info('Uploading templates...');
     await publish({ token, branch });
-    logger.success('Templates uploaded successfully\n');
+    logger.infoSuccess('Templates uploaded successfully\n');
   });
 };

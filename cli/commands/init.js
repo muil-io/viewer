@@ -8,12 +8,13 @@ import { getTemplatesDirectory } from '../utils/paths';
 export default async ({ useNpm, templatesDirectory }) => {
   logger.title('\n Adding Muil to project... \n');
 
-  logger.info('Installing package...');
+  logger.info('Installing packages...');
   const useYarn = Boolean(useNpm !== true) && hasYarn();
   const installAsDevDependencies = true;
   sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', 'muil-2', installAsDevDependencies ? '-D' : '']);
+  logger.infoSuccess();
 
-  logger.info('Adding scripts...\n');
+  logger.info('Adding scripts...');
   const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '';
   const packageJson = await retrievePackageJson();
   packageJson.dependencies = packageJson.dependencies || {};
@@ -23,6 +24,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   packageJson.scripts['muil-login'] = 'muil login';
   packageJson.scripts['muil-publish'] = `muil publish${templatesDirectoryArg}`;
   writePackageJson(packageJson);
+  logger.infoSuccess();
 
   if (!fs.existsSync(getTemplatesDirectory(templatesDirectory || './templates'))) {
     fs.mkdirSync(getTemplatesDirectory(templatesDirectory || './templates'));
@@ -30,5 +32,5 @@ export default async ({ useNpm, templatesDirectory }) => {
   }
 
   logger.success('Muil installed successfully 💪');
-  logger.info(`To run Muil, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
+  console.log(`\n🌟 To run Muil editor, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
 };

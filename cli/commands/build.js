@@ -14,6 +14,6 @@ export default async ({ templatesDirectory, templatesExtension }) => {
       return;
     }
 
-    logger.success('Templates compiled successfully\n');
+    logger.infoSuccess();
   });
 };
