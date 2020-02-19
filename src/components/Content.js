@@ -20,7 +20,7 @@ const Content = ({ selectedTemplate }) => (
   <Wrapper>
     <Frame
       title="content"
-      src={`http://localhost:8081?templateId=${selectedTemplate?.id}&dynamicProps=${encodeURIComponent(
+      src={`/iframe.html?templateId=${selectedTemplate?.id}&dynamicProps=${encodeURIComponent(
         JSON.stringify(selectedTemplate?.dynamicProps),
       )}`}
     />

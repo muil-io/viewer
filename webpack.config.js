@@ -14,6 +14,9 @@ module.exports = ({ templatesDirectory }) => ({
   entry: [paths.src],
   mode: 'development',
   devtool: 'cheap-module-source-map',
+  output: {
+    filename: 'iframe.js',
+  },
   module: {
     rules: [
       {
@@ -49,6 +52,7 @@ module.exports = ({ templatesDirectory }) => ({
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
+      filename: 'iframe.html',
     }),
     new webpack.DefinePlugin({
       'process.env.templatesDirectory': JSON.stringify(getTemplatesDirectory(templatesDirectory)),

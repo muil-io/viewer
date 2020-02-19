@@ -1,5 +1,9 @@
 export const getTemplateFromUrl = ({ search, templates }) => {
   const [templateStr, dynamicPropsStr] = search.slice(1).split('&');
+  if (!templateStr) {
+    return {};
+  }
+
   const [, templateId] = templateStr.split('=');
   const [, dynamicProps] = dynamicPropsStr.split('=');
 

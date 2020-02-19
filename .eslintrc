@@ -15,6 +15,7 @@
   "rules": {
     "no-console": "off",
     "no-nested-ternary": "off",
+    "new-cap": "off",
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",

@@ -25,5 +25,5 @@ const App = () => {
   return <Template {...dynamicProps} />;
 };
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('inner-root');
 ReactDOM.render(<App />, rootElement);
