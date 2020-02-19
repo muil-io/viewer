@@ -7,7 +7,8 @@
     "start": "npm run cli editor",
     "build-editor": "webpack --config webpack.config.editor.js",
     "run-editor": "webpack-dev-server --mode development --config webpack.config.editor.js",
-    "cli": "node ./cli"
+    "cli": "node ./cli",
+    "prepublish": "npm run build-editor"
   },
   "bin": {
     "muil": "./cli/index.js"
@@ -53,7 +54,7 @@
     "react-hot-loader": "^4.12.18",
     "react-router-dom": "^5.1.2",
     "style-loader": "^1.1.2",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.0.1",
     "url-loader": "^3.0.0",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
