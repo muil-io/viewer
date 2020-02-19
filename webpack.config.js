@@ -11,7 +11,7 @@ const paths = {
 };
 
 module.exports = ({ templatesDirectory }) => ({
-  entry: [paths.src],
+  entry: [paths.src, 'webpack-hot-middleware/client'],
   mode: 'development',
   devtool: 'cheap-module-source-map',
   output: {
@@ -49,6 +49,7 @@ module.exports = ({ templatesDirectory }) => ({
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,

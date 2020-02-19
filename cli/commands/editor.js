@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import opn from 'opn';
 import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 import * as logger from '../utils/logger';
 import iframeConfig from '../../webpack.config.js';
@@ -16,10 +17,13 @@ export default async ({ port, templatesDirectory }) => {
   const middleware = new webpackDevMiddleware(compiler, {
     publicPath: '/',
     writeToDisk: true,
+    noInfo: true,
+    aggregateTimeout: 1,
   });
 
-  app.use(express.static(dist));
   app.use(middleware);
+  app.use(webpackHotMiddleware(compiler));
+  app.use(express.static(dist));
 
   middleware.waitUntilValid(() => {
     app.listen(port, () => logger.info(`Muil editor is running at http://localhost:${port}/`));
