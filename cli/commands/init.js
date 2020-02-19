@@ -5,6 +5,11 @@ import * as logger from '../utils/logger';
 import { hasYarn, retrievePackageJson, writePackageJson } from '../utils/packageManager';
 import { getTemplatesDirectory } from '../utils/paths';
 
+// TODO:
+// 1. add .muil to .gitignore
+// 2. add templates directory and sample template
+// 3. change scripts
+
 export default async ({ useNpm, templatesDirectory }) => {
   logger.title('\n Adding Muil to project... \n');
 
