@@ -1,0 +1,29 @@
+export const getTemplateFromUrl = ({ search, templates }) => {
+  const [templateStr, dynamicPropsStr] = search.slice(1).split('&');
+  const [, templateId] = templateStr.split('=');
+  const [, dynamicProps] = dynamicPropsStr.split('=');
+
+  let parsedProps = null;
+  try {
+    parsedProps = JSON.parse(decodeURIComponent(dynamicProps));
+  } catch (err) {
+    parsedProps = null;
+  }
+
+  if (!templateId || !templates[templateId]) {
+    return {};
+  }
+
+  const template = templates[templateId];
+
+  return { Template: template.Template, dynamicProps: parsedProps || template.dynamicProps };
+};
+
+export const getTemplatesForParent = templates =>
+  Object.keys(templates).reduce(
+    (prevTemplates, templateKey) => ({
+      ...prevTemplates,
+      [templateKey]: { name: templates[templateKey].name, dynamicProps: templates[templateKey].dynamicProps },
+    }),
+    {},
+  );

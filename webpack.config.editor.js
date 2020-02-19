@@ -1,18 +1,17 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const { getTemplatesDirectory } = require('./cli/utils/paths');
 
 const paths = {
-  src: path.resolve(__dirname, 'iframe'),
-  html: `${path.resolve(__dirname, 'iframe')}/index.html`,
+  src: path.resolve(__dirname, 'src'),
+  html: `${path.resolve(__dirname, 'src')}/index.html`,
+  favicon: `${path.resolve(__dirname, 'src')}/favicon.ico`,
   node_modules: path.resolve(__dirname, 'node_modules'),
 };
 
-module.exports = ({ templatesDirectory }) => ({
+module.exports = () => ({
   entry: [paths.src],
-  mode: 'development',
+  mode: 'production',
   devtool: 'cheap-module-source-map',
   module: {
     rules: [
@@ -49,9 +48,7 @@ module.exports = ({ templatesDirectory }) => ({
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
-    }),
-    new webpack.DefinePlugin({
-      'process.env.templatesDirectory': JSON.stringify(getTemplatesDirectory(templatesDirectory)),
+      favicon: paths.favicon,
     }),
   ],
   devServer: {

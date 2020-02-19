@@ -11,14 +11,3 @@ export const SCREEN_SIZES = {
 };
 
 export const HEADER_HEIGHT = 90;
-
-export const NOT_ALLOWED_HTML_TAGS = [
-  'script',
-  'iframe',
-  'object', // for flash use
-  'video', // for embedded video
-  'audio', // for embedded audio
-  'form', // for any kind of form
-];
-
-export const USE_WITH_CAUTION_CSS_PROPERTIES = ['url', '.gif'];

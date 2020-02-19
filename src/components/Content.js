@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import StartPage from './StartPage';
-import useContent from '../hooks/useContent';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,19 +19,16 @@ const Frame = styled.iframe`
 
 const Content = ({ templates }) => {
   const { templateId } = useParams();
-  const url = useContent({ templates, templateId });
-
-  if (!templateId) {
-    return (
-      <Wrapper>
-        <StartPage />
-      </Wrapper>
-    );
-  }
+  const template = templates[templateId];
 
   return (
     <Wrapper>
-      <Frame src={url} title="content" />
+      <Frame
+        title="content"
+        src={`http://localhost:3002?templateId=${templateId}&dynamicProps=${encodeURIComponent(
+          JSON.stringify(template?.dynamicProps),
+        )}`}
+      />
     </Wrapper>
   );
 };
