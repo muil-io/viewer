@@ -5,12 +5,9 @@ import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
 
 const templates = getTemplates();
 // eslint-disable-next-line no-restricted-globals
-parent.postMessage(
-  {
-    templates: getTemplatesForParent(templates),
-  },
-  'http://localhost:8000/',
-);
+parent.postMessage({
+  templates: getTemplatesForParent(templates),
+});
 
 const App = () => {
   const { Template, dynamicProps } = useMemo(
