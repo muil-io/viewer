@@ -46,7 +46,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token }) => {
           test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.eot$/, /\.otf$/, /\.woff$/, /\.woff2$/, /\.ttf$/],
           use: [
             {
-              loader: path.resolve('cli/webpack/muil-asset-loader.js'),
+              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
               options: {
                 token,
               },
