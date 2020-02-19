@@ -63,7 +63,10 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
+    "crypto-js": "^4.0.0",
+    "loader-utils": "^1.2.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "schema-utils": "^2.6.4"
   }
 }

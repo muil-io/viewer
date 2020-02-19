@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import prompts from 'prompts';
-import webpackConfig from '../config/webpack.config.templates.js';
+import webpackConfig from '../webpack/webpack.config.templates.js';
 import { publish } from '../services/api';
 import { getToken } from '../utils/credentials';
 import * as logger from '../utils/logger';
@@ -18,8 +18,11 @@ export default async ({ templatesDirectory, templatesExtension, branch }) => {
   if (!confirm) return;
 
   logger.info('Compiling templates...');
-  const compiler = webpack(webpackConfig({ templatesDirectory, templatesExtension }));
-  await compiler.run(async () => {
+  webpack(webpackConfig({ templatesDirectory, templatesExtension, token }), async (err, stats) => {
+    if (err || stats.hasErrors()) {
+      return;
+    }
+
     logger.success('Templates compiled successfully\n');
     logger.info('Uploading templates...');
     await publish({ token, branch });
