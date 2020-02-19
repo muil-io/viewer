@@ -10,6 +10,7 @@ export default () => {
       return {
         ...templates,
         [templateId]: {
+          id: templateId,
           name: Template.displayName || templateFileName,
           Template,
           dynamicProps: Template.dynamicProps,

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { useParams } from 'react-router-dom';
 import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
@@ -70,13 +69,12 @@ const Content = styled.div`
   ${scrollbar};
 `;
 
-const Options = ({ templates, onChangeKnob }) => {
+const Options = ({ selectedTemplate, onChangeKnob }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
-  const { templateId } = useParams();
-  const { dynamicProps } = templates[templateId] || {};
+  const { dynamicProps } = selectedTemplate || {};
 
-  if (!templateId) {
+  if (!selectedTemplate) {
     return null;
   }
 
@@ -99,7 +97,10 @@ const Options = ({ templates, onChangeKnob }) => {
         </SideBarHeader>
 
         {activeTab === 'props' && (
-          <DynamicProps dynamicProps={dynamicProps} onChangeKnob={value => onChangeKnob({ templateId, value })} />
+          <DynamicProps
+            dynamicProps={dynamicProps}
+            onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+          />
         )}
       </Content>
     </Wrapper>

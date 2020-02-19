@@ -33,11 +33,6 @@ const theme = {
   tabs: {
     border: colors.primary,
   },
-  button: {
-    background: colors.primary,
-    color: colors.white,
-    shadowColors: colors.shadow,
-  },
   options: {
     color: colors.dark,
     border: colors.light,

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 import ScreenOptions from './ScreenOptions';
 import { SCREEN_SIZES, HEADER_HEIGHT } from '../constants';
 import ellipsis from '../style/ellipsis';
@@ -44,19 +43,15 @@ const Container = styled.div`
     0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 `;
 
-const Page = ({ templates, selectedSize, setSelectedSize, children }) => {
-  const { templateId } = useParams();
+const Page = ({ selectedTemplate, selectedSize, setSelectedSize, children }) => (
+  <Wrapper>
+    <TopBar>
+      <TemplateName>{selectedTemplate?.name || 'No Template Selected'}</TemplateName>
+      <ScreenOptions selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
+    </TopBar>
 
-  return (
-    <Wrapper>
-      <TopBar>
-        <TemplateName>{templates[templateId]?.name || 'No Template Selected'}</TemplateName>
-        <ScreenOptions selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
-      </TopBar>
-
-      <Container selectedSize={selectedSize}>{children}</Container>
-    </Wrapper>
-  );
-};
+    <Container selectedSize={selectedSize}>{children}</Container>
+  </Wrapper>
+);
 
 export default Page;

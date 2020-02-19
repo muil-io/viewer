@@ -17,20 +17,15 @@ const Frame = styled.iframe`
   border-radius: 8px;
 `;
 
-const Content = ({ templates }) => {
-  const { templateId } = useParams();
-  const template = templates[templateId];
-
-  return (
-    <Wrapper>
-      <Frame
-        title="content"
-        src={`http://localhost:3002?templateId=${templateId}&dynamicProps=${encodeURIComponent(
-          JSON.stringify(template?.dynamicProps),
-        )}`}
-      />
-    </Wrapper>
-  );
-};
+const Content = ({ selectedTemplate }) => (
+  <Wrapper>
+    <Frame
+      title="content"
+      src={`http://localhost:3002?templateId=${selectedTemplate?.id}&dynamicProps=${encodeURIComponent(
+        JSON.stringify(selectedTemplate?.dynamicProps),
+      )}`}
+    />
+  </Wrapper>
+);
 
 export default Content;

@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import SideBar from './SideBar';
 import Page from './Page';
 import Content from './Content';
 import Options from './Options';
+import useTemplates from '../hooks/useTemplates';
 import useDynamicProps from '../hooks/useDynamicProps';
 import '../style/fonts.css';
 
@@ -17,32 +19,19 @@ const Wrapper = styled.div`
 
 const AppShell = () => {
   const [selectedSize, setSelectedSize] = useState('full');
-  const [defaultTemplates, setDefaultTemplates] = useState({});
-
-  const handleReceiveMessage = useCallback(
-    ({ data }) => {
-      if (data?.templates && !Object.keys(defaultTemplates).length) {
-        setDefaultTemplates(data.templates);
-      }
-    },
-    [defaultTemplates],
-  );
-
-  useEffect(() => {
-    window.addEventListener('message', handleReceiveMessage);
-    return () => window.removeEventListener('message', handleReceiveMessage);
-  }, [handleReceiveMessage]);
-
+  const defaultTemplates = useTemplates();
   const { templates, handleChangeKnob } = useDynamicProps({ defaultTemplates });
+  const { templateId } = useParams();
+  const selectedTemplate = templates[templateId];
 
   return (
     <Wrapper>
       <SideBar templates={templates} />
-      <Page templates={templates} selectedSize={selectedSize} setSelectedSize={setSelectedSize}>
-        <Content templates={templates} />
+      <Page selectedTemplate={selectedTemplate} selectedSize={selectedSize} setSelectedSize={setSelectedSize}>
+        <Content selectedTemplate={selectedTemplate} />
       </Page>
 
-      <Options templates={templates} onChangeKnob={handleChangeKnob} />
+      <Options selectedTemplate={selectedTemplate} onChangeKnob={handleChangeKnob} />
     </Wrapper>
   );
 };

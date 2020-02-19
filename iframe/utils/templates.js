@@ -23,7 +23,11 @@ export const getTemplatesForParent = templates =>
   Object.keys(templates).reduce(
     (prevTemplates, templateKey) => ({
       ...prevTemplates,
-      [templateKey]: { name: templates[templateKey].name, dynamicProps: templates[templateKey].dynamicProps },
+      [templateKey]: {
+        id: templates[templateKey].id,
+        name: templates[templateKey].name,
+        dynamicProps: templates[templateKey].dynamicProps,
+      },
     }),
     {},
   );
