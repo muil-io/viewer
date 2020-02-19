@@ -1,6 +1,6 @@
 {
   "name": "muil-1",
-  "version": "0.0.186",
+  "version": "0.0.187",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,10 @@
     "muil": "./cli/index.js"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "cli/**/*",
+    "iframe/**/*",
+    "*.js"
   ],
   "dependencies": {
     "@babel/core": "^7.0.0-0",
