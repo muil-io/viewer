@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ const Content = ({ selectedTemplate }) => (
   <Wrapper>
     <Frame
       title="content"
-      src={`http://localhost:3002?templateId=${selectedTemplate?.id}&dynamicProps=${encodeURIComponent(
+      src={`http://localhost:8081?templateId=${selectedTemplate?.id}&dynamicProps=${encodeURIComponent(
         JSON.stringify(selectedTemplate?.dynamicProps),
       )}`}
     />
