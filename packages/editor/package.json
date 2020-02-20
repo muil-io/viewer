@@ -11,7 +11,7 @@
     "muil": "./scripts/index.js"
   },
   "files": [
-    "src/preview/**/*",
+    "src/**/*",
     "scripts/**/*",
     "lib/**/*"
   ]
