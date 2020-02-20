@@ -1,13 +1,14 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const { distDirectory } = require('@muil-1/cli/utils/paths');
 
 const paths = {
   src: path.resolve(__dirname, 'src'),
   html: `${path.resolve(__dirname, 'src')}/index.html`,
   favicon: `${path.resolve(__dirname, 'src')}/favicon.ico`,
   node_modules: path.resolve(__dirname, 'node_modules'),
-  dist: path.resolve(__dirname, '../../dist'),
+  dist: distDirectory,
 };
 
 module.exports = () => ({

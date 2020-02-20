@@ -1,14 +1,13 @@
 import express from 'express';
-import path from 'path';
 import opn from 'opn';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 import iframeConfig from '@muil-1/iframe/webpack.config.js';
 import * as logger from '../utils/logger';
+import { distDirectory } from '../utils/paths';
 
 const app = express();
-const dist = path.resolve(__dirname, '../../../', 'dist');
 
 export default async ({ port, templatesDirectory }) => {
   logger.title('\n Starting Muil editor... \n');
@@ -23,7 +22,7 @@ export default async ({ port, templatesDirectory }) => {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
-  app.use(express.static(dist));
+  app.use(express.static(distDirectory));
 
   middleware.waitUntilValid(() => {
     app.listen(port, () => console.log(`✨ Muil editor is running at http://localhost:${port}/`));
