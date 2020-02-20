@@ -4,8 +4,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const paths = {
-  src: path.resolve(__dirname, 'src/preview/index.js'),
-  html: path.resolve(__dirname, 'src/preview/index.html'),
+  src: path.resolve(__dirname, 'src/index.js'),
+  html: path.resolve(__dirname, 'src/index.html'),
   node_modules: path.resolve(__dirname, 'node_modules'),
   dist: path.resolve(__dirname, 'lib'),
 };
