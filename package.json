@@ -12,7 +12,7 @@
     "build-editor": "yarn workspace @muil-1/editor build-editor",
     "start": "npm run cli editor",
     "cli": "node ./packages/cli/index.js",
-    "prepublish": "npm run build-editor"
+    "publish-muil": "lerna publish"
   },
   "bin": {
     "muil": "./packages/cli/index.js"
@@ -75,6 +75,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
+    "lerna": "^3.20.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }

@@ -5,6 +5,11 @@
   "license": "MIT",
   "scripts": {
     "run-editor": "webpack-dev-server --mode development",
-    "build-editor": "webpack"
+    "build-editor": "webpack",
+    "prepublish": "npm run build-editor"
+  },
+  "dependencies": {
+    "@muil-1/iframe": "^0.0.1",
+    "@muil-1/cli": "^0.0.1"
   }
 }
