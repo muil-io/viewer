@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "yarn workspace @muil/editor-manager build",
-    "prepublish": "yarn build"
+    "prepublish": "yarn workspace @muil/editor-manager build"
   },
   "bin": {
     "muil": "./scripts/index.js"
