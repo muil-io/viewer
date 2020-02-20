@@ -1,0 +1,10 @@
+{
+  "name": "@muil-1/editor",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "run-editor": "webpack-dev-server --mode development",
+    "build-editor": "webpack"
+  }
+}

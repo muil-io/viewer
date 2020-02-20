@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const { getTemplatesDirectory } = require('./cli/utils/paths');
+const { getTemplatesDirectory } = require('@muil-1/cli/utils/paths');
 
 const paths = {
   src: path.resolve(__dirname, 'iframe'),

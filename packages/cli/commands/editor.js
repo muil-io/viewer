@@ -4,8 +4,8 @@ import opn from 'opn';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
+import iframeConfig from '@muil-1/iframe/webpack.config.js';
 import * as logger from '../utils/logger';
-import iframeConfig from '../../webpack.config.js';
 
 const app = express();
 const dist = path.resolve(__dirname, '../../', 'dist');
