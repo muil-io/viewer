@@ -1,9 +1,9 @@
 {
   "name": "@muil/iframe",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@muil/cli": "^0.0.1"
+    "@muil/cli": "^0.0.1-alpha.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@muil/editor",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,7 @@
     "prepublish": "npm run build-editor"
   },
   "dependencies": {
-    "@muil/iframe": "^0.0.1",
-    "@muil/cli": "^0.0.1"
+    "@muil/cli": "^0.0.1-alpha.0",
+    "@muil/iframe": "^0.0.1-alpha.0"
   }
 }
