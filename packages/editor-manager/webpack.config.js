@@ -8,6 +8,7 @@ const paths = {
   html: path.resolve(__dirname, 'src/index.html'),
   favicon: path.resolve(__dirname, 'src/favicon.ico'),
   node_modules: path.resolve(__dirname, 'node_modules'),
+  root_node_modules: path.resolve(__dirname, '../../node_modules'),
   dist: path.resolve(__dirname, '../editor/lib'),
 };
 
@@ -22,7 +23,7 @@ module.exports = () => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: paths.node_modules,
+        exclude: [paths.root_node_modules, paths.node_modules],
         use: {
           loader: 'babel-loader',
           options: {
@@ -57,8 +58,4 @@ module.exports = () => ({
       favicon: paths.favicon,
     }),
   ],
-  devServer: {
-    open: true,
-    hotOnly: true,
-  },
 });
