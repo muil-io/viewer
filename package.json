@@ -4,8 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "run-editor": "yarn workspace @muil/editor run-editor",
-    "build-editor": "yarn workspace @muil/editor build-editor",
+    "build-editor": "yarn workspace @muil/editor-manager build",
     "start": "npm run cli editor",
     "muil-cli": "node ./packages/cli/index.js",
     "muil": "node ./packages/editor/scripts/index.js",

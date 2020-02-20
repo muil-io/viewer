@@ -4,7 +4,7 @@ import opn from 'opn';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
-import previewConfig from '../webpack.config.preview';
+import previewConfig from '../webpack.config';
 
 const rootDir = process.env.INIT_CWD || __dirname;
 const distDirectory = path.resolve(__dirname, '../lib');

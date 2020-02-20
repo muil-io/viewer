@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const paths = {
   src: path.resolve(__dirname, 'src/index.js'),
@@ -49,6 +50,7 @@ module.exports = () => ({
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
