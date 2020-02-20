@@ -2,7 +2,7 @@
   "name": "@muil/editor",
   "version": "0.0.3-alpha.2",
   "main": "index.js",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "yarn workspace @muil/editor-manager build",
     "prepublish": "yarn build"
