@@ -16,7 +16,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   logger.info('Installing packages...');
   const useYarn = Boolean(useNpm !== true) && hasYarn();
   const installAsDevDependencies = true;
-  sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', 'muil-2', installAsDevDependencies ? '-D' : '']);
+  sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', '@muil/editor', installAsDevDependencies ? '-D' : '']);
   logger.infoSuccess();
 
   logger.info('Adding scripts...');
