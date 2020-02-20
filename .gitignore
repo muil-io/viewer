@@ -10,7 +10,7 @@
 
 # production
 /build
-/.muil
+.muil
 /dist
 
 # misc
