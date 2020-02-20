@@ -12,7 +12,7 @@
     "build-editor": "yarn workspace @muil-1/editor build-editor",
     "start": "npm run cli editor",
     "cli": "node ./packages/cli/index.js",
-    "publish-muil": "lerna publish"
+    "publish-muil": "lerna publish from-package"
   },
   "bin": {
     "muil": "./packages/cli/index.js"
