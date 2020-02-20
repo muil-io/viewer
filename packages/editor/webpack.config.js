@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const { distDirectory } = require('@muil-1/cli/utils/paths');
+const { distDirectory } = require('@muil/cli/utils/paths');
 
 const paths = {
   src: path.resolve(__dirname, 'src'),

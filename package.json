@@ -1,5 +1,5 @@
 {
-  "name": "@muil/editor",
+  "name": "muil",
   "version": "0.0.001",
   "main": "index.js",
   "license": "MIT",
@@ -8,8 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "run-editor": "yarn workspace @muil-1/editor run-editor",
-    "build-editor": "yarn workspace @muil-1/editor build-editor",
+    "run-editor": "yarn workspace @muil/editor run-editor",
+    "build-editor": "yarn workspace @muil/editor build-editor",
     "start": "npm run cli editor",
     "cli": "node ./packages/cli/index.js"
   },

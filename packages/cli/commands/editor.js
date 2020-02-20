@@ -3,7 +3,7 @@ import opn from 'opn';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
-import iframeConfig from '@muil-1/iframe/webpack.config.js';
+import iframeConfig from '@muil/iframe/webpack.config.js';
 import * as logger from '../utils/logger';
 import { distDirectory } from '../utils/paths';
 
