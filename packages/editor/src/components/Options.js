@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
-import { Tabs, Tab } from './core/Tabs';
+import Tabs from './Tabs';
+import Tab from './Tab';
 import scrollbar from '../style/scrollbar';
 import DynamicProps from './DynamicProps';
 
