@@ -14,6 +14,5 @@
     "src/preview/**/*",
     "scripts/**/*",
     "lib/**/*"
-  ],
-  "gitHead": "913a49c6ab9e6a5d302e2efad16b95fdbdea57db"
+  ]
 }
