@@ -19,8 +19,7 @@
   },
   "files": [
     "dist/**/*",
-    "cli/**/*",
-    "iframe/**/*",
+    "packages/**/*",
     "*.js"
   ],
   "dependencies": {
