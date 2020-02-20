@@ -4,11 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build-editor": "yarn workspace @muil/editor-manager build",
-    "start": "npm run cli editor",
-    "muil-cli": "node ./packages/cli/index.js",
-    "muil": "node ./packages/editor/scripts/index.js",
-    "publish:latest": "lerna publish"
+    "lerna:publish": "lerna publish"
   },
   "devDependencies": {
     "prettier": "^1.19.1",
