@@ -18,7 +18,7 @@
     "muil": "./packages/cli/index.js"
   },
   "files": [
-    "dist/**/*",
+    ".muil/dist/**/*",
     "packages/**/*",
     "*.js"
   ],
