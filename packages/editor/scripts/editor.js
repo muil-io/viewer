@@ -1,18 +1,17 @@
+import path from 'path';
 import express from 'express';
 import opn from 'opn';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
-import iframeConfig from '../webpack/webpack.config.iframe.js';
-import * as logger from '../utils/logger';
-import { distDirectory } from '../utils/paths';
+import previewConfig from '../webpack.config.preview';
 
+const rootDir = process.env.INIT_CWD || __dirname;
+const distDirectory = path.resolve(__dirname, '../lib');
 const app = express();
 
-export default async ({ port, templatesDirectory }) => {
-  logger.title('\n Starting Muil editor... \n');
-
-  const compiler = webpack(iframeConfig({ templatesDirectory }));
+const editor = async ({ port = 8000, templatesDirectory = './templates' }) => {
+  const compiler = webpack(previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) }));
   const middleware = new webpackDevMiddleware(compiler, {
     publicPath: '/',
     writeToDisk: true,
@@ -29,3 +28,5 @@ export default async ({ port, templatesDirectory }) => {
     opn(`http://localhost:${port}`);
   });
 };
+
+editor({});

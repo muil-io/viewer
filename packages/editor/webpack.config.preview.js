@@ -1,23 +1,23 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const { distDirectory } = require('@muil/cli/utils/paths');
 
 const paths = {
-  src: path.resolve(__dirname, 'src'),
-  html: `${path.resolve(__dirname, 'src')}/index.html`,
-  favicon: `${path.resolve(__dirname, 'src')}/favicon.ico`,
+  src: path.resolve(__dirname, 'src/preview/index.js'),
+  html: path.resolve(__dirname, 'src/preview/index.html'),
   node_modules: path.resolve(__dirname, 'node_modules'),
-  dist: distDirectory,
+  dist: path.resolve(__dirname, 'lib'),
 };
 
-module.exports = () => ({
-  entry: [paths.src],
-  mode: 'production',
+module.exports = ({ templatesDirectory }) => ({
+  entry: [paths.src, 'webpack-hot-middleware/client'],
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
   output: {
+    filename: 'iframe.js',
     path: paths.dist,
   },
-  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -50,10 +50,14 @@ module.exports = () => ({
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
-      favicon: paths.favicon,
+      filename: 'iframe.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.templatesDirectory': JSON.stringify(templatesDirectory),
     }),
   ],
   devServer: {

@@ -1,24 +1,22 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const { getTemplatesDirectory, distDirectory } = require('../utils/paths');
 
 const paths = {
-  src: path.resolve(__dirname, 'src'),
-  html: `${path.resolve(__dirname, 'src')}/index.html`,
+  src: path.resolve(__dirname, 'src/manager/index.js'),
+  html: path.resolve(__dirname, 'src/manager/index.html'),
+  favicon: path.resolve(__dirname, 'src/manager/favicon.ico'),
   node_modules: path.resolve(__dirname, 'node_modules'),
-  dist: distDirectory,
+  dist: path.resolve(__dirname, 'lib'),
 };
 
-module.exports = ({ templatesDirectory }) => ({
-  entry: [paths.src, 'webpack-hot-middleware/client'],
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
+module.exports = () => ({
+  entry: [paths.src],
+  mode: 'production',
   output: {
-    filename: 'iframe.js',
     path: paths.dist,
   },
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -51,14 +49,10 @@ module.exports = ({ templatesDirectory }) => ({
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,
-      filename: 'iframe.html',
-    }),
-    new webpack.DefinePlugin({
-      'process.env.templatesDirectory': JSON.stringify(getTemplatesDirectory(templatesDirectory)),
+      favicon: paths.favicon,
     }),
   ],
   devServer: {

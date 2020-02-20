@@ -4,7 +4,6 @@ import login from './commands/login';
 import logout from './commands/logout';
 import publish from './commands/publish';
 import unpublish from './commands/unpublish';
-import editor from './commands/editor';
 import build from './commands/build';
 
 program
@@ -13,17 +12,6 @@ program
   .option('-n --use-npm', 'Use npm to install deps')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory')
   .action(options => initiate(options));
-
-program
-  .command('editor')
-  .description('Starting Muil editor')
-  .option('-p --port <port>', 'Editor port, default: 8000', 8000)
-  .option(
-    '-d --templatesDirectory <templatesDirectory>',
-    "Templates root directory, default: './templates'",
-    './templates',
-  )
-  .action(options => editor(options));
 
 program
   .command('login')

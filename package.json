@@ -7,17 +7,10 @@
     "run-editor": "yarn workspace @muil/editor run-editor",
     "build-editor": "yarn workspace @muil/editor build-editor",
     "start": "npm run cli editor",
-    "cli": "node ./packages/cli/index.js",
+    "muil-cli": "node ./packages/cli/index.js",
+    "muil": "node ./packages/editor/scripts/index.js",
     "publish:latest": "lerna publish"
   },
-  "bin": {
-    "muil": "./packages/cli/index.js"
-  },
-  "files": [
-    ".muil/dist/**/*",
-    "packages/**/*",
-    "*.js"
-  ],
   "dependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",

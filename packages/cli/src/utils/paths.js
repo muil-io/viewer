@@ -11,7 +11,7 @@ const buildDirectory = path.resolve(rootDir, '.muil/build');
 
 const distDirectory = path.resolve(rootDir, '.muil/dist');
 
-const getTemplatesDirectory = directroy => path.resolve(rootDir, directroy);
+const getTemplatesDirectory = directory => path.resolve(rootDir, directory);
 
 module.exports = {
   rootDir,

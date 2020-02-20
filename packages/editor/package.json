@@ -4,12 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "run-editor": "webpack-dev-server --mode development",
-    "build-editor": "webpack",
+    "run-editor": "webpack-dev-server --mode development --config webpack.config.manager.js",
+    "build-editor": "webpack --config webpack.config.manager.js",
     "prepublish": "npm run build-editor"
   },
-  "dependencies": {
-    "@muil/cli": "^0.0.1-alpha.0",
-    "@muil/iframe": "^0.0.1-alpha.0"
-  }
+  "bin": {
+    "muil": "./scripts/index.js"
+  },
+  "files": [
+    "src/preview/**/*"
+  ]
 }
