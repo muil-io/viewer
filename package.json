@@ -1,6 +1,6 @@
 {
-  "name": "muil-1",
-  "version": "0.0.191",
+  "name": "@muil/editor",
+  "version": "0.0.001",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
