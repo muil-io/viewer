@@ -3,9 +3,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const paths = {
-  src: path.resolve(__dirname, 'src/manager/index.js'),
-  html: path.resolve(__dirname, 'src/manager/index.html'),
-  favicon: path.resolve(__dirname, 'src/manager/favicon.ico'),
+  src: path.resolve(__dirname, 'src/index.js'),
+  html: path.resolve(__dirname, 'src/index.html'),
+  favicon: path.resolve(__dirname, 'src/favicon.ico'),
   node_modules: path.resolve(__dirname, 'node_modules'),
   dist: path.resolve(__dirname, '../editor/lib'),
 };
