@@ -4,6 +4,7 @@
     "packages/*"
   ],
   "scripts": {
+    "start": "yarn workspace @muil/editor-manager start",
     "lerna:publish": "lerna publish"
   },
   "devDependencies": {
