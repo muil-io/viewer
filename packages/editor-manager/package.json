@@ -2,7 +2,7 @@
   "name": "@muil/editor-manager",
   "version": "0.0.3-alpha.2",
   "main": "index.js",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.development.js --env.templatesDirectory=\"../../../../templates\"",
