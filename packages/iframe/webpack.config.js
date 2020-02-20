@@ -5,9 +5,10 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const { getTemplatesDirectory } = require('@muil-1/cli/utils/paths');
 
 const paths = {
-  src: path.resolve(__dirname, 'iframe'),
-  html: `${path.resolve(__dirname, 'iframe')}/index.html`,
+  src: path.resolve(__dirname, 'src'),
+  html: `${path.resolve(__dirname, 'src')}/index.html`,
   node_modules: path.resolve(__dirname, 'node_modules'),
+  dist: path.resolve(__dirname, '../../dist'),
 };
 
 module.exports = ({ templatesDirectory }) => ({
@@ -16,6 +17,7 @@ module.exports = ({ templatesDirectory }) => ({
   devtool: 'cheap-module-source-map',
   output: {
     filename: 'iframe.js',
+    path: paths.dist,
   },
   module: {
     rules: [

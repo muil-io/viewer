@@ -8,7 +8,7 @@ import iframeConfig from '@muil-1/iframe/webpack.config.js';
 import * as logger from '../utils/logger';
 
 const app = express();
-const dist = path.resolve(__dirname, '../../', 'dist');
+const dist = path.resolve(__dirname, '../../../', 'dist');
 
 export default async ({ port, templatesDirectory }) => {
   logger.title('\n Starting Muil editor... \n');

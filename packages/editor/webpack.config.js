@@ -7,11 +7,15 @@ const paths = {
   html: `${path.resolve(__dirname, 'src')}/index.html`,
   favicon: `${path.resolve(__dirname, 'src')}/favicon.ico`,
   node_modules: path.resolve(__dirname, 'node_modules'),
+  dist: path.resolve(__dirname, '../../dist'),
 };
 
 module.exports = () => ({
   entry: [paths.src],
   mode: 'production',
+  output: {
+    path: paths.dist,
+  },
   devtool: 'cheap-module-source-map',
   module: {
     rules: [
