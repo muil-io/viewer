@@ -4,9 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "run-editor": "webpack-dev-server --mode development --config webpack.config.manager.js",
-    "build-editor": "webpack --config webpack.config.manager.js",
-    "prepublish": "npm run build-editor"
+    "build": "yarn workspace @muil/editor-manager build",
+    "prepublish": "yarn build"
   },
   "bin": {
     "muil": "./scripts/index.js"

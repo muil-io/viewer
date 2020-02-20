@@ -7,7 +7,7 @@ const paths = {
   html: path.resolve(__dirname, 'src/manager/index.html'),
   favicon: path.resolve(__dirname, 'src/manager/favicon.ico'),
   node_modules: path.resolve(__dirname, 'node_modules'),
-  dist: path.resolve(__dirname, 'lib'),
+  dist: path.resolve(__dirname, '../editor/lib'),
 };
 
 module.exports = () => ({
