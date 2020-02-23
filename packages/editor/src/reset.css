@@ -1,0 +1,16 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.no-templates {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #c7c7c7;
+  font-size: 28px;
+}

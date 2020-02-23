@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import getTemplates from './utils/getTemplates';
 import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
+import './reset.css';
 
 const templates = getTemplates();
 // eslint-disable-next-line no-restricted-globals
@@ -16,7 +17,7 @@ const App = () => {
   );
 
   if (!Template) {
-    return <div>No Template Selected</div>;
+    return <div className="no-templates">No Templates</div>;
   }
 
   return <Template {...dynamicProps} />;
