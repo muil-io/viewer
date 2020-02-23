@@ -1,24 +1,22 @@
 const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const paths = {
-  src: path.resolve(__dirname, 'src/index.js'),
-  html: path.resolve(__dirname, 'src/index.html'),
+  managerSrc: path.resolve(__dirname, 'src/index.js'),
+  previewSrc: path.resolve(__dirname, '../editor/src/index.js'),
+  managerHtml: path.resolve(__dirname, 'src/index.html'),
+  previewHtml: path.resolve(__dirname, '../editor/src/index.html'),
   favicon: path.resolve(__dirname, 'src/favicon.ico'),
   node_modules: path.resolve(__dirname, 'node_modules'),
   root_node_modules: path.resolve(__dirname, '../../node_modules'),
   dist: path.resolve(__dirname, '../editor/lib'),
 };
 
-module.exports = () => ({
-  entry: [paths.src],
-  mode: 'production',
-  output: {
-    path: paths.dist,
-  },
-  devtool: 'cheap-module-source-map',
+const common = () => ({
   module: {
     rules: [
       {
@@ -50,8 +48,57 @@ module.exports = () => ({
     new CleanWebpackPlugin(),
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
-      template: paths.html,
+      chunks: ['manager'],
+      template: paths.managerHtml,
+      filename: 'index.html',
       favicon: paths.favicon,
     }),
   ],
 });
+
+const production = () => ({
+  entry: {
+    manager: paths.managerSrc,
+  },
+  devtool: 'none',
+  mode: 'production',
+  output: {
+    path: paths.dist,
+    filename: 'index.js',
+  },
+});
+
+const development = ({ templatesDirectory }) => ({
+  entry: {
+    manager: paths.managerSrc,
+    preview: paths.previewSrc,
+  },
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
+  output: {
+    path: paths.dist,
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      chunks: ['preview'],
+      template: paths.previewHtml,
+      filename: 'iframe.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.templatesDirectory': JSON.stringify(templatesDirectory),
+    }),
+  ],
+  devServer: {
+    open: true,
+    hotOnly: true,
+  },
+});
+
+module.exports = () => {
+  switch (process.env.NODE_ENV) {
+    case 'production':
+      return merge(common(), production());
+    default:
+      return merge(common(), development({ templatesDirectory: '../../../templates-starter-kit"' }));
+  }
+};
