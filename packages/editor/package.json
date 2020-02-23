@@ -7,7 +7,7 @@
     "prepublish": "yarn workspace @muil/editor-manager build"
   },
   "bin": {
-    "muil": "./scripts/index.js"
+    "muil-temp": "./scripts/index.js"
   },
   "files": [
     "src/**/*",
