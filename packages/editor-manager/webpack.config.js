@@ -99,6 +99,6 @@ module.exports = () => {
     case 'production':
       return merge(common(), production());
     default:
-      return merge(common(), development({ templatesDirectory: '../../../templates-starter-kit"' }));
+      return merge(common(), development({ templatesDirectory: '../../../templates-starter-kit' }));
   }
 };
