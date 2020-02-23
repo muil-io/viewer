@@ -54,8 +54,4 @@ module.exports = ({ templatesDirectory }) => ({
       'process.env.templatesDirectory': JSON.stringify(templatesDirectory),
     }),
   ],
-  devServer: {
-    open: true,
-    hotOnly: true,
-  },
 });
