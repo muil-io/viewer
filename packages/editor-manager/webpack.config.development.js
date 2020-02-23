@@ -10,6 +10,8 @@ const paths = {
   managerHtml: path.resolve(__dirname, 'src/index.html'),
   previewHtml: path.resolve(__dirname, '../editor/src/index.html'),
   favicon: path.resolve(__dirname, 'src/favicon.ico'),
+  node_modules: path.resolve(__dirname, 'node_modules'),
+  root_node_modules: path.resolve(__dirname, '../../node_modules'),
 };
 
 module.exports = ({ templatesDirectory }) => ({
@@ -23,7 +25,7 @@ module.exports = ({ templatesDirectory }) => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [paths.root_node_modules, paths.node_modules],
         use: {
           loader: 'babel-loader',
           options: {
