@@ -9,6 +9,7 @@ const paths = {
   node_modules: path.resolve(__dirname, 'node_modules'),
   root_node_modules: path.resolve(__dirname, '../../node_modules'),
   dist: path.resolve(__dirname, 'lib'),
+  includedPaths: [path.resolve(__dirname, 'src'), path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory)],
 };
 
 module.exports = ({ templatesDirectory }) => ({
@@ -23,7 +24,7 @@ module.exports = ({ templatesDirectory }) => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: [paths.root_node_modules, paths.node_modules],
+        exclude: paths.includedPaths,
         use: {
           loader: 'babel-loader',
           options: {
@@ -33,20 +34,8 @@ module.exports = ({ templatesDirectory }) => ({
         },
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      },
-      {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        use: ['url-loader'],
-      },
-      {
-        test: /\.(eot|otf|woff|woff2|ttf)?$/,
-        use: ['url-loader'],
+        test: /\.(eot|otf|woff|woff2|ttf|bmp|gif|jpe?g|png)?$/,
+        use: ['file-loader'],
       },
     ],
   },

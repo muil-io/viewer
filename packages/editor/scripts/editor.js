@@ -12,12 +12,7 @@ const app = express();
 
 const editor = async ({ port = 8000, templatesDirectory = './templates' }) => {
   const compiler = webpack(previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) }));
-  const middleware = new webpackDevMiddleware(compiler, {
-    publicPath: '/',
-    writeToDisk: true,
-    noInfo: true,
-    aggregateTimeout: 1,
-  });
+  const middleware = new webpackDevMiddleware(compiler, { publicPath: '/' });
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
