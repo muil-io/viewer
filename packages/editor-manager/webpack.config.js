@@ -41,12 +41,8 @@ module.exports = () => ({
         use: ['@svgr/webpack'],
       },
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-        use: ['url-loader'],
-      },
-      {
-        test: /\.(eot|otf|woff|woff2|ttf)?$/,
-        use: ['url-loader'],
+        test: /\.(eot|otf|woff|woff2|ttf|bmp|gif|jpe?g|png)?$/,
+        use: ['file-loader'],
       },
     ],
   },

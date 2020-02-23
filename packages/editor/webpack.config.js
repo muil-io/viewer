@@ -9,8 +9,12 @@ const paths = {
   node_modules: path.resolve(__dirname, 'node_modules'),
   root_node_modules: path.resolve(__dirname, '../../node_modules'),
   dist: path.resolve(__dirname, 'lib'),
-  includedPaths: [path.resolve(__dirname, 'src'), path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory)],
 };
+
+const includedPaths = templatesDirectory => [
+  path.resolve(__dirname, 'src'),
+  path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
+];
 
 module.exports = ({ templatesDirectory }) => ({
   entry: [paths.src, 'webpack-hot-middleware/client'],
@@ -24,7 +28,7 @@ module.exports = ({ templatesDirectory }) => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: paths.includedPaths,
+        exclude: includedPaths(templatesDirectory),
         use: {
           loader: 'babel-loader',
           options: {
