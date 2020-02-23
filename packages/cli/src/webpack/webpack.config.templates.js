@@ -36,7 +36,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token }) => {
               ],
             },
           },
-          exclude: path.resolve(rootDir, 'node_modules'),
+          exclude: /node_modules/,
         },
         {
           test: /\.css/,

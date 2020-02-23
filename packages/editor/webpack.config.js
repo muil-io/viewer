@@ -6,8 +6,6 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const paths = {
   src: path.resolve(__dirname, 'src/index.js'),
   html: path.resolve(__dirname, 'src/index.html'),
-  node_modules: path.resolve(__dirname, 'node_modules'),
-  root_node_modules: path.resolve(__dirname, '../../node_modules'),
   dist: path.resolve(__dirname, 'lib'),
 };
 
@@ -23,7 +21,7 @@ module.exports = ({ templatesDirectory }) => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: [paths.root_node_modules, paths.node_modules],
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
