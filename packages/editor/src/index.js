@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom';
+import { renderToStaticMarkup } from 'react-dom/server';
 import getTemplates from './utils/getTemplates';
 import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
 import './reset.css';
@@ -20,7 +21,10 @@ const App = () => {
     return <div className="no-templates">No Templates</div>;
   }
 
-  return <Template {...dynamicProps} />;
+  const html = renderToStaticMarkup(<Template {...dynamicProps} />);
+
+  // eslint-disable-next-line react/no-danger
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 const rootElement = document.getElementById('inner-root');
