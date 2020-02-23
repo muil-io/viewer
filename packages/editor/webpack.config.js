@@ -38,10 +38,6 @@ module.exports = ({ templatesDirectory }) => ({
         },
       },
       {
-        test: /\.css$/,
-        use: ['css-loader'],
-      },
-      {
         test: /\.(eot|otf|woff|woff2|ttf|bmp|gif|jpe?g|png)?$/,
         use: ['file-loader'],
       },
