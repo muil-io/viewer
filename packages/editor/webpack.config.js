@@ -28,7 +28,7 @@ module.exports = ({ templatesDirectory }) => ({
     rules: [
       {
         test: /\.js$/,
-        exclude: includedPaths(templatesDirectory),
+        include: includedPaths(templatesDirectory),
         use: {
           loader: 'babel-loader',
           options: {
