@@ -29,6 +29,7 @@ const theme = {
     linkBackground: 'rgba(103,53,224, 0.1)',
     shadowColors: colors.shadow,
     border: colors.light,
+    loading: colors.light,
   },
   tabs: {
     border: colors.primary,

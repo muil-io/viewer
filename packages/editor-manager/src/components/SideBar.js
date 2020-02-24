@@ -4,6 +4,7 @@ import SideBarHeader from './SideBarHeader';
 import scrollbar from '../style/scrollbar';
 import Link from './Link';
 import EmptyState from './EmptyState';
+import LoadingPlaceHolder from './LoadingPlaceHolder';
 
 const Wrapper = styled.div`
   grid-column: 1;
@@ -34,7 +35,9 @@ const Logo = styled.div`
 `;
 
 const SideBar = ({ templates }) => {
-  const links = useMemo(() => Object.keys(templates).map(key => ({ key, name: templates[key].name })), [templates]);
+  const links = useMemo(() => templates && Object.keys(templates).map(key => ({ key, name: templates[key].name })), [
+    templates,
+  ]);
 
   return (
     <Wrapper>
@@ -45,11 +48,17 @@ const SideBar = ({ templates }) => {
         </Logo>
       </SideBarHeader>
 
-      {links.map(({ key, name }) => (
-        <Link key={key} link={key} text={name} />
-      ))}
+      {links ? (
+        <>
+          {links.map(({ key, name }) => (
+            <Link key={key} link={key} text={name} />
+          ))}
 
-      {links.length === 0 && <EmptyState>No Templates</EmptyState>}
+          {links.length === 0 && <EmptyState>No Templates</EmptyState>}
+        </>
+      ) : (
+        <LoadingPlaceHolder />
+      )}
     </Wrapper>
   );
 };

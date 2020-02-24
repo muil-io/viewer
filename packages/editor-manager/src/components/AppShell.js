@@ -20,7 +20,7 @@ const AppShell = () => {
   const defaultTemplates = useTemplates();
   const { templates, handleChangeKnob } = useDynamicProps({ defaultTemplates });
   const { templateId } = useParams();
-  const selectedTemplate = templates[templateId];
+  const selectedTemplate = templates?.[templateId];
 
   return (
     <Wrapper>
