@@ -1,6 +1,6 @@
 import path from 'path';
 import express from 'express';
-import opn from 'opn';
+import open from 'open';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
@@ -20,6 +20,8 @@ export default async ({ port, templatesDirectory }) => {
 
   middleware.waitUntilValid(() => {
     app.listen(port, () => console.log(`✨ Muil editor is running at http://localhost:${port}/`));
-    opn(`http://localhost:${port}`);
+    open(`http://localhost:${port}`, {
+      app: process.platform === 'win32' ? 'chrome' : process.platform === 'darwin' ? 'Google Chrome' : 'google-chrome',
+    });
   });
 };
