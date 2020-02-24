@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "node ./scripts/index.js editor -d \"../templates-starter-kit\"",
+    "start": "yarn prepublish && node ./scripts/index.js editor -d \"../templates-starter-kit\"",
     "prepublish": "yarn workspace @muil/editor-manager build"
   },
   "bin": {
