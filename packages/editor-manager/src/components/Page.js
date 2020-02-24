@@ -20,7 +20,7 @@ const TopBar = styled.div`
   right: 0;
   background: ${({ theme }) => theme.app.primaryBackground};
   height: 230px;
-  padding: 19px 80px;
+  padding: 24px 80px;
   display: flex;
   justify-content: space-between;
 `;

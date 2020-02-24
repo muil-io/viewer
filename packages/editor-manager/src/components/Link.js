@@ -22,7 +22,7 @@ const activeLink = css`
 const Wrapper = styled.div`
   position: relative;
   display: block;
-  padding: 10px 30px;
+  padding: 13px 30px;
   font-size: 16px;
   cursor: pointer;
   color: ${({ theme }) => theme.sidebar.linkColor};

@@ -26,17 +26,22 @@ const style = {
   },
 };
 
-const Button = () => (
+const Button = ({ buttonText1, buttonText2 }) => (
   <div style={style.container}>
     <button type="button" style={{ ...style.button, ...style.primary }}>
-      Click Me!
+      {buttonText1}
     </button>
     <button type="button" style={{ ...style.button, ...style.secondary }}>
-      Or Me
+      {buttonText2}
     </button>
   </div>
 );
 
 Button.displayName = 'Button';
+
+Button.dynamicProps = {
+  buttonText1: 'Click Me!',
+  buttonText2: 'Or Me',
+};
 
 export default Button;
