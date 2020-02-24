@@ -8,7 +8,8 @@
     "prepublish": "yarn workspace @muil/editor-manager build"
   },
   "bin": {
-    "muil": "./scripts/index.js"
+    "muil": "./scripts/index.js",
+    "muil-cli": "./node_modules/@muil/cli/src/index.js"
   },
   "files": [
     "src/**/*",
