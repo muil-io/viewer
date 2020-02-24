@@ -10,7 +10,7 @@ const rootDir = process.env.INIT_CWD || __dirname;
 const distDirectory = path.resolve(__dirname, '../lib');
 const app = express();
 
-const editor = async ({ port = 8000, templatesDirectory = './templates' }) => {
+export default async ({ port, templatesDirectory }) => {
   const compiler = webpack(previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) }));
   const middleware = new webpackDevMiddleware(compiler, { publicPath: '/' });
 
@@ -23,5 +23,3 @@ const editor = async ({ port = 8000, templatesDirectory = './templates' }) => {
     opn(`http://localhost:${port}`);
   });
 };
-
-editor({});
