@@ -17,16 +17,17 @@ const useDynamicProps = ({ defaultTemplates }) => {
 
   useEffect(() => {
     setTemplates(
-      Object.keys(defaultTemplates).reduce(
-        (prevTemplates, templateId) => ({
-          ...prevTemplates,
-          [templateId]: {
-            ...defaultTemplates[templateId],
-            dynamicProps: defaultTemplates[templateId].dynamicProps,
-          },
-        }),
-        {},
-      ),
+      defaultTemplates &&
+        Object.keys(defaultTemplates).reduce(
+          (prevTemplates, templateId) => ({
+            ...prevTemplates,
+            [templateId]: {
+              ...defaultTemplates[templateId],
+              dynamicProps: defaultTemplates[templateId].dynamicProps,
+            },
+          }),
+          {},
+        ),
     );
   }, [defaultTemplates]);
 

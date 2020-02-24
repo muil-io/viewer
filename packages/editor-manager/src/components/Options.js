@@ -70,6 +70,11 @@ const Content = styled.div`
   ${scrollbar};
 `;
 
+const ComingSoon = styled.div`
+  text-align: center;
+  margin: 20px;
+`;
+
 const Options = ({ selectedTemplate, onChangeKnob }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
@@ -103,6 +108,8 @@ const Options = ({ selectedTemplate, onChangeKnob }) => {
             onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
           />
         )}
+
+        {activeTab === 'api' && <ComingSoon>Coming Soon</ComingSoon>}
       </Content>
     </Wrapper>
   );

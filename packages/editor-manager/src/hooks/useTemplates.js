@@ -2,13 +2,13 @@ import { useState, useCallback, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const useTemplates = () => {
-  const [defaultTemplates, setDefaultTemplates] = useState({});
+  const [defaultTemplates, setDefaultTemplates] = useState(null);
   const history = useHistory();
   const location = useLocation();
 
   const handleReceiveMessage = useCallback(
     ({ data }) => {
-      if (data?.templates && !Object.keys(defaultTemplates).length) {
+      if (data?.templates && !defaultTemplates) {
         setDefaultTemplates(data.templates);
 
         if (location.pathname === '/') {
