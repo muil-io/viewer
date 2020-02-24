@@ -9,7 +9,7 @@ const credentialsFile = `${homedir()}/.muil/credentials`;
 
 const buildDirectory = path.resolve(rootDir, '.muil/build');
 
-const distDirectory = path.resolve(rootDir, '.muil/dist');
+const configPath = path.resolve(rootDir, '.muil/config.js');
 
 const getTemplatesDirectory = directory => path.resolve(rootDir, directory);
 
@@ -18,6 +18,6 @@ module.exports = {
   configurationDirectory,
   credentialsFile,
   buildDirectory,
-  distDirectory,
+  configPath,
   getTemplatesDirectory,
 };

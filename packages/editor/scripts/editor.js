@@ -14,7 +14,7 @@ const app = express();
 
 export default async ({ port, templatesDirectory }) => {
   // eslint-disable-next-line
-  const config = existsSync(configPath) ? require(configPath) : { webpack: () => {} };
+  const config = existsSync(configPath) ? require(configPath) : { webpack: config => config };
 
   const defaultCompiler = previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) });
   const finalCompiler = config.webpack(defaultCompiler);

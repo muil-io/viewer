@@ -43,13 +43,20 @@ module.exports = ({ templatesDirectory, templatesExtension, token }) => {
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.eot$/, /\.otf$/, /\.woff$/, /\.woff2$/, /\.ttf$/],
+          test: /\.(eot|otf|woff|woff2|ttf)?$/,
           use: [
             {
               loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: {
-                token,
-              },
+              options: { token },
+            },
+          ],
+        },
+        {
+          test: /\.(bmp|gif|jpe?g|png)?$/,
+          use: [
+            {
+              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
+              options: { token },
             },
           ],
         },
