@@ -16,7 +16,7 @@ const app = express();
 export default async ({ port, templatesDirectory }) => {
   // eslint-disable-next-line
   const config = existsSync(configPath) ? require(configPath) : { webpack: config => config };
-  const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : {};
+  const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
   const defaultCompiler = previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory), babelrc });
   const finalCompiler = config.webpack(defaultCompiler);
