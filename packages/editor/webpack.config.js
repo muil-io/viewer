@@ -38,7 +38,11 @@ module.exports = ({ templatesDirectory }) => ({
         },
       },
       {
-        test: /\.(eot|otf|woff|woff2|ttf|bmp|gif|jpe?g|png)?$/,
+        test: /\.(eot|otf|woff|woff2|ttf)?$/,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.(bmp|gif|jpe?g|png)?$/,
         use: ['file-loader'],
       },
     ],
