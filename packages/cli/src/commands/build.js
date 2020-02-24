@@ -1,9 +1,9 @@
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import webpack from 'webpack';
 import { getToken } from '../utils/credentials';
 import webpackConfig from '../webpack/webpack.config.templates.js';
 import * as logger from '../utils/logger';
-import { configPath } from '../utils/paths';
+import { configPath, babelrcPath } from '../utils/paths';
 
 export default async ({ templatesDirectory, templatesExtension }) => {
   const token = await getToken();
@@ -13,7 +13,9 @@ export default async ({ templatesDirectory, templatesExtension }) => {
 
   // eslint-disable-next-line
   const config = existsSync(configPath) ? require(configPath) : { webpack: config => config };
-  const defaultCompiler = webpackConfig({ templatesDirectory, templatesExtension, token });
+  const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : {};
+
+  const defaultCompiler = webpackConfig({ templatesDirectory, templatesExtension, token, babelrc });
   const finalCompiler = config.webpack(defaultCompiler);
 
   webpack(finalCompiler, (err, stats) => {

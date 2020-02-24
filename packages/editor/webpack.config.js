@@ -16,7 +16,7 @@ const includedPaths = templatesDirectory => [
   path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
 ];
 
-module.exports = ({ templatesDirectory }) => ({
+module.exports = ({ templatesDirectory, babelrc }) => ({
   entry: [paths.src, 'webpack-hot-middleware/client'],
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -31,10 +31,7 @@ module.exports = ({ templatesDirectory }) => ({
         include: includedPaths(templatesDirectory),
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-proposal-nullish-coalescing-operator', '@babel/plugin-proposal-optional-chaining'],
-          },
+          options: babelrc || { presets: ['@babel/preset-env', '@babel/preset-react'] },
         },
       },
       {

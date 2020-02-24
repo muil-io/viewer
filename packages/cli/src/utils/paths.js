@@ -11,6 +11,8 @@ const buildDirectory = path.resolve(rootDir, '.muil/build');
 
 const configPath = path.resolve(rootDir, '.muil/config.js');
 
+const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
+
 const getTemplatesDirectory = directory => path.resolve(rootDir, directory);
 
 module.exports = {
@@ -19,5 +21,6 @@ module.exports = {
   credentialsFile,
   buildDirectory,
   configPath,
+  babelrcPath,
   getTemplatesDirectory,
 };
