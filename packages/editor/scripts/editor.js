@@ -1,4 +1,5 @@
 import path from 'path';
+import { existsSync } from 'fs';
 import express from 'express';
 import open from 'open';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -8,10 +9,16 @@ import previewConfig from '../webpack.config';
 
 const rootDir = process.env.INIT_CWD || __dirname;
 const distDirectory = path.resolve(__dirname, '../lib');
+const configPath = path.resolve(rootDir, '.muil/config.js');
 const app = express();
 
 export default async ({ port, templatesDirectory }) => {
-  const compiler = webpack(previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) }));
+  // eslint-disable-next-line
+  const config = existsSync(configPath) ? require(configPath) : { webpack: () => {} };
+
+  const defaultCompiler = previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) });
+  const finalCompiler = config.webpack(defaultCompiler);
+  const compiler = webpack(finalCompiler);
   const middleware = new webpackDevMiddleware(compiler, { publicPath: '/' });
 
   app.use(middleware);
