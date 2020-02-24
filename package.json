@@ -5,6 +5,7 @@
   ],
   "scripts": {
     "start": "yarn workspace @muil/editor-manager start",
+    "build-and-start": "yarn workspace @muil/editor start -d \"./packages/templates-starter-kit\"",
     "lerna:publish": "lerna publish"
   },
   "devDependencies": {
