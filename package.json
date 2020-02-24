@@ -4,8 +4,10 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "yarn workspace @muil/editor-manager start",
-    "build-and-start": "yarn workspace @muil/editor start -d \"./packages/templates-starter-kit\"",
+    "start": "yarn start:manager",
+    "start:manager": "yarn workspace @muil/editor-manager start",
+    "start:editor": "yarn workspace @muil/editor start -d \"./packages/templates-starter-kit\"",
+    "cli": "yarn workspace @muil/cli start -d \"./packages/templates-starter-kit\"",
     "lerna:publish": "lerna publish"
   },
   "devDependencies": {

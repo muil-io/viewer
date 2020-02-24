@@ -3,6 +3,9 @@
   "version": "0.0.3-alpha.23",
   "main": "index.js",
   "license": "UNLICENSED",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
   "bin": {
     "muil": "./src/index.js"
   },
