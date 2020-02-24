@@ -7,14 +7,12 @@ import Content from './Content';
 import Options from './Options';
 import useTemplates from '../hooks/useTemplates';
 import useDynamicProps from '../hooks/useDynamicProps';
-import '../style/fonts.css';
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr auto;
   height: 100vh;
   overflow: hidden;
-  font-family: HelveticaNeue;
 `;
 
 const AppShell = () => {

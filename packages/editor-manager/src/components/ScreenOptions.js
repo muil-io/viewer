@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SCREEN_SIZES } from '../constants';
 
 const Wrapper = styled.div`
-  margin-top: 6px;
+  margin-top: -2px;
   min-width: 168px;
 `;
 

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';
 import getTemplates from './utils/getTemplates';
 import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
-import './reset.css';
 
 const templates = getTemplates();
 // eslint-disable-next-line no-restricted-globals

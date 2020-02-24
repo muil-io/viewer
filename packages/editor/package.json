@@ -1,9 +1,10 @@
 {
   "name": "@muil/editor",
-  "version": "0.0.3-alpha.12",
+  "version": "0.0.3-alpha.13",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
+    "start": "yarn prepublish && node ./scripts/index.js editor -d \"../templates-starter-kit\"",
     "prepublish": "yarn workspace @muil/editor-manager build"
   },
   "bin": {
@@ -24,6 +25,7 @@
     "@muil/cli": "^0.0.3-alpha.12",
     "@svgr/webpack": "^5.0.0",
     "babel-loader": "^8.0.6",
+    "commander": "^4.1.1",
     "css-loader": "^3.4.0",
     "error-overlay-webpack-plugin": "^0.4.1",
     "esm": "^3.2.25",

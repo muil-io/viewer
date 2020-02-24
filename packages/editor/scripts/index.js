@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('esm')(module)('./editor.js');
+require('esm')(module)('./generate.js');
