@@ -1,6 +1,6 @@
 {
   "name": "@muil/editor",
-  "version": "0.0.3-alpha.13",
+  "version": "0.0.3-alpha.14",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -22,7 +22,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@muil/cli": "^0.0.3-alpha.12",
+    "@muil/cli": "^0.0.3-alpha.14",
     "@svgr/webpack": "^5.0.0",
     "babel-loader": "^8.0.6",
     "commander": "^4.1.1",
