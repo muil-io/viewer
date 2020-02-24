@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "bin": {
-    "muil": "./src/index.js"
+    "muil-cli": "./src/index.js"
   },
   "files": [
     "src/**/*"

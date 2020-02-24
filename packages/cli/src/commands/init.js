@@ -26,8 +26,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   packageJson.devDependencies = packageJson.devDependencies || {};
   packageJson.scripts = packageJson.scripts || {};
   packageJson.scripts.muil = `muil editor${templatesDirectoryArg}`;
-  packageJson.scripts['muil-login'] = 'muil login';
-  packageJson.scripts['muil-publish'] = `muil publish${templatesDirectoryArg}`;
+  packageJson.scripts['muil-cli'] = 'muil-cli';
   writePackageJson(packageJson);
   logger.infoSuccess();
 
