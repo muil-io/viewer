@@ -34,6 +34,7 @@ export default async ({ useNpm, templatesDirectory }) => {
 
   console.log(templatesDirectory || './templates');
   if (!fs.existsSync(templatesDirectory || './templates') && fs.exists('./node_modules/@muil/templates-starter-kit')) {
+    console.log('shahaf');
     fse.copy('./node_modules/@muil/templates-starter-kit', templatesDirectory || './templates');
     fs.unlinkSync(`${templatesDirectory || './templates'}/package.json`);
     logger.success('Templates directory created\n');
