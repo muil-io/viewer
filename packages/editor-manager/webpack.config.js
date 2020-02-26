@@ -91,6 +91,7 @@ const development = ({ templatesDirectory }) => ({
   devServer: {
     open: true,
     hotOnly: true,
+    port: 8000,
   },
 });
 
