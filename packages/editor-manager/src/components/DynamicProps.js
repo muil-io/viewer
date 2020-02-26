@@ -6,7 +6,13 @@ import 'ace-builds/src-noconflict/theme-textmate';
 import EmptyState from './EmptyState';
 
 const Wrapper = styled.div`
-  height: calc(100% - 100px);
+  position: absolute;
+  top: 90px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+
   .ace-tm {
     background-color: transparent;
   }
@@ -29,7 +35,7 @@ const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
       {dynamicProps ? (
         <AceEditor
           mode="json"
-          height="inherit"
+          height="100%"
           width="100%"
           theme="textmate"
           name="UNIQUE_ID_OF_DIV"

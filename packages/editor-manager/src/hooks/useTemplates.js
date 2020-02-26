@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import isEqual from 'lodash.isequal';
 
 const useTemplates = () => {
   const [defaultTemplates, setDefaultTemplates] = useState(null);
@@ -8,7 +9,7 @@ const useTemplates = () => {
 
   const handleReceiveMessage = useCallback(
     ({ data }) => {
-      if (data?.templates && !defaultTemplates) {
+      if (data.templates && !isEqual(defaultTemplates, data.templates)) {
         setDefaultTemplates(data.templates);
 
         if (location.pathname === '/') {
