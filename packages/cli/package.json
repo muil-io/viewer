@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "0.0.3-alpha.31",
+  "version": "0.0.3-alpha.32",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
