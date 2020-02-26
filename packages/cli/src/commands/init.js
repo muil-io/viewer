@@ -1,4 +1,5 @@
 import fs from 'fs';
+import fse from 'fs-extra';
 import chalk from 'chalk';
 import { sync } from 'cross-spawn';
 import * as logger from '../utils/logger';
@@ -29,7 +30,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   logger.infoSuccess();
 
   if (!fs.existsSync(getTemplatesDirectory(templatesDirectory || './templates'))) {
-    fs.mkdirSync(getTemplatesDirectory(templatesDirectory || './templates'));
+    fse.copy('./node_modules/@muil/templates-starter-kit/', getTemplatesDirectory(templatesDirectory || './templates'));
     logger.success('Templates directory created\n');
   }
 
