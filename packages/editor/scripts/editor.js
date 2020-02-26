@@ -1,5 +1,5 @@
 import path from 'path';
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import express from 'express';
 import open from 'open';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -10,13 +10,15 @@ import previewConfig from '../webpack.config';
 const rootDir = process.env.INIT_CWD || __dirname;
 const distDirectory = path.resolve(__dirname, '../lib');
 const configPath = path.resolve(rootDir, '.muil/config.js');
+const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
 const app = express();
 
 export default async ({ port, templatesDirectory }) => {
   // eslint-disable-next-line
-  const config = existsSync(configPath) ? require(configPath) : { webpack: () => {} };
+  const config = existsSync(configPath) ? require(configPath) : { webpack: config => config };
+  const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-  const defaultCompiler = previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory) });
+  const defaultCompiler = previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory), babelrc });
   const finalCompiler = config.webpack(defaultCompiler);
   const compiler = webpack(finalCompiler);
   const middleware = new webpackDevMiddleware(compiler, { publicPath: '/' });

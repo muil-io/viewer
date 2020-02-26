@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { rootDir, getTemplatesDirectory, buildDirectory } = require('../utils/paths');
 
-module.exports = ({ templatesDirectory, templatesExtension, token }) => {
+module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
 
   return {
@@ -28,13 +28,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token }) => {
           test: /\.jsx?$/,
           use: {
             loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: [
-                '@babel/plugin-proposal-nullish-coalescing-operator',
-                '@babel/plugin-proposal-optional-chaining',
-              ],
-            },
+            options: babelrc || { presets: ['@babel/preset-env', '@babel/preset-react'] },
           },
           exclude: path.resolve(rootDir, 'node_modules'),
         },
@@ -43,13 +37,20 @@ module.exports = ({ templatesDirectory, templatesExtension, token }) => {
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.eot$/, /\.otf$/, /\.woff$/, /\.woff2$/, /\.ttf$/],
+          test: /\.(eot|otf|woff|woff2|ttf)?$/,
           use: [
             {
               loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: {
-                token,
-              },
+              options: { token },
+            },
+          ],
+        },
+        {
+          test: /\.(bmp|gif|jpe?g|png)?$/,
+          use: [
+            {
+              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
+              options: { token },
             },
           ],
         },

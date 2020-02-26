@@ -1,23 +1,16 @@
-const path = require('path');
-const { homedir } = require('os');
+import path from 'path';
+import { homedir } from 'os';
 
-const rootDir = process.env.INIT_CWD || __dirname;
+export const rootDir = process.env.INIT_CWD || __dirname;
 
-const configurationDirectory = `${homedir()}/.muil`;
+export const configurationDirectory = `${homedir()}/.muil`;
 
-const credentialsFile = `${homedir()}/.muil/credentials`;
+export const credentialsFile = `${homedir()}/.muil/credentials`;
 
-const buildDirectory = path.resolve(rootDir, '.muil/build');
+export const buildDirectory = path.resolve(rootDir, '.muil/build');
 
-const distDirectory = path.resolve(rootDir, '.muil/dist');
+export const configPath = path.resolve(rootDir, '.muil/config.js');
 
-const getTemplatesDirectory = directory => path.resolve(rootDir, directory);
+export const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
 
-module.exports = {
-  rootDir,
-  configurationDirectory,
-  credentialsFile,
-  buildDirectory,
-  distDirectory,
-  getTemplatesDirectory,
-};
+export const getTemplatesDirectory = directory => path.resolve(rootDir, directory);
