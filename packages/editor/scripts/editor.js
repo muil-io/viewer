@@ -1,5 +1,6 @@
 import path from 'path';
 import { existsSync, readFileSync } from 'fs';
+import chalk from 'chalk';
 import express from 'express';
 import open from 'open';
 import webpackDevMiddleware from 'webpack-dev-middleware';
@@ -14,6 +15,8 @@ const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
 const app = express();
 
 export default async ({ port, templatesDirectory }) => {
+  console.log(`${chalk.inverse('\n Starting Muil edtior... \n')}`);
+
   // eslint-disable-next-line
   const config = existsSync(configPath) ? require(configPath) : { webpack: config => config };
   const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
