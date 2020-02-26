@@ -7,6 +7,7 @@ import Tabs from './Tabs';
 import Tab from './Tab';
 import scrollbar from '../style/scrollbar';
 import DynamicProps from './DynamicProps';
+import Api from './Api';
 
 const Wrapper = styled.div`
   grid-column: 3;
@@ -70,15 +71,10 @@ const Content = styled.div`
   ${scrollbar};
 `;
 
-const ComingSoon = styled.div`
-  text-align: center;
-  margin: 20px;
-`;
-
 const Options = ({ selectedTemplate, onChangeKnob }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
-  const { dynamicProps } = selectedTemplate || {};
+  const { dynamicProps, id } = selectedTemplate || {};
 
   return (
     <Wrapper isVisible={isVisible}>
@@ -105,7 +101,7 @@ const Options = ({ selectedTemplate, onChangeKnob }) => {
           />
         )}
 
-        {activeTab === 'api' && <ComingSoon>Coming Soon</ComingSoon>}
+        {activeTab === 'api' && <Api dynamicProps={dynamicProps} id={id} />}
       </Content>
     </Wrapper>
   );
