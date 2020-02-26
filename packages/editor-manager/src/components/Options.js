@@ -80,10 +80,6 @@ const Options = ({ selectedTemplate, onChangeKnob }) => {
   const [activeTab, setActiveTab] = useState('props');
   const { dynamicProps } = selectedTemplate || {};
 
-  if (!selectedTemplate) {
-    return null;
-  }
-
   return (
     <Wrapper isVisible={isVisible}>
       {!isVisible && (
