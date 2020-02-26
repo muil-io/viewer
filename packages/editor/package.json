@@ -7,10 +7,7 @@
     "start": "yarn prepublish && node ./scripts/index.js editor -d \"../templates-starter-kit\"",
     "prepublish": "yarn workspace @muil/editor-manager build"
   },
-  "bin": {
-    "muil": "./scripts/index.js",
-    "muil-cli": "./node_modules/@muil/cli/src/index.js"
-  },
+  "bin": "./scripts/index.js",
   "files": [
     "src/**/*",
     "scripts/**/*",
