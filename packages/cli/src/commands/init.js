@@ -29,8 +29,9 @@ export default async ({ useNpm, templatesDirectory }) => {
   writePackageJson(packageJson);
   logger.infoSuccess();
 
-  if (!fs.existsSync(getTemplatesDirectory(templatesDirectory || './templates'))) {
-    fse.copy('./node_modules/@muil/templates-starter-kit/', getTemplatesDirectory(templatesDirectory || './templates'));
+  if (!fs.existsSync(getTemplatesDirectory('./templates')) && fs.exists('./node_modules/@muil/templates-starter-kit')) {
+    fse.copy('./node_modules/@muil/templates-starter-kit', getTemplatesDirectory('./templates'));
+    fs.unlinkSync(`${getTemplatesDirectory('./templates')}/package.json`);
     logger.success('Templates directory created\n');
   }
 
