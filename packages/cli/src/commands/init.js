@@ -29,12 +29,15 @@ export default async ({ useNpm, templatesDirectory }) => {
   writePackageJson(packageJson);
   logger.infoSuccess();
 
-  fs.appendFileSync('.gitignore', '\n# muil build folder\n./muil/build\n');
+  // fs.appendFileSync('.gitignore', '\n# muil build folder\n./muil/build\n');
 
-  console.log(getTemplatesDirectory('./templates'));
-  if (!fs.existsSync(getTemplatesDirectory('./templates')) && fs.exists('./node_modules/@muil/templates-starter-kit')) {
-    fse.copy('./node_modules/@muil/templates-starter-kit', getTemplatesDirectory('./templates'));
-    // fs.unlinkSync(`${getTemplatesDirectory('./templates')}/package.json`);
+  console.log(getTemplatesDirectory(templatesDirectory || './templates'));
+  if (
+    !fs.existsSync(getTemplatesDirectory(templatesDirectory || './templates')) &&
+    fs.exists('./node_modules/@muil/templates-starter-kit')
+  ) {
+    fse.copy('./node_modules/@muil/templates-starter-kit', getTemplatesDirectory(templatesDirectory || './templates'));
+    fs.unlinkSync(`${getTemplatesDirectory(templatesDirectory || './templates')}/package.json`);
     logger.success('Templates directory created\n');
   }
 
