@@ -6,9 +6,7 @@ import { hasYarn, retrievePackageJson, writePackageJson } from '../utils/package
 import { getTemplatesDirectory } from '../utils/paths';
 
 // TODO:
-// 1. add .muil to .gitignore
 // 2. add templates directory and sample template
-// 3. change scripts
 
 export default async ({ useNpm, templatesDirectory }) => {
   logger.title('\n Adding Muil to project... \n');
@@ -34,6 +32,8 @@ export default async ({ useNpm, templatesDirectory }) => {
     fs.mkdirSync(getTemplatesDirectory(templatesDirectory || './templates'));
     logger.success('Templates directory created\n');
   }
+
+  fs.appendFileSync('.gitignore', '\n# muil build folder\n./muil/build\n');
 
   logger.success('Muil installed successfully 💪');
   console.log(`\n🌟 To run Muil editor, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
