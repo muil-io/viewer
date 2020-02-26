@@ -4,10 +4,6 @@ import chalk from 'chalk';
 import { sync } from 'cross-spawn';
 import * as logger from '../utils/logger';
 import { hasYarn, retrievePackageJson, writePackageJson } from '../utils/packageManager';
-import { getTemplatesDirectory } from '../utils/paths';
-
-// TODO:
-// 2. add templates directory and sample template
 
 export default async ({ useNpm, templatesDirectory }) => {
   logger.title('\n Adding Muil to project... \n');
@@ -29,14 +25,14 @@ export default async ({ useNpm, templatesDirectory }) => {
   writePackageJson(packageJson);
   logger.infoSuccess();
 
-  console.log('gitignore');
   fs.appendFileSync('.gitignore', '\n# muil build folder\n./muil/build\n');
 
-  console.log(templatesDirectory || './templates');
-  if (!fs.existsSync(templatesDirectory || './templates') && fs.exists('./node_modules/@muil/templates-starter-kit')) {
-    console.log('shahaf');
-    fse.copy('./node_modules/@muil/templates-starter-kit', templatesDirectory || './templates');
-    fs.unlinkSync(`${templatesDirectory || './templates'}/package.json`);
+  if (
+    !fs.existsSync(templatesDirectory || './templates') &&
+    fs.existsSync('./node_modules/@muil/templates-starter-kit')
+  ) {
+    fse.copySync('./node_modules/@muil/templates-starter-kit', templatesDirectory || './templates');
+    fse.unlinkSync(`${templatesDirectory || './templates'}/package.json`);
     logger.success('Templates directory created\n');
   }
 
