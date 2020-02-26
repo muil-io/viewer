@@ -6,10 +6,14 @@ import 'ace-builds/src-noconflict/theme-textmate';
 import CopyIcon from '../assets/copy.svg';
 
 const Wrapper = styled.div`
+  position: absolute;
+  top: 90px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
   padding: 20px;
   background: #fff;
-  margin-top: -10px;
-  height: calc(100% - 100px);
 
   .ace-tm {
     background: #f8f8f8;
@@ -85,7 +89,7 @@ const Api = ({ dynamicProps, id }) => {
 
       <AceEditor
         mode="json"
-        height="inherit"
+        height="80%"
         width="100%"
         theme="textmate"
         name="UNIQUE_ID_OF_DIV"
