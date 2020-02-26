@@ -9,7 +9,7 @@ const useTemplates = () => {
 
   const handleReceiveMessage = useCallback(
     ({ data }) => {
-      if (!isEqual(defaultTemplates, data.templates)) {
+      if (data.templates && !isEqual(defaultTemplates, data.templates)) {
         setDefaultTemplates(data.templates);
 
         if (location.pathname === '/') {
