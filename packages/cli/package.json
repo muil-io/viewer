@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "0.0.3-alpha.40",
+  "version": "0.0.3-alpha.41",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -16,7 +16,7 @@
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@muil/templates-starter-kit": "^0.0.3-alpha.40",
+    "@muil/templates-starter-kit": "^0.0.3-alpha.41",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
@@ -36,5 +36,6 @@
     "schema-utils": "^2.6.4",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "gitHead": "bfa265a065b2c0fa7954c4a48318d6b712d9ab44"
 }

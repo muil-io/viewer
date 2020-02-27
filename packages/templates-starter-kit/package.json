@@ -1,5 +1,6 @@
 {
   "name": "@muil/templates-starter-kit",
-  "version": "0.0.3-alpha.40",
-  "license": "UNLICENSED"
+  "version": "0.0.3-alpha.41",
+  "license": "UNLICENSED",
+  "gitHead": "bfa265a065b2c0fa7954c4a48318d6b712d9ab44"
 }
