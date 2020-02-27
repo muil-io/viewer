@@ -6,7 +6,7 @@ import ellipsis from '../style/ellipsis';
 
 const Wrapper = styled.div`
   position: relative;
-  grid-column: 2;
+  grid-column: 3;
   display: flex;
   flex-direction: column;
   align-items: center;

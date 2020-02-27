@@ -7,10 +7,17 @@ import Content from './Content';
 import Options from './Options';
 import useTemplates from '../hooks/useTemplates';
 import useDynamicProps from '../hooks/useDynamicProps';
+import PanelStretchBar from './PanelStretchBar';
+import { minMaxSideBarWidth, minMaxOptionsWidth } from '../utils/panelsSize';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(({ sideBarOffset, isOptionsPanelVisible, optionsOffset }) => ({
+  style: {
+    gridTemplateColumns: `${minMaxSideBarWidth(sideBarOffset)}px auto 1fr auto ${
+      !isOptionsPanelVisible ? 0 : minMaxOptionsWidth(optionsOffset)
+    }px`,
+  },
+}))`
   display: grid;
-  grid-template-columns: 300px 1fr auto;
   height: 100vh;
   overflow: hidden;
 `;
@@ -22,14 +29,26 @@ const AppShell = () => {
   const { templateId } = useParams();
   const selectedTemplate = templates?.[templateId];
 
+  const [sideBarOffset, setSideBarOffset] = useState(0);
+  const [optionsOffset, setOptionsOffset] = useState(0);
+  const [isOptionsPanelVisible, setIsOptionsPanelVisible] = useState(true);
+
   return (
-    <Wrapper>
+    <Wrapper sideBarOffset={sideBarOffset} optionsOffset={optionsOffset} isOptionsPanelVisible={isOptionsPanelVisible}>
       <SideBar templates={templates} />
+      <PanelStretchBar column={2} onDrag={setSideBarOffset} />
+
       <Page selectedTemplate={selectedTemplate} selectedSize={selectedSize} setSelectedSize={setSelectedSize}>
         <Content selectedTemplate={selectedTemplate} />
       </Page>
 
-      <Options selectedTemplate={selectedTemplate} onChangeKnob={handleChangeKnob} />
+      <PanelStretchBar column={4} onDrag={setOptionsOffset} />
+      <Options
+        selectedTemplate={selectedTemplate}
+        onChangeKnob={handleChangeKnob}
+        isOptionsPanelVisible={isOptionsPanelVisible}
+        setIsOptionsPanelVisible={setIsOptionsPanelVisible}
+      />
     </Wrapper>
   );
 };
