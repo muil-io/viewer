@@ -1,6 +1,6 @@
 {
   "name": "@muil/editor",
-  "version": "0.0.3-alpha.39",
+  "version": "0.0.3-alpha.42",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -20,8 +20,8 @@
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@muil/cli": "^0.0.3-alpha.39",
-    "@muil/templates-starter-kit": "^0.0.3-alpha.15",
+    "@muil/cli": "^0.0.3-alpha.42",
+    "@muil/templates-starter-kit": "^0.0.3-alpha.42",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
     "commander": "^4.1.1",
@@ -39,5 +39,6 @@
   "devDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
-  }
+  },
+  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439"
 }
