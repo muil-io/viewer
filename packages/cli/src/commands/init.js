@@ -14,7 +14,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   const installAsDevDependencies = true;
   sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', '@muil/editor', installAsDevDependencies ? '-D' : '']);
 
-  const packageJson = await retrievePackageJson();
+  let packageJson = await retrievePackageJson();
   const installDependencies = missingDependencies(packageJson);
 
   if (installDependencies.length > 0) {
@@ -25,6 +25,7 @@ export default async ({ useNpm, templatesDirectory }) => {
 
   logger.info('Adding scripts...');
   const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '';
+  packageJson = await retrievePackageJson();
   packageJson.dependencies = packageJson.dependencies || {};
   packageJson.devDependencies = packageJson.devDependencies || {};
   packageJson.scripts = packageJson.scripts || {};
