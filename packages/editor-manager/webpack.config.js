@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const paths = {
   managerSrc: path.resolve(__dirname, 'src/index.js'),
@@ -53,6 +54,7 @@ const common = () => ({
       filename: 'index.html',
       favicon: paths.favicon,
     }),
+    new DashboardPlugin(),
   ],
 });
 
