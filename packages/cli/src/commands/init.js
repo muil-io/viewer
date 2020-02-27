@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import { sync } from 'cross-spawn';
 import * as logger from '../utils/logger';
 import { hasYarn, retrievePackageJson, writePackageJson } from '../utils/packageManager';
+import missingDependencies from '../utils/missingDependencies';
 
 export default async ({ useNpm, templatesDirectory }) => {
   logger.title('\n Adding Muil to project... \n');
@@ -12,11 +13,18 @@ export default async ({ useNpm, templatesDirectory }) => {
   const useYarn = Boolean(useNpm !== true) && hasYarn();
   const installAsDevDependencies = true;
   sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', '@muil/editor', installAsDevDependencies ? '-D' : '']);
+
+  const packageJson = await retrievePackageJson();
+  const installDependencies = missingDependencies(packageJson);
+
+  if (installDependencies.length > 0) {
+    sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', installDependencies.join(' ')]);
+  }
+
   logger.infoSuccess();
 
   logger.info('Adding scripts...');
   const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '';
-  const packageJson = await retrievePackageJson();
   packageJson.dependencies = packageJson.dependencies || {};
   packageJson.devDependencies = packageJson.devDependencies || {};
   packageJson.scripts = packageJson.scripts || {};
