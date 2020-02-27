@@ -4,6 +4,7 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-textmate';
 import EmptyState from './EmptyState';
+import scrollbar from '../style/scrollbar';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -11,10 +12,16 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  overflow: hidden;
+  overflow: auto;
+  padding: 20px;
+  background: #fff;
+  ${scrollbar};
 
   .ace-tm {
-    background-color: transparent;
+    background: #f8f8f8;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    transition: border-color 200ms;
   }
 `;
 
@@ -35,7 +42,7 @@ const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
       {dynamicProps ? (
         <AceEditor
           mode="json"
-          height="100%"
+          maxLines={Infinity}
           width="100%"
           theme="textmate"
           name="UNIQUE_ID_OF_DIV"
@@ -44,6 +51,7 @@ const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
           value={JSON.stringify(dynamicProps, null, 4)}
           onChange={handleChangeValue}
           setOptions={{ useWorker: false }}
+          wrapEnabled
         />
       ) : (
         <EmptyState>No Dynamic props defined</EmptyState>

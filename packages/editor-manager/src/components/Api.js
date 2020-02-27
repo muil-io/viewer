@@ -4,6 +4,7 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-textmate';
 import CopyIcon from '../assets/copy.svg';
+import scrollbar from '../style/scrollbar';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -11,9 +12,10 @@ const Wrapper = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  overflow: hidden;
+  overflow: auto;
   padding: 20px;
   background: #fff;
+  ${scrollbar};
 
   .ace-tm {
     background: #f8f8f8;
@@ -89,7 +91,7 @@ const Api = ({ dynamicProps, id }) => {
 
       <AceEditor
         mode="json"
-        height="80%"
+        maxLines={Infinity}
         width="100%"
         theme="textmate"
         name="UNIQUE_ID_OF_DIV"
@@ -99,6 +101,7 @@ const Api = ({ dynamicProps, id }) => {
         setOptions={{ useWorker: false }}
         readOnly
         highlightActiveLine={false}
+        wrapEnabled
       />
     </Wrapper>
   );
