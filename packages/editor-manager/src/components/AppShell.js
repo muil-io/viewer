@@ -19,7 +19,6 @@ const Wrapper = styled.div.attrs(({ sideBarOffset, isOptionsPanelVisible, option
 }))`
   display: grid;
   height: 100vh;
-  overflow: hidden;
 `;
 
 const AppShell = () => {
