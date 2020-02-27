@@ -18,7 +18,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   const installDependencies = missingDependencies(packageJson);
 
   if (installDependencies.length > 0) {
-    sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', installDependencies.join(' ')]);
+    sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', ...installDependencies]);
   }
 
   logger.infoSuccess();
