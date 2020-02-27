@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useDebounce from '../hooks/useDebounce';
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,15 +17,19 @@ const Frame = styled.iframe`
   border-radius: 8px;
 `;
 
-const Content = ({ selectedTemplate }) => (
-  <Wrapper>
-    <Frame
-      title="content"
-      src={`/iframe.html?templateId=${selectedTemplate?.id}&dynamicProps=${encodeURIComponent(
-        JSON.stringify(selectedTemplate?.dynamicProps),
-      )}`}
-    />
-  </Wrapper>
-);
+const Content = ({ selectedTemplate }) => {
+  const debounceTemplate = useDebounce(selectedTemplate, 300);
+  const currentTemplate = selectedTemplate?.id !== debounceTemplate?.id ? selectedTemplate : debounceTemplate;
+  return (
+    <Wrapper>
+      <Frame
+        title="content"
+        src={`/iframe.html?templateId=${currentTemplate?.id}&dynamicProps=${encodeURIComponent(
+          JSON.stringify(currentTemplate?.dynamicProps),
+        )}`}
+      />
+    </Wrapper>
+  );
+};
 
 export default Content;
