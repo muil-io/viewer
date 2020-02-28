@@ -22,7 +22,7 @@ export const publish = async ({ token, branch = '' }) => {
 
   files.forEach(file => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
 
-  await axios.post(`${baseUrl}/templates/${branch}`, bodyData, {
+  await axios.put(`${baseUrl}/templates/${branch}`, bodyData, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
   });
 };
