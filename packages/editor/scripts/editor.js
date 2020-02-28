@@ -32,8 +32,6 @@ export default async ({ port, templatesDirectory }) => {
 
   middleware.waitUntilValid(() => {
     app.listen(port, () => console.log(`✨ Muil editor is running at http://localhost:${port}/`));
-    open(`http://localhost:${port}`, {
-      app: process.platform === 'win32' ? 'chrome' : process.platform === 'darwin' ? 'Google Chrome' : 'google-chrome',
-    });
+    open(`http://localhost:${port}`);
   });
 };

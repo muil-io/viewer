@@ -91,7 +91,7 @@ const development = ({ templatesDirectory }) => ({
     }),
   ],
   devServer: {
-    open: true,
+    open: process.platform === 'win32' ? 'chrome' : process.platform === 'darwin' ? 'Google Chrome' : 'google-chrome',
     hotOnly: true,
     port: 8000,
   },
