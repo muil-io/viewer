@@ -35,6 +35,10 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
         },
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(eot|otf|woff|woff2|ttf)?$/,
         use: ['file-loader'],
       },
