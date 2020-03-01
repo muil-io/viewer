@@ -43,6 +43,11 @@ root
 
 Run editor with `npm run muil` or `yarn muil` to edit your email.
 
+```
+-p --port Editor port, default: 8000
+-d --templatesDirectory Templates root directory, default: './templates'
+```
+
 # Cli
 
 - Login - `yarn muil-cli login` - login to muil service
