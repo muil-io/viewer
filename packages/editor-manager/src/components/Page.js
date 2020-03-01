@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScreenOptions from './ScreenOptions';
-import { SCREEN_SIZES, HEADER_HEIGHT } from '../constants';
+import { SCREEN_SIZES, HEADER_HEIGHT, HEADER_BACKGROUND_HEIGHT } from '../constants';
 import ellipsis from '../style/ellipsis';
 
 const Wrapper = styled.div`
@@ -19,7 +19,7 @@ const TopBar = styled.div`
   left: 0;
   right: 0;
   background: ${({ theme }) => theme.app.primaryBackground};
-  height: 230px;
+  height: ${HEADER_BACKGROUND_HEIGHT}px;
   padding: 24px 80px;
   display: flex;
   justify-content: space-between;

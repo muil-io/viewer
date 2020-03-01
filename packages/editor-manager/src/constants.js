@@ -10,4 +10,7 @@ export const SCREEN_SIZES = {
   full: { size: 'calc(100% - 160px)', icon: FullIcon },
 };
 
-export const HEADER_HEIGHT = 90;
+export const HEADER_HEIGHT = 80;
+export const HEADER_BACKGROUND_HEIGHT = 220;
+export const SIDE_BAR_DEFAULT_WIDTH = 300;
+export const OPTIONS_DEFAULT_WIDTH = 350;
