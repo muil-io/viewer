@@ -33,6 +33,7 @@ program
     "Templates root directory, default: './templates'",
     './templates',
   )
+  .option('-b --branch <branch>', 'templates branch, default: master', './templates')
   .option(
     '-e --templatesExtension <templatesExtension>',
     "comma separated list of templates path, default 'template.js'",
@@ -44,7 +45,7 @@ program
 program
   .command('unpublish')
   .description('Unpublish email templates')
-  .option('-b --branch <branch>', 'templates branch')
+  .option('-b --branch <branch>', 'templates branch, default: master')
   .action(options => unpublish(options));
 
 program

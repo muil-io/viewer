@@ -1,22 +1,30 @@
 #Installation
 
-`npm install --dev muil`
+## Automatic setup
+
+Run inside the directory:
+
+`npx -p @muil/cli muil-cli init`
+
+## Manual setup
+
+Run inside the directory:
+
+`npm install --dev @muil/editor`
 or
-`yarn add --dev muil`
+`yarn add --dev @muil/editor`
 
-#Usage
-
-1. Add to package.json:
+Add to package.json:
 
 ```
  "scripts": {
     ...
-    "muil": "muil dev",
-    "muil:publish": "muil publish"
+    "muil": "muil-editor",
+    "muil-cli": "muil-cli"
   },
 ```
 
-2. Add templates:
+Add templates:
 
 ```
 root
@@ -31,9 +39,29 @@ root
 │   └───Template3.js
 ```
 
-3. Run editor with `yarn muil` to edit your email.
+# Usage
 
-###
+Run editor with `npm run muil` or `yarn muil` to edit your email.
 
-4. Publish templates with `yarn muil:publish`
-   - this command will ask your email and password of your muil account
+# Cli
+
+- Login - `yarn muil-cli login` - login to muil service
+
+  ```
+  -u --user username
+  -p --password password
+  ```
+
+- Logout - `yarn muil-cli login` - logout from muil service
+
+- Publish - `yarn muil-cli publish` - build templates and upload to muil
+
+  ```
+  -d --templatesDirectory templates root directory, default: './templates'
+  -b --branch templates branch, default: master
+  ```
+
+- Unpublish - `yarn muil-cli unpublish` - clean branch
+  ```
+  -b --branch templates branch, default: master
+  ```
