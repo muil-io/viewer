@@ -30,6 +30,7 @@ const Title = styled.div`
   color: #adadad;
   margin-bottom: 8px;
   font-size: 14px;
+  font-weight: 300;
 `;
 
 const InputRow = styled.div`
@@ -52,7 +53,7 @@ const Input = styled.input.attrs(() => ({ readOnly: true }))`
   border-radius: 5px;
   width: 100%;
   background: #f8f8f8;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
   outline: none;
   transition: border-color 200ms;
 `;

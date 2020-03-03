@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme.emptyState.color};
+  font-weight: 300;
   padding: 20px;
 `;
 
