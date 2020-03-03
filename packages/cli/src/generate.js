@@ -33,7 +33,7 @@ program
     "Templates root directory, default: './templates'",
     './templates',
   )
-  .option('-b --branch <branch>', 'templates branch, default: master', './templates')
+  .option('-b --branch <branch>', 'templates branch, default: master')
   .option(
     '-e --templatesExtension <templatesExtension>',
     "comma separated list of templates path, default 'template.js'",
