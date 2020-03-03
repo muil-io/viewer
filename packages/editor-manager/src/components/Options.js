@@ -27,7 +27,7 @@ const ToggleButton = styled.div`
   height: 25px;
   background: ${({ theme }) => theme.app.contentBackground};
   top: 103px;
-  left: -37px;
+  left: -38px;
   box-shadow: 2px -4px 8px -3px rgba(0, 0, 0, 0.3);
   transform: rotate(-90deg);
   z-index: 1;
@@ -76,25 +76,27 @@ const Options = ({ selectedTemplate, onChangeKnob, isOptionsPanelVisible, setIsO
         </ToggleButton>
       )}
 
-      <Content>
-        <SideBarHeader>
-          <CloseButton onClick={() => setIsOptionsPanelVisible(false)} />
+      {isOptionsPanelVisible && (
+        <Content>
+          <SideBarHeader>
+            <CloseButton onClick={() => setIsOptionsPanelVisible(false)} />
 
-          <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
-            <Tab name="props">Dynamic Props</Tab>
-            <Tab name="api">API</Tab>
-          </Tabs>
-        </SideBarHeader>
+            <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
+              <Tab name="props">Dynamic Props</Tab>
+              <Tab name="api">API</Tab>
+            </Tabs>
+          </SideBarHeader>
 
-        {activeTab === 'props' && (
-          <DynamicProps
-            dynamicProps={dynamicProps}
-            onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
-          />
-        )}
+          {activeTab === 'props' && (
+            <DynamicProps
+              dynamicProps={dynamicProps}
+              onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+            />
+          )}
 
-        {activeTab === 'api' && <Api dynamicProps={dynamicProps} id={id} />}
-      </Content>
+          {activeTab === 'api' && <Api dynamicProps={dynamicProps} id={id} />}
+        </Content>
+      )}
     </Wrapper>
   );
 };
