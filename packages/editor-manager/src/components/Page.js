@@ -28,6 +28,7 @@ const TopBar = styled.div`
 const TemplateName = styled.div`
   color: ${({ theme }) => theme.page.templateNameColor};
   font-size: 32px;
+  font-weight: 300;
   ${ellipsis};
 `;
 
