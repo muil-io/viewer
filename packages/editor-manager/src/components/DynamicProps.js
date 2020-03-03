@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-textmate';
+import { HEADER_HEIGHT } from '../constants';
 import EmptyState from './EmptyState';
 import scrollbar from '../style/scrollbar';
 
 const Wrapper = styled.div`
   position: absolute;
-  top: 90px;
+  top: ${HEADER_HEIGHT}px;
   bottom: 0;
   left: 0;
   right: 0;
