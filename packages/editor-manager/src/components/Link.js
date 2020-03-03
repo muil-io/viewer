@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   position: relative;
   display: block;
   padding: 13px 30px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   color: ${({ theme }) => theme.sidebar.linkColor};
   ${ellipsis};

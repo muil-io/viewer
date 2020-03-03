@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   flex: 1;
   cursor: pointer;
   border-bottom: 2px solid transparent;
+  font-size: 14px;
 `;
 
 const Tab = ({ activeTab, onClick, children }) => (
