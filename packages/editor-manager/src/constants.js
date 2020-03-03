@@ -11,6 +11,6 @@ export const SCREEN_SIZES = {
 };
 
 export const HEADER_HEIGHT = 80;
-export const HEADER_BACKGROUND_HEIGHT = 220;
-export const SIDE_BAR_DEFAULT_WIDTH = 300;
+export const HEADER_BACKGROUND_HEIGHT = 186;
+export const SIDE_BAR_DEFAULT_WIDTH = 250;
 export const OPTIONS_DEFAULT_WIDTH = 350;

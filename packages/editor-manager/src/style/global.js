@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 	html, body {
 		margin:0;
 		padding:0;
-		font-family: HelveticaNeue;
+		font-family: Roboto;
 	}
 
 	body {
