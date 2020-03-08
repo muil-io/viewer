@@ -35,9 +35,14 @@ const Logo = styled.div`
 `;
 
 const SideBar = ({ templates }) => {
-  const links = useMemo(() => templates && Object.keys(templates).map(key => ({ key, name: templates[key].name })), [
-    templates,
-  ]);
+  const links = useMemo(
+    () =>
+      templates &&
+      Object.keys(templates)
+        .map(key => ({ key, name: templates[key].name }))
+        .sort(({ name: nameA }, { name: nameB }) => nameA.localeCompare(nameB)),
+    [templates],
+  );
 
   return (
     <Wrapper>
