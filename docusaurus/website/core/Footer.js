@@ -83,9 +83,6 @@ const Footer = ({ config }) => {
         </div>
       </section>
 
-      <a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" className="fbOpenSource">
-        <img src={`${baseUrl}img/oss_logo.png`} alt="Facebook Open Source" width="170" height="45" />
-      </a>
       <section className="copyright">{copyright}</section>
     </footer>
   );
