@@ -16,13 +16,22 @@ const Wrapper = styled.div`
   overflow: auto;
   padding: 20px;
   background: #fff;
-  ${scrollbar};
 
   .ace-tm {
     background: #f8f8f8;
     border: 1px solid #cccccc;
     border-radius: 5px;
     transition: border-color 200ms;
+
+    position: absolute;
+    top: 125px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+
+    .ace_scrollbar {
+      ${scrollbar};
+    }
   }
 `;
 
@@ -93,8 +102,8 @@ const Api = ({ dynamicProps, id }) => {
 
       <AceEditor
         mode="json"
-        maxLines={Infinity}
-        width="100%"
+        height="initial"
+        width="auto"
         theme="textmate"
         name="UNIQUE_ID_OF_DIV"
         editorProps={{ $blockScrolling: true }}
