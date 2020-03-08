@@ -10,6 +10,7 @@ const siteConfig = {
   headerLinks: [
     { doc: 'getting-started/quickStart', label: 'Docs' },
     { doc: 'configurations/cli', label: 'Configurations' },
+    { doc: 'api/sendingEmail', label: 'API' },
     { page: 'help', label: 'Help' },
     { blog: true, label: 'Blog' },
   ],

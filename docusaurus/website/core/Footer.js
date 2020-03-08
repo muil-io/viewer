@@ -30,9 +30,9 @@ const Footer = ({ config }) => {
         </a>
         <div>
           <h5>Docs</h5>
-          <a href={docUrl('doc1.html')}>Getting Started (or other categories)</a>
-          <a href={docUrl('doc2.html')}>Guides (or other categories)</a>
-          <a href={docUrl('doc3.html')}>API Reference (or other categories)</a>
+          <a href={docUrl('getting-started/quickStart')}>Getting Started</a>
+          <a href={docUrl('configurations/cli')}>Configurations</a>
+          <a href={docUrl('api/sendingEmail')}>API</a>
         </div>
         <div>
           <h5>Community</h5>
