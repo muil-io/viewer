@@ -1,7 +1,6 @@
 {
   "docs": {
     "Getting Started": ["getting-started/quickStart", "getting-started/slowStart", "getting-started/run"],
-    "Configurations": ["configurations/doc1", "configurations/doc2", "configurations/doc3"],
-    "CLI": ["cli/doc1", "cli/doc2", "cli/doc3"]
+    "Configurations": ["configurations/cli", "configurations/doc1", "configurations/doc2", "configurations/doc3"]
   }
 }

@@ -57,7 +57,7 @@ Run editor with `npm run muil` or `yarn muil` to edit your email.
   -p --password password
   ```
 
-- Logout - `yarn muil-cli login` - logout from muil service
+- Logout - `yarn muil-cli logout` - logout from muil service
 
 - Publish - `yarn muil-cli publish` - build templates and upload to muil
 
