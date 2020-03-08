@@ -15,8 +15,8 @@ const GridBlock = CompLibrary.GridBlock;
 
 class HomeSplash extends React.Component {
   render() {
-    const {siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
+    const { siteConfig, language = '' } = this.props;
+    const { baseUrl, docsUrl } = siteConfig;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
     const langPart = `${language ? `${language}/` : ''}`;
     const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
@@ -76,26 +76,17 @@ class HomeSplash extends React.Component {
 
 class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props;
-    const {baseUrl} = siteConfig;
+    const { config: siteConfig, language = '' } = this.props;
+    const { baseUrl } = siteConfig;
 
     const Block = props => (
-      <Container
-        padding={['bottom', 'top']}
-        id={props.id}
-        background={props.background}>
-        <GridBlock
-          align="center"
-          contents={props.children}
-          layout={props.layout}
-        />
+      <Container padding={['bottom', 'top']} id={props.id} background={props.background}>
+        <GridBlock align="center" contents={props.children} layout={props.layout} />
       </Container>
     );
 
     const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
+      <div className="productShowcaseSection paddingBottom" style={{ textAlign: 'center' }}>
         <h2>Feature Callout</h2>
         <MarkdownBlock>These are features of this project</MarkdownBlock>
       </div>
@@ -121,8 +112,7 @@ class Index extends React.Component {
       <Block background="dark">
         {[
           {
-            content:
-              'This is another description of how this project is useful',
+            content: 'This is another description of how this project is useful',
             image: `${baseUrl}img/undraw_note_list.svg`,
             imageAlign: 'right',
             title: 'Description',
@@ -135,8 +125,7 @@ class Index extends React.Component {
       <Block background="light">
         {[
           {
-            content:
-              'Each new Docusaurus project has **randomly-generated** theme colors.',
+            content: 'Each new Docusaurus project has **randomly-generated** theme colors.',
             image: `${baseUrl}img/undraw_youtube_tutorial.svg`,
             imageAlign: 'right',
             title: 'Randomly Generated Theme Colors',

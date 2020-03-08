@@ -1,13 +1,3 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-// See https://docusaurus.io/docs/site-config for all the possible
-// site configuration options.
-
 // List of projects/orgs using your project for the users page.
 const users = [
   {
@@ -21,27 +11,19 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Test Site', // Title for your website.
-  tagline: 'A website for testing',
-  url: 'https://your-docusaurus-test-site.com', // Your website URL
-  baseUrl: '/', // Base URL for your project */
-  // For github.io type URLs, you would set the url and baseUrl like:
-  //   url: 'https://facebook.github.io',
-  //   baseUrl: '/test-site/',
-
-  // Used for publishing and more
-  projectName: 'test-site',
-  organizationName: 'facebook',
-  // For top-level user or org sites, the organization is still the same.
-  // e.g., for the https://JoelMarcey.github.io site, it would be set like...
-  //   organizationName: 'JoelMarcey'
+  title: 'Muil',
+  tagline: 'A website for testing', // TODO: should be considered at i18n
+  url: 'https://muil.io',
+  baseUrl: '/',
+  projectName: 'Muil',
+  organizationName: 'muil',
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
-    {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+    { doc: 'doc1', label: 'Docs' },
+    { doc: 'doc4', label: 'API' },
+    { page: 'help', label: 'Help' },
+    { blog: true, label: 'Blog' },
   ],
 
   // If you have users set above, you add it here:
@@ -54,8 +36,8 @@ const siteConfig = {
 
   /* Colors for website */
   colors: {
-    primaryColor: '#6e3041',
-    secondaryColor: '#4d212d',
+    primaryColor: '#6735E0',
+    secondaryColor: '#f8f8f8',
   },
 
   /* Custom fonts for website */
@@ -73,7 +55,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} muil`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -81,7 +63,7 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['https://buttons.github.io/buttons.js'],
+  // scripts: ['https://buttons.github.io/buttons.js'],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
