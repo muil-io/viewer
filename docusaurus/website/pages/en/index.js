@@ -70,7 +70,7 @@ const Hero = ({ siteConfig, language = '' }) => {
         />
 
         <div className="get-started-row">
-          <a className="button get-started" href={docUrl('installation.html')}>
+          <a className="button get-started" href={docUrl('getting-started/quickStart.html')}>
             GET STARTED
           </a>
         </div>
@@ -95,8 +95,11 @@ const Index = ({ config: siteConfig, language = '' }) => {
       <div className="mainContainer">
         <Block layout="threeColumn">{getFeatures(baseUrl)}</Block>
 
-        {getRows(baseUrl).map(({ background, ...row }) => (
-          <Block background={background}>{[row]}</Block>
+        {getRows(baseUrl).map((row, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Block key={index} background={row.background}>
+            {[row]}
+          </Block>
         ))}
       </div>
     </div>
