@@ -9,13 +9,15 @@ import scrollbar from '../style/scrollbar';
 import DynamicProps from './DynamicProps';
 import Api from './Api';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(({ optionWidth }) => ({
+  style: {
+    width: optionWidth,
+  },
+}))`
   grid-column: 5;
   background: ${({ theme }) => theme.app.secondaryBackground};
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   position: relative;
-  transition: 300ms;
-  will-change: width;
 `;
 
 const ToggleButton = styled.div`
@@ -64,22 +66,23 @@ const Content = styled.div`
   ${scrollbar};
 `;
 
-const Options = ({ selectedTemplate, onChangeKnob, isOptionsPanelVisible, setIsOptionsPanelVisible }) => {
+const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
+  const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
   const { dynamicProps, id } = selectedTemplate || {};
 
   return (
-    <Wrapper>
-      {!isOptionsPanelVisible && (
-        <ToggleButton onClick={() => setIsOptionsPanelVisible(true)}>
+    <Wrapper optionWidth={isVisible ? optionWidth : 0}>
+      {!isVisible && (
+        <ToggleButton onClick={() => setIsVisible(true)}>
           <Arrow />
         </ToggleButton>
       )}
 
-      {isOptionsPanelVisible && (
+      {isVisible && (
         <Content>
           <SideBarHeader>
-            <CloseButton onClick={() => setIsOptionsPanelVisible(false)} />
+            <CloseButton onClick={() => setIsVisible(false)} />
 
             <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
               <Tab name="props">Dynamic Props</Tab>

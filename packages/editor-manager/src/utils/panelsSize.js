@@ -1,7 +1,5 @@
-import { SIDE_BAR_DEFAULT_WIDTH, OPTIONS_DEFAULT_WIDTH } from '../constants';
-
 const SIDE_BAR_RANGE = [200, 600];
-const OPTIONS_RANGE = [260, 700];
+const OPTIONS_RANGE = [260, 600];
 
 const minMax = (newWidth, range) => {
   if (newWidth > range[1]) {
@@ -13,5 +11,5 @@ const minMax = (newWidth, range) => {
   return newWidth;
 };
 
-export const minMaxSideBarWidth = offset => minMax(SIDE_BAR_DEFAULT_WIDTH + offset, SIDE_BAR_RANGE);
-export const minMaxOptionsWidth = offset => minMax(OPTIONS_DEFAULT_WIDTH - offset, OPTIONS_RANGE);
+export const minMaxSideBarWidth = newWidth => minMax(newWidth, SIDE_BAR_RANGE);
+export const minMaxOptionsWidth = newWidth => minMax(newWidth, OPTIONS_RANGE);

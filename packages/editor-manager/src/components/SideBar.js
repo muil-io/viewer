@@ -6,7 +6,11 @@ import Link from './Link';
 import EmptyState from './EmptyState';
 import LoadingPlaceHolder from './LoadingPlaceHolder';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(({ sideBarWidth }) => ({
+  style: {
+    width: sideBarWidth,
+  },
+}))`
   grid-column: 1;
   background: ${({ theme }) => theme.app.contentBackground};
   box-shadow: 1px 2px 5px ${({ theme }) => theme.sidebar.shadowColors};
@@ -34,7 +38,7 @@ const Logo = styled.div`
   }
 `;
 
-const SideBar = ({ templates }) => {
+const SideBar = ({ templates, sideBarWidth }) => {
   const links = useMemo(
     () =>
       templates &&
@@ -45,7 +49,7 @@ const SideBar = ({ templates }) => {
   );
 
   return (
-    <Wrapper>
+    <Wrapper sideBarWidth={sideBarWidth}>
       <SideBarHeader>
         <Logo>
           <span>M</span>

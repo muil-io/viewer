@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ScreenOptions from './ScreenOptions';
 import { SCREEN_SIZES, HEADER_HEIGHT, HEADER_BACKGROUND_HEIGHT } from '../constants';
 import ellipsis from '../style/ellipsis';
@@ -36,22 +36,40 @@ const Container = styled.div`
   background: ${({ theme }) => theme.app.contentBackground};
   margin: ${HEADER_HEIGHT}px 80px 40px;
   border-radius: 8px;
-  width: ${({ selectedSize }) => SCREEN_SIZES[selectedSize].size};
+  width: calc(100% - 160px);
+  max-width: ${({ selectedSize }) => SCREEN_SIZES[selectedSize].size};
   height: 100%;
   z-index: 1;
   transition: 200ms;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
     0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+
+  ${({ isDragging }) =>
+    isDragging &&
+    css`
+      &:before {
+        content: '';
+        position: absolute;
+        background: transparent;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        point-events: none;
+      }
+    `}
 `;
 
-const Page = ({ selectedTemplate, selectedSize, setSelectedSize, children }) => (
+const Page = ({ selectedTemplate, selectedSize, setSelectedSize, isDragging, children }) => (
   <Wrapper>
     <TopBar>
       <TemplateName>{selectedTemplate?.name || 'No Template Selected'}</TemplateName>
       <ScreenOptions selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
     </TopBar>
 
-    <Container selectedSize={selectedSize}>{children}</Container>
+    <Container selectedSize={selectedSize} isDragging={isDragging}>
+      {children}
+    </Container>
   </Wrapper>
 );
 

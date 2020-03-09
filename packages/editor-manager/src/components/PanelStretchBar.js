@@ -8,11 +8,16 @@ const StretchBar = styled.div`
   cursor: col-resize;
   grid-column: ${({ column }) => column};
   z-index: 1;
-  transform: none !important;
 `;
 
-const PanelStretchBar = ({ column, onDrag }) => (
-  <Draggable axis="x" onDrag={(e, { x }) => onDrag(x)}>
+const PanelStretchBar = ({ column, width, right, onDrag, onLimit, setIsDragging }) => (
+  <Draggable
+    axis="x"
+    position={{ x: 0 }}
+    onDrag={(e, { deltaX }) => onDrag(onLimit(width + (right ? -1 : 1) * deltaX))}
+    onStart={() => setIsDragging(true)}
+    onStop={() => setIsDragging(false)}
+  >
     <StretchBar column={column} />
   </Draggable>
 );
