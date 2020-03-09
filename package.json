@@ -7,6 +7,8 @@
     "start": "yarn start:manager",
     "start:manager": "yarn workspace @muil/editor-manager start",
     "start:editor": "yarn workspace @muil/editor start -d \"./packages/templates-starter-kit\"",
+    "start:docs": "cd docusaurus/website && yarn start",
+    "deploy:docs": "cd docusaurus/website && yarn build && firebase deploy",
     "cli": "yarn workspace @muil/cli start -d \"./packages/templates-starter-kit\"",
     "build:templates": "yarn workspace @muil/cli start build -d \"./packages/templates-starter-kit\"",
     "lerna:publish": "lerna publish"
