@@ -36,7 +36,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) =>
           exclude: path.resolve(rootDir, 'node_modules'),
         },
         {
-          test: /\.css/,
+          test: /\.module\.css$/,
           use: [
             MiniCssExtractPlugin.loader,
             {
@@ -49,6 +49,11 @@ module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) =>
               },
             },
           ],
+        },
+        {
+          test: /\.css$/,
+          exclude: /\.module\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.(eot|otf|woff|woff2|ttf)?$/,
