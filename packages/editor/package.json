@@ -1,6 +1,6 @@
 {
   "name": "@muil/editor",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -20,8 +20,8 @@
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@muil/cli": "^0.0.7",
-    "@muil/templates-starter-kit": "^0.0.7",
+    "@muil/cli": "^0.0.8",
+    "@muil/templates-starter-kit": "^0.0.8",
     "babel-loader": "^8.0.6",
     "babel-plugin-react-css-modules": "^5.2.6",
     "chalk": "^3.0.0",
