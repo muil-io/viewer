@@ -1,8 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-textmate';
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-json';
+import 'prismjs/themes/prism-coy.css';
 import { HEADER_HEIGHT } from '../constants';
 import EmptyState from './EmptyState';
 import scrollbar from '../style/scrollbar';
@@ -17,22 +19,39 @@ const Wrapper = styled.div`
   padding: 20px;
   background: #fff;
 
-  .ace-tm {
+  .container__editor {
     background: #f8f8f8;
     border: 1px solid #cccccc;
     border-radius: 5px;
     transition: border-color 200ms;
-    .ace_scrollbar {
-      ${scrollbar};
+    overflow: auto !important;
+    max-height: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+    ${scrollbar};
+
+    textarea {
+      outline: none;
     }
   }
 `;
 
 const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    if (dynamicProps && value === null) {
+      setValue(JSON.stringify(dynamicProps || {}, null, 4));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dynamicProps]);
+
   const handleChangeValue = useCallback(
-    value => {
+    code => {
+      setValue(code);
       try {
-        const parsedValue = JSON.parse(value);
+        const parsedValue = JSON.parse(code);
         onChangeKnob(parsedValue);
         // eslint-disable-next-line no-empty
       } catch (err) {}
@@ -43,18 +62,11 @@ const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
   return (
     <Wrapper>
       {dynamicProps ? (
-        <AceEditor
-          mode="json"
-          height="100%"
-          width="100%"
-          theme="textmate"
-          name="UNIQUE_ID_OF_DIV"
-          editorProps={{ $blockScrolling: true }}
-          showGutter={false}
-          value={JSON.stringify(dynamicProps, null, 4)}
-          onChange={handleChangeValue}
-          setOptions={{ useWorker: false }}
-          wrapEnabled
+        <Editor
+          value={value || ''}
+          onValueChange={handleChangeValue}
+          highlight={code => highlight(code, languages.json)}
+          className="container__editor"
         />
       ) : (
         <EmptyState>No Dynamic props defined</EmptyState>
