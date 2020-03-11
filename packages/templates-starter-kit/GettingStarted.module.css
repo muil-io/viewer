@@ -1,4 +1,4 @@
-body {
+.root {
   background: white;
   font-family: sans-serif;
   font-size: 16px;
@@ -14,6 +14,9 @@ body {
 .text {
   text-align: center;
   font-weight: lighter;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 40px;
 }
 
 .get-started {
@@ -21,7 +24,7 @@ body {
   color: #7156dd;
   width: 100%;
   font-size: 20px;
-  margin-top: 30px;
+  margin-top: 40px;
   font-weight: lighter;
   text-align: center;
   text-decoration: none;

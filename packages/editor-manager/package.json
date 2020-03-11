@@ -17,6 +17,7 @@
     "@svgr/webpack": "^5.0.0",
     "ace-builds": "^1.4.7",
     "babel-loader": "^8.0.6",
+    "babel-plugin-react-css-modules": "^5.2.6",
     "css-loader": "^3.4.0",
     "error-overlay-webpack-plugin": "^0.4.1",
     "file-loader": "^5.1.0",

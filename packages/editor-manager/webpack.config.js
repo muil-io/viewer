@@ -6,6 +6,8 @@ const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 
+const context = path.resolve(__dirname);
+
 const paths = {
   managerSrc: path.resolve(__dirname, 'src/index.js'),
   previewSrc: path.resolve(__dirname, '../editor/src/index.js'),
@@ -18,6 +20,7 @@ const paths = {
 };
 
 const common = () => ({
+  context,
   module: {
     rules: [
       {
@@ -27,12 +30,32 @@ const common = () => ({
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-proposal-nullish-coalescing-operator', '@babel/plugin-proposal-optional-chaining'],
+            plugins: [
+              ['react-css-modules', { context, generateScopedName: '[local]___[hash:base64:5]' }],
+              '@babel/plugin-proposal-nullish-coalescing-operator',
+              '@babel/plugin-proposal-optional-chaining',
+            ],
           },
         },
       },
       {
+        test: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: '[local]___[hash:base64:5]',
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {

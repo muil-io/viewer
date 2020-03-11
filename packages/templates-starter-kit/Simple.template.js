@@ -3,20 +3,19 @@ import './Simple.css';
 
 const HelloWorld = ({ name, callToActionUrl }) => {
   return (
-    <div styleName="root">
-      <div styleName="content">
-        <p styleName="text">{`Hi ${name},`}</p>
-        <p styleName="text">
+    <div className="root">
+      <div className="content">
+        <p className="text">{`Hi ${name},`}</p>
+        <p className="text">
           Sometimes you just need a simple HTML email with a simple design and clear call to action. This is it.
         </p>
 
-        <a href={callToActionUrl} target="_blank" rel="noopener noreferrer" styleName="button">
+        <a href={callToActionUrl} target="_blank" rel="noopener noreferrer" className="button">
           Call to Action
         </a>
 
-        <p styleName="text">Good luck!</p>
+        <p className="text">Good luck!</p>
       </div>
-      <div classNstyleNameame="subtitle">Made with muil.io</div>
     </div>
   );
 };
