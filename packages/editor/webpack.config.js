@@ -17,7 +17,6 @@ const includedPaths = templatesDirectory => [
 ];
 
 module.exports = ({ templatesDirectory, babelrc }) => ({
-  context: templatesDirectory,
   entry: [paths.src, 'webpack-hot-middleware/client'],
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -34,9 +33,7 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: [
-              ['react-css-modules', { context: templatesDirectory, generateScopedName: '[local]___[hash:base64:5]' }],
-            ],
+            plugins: [['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }]],
           },
         },
       },
