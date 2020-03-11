@@ -1,8 +1,13 @@
 import React from 'react';
+import logo from './logo.png';
 import './GettingStarted.module.css';
 
 const GettingStarted = ({ name }) => (
   <div styleName="root">
+    <div>
+      <img src={logo} styleName="logo" alt="logo" />
+    </div>
+
     <div styleName="title">Welcome to Muil</div>
 
     <div styleName="text">
