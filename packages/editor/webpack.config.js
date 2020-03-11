@@ -31,7 +31,7 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
         include: includedPaths(templatesDirectory),
         use: {
           loader: 'babel-loader',
-          options: {
+          options: babelrc || {
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }]],
           },
