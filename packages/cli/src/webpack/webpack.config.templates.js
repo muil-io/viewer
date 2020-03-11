@@ -28,13 +28,27 @@ module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) =>
           test: /\.jsx?$/,
           use: {
             loader: 'babel-loader',
-            options: babelrc || { presets: ['@babel/preset-env', '@babel/preset-react'] },
+            options: babelrc || {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: [['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }]],
+            },
           },
           exclude: path.resolve(rootDir, 'node_modules'),
         },
         {
           test: /\.css/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: {
+                  localIdentName: '[local]___[hash:base64:5]',
+                },
+              },
+            },
+          ],
         },
         {
           test: /\.(eot|otf|woff|woff2|ttf)?$/,
