@@ -1,0 +1,32 @@
+.root {
+  background: white;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.title {
+  font-size: 26px;
+  text-align: center;
+  margin: 40px;
+}
+
+.text {
+  text-align: center;
+  font-weight: lighter;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 40px;
+}
+
+.get-started {
+  display: inline-block;
+  color: #7156dd;
+  width: 100%;
+  font-size: 20px;
+  margin-top: 40px;
+  font-weight: lighter;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+}

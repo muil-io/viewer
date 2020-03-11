@@ -31,11 +31,30 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
         include: includedPaths(templatesDirectory),
         use: {
           loader: 'babel-loader',
-          options: babelrc || { presets: ['@babel/preset-env', '@babel/preset-react'] },
+          options: babelrc || {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }]],
+          },
         },
       },
       {
+        test: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: {
+                localIdentName: '[local]___[hash:base64:5]',
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {

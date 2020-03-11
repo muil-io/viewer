@@ -23,6 +23,7 @@
     "@muil/cli": "^0.0.5",
     "@muil/templates-starter-kit": "^0.0.5",
     "babel-loader": "^8.0.6",
+    "babel-plugin-react-css-modules": "^5.2.6",
     "chalk": "^3.0.0",
     "commander": "^4.1.1",
     "css-loader": "^3.4.2",
