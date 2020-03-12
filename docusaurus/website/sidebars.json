@@ -8,6 +8,6 @@
       "getting-started/stylingTemplate"
     ],
     "Configurations": ["configurations/cli", "configurations/customWebpack", "configurations/customBabel"],
-    "API": ["api/sendingEmail", "api/generatingPdf", "api/generatingImage"]
+    "API": ["api/authorization", "api/sendingEmail", "api/generatingPdf", "api/generatingImage", "api/generatingHtml"]
   }
 }

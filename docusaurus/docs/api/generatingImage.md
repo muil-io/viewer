@@ -1,7 +1,29 @@
 ---
 id: generatingImage
 title: Generating Image
-sidebar_label: Generating Image - MISSING
+sidebar_label: Generating Image
 ---
 
-## Generating Image
+> Don't forget to add authorization header. [Read More.](authorization.md)
+
+## API
+
+> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[templateID]/png
+
+or a specific branch
+
+> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[branch]/[templateID]/png
+
+## PNG
+
+Request:
+
+```
+{
+    "subject": "Test Subject",
+    "to": "email@muil.io",
+    "props": {
+        // template dynamic props
+    }
+}
+```
