@@ -11,8 +11,6 @@ const siteConfig = {
     { doc: 'getting-started/quickStart', label: 'Docs' },
     { doc: 'configurations/cli', label: 'Configurations' },
     { doc: 'api/sendingEmail', label: 'API' },
-    { page: 'help', label: 'Help' },
-    { blog: true, label: 'Blog' },
   ],
 
   /* path to images for header/footer */
@@ -59,6 +57,8 @@ const siteConfig = {
   // Open Graph and Twitter card images.
   ogImage: 'img/undraw_online.svg',
   twitterImage: 'img/undraw_tweetstorm.svg',
+
+  noIndex: true,
 
   // For sites with a sizable amount of content, set collapsible to true.
   // Expand/collapse the links and subcategories under categories.
