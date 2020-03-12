@@ -1,11 +1,8 @@
 {
   "hosting": {
+    "site": "docs-muil",
     "public": "build/Muil",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
