@@ -1,6 +1,12 @@
 {
   "docs": {
-    "Getting Started": ["getting-started/quickStart", "getting-started/slowStart", "getting-started/run"],
+    "Getting Started": [
+      "getting-started/quickStart",
+      "getting-started/slowStart",
+      "getting-started/run",
+      "getting-started/writeTemplate",
+      "getting-started/stylingTemplate"
+    ],
     "Configurations": ["configurations/cli", "configurations/customWebpack", "configurations/customBabel"],
     "API": ["api/sendingEmail", "api/generatingPdf", "api/generatingImage"]
   }
