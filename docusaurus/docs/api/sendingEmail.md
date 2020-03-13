@@ -50,3 +50,7 @@ You can add attachments to the email based on other templates:
 ```
 
 > NOTE: Attachments can be HTML/PDF/PNG
+
+## Limitations
+
+[Read More.](limitations/fonts.md)
