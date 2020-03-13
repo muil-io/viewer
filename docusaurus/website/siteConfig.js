@@ -11,6 +11,7 @@ const siteConfig = {
     { doc: 'getting-started/quickStart', label: 'Docs' },
     { doc: 'configurations/cli', label: 'Configurations' },
     { doc: 'api/authorization', label: 'API' },
+    { doc: 'limitations/fonts', label: 'Limitations' },
   ],
 
   /* path to images for header/footer */
