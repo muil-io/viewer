@@ -9,9 +9,7 @@ const Text = styled.div`
 
 const StyledBarChart = styled(BaseBarChart)`
   > table {
-    @media (max-width: 600px) {
-      margin: 0 auto;
-    }
+    margin: 0 auto;
   }
 `;
 
