@@ -18,7 +18,7 @@ or
 yarn muil
 ```
 
-## Run Editor Oprions
+## Run Editor Options
 
 ```
 Usage: muil [options]
