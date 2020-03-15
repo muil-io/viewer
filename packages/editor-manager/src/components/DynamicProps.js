@@ -41,9 +41,7 @@ const DynamicProps = ({ dynamicProps, onChangeKnob }) => {
   const [value, setValue] = useState(null);
 
   useEffect(() => {
-    if (dynamicProps && value === null) {
-      setValue(JSON.stringify(dynamicProps || {}, null, 4));
-    }
+    setValue(JSON.stringify(dynamicProps || {}, null, 4));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dynamicProps]);
 
