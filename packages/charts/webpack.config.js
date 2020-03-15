@@ -1,7 +1,7 @@
 const path = require('path');
 
 const paths = {
-  src: path.resolve(__dirname, 'src/index.js'),
+  src: path.resolve(__dirname, 'src'),
   dist: path.resolve(__dirname, 'lib'),
 };
 
@@ -12,6 +12,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: paths.dist,
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
@@ -26,5 +27,10 @@ module.exports = {
         },
       },
     ],
+  },
+  externals: {
+    react: 'react',
+    'react-dom': 'react-dom',
+    'styled-components': 'styled-components',
   },
 };
