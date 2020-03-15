@@ -21,12 +21,20 @@ Request:
 ```
 {
     "subject": "Test Subject",
-    "to": "email@muil.io",
+    "to": "email1@muil.io",
+    "cc": "email2@muil.io",
+    "bcc": "email3@muil.io",
     "props": {
         // template dynamic props
     }
 }
 ```
+
+`to`/`cc`/`bcc` fields can accept:
+
+- string `"example@muil.io"`
+- string with comma delimiter `"example1@muil.io,example2@muil.io"`
+- array of strings `["example1@muil.io", "example2@muil.io"]`
 
 ## Attachments
 

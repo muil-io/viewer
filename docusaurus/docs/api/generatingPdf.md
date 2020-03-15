@@ -20,8 +20,6 @@ Request:
 
 ```
 {
-    "subject": "Test Subject",
-    "to": "email@muil.io",
     "props": {
         // template dynamic props
     }
