@@ -14,6 +14,7 @@ const paths = {
 const includedPaths = templatesDirectory => [
   path.resolve(__dirname, 'src'),
   path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
+  path.resolve(process.env.INIT_CWD || __dirname, 'src'),
 ];
 
 module.exports = ({ templatesDirectory, babelrc }) => ({
