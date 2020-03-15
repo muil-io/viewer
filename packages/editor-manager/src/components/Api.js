@@ -88,7 +88,7 @@ const CopyButton = styled(CopyIcon)`
 `;
 
 const Api = ({ dynamicProps, id }) => {
-  const url = `https://us-central1-muil-io.cloudfunctions.net/templates/test/${id}/email`;
+  const url = `https://us-central1-muil-io.cloudfunctions.net/templates/${id}/email`;
 
   return (
     <Wrapper>
