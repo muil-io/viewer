@@ -1,6 +1,6 @@
 {
   "name": "@muil/charts",
-  "version": "0.0.8-alpha-1",
+  "version": "0.0.8-alpha-2",
   "license": "UNLICENSED",
   "scripts": {
     "prepublish": "webpack"
