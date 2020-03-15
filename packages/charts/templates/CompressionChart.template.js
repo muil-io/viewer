@@ -8,9 +8,7 @@ const Text = styled.div`
 `;
 
 const StyledCompressionChart = styled(BaseCompressionChart)`
-  > table {
-    margin: 0 auto;
-  }
+  margin: 0 auto;
 `;
 
 const CompressionChart = ({ color1, color2, height, values }) => (

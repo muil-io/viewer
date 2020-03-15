@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  font-family: Arial;
-  height: ${({ height }) => height || 200}px;
-  box-sizing: border-box;
-`;
-
-export const Container = styled.table`
+export const Wrapper = styled.table`
   height: 100%;
   padding-top: 20px;
+  font-family: Arial;
+  height: ${({ height }) => height || 200}px;
 `;
 
 export const ValuesRow = styled.tr`

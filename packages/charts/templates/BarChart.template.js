@@ -8,9 +8,7 @@ const Text = styled.div`
 `;
 
 const StyledBarChart = styled(BaseBarChart)`
-  > table {
-    margin: 0 auto;
-  }
+  margin: 0 auto;
 `;
 
 const BarChart = ({ color, height, values }) => (
