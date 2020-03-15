@@ -62,3 +62,11 @@ export const Row = styled.div`
   display: inline-block;
   vertical-align: middle;
 `;
+
+export const Bullet = styled.div`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
+  background: ${({ color }) => color};
+`;

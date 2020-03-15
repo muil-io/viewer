@@ -15,7 +15,15 @@ const CompressionChart = ({ color1, color2, height, values }) => (
   <Layout>
     <Text>Compression Chart</Text>
 
-    <StyledCompressionChart color1={color1} color2={color2} height={height} values={values} />
+    <StyledCompressionChart
+      color1={color1}
+      color2={color2}
+      height={height}
+      values={values}
+      legend
+      legend1="Bar 1"
+      legend2="Bar 2"
+    />
   </Layout>
 );
 
