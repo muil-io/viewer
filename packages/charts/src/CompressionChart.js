@@ -1,8 +1,8 @@
 import React from 'react';
-import { Wrapper, ValuesRow, LabelsRow, SpaceCell, Cell, Column } from './Chart';
+import { VerticalWrapper, ValuesRow, LabelsRow, SpaceCell, Cell, Column } from './Chart';
 
 const BarChart = ({ className, color1, color2, height, values = [] }) => (
-  <Wrapper className={className} cellSpacing="0" cellPadding="0" height={height}>
+  <VerticalWrapper className={className} cellSpacing="0" cellPadding="0" height={height}>
     <ValuesRow>
       {values.map(({ value1, value2 }, index) => (
         <React.Fragment key={index}>
@@ -29,7 +29,7 @@ const BarChart = ({ className, color1, color2, height, values = [] }) => (
         </React.Fragment>
       ))}
     </LabelsRow>
-  </Wrapper>
+  </VerticalWrapper>
 );
 
 export default BarChart;
