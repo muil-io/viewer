@@ -38,6 +38,6 @@ export const Cell = styled.td`
 
 export const Column = styled.div`
   height: ${({ value }) => value}%;
-  width: 50px;
+  max-width: 50px;
   background: ${({ color }) => color || '#17a2b8'};
 `;
