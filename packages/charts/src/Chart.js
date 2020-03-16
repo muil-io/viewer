@@ -12,8 +12,8 @@ export const VerticalWrapper = styled.table`
 
 export const HorizontalWrapper = styled.table`
   ${commonWrapper};
-  width: 100%;
-  max-width: ${({ width }) => width || 200}px;
+  width: 95%;
+  max-width: ${({ maxWidth }) => maxWidth || 200}px;
 `;
 
 /* CATEGORIES */
@@ -81,7 +81,7 @@ export const Cell = styled.td`
 `;
 
 export const FullWidthCell = styled.td`
-  width: 100%;
+  width: 75%;
   white-space: nowrap;
   > span {
     margin-left: 5px;
@@ -90,8 +90,20 @@ export const FullWidthCell = styled.td`
 
 export const Row = styled.div`
   width: ${({ value }) => value}%;
-  height: 30px;
+  height: 100%;
+  min-height: 25px;
   background: ${({ color }) => color || '#17a2b8'};
   display: inline-block;
   vertical-align: middle;
+`;
+
+export const SpaceRow = styled.tr`
+  height: 10px;
+`;
+
+export const LabelRow = styled.td`
+  max-width: 30%;
+  > span {
+    margin-right: 10px;
+  }
 `;

@@ -1,39 +1,10 @@
 import React from 'react';
-import {
-  VerticalWrapper,
-  ColumnsRow,
-  LabelsRow,
-  Label,
-  SpaceCell,
-  Cell,
-  ColumnBar,
-  ColumnLabel,
-  CategoryRow,
-  CategorySpace,
-  Bullet,
-} from './Chart';
+import { VerticalWrapper, ColumnsRow, LabelsRow, Label, SpaceCell, Cell, ColumnBar, ColumnLabel } from './Chart';
+import Legend from './Legend';
 
 const BarChart = ({ className, height, series = [], categories, legend = false }) => (
   <VerticalWrapper className={className} cellSpacing="0" cellPadding="0" height={height}>
-    {legend && (
-      <>
-        {categories.map(({ label, color }, index) => (
-          <React.Fragment key={index}>
-            <tr>
-              <CategoryRow className="category-row" colSpan={categories.length * series.length}>
-                <Bullet color={color} />
-                <span>{label}</span>
-              </CategoryRow>
-            </tr>
-            <tr>
-              <CategorySpace className="category-space" />
-            </tr>
-          </React.Fragment>
-        ))}
-
-        <tr style={{ height: 30 }} />
-      </>
-    )}
+    {legend && <Legend categories={categories} />}
 
     <ColumnsRow className="columns">
       {series.map(({ data, value }, index) => (
