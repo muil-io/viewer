@@ -16,21 +16,60 @@ export const HorizontalWrapper = styled.table`
   max-width: ${({ width }) => width || 200}px;
 `;
 
-export const ValuesRow = styled.tr`
+/* CATEGORIES */
+
+export const CategoryRow = styled.td`
+  font-size: 12px;
+`;
+
+export const CategorySpace = styled.td`
+  height: 6px;
+`;
+
+export const Bullet = styled.div`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
+  background: ${({ color }) => color};
+`;
+
+/* BARS */
+
+export const ColumnsRow = styled.tr`
   height: 100%;
   > td {
     border-bottom: 1px solid #d5d5d4;
   }
 `;
 
+export const ColumnBar = styled.div`
+  height: ${({ value }) => value}%;
+  background: ${({ color }) => color || '#17a2b8'};
+  min-width: 18px;
+`;
+
+export const ColumnLabel = styled.span`
+  font-size: 12px;
+  color: #929292;
+`;
+
+/* LABELS */
+
 export const LabelsRow = styled.tr`
   > td {
     padding: 6px;
     font-size: 14px;
-    max-width: 50px;
     vertical-align: top;
   }
 `;
+
+export const Label = styled.span`
+  display: inline-block;
+  max-width: 50px;
+`;
+
+/* COMMON */
 
 export const SpaceCell = styled.td`
   width: 5%;
@@ -49,24 +88,10 @@ export const FullWidthCell = styled.td`
   }
 `;
 
-export const Column = styled.div`
-  height: ${({ value }) => value}%;
-  max-width: 50px;
-  background: ${({ color }) => color || '#17a2b8'};
-`;
-
 export const Row = styled.div`
   width: ${({ value }) => value}%;
   height: 30px;
   background: ${({ color }) => color || '#17a2b8'};
   display: inline-block;
   vertical-align: middle;
-`;
-
-export const Bullet = styled.div`
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 7px;
-  background: ${({ color }) => color};
 `;

@@ -1,14 +1,16 @@
 import React from 'react';
-import { HorizontalWrapper, FullWidthCell, Row } from './Chart';
+import { HorizontalWrapper, FullWidthCell, Row, Label, ColumnLabel } from './Chart';
 
 const HorizontalBarChart = ({ className, color, width, values = [] }) => (
   <HorizontalWrapper className={className} width={width}>
     {values.map(({ label, value }, index) => (
       <tr key={index}>
-        <td>{label}</td>
+        <td>
+          <Label>{label}</Label>
+        </td>
         <FullWidthCell>
           <Row value={value} color={color} />
-          <span>{value}</span>
+          <ColumnLabel>{value}</ColumnLabel>
         </FullWidthCell>
       </tr>
     ))}

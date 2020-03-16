@@ -11,24 +11,37 @@ const StyledBarChart = styled(BaseBarChart)`
   margin: 0 auto;
 `;
 
-const BarChart = ({ color, height, values }) => (
+const BarChart = ({ height, legend, categories, series }) => (
   <Layout>
     <Text>Bar Chart</Text>
 
-    <StyledBarChart color={color} height={height} values={values} />
+    <StyledBarChart series={series} categories={categories} height={height} legend={legend} />
   </Layout>
 );
 
 BarChart.displayName = 'Bar Chart';
 
 BarChart.dynamicProps = {
-  color: '#17a2b8',
-  height: 200,
-  values: [
-    { value: 50, label: 'Test1' },
-    { value: 30, label: 'Test2' },
-    { value: 20, label: 'Test3' },
-    { value: 2, label: 'Test4' },
+  height: 300,
+  legend: false,
+  categories: [{ label: 'One Week', color: '#17a2b8' }],
+  series: [
+    {
+      label: 'Test1',
+      value: 53,
+    },
+    {
+      label: 'Test2',
+      value: 13,
+    },
+    {
+      label: 'Test3',
+      value: 26,
+    },
+    {
+      label: 'Test4',
+      value: 43,
+    },
   ],
 };
 
