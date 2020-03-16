@@ -48,10 +48,10 @@ const createMonth = (year, month) => {
   const firstDay = new Date(year, month).getDay();
 
   let date = 1;
-  new Array(6).fill('').forEach((x, i) => {
+  [...Array(6)].forEach((x, i) => {
     const row = [];
 
-    new Array(7).fill('').forEach((y, j) => {
+    [...Array(7)].forEach((y, j) => {
       if (i === 0 && j < firstDay) {
         row.push({});
       } else if (date <= daysInMonth(month, year)) {
@@ -95,7 +95,7 @@ const getColorByScore = (date, scores, colors) => {
 };
 
 const Calendar = ({ className, monthsBefore = 1, showNumbers = false, scores = {}, colors = [] }) => {
-  const calendars = new Array(monthsBefore).fill('').map((_, index) => {
+  const calendars = [...Array(monthsBefore)].map((_, index) => {
     const date = subtractMonths(new Date(), monthsBefore - index - 1);
     return { month: date, calendar: createMonth(date.getFullYear(), date.getMonth()) };
   });
