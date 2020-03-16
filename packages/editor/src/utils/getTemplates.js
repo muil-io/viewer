@@ -18,6 +18,7 @@ export default () => {
           },
         };
       } catch (err) {
+        console.error(err);
         return templates;
       }
     }, {});
