@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "yarn prepublish && node ./scripts/index.js editor -d \"../templates-starter-kit\"",
-    "prepublish": "yarn workspace @muil/editor-manager build"
+    "prepublish": "yarn workspace @muil/editor-manager build && crlf --set=LF scripts/*.js"
   },
   "bin": {
     "muil-editor": "./scripts/index.js"

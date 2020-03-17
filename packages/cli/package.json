@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "prepublish": "crlf --set=LF src/**/**"
   },
   "bin": {
     "muil-cli": "./src/index.js"
