@@ -38,7 +38,7 @@ const Cell = styled.td`
   text-align: center;
   font-size: 11px;
   color: #868686;
-  ${({ empty, color }) => !empty && `background: ${color || '#e4e4e4'};`}
+  ${({ empty }) => !empty && `background: #e4e4e4;`}
 `;
 
 const daysInMonth = (iMonth, iYear) => 32 - new Date(iYear, iMonth, 32).getDate();
@@ -79,24 +79,9 @@ const formatTitle = date => {
   return `${MONTHS[month]} ${year}`;
 };
 
-const getColorByScore = (date, scores, colors) => {
-  if (!date) {
-    return;
-  }
-
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
-
-  const formattedDate = `${day}/${(month + 1) % 12}/${year}`;
-
-  const score = scores[formattedDate];
-  return colors.find(({ range }) => score >= range[0] && score <= range[1])?.color;
-};
-
-const Calendar = ({ className, monthsBefore = 1, showNumbers = false, scores = {}, colors = [] }) => {
-  const calendars = [...Array(monthsBefore)].map((_, index) => {
-    const date = subtractMonths(new Date(), monthsBefore - index - 1);
+const Calendar = ({ className, monthsBefore = 0, monthsAfter = 0, showNumbers = false, dayClassName }) => {
+  const calendars = [...Array(monthsBefore + monthsAfter + 1)].map((_, index) => {
+    const date = subtractMonths(new Date(), monthsBefore - index);
     return { month: date, calendar: createMonth(date.getFullYear(), date.getMonth()) };
   });
 
@@ -124,7 +109,7 @@ const Calendar = ({ className, monthsBefore = 1, showNumbers = false, scores = {
             {calendar.map((week, weekIndex) => (
               <tr key={weekIndex}>
                 {week.map(({ day, date }, dayIndex) => (
-                  <Cell key={dayIndex} empty={!day} color={getColorByScore(date, scores, colors)}>
+                  <Cell key={dayIndex} empty={!day} className={dayClassName?.({ day, date })}>
                     {showNumbers ? day : ''}
                   </Cell>
                 ))}
