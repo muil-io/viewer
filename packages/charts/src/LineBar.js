@@ -12,8 +12,8 @@ const Cell = styled.td`
   background-color: ${({ color }) => color};
 `;
 
-const LineBar = ({ percents = [] }) => (
-  <Wrapper>
+const LineBar = ({ className, percents = [] }) => (
+  <Wrapper className={className}>
     <tr>
       {percents.map(({ value, color }, index) => (
         <Cell key={index} value={value} color={color} />

@@ -35,7 +35,7 @@ BarChart.dynamicProps = {
       data: [53, 31, 25],
     },
     {
-      label: 'Malcolm x',
+      label: 'BoJack Horseman',
       data: [13, 25, 94],
     },
     {

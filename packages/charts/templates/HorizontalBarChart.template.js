@@ -11,24 +11,24 @@ const StyledHorizontalBarChart = styled(BaseHorizontalBarChart)`
   margin: 0 auto;
 `;
 
-const BarChart = ({ color, maxWidth, series }) => (
+const BarChart = ({ maxWidth, series, categories }) => (
   <Layout>
     <Text>Horizontal Bar Chart</Text>
 
-    <StyledHorizontalBarChart color={color} maxWidth={maxWidth} categories={[{ color: '#17a2b8' }]} series={series} />
+    <StyledHorizontalBarChart maxWidth={maxWidth} categories={categories} series={series} />
   </Layout>
 );
 
 BarChart.displayName = 'Horizontal Bar Chart';
 
 BarChart.dynamicProps = {
-  color: '#17a2b8',
   maxWidth: 400,
+  categories: [{ color: '#17a2b8' }],
   series: [
-    { value: 50, label: 'Test1' },
-    { value: 30, label: 'Test2' },
-    { value: 20, label: 'Test3' },
-    { value: 2, label: 'Test4' },
+    { value: 50, label: '2017' },
+    { value: 30, label: '2018' },
+    { value: 20, label: '2019' },
+    { value: 2, label: '2020' },
   ],
 };
 

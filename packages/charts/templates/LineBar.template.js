@@ -7,7 +7,9 @@ const Text = styled.div`
   font-family: Arial;
 `;
 
-const StyledLineBar = styled(BaseLineBar)``;
+const StyledLineBar = styled(BaseLineBar)`
+  margin: 20px 0;
+`;
 
 const LineBar = ({ percents }) => (
   <Layout>

@@ -24,22 +24,22 @@ BarChart.displayName = 'Bar Chart';
 BarChart.dynamicProps = {
   height: 300,
   legend: false,
-  categories: [{ label: 'One Week', color: '#17a2b8' }],
+  categories: [{ color: '#17a2b8' }],
   series: [
     {
-      label: 'Test1',
+      label: '2017',
       value: 53,
     },
     {
-      label: 'Test2',
+      label: '2018',
       value: 13,
     },
     {
-      label: 'Test3',
+      label: '2019',
       value: 26,
     },
     {
-      label: 'Test4',
+      label: '2020',
       value: 43,
     },
   ],
