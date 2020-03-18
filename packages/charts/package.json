@@ -7,7 +7,7 @@
   },
   "files": [
     "lib/index.js",
-    "media/**/*"
+    "media/*"
   ],
   "main": "lib/index.js"
 }
