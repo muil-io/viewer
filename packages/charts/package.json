@@ -6,8 +6,7 @@
     "prepublish": "webpack"
   },
   "files": [
-    "lib/index.js",
-    "media/*"
+    "lib/index.js"
   ],
   "main": "lib/index.js"
 }
