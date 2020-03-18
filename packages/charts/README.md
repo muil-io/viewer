@@ -1,4 +1,8 @@
-# Charts
+# Muil Charts
+
+Easily add charts to your emails.
+
+Visit [Muil Docs.](https://docs.muil.io)
 
 ## Installation
 
