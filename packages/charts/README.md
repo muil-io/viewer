@@ -18,7 +18,7 @@ or
 
 ##### Single Value
 
-![Bar Chart](./media/bar-chart.png)
+![Bar Chart](media/bar-chart.png)
 
 ```
 import {BarChart} from '@muil/charts'
@@ -50,7 +50,7 @@ import {BarChart} from '@muil/charts'
 
 ##### Multiple Values
 
-![Multiple Bar Chart](./media/multiple-bar-chart.png)
+![Multiple Bar Chart](media/multiple-bar-chart.png)
 
 ```
 import {BarChart} from '@muil/charts'
@@ -92,7 +92,7 @@ import {BarChart} from '@muil/charts'
 
 ##### Single Value
 
-![Bar Chart](./media/hor-bar-chart.png)
+![Bar Chart](media/hor-bar-chart.png)
 
 ```
 import {HorizontalBarChart} from '@muil/charts'
@@ -124,7 +124,7 @@ import {HorizontalBarChart} from '@muil/charts'
 
 ##### Multiple Values
 
-![Multiple Bar Chart](./media/multiple-hor-bar-chart.png)
+![Multiple Bar Chart](media/multiple-hor-bar-chart.png)
 
 ```
 import {HorizontalBarChart} from '@muil/charts'
@@ -166,7 +166,7 @@ import {HorizontalBarChart} from '@muil/charts'
 
 ##### Basic
 
-![Calendar](./media/calendar.png)
+![Calendar](media/calendar.png)
 
 ```
 import {Calendar} from '@muil/charts'
@@ -176,7 +176,7 @@ import {Calendar} from '@muil/charts'
 
 ##### Heat map
 
-![Heat map](./media/heat-map.png)
+![Heat map](media/heat-map.png)
 
 ```
 import {Calendar} from '@muil/charts'
@@ -198,7 +198,7 @@ import {Calendar} from '@muil/charts'
 
 #### Line Bar
 
-![Heat map](./media/line-bar.png)
+![Heat map](media/line-bar.png)
 
 ```
 import {LineBar} from '@muil/charts'
