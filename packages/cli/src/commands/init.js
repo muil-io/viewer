@@ -41,6 +41,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   ) {
     fse.copySync('./node_modules/@muil/templates-starter-kit', templatesDirectory || './templates');
     fse.unlinkSync(`${templatesDirectory || './templates'}/package.json`);
+    fse.unlinkSync(`${templatesDirectory || './templates'}/README.md`);
     logger.success('Templates directory created\n');
   }
 
