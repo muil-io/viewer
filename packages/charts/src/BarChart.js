@@ -2,8 +2,8 @@ import React from 'react';
 import { VerticalWrapper, ColumnsRow, LabelsRow, Label, SpaceCell, Cell, ColumnBar, ColumnLabel } from './Chart';
 import Legend from './Legend';
 
-const BarChart = ({ className, height, series = [], categories, legend = false }) => (
-  <VerticalWrapper className={className} cellSpacing="0" cellPadding="0" height={height}>
+const BarChart = ({ className, style, height, series = [], categories, legend = false }) => (
+  <VerticalWrapper className={className} style={style} cellSpacing="0" cellPadding="0" height={height}>
     {legend && <Legend categories={categories} />}
 
     <ColumnsRow className="columns">

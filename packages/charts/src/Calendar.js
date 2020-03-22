@@ -79,14 +79,14 @@ const formatTitle = date => {
   return `${MONTHS[month]} ${year}`;
 };
 
-const Calendar = ({ className, monthsBefore = 0, monthsAfter = 0, showNumbers = false, dayClassName }) => {
+const Calendar = ({ className, style, monthsBefore = 0, monthsAfter = 0, showNumbers = false, dayClassName }) => {
   const calendars = [...Array(monthsBefore + monthsAfter + 1)].map((_, index) => {
     const date = subtractMonths(new Date(), monthsBefore - index);
     return { month: date, calendar: createMonth(date.getFullYear(), date.getMonth()) };
   });
 
   return (
-    <div className={className}>
+    <div className={className} style={style}>
       {calendars.map(({ month, calendar }, calendarIndex) => (
         <Table key={calendarIndex}>
           <thead>

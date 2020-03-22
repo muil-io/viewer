@@ -2,8 +2,8 @@ import React from 'react';
 import { HorizontalWrapper, FullWidthCell, Row, ColumnLabel, SpaceRow, LabelRow } from './Chart';
 import Legend from './Legend';
 
-const HorizontalBarChart = ({ className, maxWidth, series = [], categories, legend = false }) => (
-  <HorizontalWrapper className={className} maxWidth={maxWidth} cellSpacing="0" cellPadding="0">
+const HorizontalBarChart = ({ className, style, maxWidth, series = [], categories, legend = false }) => (
+  <HorizontalWrapper className={className} style={style} maxWidth={maxWidth} cellSpacing="0" cellPadding="0">
     {legend && <Legend categories={categories} />}
 
     {series.map(({ label, value, data }, index) => (
