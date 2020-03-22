@@ -26,7 +26,7 @@ import {BarChart} from '@muil/charts'
 <BarChart
   height={200}
   legend={false}
-  categories={[color: '#17a2b8' }]}
+  categories={[{ color: '#17a2b8' }]}
   series={[
     {
       label: '2017',

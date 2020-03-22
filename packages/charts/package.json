@@ -8,5 +8,8 @@
   "files": [
     "lib/index.js"
   ],
-  "main": "lib/index.js"
+  "main": "lib/index.js",
+  "dependencies": {
+    "styled-components": "^5.0.1"
+  }
 }
