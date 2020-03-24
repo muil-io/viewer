@@ -11,7 +11,7 @@ To get start with Muil you will need:
 1. Run this line inside you root directory:
 
 ```
-npm install --dev @muil/editor`
+npm install --dev @muil/editor
 ```
 
 or

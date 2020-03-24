@@ -56,8 +56,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/undraw_online.svg',
-  twitterImage: 'img/undraw_tweetstorm.svg',
+  ogImage: 'img/muil-logo.png',
+  twitterImage: 'img/muil-logo.png',
 
   noIndex: true,
 

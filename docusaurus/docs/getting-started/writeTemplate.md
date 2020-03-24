@@ -57,8 +57,6 @@ export default GettingStarted;
 
 ## Final Result
 
-To inject dynamic props to the template and be able to change them in the editor use `dynamicProps`:
-
 ```
 import React from 'react';
 
