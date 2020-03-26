@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "0.0.8-alpha-16.0",
+  "version": "0.0.8-alpha-16.1",
   "main": "index.js",
   "license": "UNLICENSED",
   "scripts": {
@@ -23,7 +23,7 @@
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@muil/templates-starter-kit": "^0.0.8-alpha-16.0",
+    "@muil/templates-starter-kit": "^0.0.8-alpha-16.1",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
