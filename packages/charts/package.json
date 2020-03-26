@@ -9,6 +9,11 @@
     "lib/index.js"
   ],
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shahafa/muil-editor.git",
+    "directory": "packages/charts"
+  },
   "dependencies": {
     "styled-components": "^5.0.1"
   }

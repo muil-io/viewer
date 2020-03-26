@@ -2,5 +2,10 @@
   "name": "@muil/templates-starter-kit",
   "version": "0.0.8-alpha-9",
   "license": "UNLICENSED",
-  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439"
+  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shahafa/muil-editor.git",
+    "directory": "packages/templates-starter-kit"
+  }
 }

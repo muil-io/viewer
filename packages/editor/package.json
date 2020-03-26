@@ -16,6 +16,11 @@
     "lib/**/*",
     "*.js"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shahafa/muil-editor.git",
+    "directory": "packages/editor"
+  },
   "dependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.7.6",
