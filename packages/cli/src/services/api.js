@@ -16,32 +16,46 @@ export const login = async ({ email, password }) => {
   return token;
 };
 
-export const publish = async ({ token, branch = '' }) => {
+export const publish = async ({ token, projectId, branch = '' }) => {
   const bodyData = new FormData();
   const files = await fs.readdirSync(buildDirectory);
 
   files.forEach(file => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
 
-  await axios.put(`${baseUrl}/templates/${branch}`, bodyData, {
+  await axios.put(`${baseUrl}/templates/${projectId}/${branch}`, bodyData, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
   });
 };
 
-export const unpublish = async ({ token, branch = '' }) => {
+export const unpublish = async ({ token, projectId, branch = '' }) => {
   const bodyData = new FormData();
 
-  await axios.delete(`${baseUrl}/templates/${branch}`, {
+  await axios.delete(`${baseUrl}/templates/${projectId}/${branch}`, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
   });
 };
 
-export const uploadAsset = async ({ token, assetPath }) => {
+export const uploadAsset = async ({ token, projectId, assetPath }) => {
   const filename = `${md5(assetPath)}.${assetPath.split('.').pop()}`;
 
   const bodyData = new FormData();
   bodyData.append('file', fs.createReadStream(assetPath), { filename });
 
-  return axios.post(`${baseUrl}/assets/${filename}`, bodyData, {
+  return axios.post(`${baseUrl}/assets/${projectId}/${filename}`, bodyData, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
   });
+};
+
+export const getProjects = async ({ token }) => {
+  const { data: projects } = await axios.get(`${baseUrl}/projects`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  // return projects
+  return [
+    { title: 'Project 1', value: 'project1' },
+    { title: 'Project 2', value: 'project2' },
+    { title: 'Project 3', value: 'project3' },
+    { title: 'Project 4', value: 'project4' },
+  ];
 };

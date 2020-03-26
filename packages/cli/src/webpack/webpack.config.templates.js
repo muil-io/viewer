@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { rootDir, getTemplatesDirectory, buildDirectory } = require('../utils/paths');
 
-module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) => {
+module.exports = ({ templatesDirectory, templatesExtension, token, projectId, babelrc }) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
 
   return {
@@ -60,7 +60,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) =>
           use: [
             {
               loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: { token },
+              options: { token, projectId },
             },
           ],
         },
@@ -69,7 +69,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, babelrc }) =>
           use: [
             {
               loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: { token },
+              options: { token, projectId },
             },
           ],
         },
