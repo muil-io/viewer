@@ -51,11 +51,5 @@ export const getProjects = async ({ token }) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  // return projects
-  return [
-    { title: 'Project 1', value: 'project1' },
-    { title: 'Project 2', value: 'project2' },
-    { title: 'Project 3', value: 'project3' },
-    { title: 'Project 4', value: 'project4' },
-  ];
+  return projects.map(({ id, name }) => ({ title: name, value: id }));
 };
