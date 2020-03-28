@@ -12,6 +12,7 @@ const siteConfig = {
     { doc: 'configurations/cli', label: 'Configurations' },
     { doc: 'api/authorization', label: 'API' },
     { doc: 'limitations/fonts', label: 'Limitations' },
+    { doc: 'extra/charts', label: 'Extra' },
   ],
 
   /* path to images for header/footer */

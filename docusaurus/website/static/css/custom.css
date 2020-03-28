@@ -1,3 +1,7 @@
+article p img {
+  margin-left: unset;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 

@@ -9,6 +9,7 @@
     ],
     "Configurations": ["configurations/cli", "configurations/customWebpack", "configurations/customBabel"],
     "API": ["api/authorization", "api/sendingEmail", "api/generatingPdf", "api/generatingImage", "api/generatingHtml"],
-    "Email Limitations": ["limitations/fonts", "limitations/svg"]
+    "Email Limitations": ["limitations/fonts", "limitations/svg"],
+    "Extra": ["extra/charts"]
   }
 }

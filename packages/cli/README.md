@@ -5,12 +5,14 @@ Visit [Muil Docs.](https://docs.muil.io)
 login to muil service
 
 ```
-Usage: muil-cli login [options]
+Usage: muil login [options]
+
+Login to Muil
 
 Options:
-
--u, --user                    Username
--p, --password                password
+  -u --user <user>  Username
+  -p --pass <pass>  Password
+  -h, --help        output usage information
 ```
 
 ## Logout
@@ -18,7 +20,12 @@ Options:
 logout from muil service
 
 ```
-Usage: muil-cli logout
+Usage: muil logout [options]
+
+Logout from Muil
+
+Options:
+  -h, --help  output usage information
 ```
 
 ## Publish
@@ -26,22 +33,31 @@ Usage: muil-cli logout
 build templates and upload to muil
 
 ```
-Usage: muil-cli publish [options]
+Usage: muil publish [options]
+
+Publish email templates
 
 Options:
-
--d, --templatesDirectory      templates root directory, default: './templates'
--b, --branch                  templates branch, default: master
+  -d --templatesDirectory <templatesDirectory>  Templates root directory (default: "./templates")
+  -b --branch <branch>                          templates branch (default: "master")
+  -e --templatesExtension <templatesExtension>  comma separated list of templates path (default: "template.js")
+  -h, --help                                    output usage information
 ```
+
+> This action will clear all templates in this branch and upload the new templates!
 
 ## Unpublish
 
 clean branch
 
 ```
-Usage: muil-cli unpublish [options]
+Usage: muil unpublish [options]
+
+Unpublish email templates
 
 Options:
-
--b, --branch                  templates branch, default: master
+  -b --branch <branch>  templates branch, default: master
+  -h, --help            output usage information
 ```
+
+> This action will clear all templates in this branch!
