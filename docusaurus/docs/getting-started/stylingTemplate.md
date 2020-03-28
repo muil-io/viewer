@@ -19,6 +19,8 @@ const Button = () => (
 export default Button;
 ```
 
+> class names will be shared across all templates!
+
 ## CSS Modules
 
 CSS Modules is supported by creating css files with the extention `.module.css`:
@@ -33,6 +35,8 @@ const Button = () => (
 
 export default Button;
 ```
+
+> class names will be unique for the specific template
 
 ## Styled Components
 

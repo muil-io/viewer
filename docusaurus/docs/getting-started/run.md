@@ -24,7 +24,7 @@ yarn muil
 Usage: muil [options]
 
 Options:
-
--p, --port                    Editor port, default: 8000
--d, --templatesDirectory      Templates root directory, default: './templates'
+  -p --port <port>                              Editor port (default: 8000)
+  -d --templatesDirectory <templatesDirectory>  Templates root directory (default: "./templates")
+  -h, --help                                    output usage information
 ```

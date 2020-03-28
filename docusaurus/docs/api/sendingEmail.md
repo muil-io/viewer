@@ -8,15 +8,22 @@ sidebar_label: Sending Email
 
 ## API
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[templateID]/email
+> POST: <br>https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]/email
 
-or a specific branch
+`Branch is optional`
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[branch]/[templateID]/email
+## Parameters
 
-## Email
+| Name        | Type                     | Description                                                                                                                                                                                    |
+| ----------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| subject     | String                   | Subject of the email                                                                                                                                                                           |
+| to          | String, Array of Strings | Can be either:<br> string `"example@muil.io"` <br> string with semicolon delimiter `"example1@muil.io;example2@muil.io"` <br> array of strings `["example1@muil.io", "example2@muil.io"]` <br> |
+| cc          | String, Array of Strings | Same as `to`                                                                                                                                                                                   |
+| bcc         | String, Array of Strings | Same as `to`                                                                                                                                                                                   |
+| props       | Object                   | Template dynamic props                                                                                                                                                                         |
+| attachments | Array                    | Each item can include:<br> `templateId` - a different template <br> `type`: generate template as html/pdf/png<br>`props`: the template's dynamic props                                         |
 
-Request:
+### Example
 
 ```
 {
@@ -30,13 +37,7 @@ Request:
 }
 ```
 
-`to`/`cc`/`bcc` fields can accept:
-
-- string `"example@muil.io"`
-- string with comma delimiter `"example1@muil.io,example2@muil.io"`
-- array of strings `["example1@muil.io", "example2@muil.io"]`
-
-## Attachments
+### Attachments Example
 
 You can add attachments to the email based on other templates:
 
@@ -57,7 +58,7 @@ You can add attachments to the email based on other templates:
 }
 ```
 
-> NOTE: Attachments can be HTML/PDF/PNG
+> NOTE: Attachments must be one of the following: HTML/PDF/PNG
 
 ## Limitations
 

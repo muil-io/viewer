@@ -28,39 +28,22 @@ program
 program
   .command('publish')
   .description('Publish email templates')
-  .option(
-    '-d --templatesDirectory <templatesDirectory>',
-    "Templates root directory, default: './templates'",
-    './templates',
-  )
-  .option('-b --branch <branch>', 'templates branch, default: master')
-  .option(
-    '-e --templatesExtension <templatesExtension>',
-    "comma separated list of templates path, default 'template.js'",
-    'template.js',
-  )
-  .option('-b --branch <branch>', 'templates branch')
+  .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
+  .option('-b --branch <branch>', 'templates branch (default: "master")')
+  .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   .action(options => publish(options));
 
 program
   .command('unpublish')
   .description('Unpublish email templates')
-  .option('-b --branch <branch>', 'templates branch, default: master')
+  .option('-b --branch <branch>', 'templates branch (default: "master")')
   .action(options => unpublish(options));
 
 program
   .command('build')
   .description('Build email templates')
-  .option(
-    '-d --templatesDirectory <templatesDirectory>',
-    "Templates root directory, default: './templates'",
-    './templates',
-  )
-  .option(
-    '-e --templatesExtension <templatesExtension>',
-    "comma separated list of templates path, default 'template.js'",
-    'template.js',
-  )
+  .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
+  .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   .action(options => build(options));
 
 program

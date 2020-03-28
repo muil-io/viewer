@@ -8,13 +8,18 @@ sidebar_label: Generating Image
 
 ## API
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[templateID]/png
+> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]?type=png
 
-or a specific branch
+`Branch is optional`<br>
+`Default type is html`
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[branch]/[templateID]/png
+## Parameters
 
-## PNG
+| Name  | Type   | Description            |
+| ----- | ------ | ---------------------- |
+| props | Object | Template dynamic props |
+
+### Example
 
 Request:
 

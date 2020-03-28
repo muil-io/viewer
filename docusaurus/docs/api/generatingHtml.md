@@ -8,13 +8,18 @@ sidebar_label: Generating HTML
 
 ## API
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[templateID]/html
+> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]?type=html
 
-or a specific branch
+`Branch is optional`<br>
+`Default type is html`
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[branch]/[templateID]/html
+## Parameters
 
-## HTML
+| Name  | Type   | Description            |
+| ----- | ------ | ---------------------- |
+| props | Object | Template dynamic props |
+
+### Example
 
 Request:
 

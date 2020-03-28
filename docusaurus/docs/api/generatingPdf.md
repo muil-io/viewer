@@ -8,13 +8,18 @@ sidebar_label: Generating PDF
 
 ## API
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[templateID]/pdf
+> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]?type=pdf
 
-or a specific branch
+`Branch is optional`<br>
+`Default type is html`
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/templates/[branch]/[templateID]/pdf
+## Parameters
 
-## PDF
+| Name  | Type   | Description            |
+| ----- | ------ | ---------------------- |
+| props | Object | Template dynamic props |
+
+### Example
 
 Request:
 

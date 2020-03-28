@@ -8,42 +8,47 @@ sidebar_label: Slow Start Guide
 
 To get start with Muil you will need:
 
-1. Run this line inside you root directory:
+1.  Run this line inside you root directory:
 
-```
-npm install --dev @muil/editor
-```
+    ```
+    npm install --dev @muil/editor
+    ```
 
-or
+    or
 
-```
-yarn add --dev @muil/editor
-```
+    ```
+    yarn add --dev @muil/editor
+    ```
 
-2. Add these scripts to package.json:
+    > In case you use Create React App you will to install also `babel-loader`
 
-```
- "scripts": {
-    ...
-    "muil": "muil-editor",
-    "muil-cli": "muil-cli"
-  },
-```
+    <br/>
 
-3. Add templates folder in your root directory
+2.  Add these scripts to package.json:
 
-```
-root directory
-├───src
-│   ├───components
-│   │   ├───Component1.js
-│   │   ├───Component2.js
-│   │   └───Component3.js
-└───templates
+    ```
+    "scripts": {
+        ...
+        "muil": "muil-editor",
+        "muil-cli": "muil-cli"
+    },
+    ```
+
+3.  Add templates folder in your root directory
+
+    ```
+    root directory
+    ├───src
+    │ ├───components
+    │ │ ├───Component1.js
+    │ │ ├───Component2.js
+    │ │ └───Component3.js
+    └───templates
     ├───Template1.js
     ├───Template2.js
     └───Template3.js
-```
+
+    ```
 
 ## Run Muil Editor
 
