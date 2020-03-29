@@ -2,7 +2,7 @@ Visit [Muil Docs.](https://docs.muil.io)
 
 ## Login
 
-login to muil service
+Login to muil service
 
 ```
 Usage: muil login [options]
@@ -17,7 +17,7 @@ Options:
 
 ## Logout
 
-logout from muil service
+Logout from muil service
 
 ```
 Usage: muil logout [options]
@@ -30,7 +30,7 @@ Options:
 
 ## Publish
 
-build templates and upload to muil
+This command builds all templates and uploads to muil
 
 ```
 Usage: muil publish [options]
@@ -48,7 +48,7 @@ Options:
 
 ## Unpublish
 
-clean branch
+This command cleans the branch from all templates
 
 ```
 Usage: muil unpublish [options]
@@ -61,3 +61,21 @@ Options:
 ```
 
 > This action will clear all templates in this branch!
+
+## Api Keys
+
+Using this command you can:
+
+- Create a new api key
+- Enable/Disable keys
+
+```
+Usage: muil apikey [options]
+
+API keys management
+
+Options:
+  -h, --help  output usage information
+```
+
+> API keys are useful to send emails through your server. [Read More.](../api/authorization#authorized-request-using-api-key)
