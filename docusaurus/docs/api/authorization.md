@@ -22,13 +22,24 @@ Request:
 Response:
 
 ```
-generated-token-123
+generated-token
 ```
 
-## Authorized Request
+## Authorized Request using token
 
-To each request to the server add a `Authorization` header:
+To each request to the server add an `Authorization` header:
 
 ```
-Authorization: Bearer [generated-token-123]
+Authorization: Bearer [generated-token]
+```
+
+## Authorized Request using api key
+
+If you would like to [send an email](sendingEmail.md) you can use api key instead.
+
+- [create an api key](../configurations/cli#api-keys)
+- attach api key to email request header
+
+```
+x-api-key: [generate-api-key]
 ```
