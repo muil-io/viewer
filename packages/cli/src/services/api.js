@@ -53,3 +53,26 @@ export const getProjects = async ({ token }) => {
 
   return projects.map(({ id, name }) => ({ title: name, value: id }));
 };
+
+export const createNewKey = async ({ token, projectId, name }) => {
+  const {
+    data: { id, apiKey },
+  } = await axios.post(
+    `${baseUrl}/apiKeys/${projectId}`,
+    { name },
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  );
+
+  return { id, apiKey };
+};
+
+export const enableOrDisableKey = async ({ token, projectId, prefix, enable }) =>
+  axios.post(
+    `${baseUrl}/apiKeys/${projectId}/${prefix}/${enable ? 'enable' : 'disable'}`,
+    {},
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    },
+  );
