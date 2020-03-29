@@ -82,4 +82,4 @@ Options:
   -h, --help  output usage information
 ```
 
-> API keys are useful to send emails through your server. [Read More.](../api/authorization#authorized-request-using-api-key)
+> API keys are useful to send emails through your server. [Read More.](api/authorization.md#authorized-request-using-api-key)

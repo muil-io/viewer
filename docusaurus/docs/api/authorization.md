@@ -37,7 +37,7 @@ Authorization: Bearer [generated-token]
 
 If you would like to [send an email](sendingEmail.md) you can use api key instead.
 
-- [create an api key](../configurations/cli#api-keys)
+- [create an api key](configurations/cli.md#api-keys)
 - attach api key to email request header
 
 ```
