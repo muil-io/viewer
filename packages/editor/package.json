@@ -2,7 +2,7 @@
   "name": "@muil/editor",
   "version": "0.0.8-alpha-16.2",
   "main": "index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "yarn prepublish && node ./scripts/index.js editor -d \"../templates-starter-kit\"",
     "prepublish": "yarn workspace @muil/editor-manager build && crlf --set=LF scripts/*.js"

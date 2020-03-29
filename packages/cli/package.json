@@ -2,7 +2,7 @@
   "name": "@muil/cli",
   "version": "0.0.8-alpha-16.2",
   "main": "index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "start": "node ./src/index.js",
     "prepublish": "crlf --set=LF src/**/**"

@@ -1,7 +1,7 @@
 {
   "name": "@muil/templates-starter-kit",
   "version": "0.0.8-alpha-16.1",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439",
   "homepage": "https://github.com/shahafa/muil-editor/tree/master/packages/templates-starter-kit",
   "repository": {

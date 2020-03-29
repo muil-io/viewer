@@ -2,7 +2,7 @@
   "name": "@muil/editor-manager",
   "version": "0.0.8-alpha-9",
   "main": "index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dashboard --minimal -- webpack-dev-server",
