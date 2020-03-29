@@ -5,6 +5,7 @@ import logout from './commands/logout';
 import publish from './commands/publish';
 import unpublish from './commands/unpublish';
 import build from './commands/build';
+import apikey from './commands/apikey';
 
 program
   .command('init')
@@ -45,6 +46,11 @@ program
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   .action(options => build(options));
+
+program
+  .command('apikey')
+  .description('API keys management')
+  .action(options => apikey(options));
 
 program
   .name('muil')
