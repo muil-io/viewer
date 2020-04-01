@@ -11,16 +11,13 @@ export default async ({ useNpm, templatesDirectory }) => {
 
   logger.info('Installing packages...');
   const useYarn = Boolean(useNpm !== true) && hasYarn();
-  sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', '@muil/editor', '-D']);
-
   let packageJson = await retrievePackageJson();
   const installDependencies = missingDependencies(packageJson);
+  sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', ...installDependencies, '@muil/editor', '-D'], {
+    stdio: 'inherit',
+  });
 
-  if (installDependencies.length > 0) {
-    sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', ...installDependencies, '-D']);
-  }
-
-  logger.infoSuccess();
+  logger.success('Installing packages...');
 
   logger.info('Adding scripts...');
   const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '';
