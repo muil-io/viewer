@@ -8,20 +8,21 @@ const HorizontalBarChart = ({ className, style, maxWidth, series = [], categorie
 
     {series.map(({ label, value, data }, index) => (
       <React.Fragment key={index}>
-        {(data || [value]).map((dataValue, categoryIndex) => (
-          <tr key={categoryIndex}>
-            {categoryIndex === 0 && (
-              <LabelRow rowSpan={categories.length} className="label">
-                <span>{label}</span>
-              </LabelRow>
-            )}
+        <tr>
+          <LabelRow className="label">
+            <span>{label}</span>
+          </LabelRow>
 
-            <FullWidthCell>
-              <Row value={dataValue} color={categories[categoryIndex].color} className="column bar" />
-              <ColumnLabel className="column label">{dataValue}</ColumnLabel>
-            </FullWidthCell>
-          </tr>
-        ))}
+          <FullWidthCell>
+            {(data || [value]).map((dataValue, categoryIndex) => (
+              <div>
+                <Row value={dataValue} color={categories[categoryIndex].color} className="column bar" />
+                <ColumnLabel className="column label">{dataValue}</ColumnLabel>
+              </div>
+            ))}
+          </FullWidthCell>
+        </tr>
+
         <SpaceRow />
       </React.Fragment>
     ))}

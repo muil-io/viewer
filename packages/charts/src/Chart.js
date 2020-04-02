@@ -81,7 +81,7 @@ export const Cell = styled.td`
 `;
 
 export const FullWidthCell = styled.td`
-  width: 75%;
+  width: 70%;
   white-space: nowrap;
   > span {
     margin-left: 5px;
@@ -102,8 +102,9 @@ export const SpaceRow = styled.tr`
 `;
 
 export const LabelRow = styled.td`
-  max-width: 30%;
+  width: 30%;
   > span {
+    display: inline-block;
     margin-right: 10px;
   }
 `;
