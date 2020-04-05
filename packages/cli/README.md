@@ -1,11 +1,25 @@
 Visit [Muil Docs.](https://docs.muil.io)
 
+## Run Muil CLI
+
+To start muil cli run:
+
+```
+npm run muil-cli [options]
+```
+
+or
+
+```
+yarn muil-cli [options]
+```
+
 ## Login
 
 Login to muil service
 
 ```
-Usage: muil login [options]
+Usage: muil-cli login [options]
 
 Login to Muil
 
@@ -20,7 +34,7 @@ Options:
 Logout from muil service
 
 ```
-Usage: muil logout [options]
+Usage: muil-cli logout [options]
 
 Logout from Muil
 
@@ -33,7 +47,7 @@ Options:
 This command builds all templates and uploads to muil
 
 ```
-Usage: muil publish [options]
+Usage: muil-cli publish [options]
 
 Publish email templates
 
@@ -51,7 +65,7 @@ Options:
 This command cleans the branch from all templates
 
 ```
-Usage: muil unpublish [options]
+Usage: muil-cli unpublish [options]
 
 Unpublish email templates
 
@@ -70,7 +84,7 @@ Using this command you can:
 - Enable/Disable keys
 
 ```
-Usage: muil apikey [options]
+Usage: muil-cli apikey [options]
 
 API keys management
 
@@ -78,4 +92,4 @@ Options:
   -h, --help  output usage information
 ```
 
-> API keys are useful to send emails through your server. [Read More.](../api/authorization#authorized-request-using-api-key)
+> API keys are useful to send emails through your server. [Read More.](api/authorization.md#authorized-request-using-api-key)
