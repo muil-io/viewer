@@ -15,7 +15,7 @@ const Wrapper = styled.div.attrs(({ optionWidth }) => ({
   },
 }))`
   grid-column: 5;
-  background: ${({ theme }) => theme.app.secondaryBackground};
+  background: ${({ theme }) => theme.app.contentBackground};
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   position: relative;
 `;
@@ -69,7 +69,7 @@ const Content = styled.div`
 const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
-  const { dynamicProps, id } = selectedTemplate || {};
+  const { dynamicProps } = selectedTemplate || {};
 
   return (
     <Wrapper optionWidth={isVisible ? optionWidth : 0}>
@@ -97,7 +97,7 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
             />
           )}
 
-          {activeTab === 'api' && <Api dynamicProps={dynamicProps} id={id} />}
+          {activeTab === 'api' && <Api />}
         </Content>
       )}
     </Wrapper>
