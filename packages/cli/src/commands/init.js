@@ -35,8 +35,21 @@ export default async ({ useNpm, templatesDirectory }) => {
     fs.existsSync('./node_modules/@muil/templates-starter-kit')
   ) {
     fse.copySync('./node_modules/@muil/templates-starter-kit', templatesDirectory || './templates');
-    fse.unlinkSync(`${templatesDirectory || './templates'}/package.json`);
-    fse.unlinkSync(`${templatesDirectory || './templates'}/README.md`);
+    try {
+      fse.unlinkSync(`${templatesDirectory || './templates'}/package.json`);
+    } catch (err) {
+      // empty
+    }
+    try {
+      fse.unlinkSync(`${templatesDirectory || './templates'}/README.md`);
+    } catch (err) {
+      // empty
+    }
+    try {
+      fse.unlinkSync(`${templatesDirectory || './templates'}/LICENSE`);
+    } catch (err) {
+      // empty
+    }
     logger.success('Templates directory created\n');
   }
 
