@@ -8,12 +8,19 @@ import { buildDirectory } from '../utils/paths';
 const baseUrl = 'https://us-central1-muil-io.cloudfunctions.net';
 
 export const login = async ({ email, password }) => {
-  const { data: token } = await axios.post(`${baseUrl}/auth/login`, {
-    email,
-    password,
-  });
+  try {
+    const {
+      data: {
+        data: { token },
+      },
+    } = await axios.post(`${baseUrl}/auth/login`, {
+      email,
+      password,
+    });
 
-  return token;
+    return token;
+    // eslint-disable-next-line no-empty
+  } catch (err) {}
 };
 
 export const publish = async ({ token, projectId, branch = '' }) => {
@@ -41,13 +48,21 @@ export const uploadAsset = async ({ token, projectId, assetPath }) => {
   const bodyData = new FormData();
   bodyData.append('file', fs.createReadStream(assetPath), { filename });
 
-  return axios.post(`${baseUrl}/assets/${projectId}/${filename}`, bodyData, {
+  const {
+    data: {
+      data: { url },
+    },
+  } = await axios.post(`${baseUrl}/assets/${projectId}/${filename}`, bodyData, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
   });
+
+  return url;
 };
 
 export const getProjects = async ({ token }) => {
-  const { data: projects } = await axios.get(`${baseUrl}/projects`, {
+  const {
+    data: { data: projects },
+  } = await axios.get(`${baseUrl}/projects`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 
@@ -56,7 +71,9 @@ export const getProjects = async ({ token }) => {
 
 export const createNewKey = async ({ token, projectId, name }) => {
   const {
-    data: { id, apiKey },
+    data: {
+      data: { id, apiKey },
+    },
   } = await axios.post(
     `${baseUrl}/apiKeys/${projectId}`,
     { name },
