@@ -5,7 +5,7 @@ import path from 'path';
 import md5 from 'crypto-js/md5';
 import { buildDirectory } from '../utils/paths';
 
-const baseUrl = 'https://us-central1-muil-io.cloudfunctions.net';
+const baseUrl = 'https://us-central1-muil-io.cloudfunctions.net/v1';
 
 export const login = async ({ email, password }) => {
   try {

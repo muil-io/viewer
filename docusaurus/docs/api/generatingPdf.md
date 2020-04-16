@@ -8,7 +8,7 @@ sidebar_label: Generating PDF
 
 ## API
 
-> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]?type=pdf
+> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/v1/templates/[projectID]/[branch]/[templateID]?type=pdf
 
 `Branch is optional`<br>
 `Default type is html`

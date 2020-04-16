@@ -8,7 +8,7 @@ sidebar_label: Generating Image
 
 ## API
 
-> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]?type=png
+> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/v1/templates/[projectID]/[branch]/[templateID]?type=png
 
 `Branch is optional`<br>
 `Default type is html`

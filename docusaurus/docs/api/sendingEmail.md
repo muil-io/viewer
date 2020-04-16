@@ -8,7 +8,7 @@ sidebar_label: Sending Email
 
 ## API
 
-> POST: <br>https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]/email
+> POST: <br>https://us-central1-muil-io.cloudfunctions.net/v1/templates/[projectID]/[branch]/[templateID]/email
 
 `Branch is optional`
 

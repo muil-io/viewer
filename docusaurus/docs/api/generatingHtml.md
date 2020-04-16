@@ -8,7 +8,7 @@ sidebar_label: Generating HTML
 
 ## API
 
-> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/templates/[projectID]/[branch]/[templateID]?type=html
+> GET/POST:<br> https://us-central1-muil-io.cloudfunctions.net/v1/templates/[projectID]/[branch]/[templateID]?type=html
 
 `Branch is optional`<br>
 `Default type is html`

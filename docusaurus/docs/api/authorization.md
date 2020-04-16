@@ -8,7 +8,7 @@ Before make any request to server, you should make a login request to get a toke
 
 ## API
 
-> POST: https://us-central1-muil-io.cloudfunctions.net/auth/login
+> POST: https://us-central1-muil-io.cloudfunctions.net/v1/auth/login
 
 Request:
 
