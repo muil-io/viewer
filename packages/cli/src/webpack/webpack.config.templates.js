@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const DynamicPropsPlugin = require('./muil-dynamic-props-plugin');
 const { rootDir, getTemplatesDirectory, buildDirectory } = require('../utils/paths');
 
 module.exports = ({ templatesDirectory, templatesExtension, token, projectId, babelrc }) => {
@@ -80,6 +81,6 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, ba
       'react-dom': 'react-dom',
       'styled-components': 'styled-components',
     },
-    plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin('[name].css')],
+    plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin('[name].css'), new DynamicPropsPlugin()],
   };
 };
