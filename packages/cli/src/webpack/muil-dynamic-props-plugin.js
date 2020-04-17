@@ -21,16 +21,28 @@ class DynamicPropsPlugin {
               expression.left.property &&
               expression.left.property.name === 'dynamicProps',
           );
-          if (dynamicPropsExpression) {
-            const { properties } = dynamicPropsExpression.expression.right;
 
-            const dynamicProps = {};
-            properties.forEach(p => {
-              dynamicProps[p.key.name] = p.value.value;
-            });
-            const filename = /[^/]*$/.exec(resource)[0].replace('template.js', 'json');
-            files.push({ path: `${compiler.options.output.path}/${filename}`, data: JSON.stringify({ dynamicProps }) });
-          }
+          const displayNameExpression = exp.body.find(
+            ({ type, expression }) =>
+              type === 'ExpressionStatement' &&
+              expression.left &&
+              expression.left.property &&
+              expression.left.property.name === 'displayName',
+          );
+
+          const { properties = [] } = (dynamicPropsExpression && dynamicPropsExpression.expression.right) || {};
+          const dynamicProps = {};
+          properties.forEach(p => {
+            dynamicProps[p.key.name] = p.value.value;
+          });
+
+          const displayName = displayNameExpression && displayNameExpression.expression.right.value;
+
+          const filename = /[^/|^\\]*$/.exec(resource)[0].replace('template.js', 'json');
+          files.push({
+            path: `${compiler.options.output.path}/${filename}`,
+            data: JSON.stringify({ dynamicProps, displayName }),
+          });
         });
       });
     });
