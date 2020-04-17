@@ -34,7 +34,7 @@ export default async ({ templatesDirectory, templatesExtension, branch }) => {
 
   webpack(finalCompiler, async (err, stats) => {
     if (err || stats.hasErrors()) {
-      logger.error(stats.toString('errors-only'));
+      logger.error(err || stats.toString('errors-only'));
       return;
     }
     logger.infoSuccess();
