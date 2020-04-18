@@ -30,9 +30,10 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, ba
           use: {
             loader: 'babel-loader',
             options: babelrc || {
+              babelrc: false,
               presets: ['@babel/preset-env', '@babel/preset-react'],
               plugins: [
-                [('react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' })],
+                ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
                 '@babel/plugin-proposal-class-properties',
                 '@babel/plugin-proposal-nullish-coalescing-operator',
                 '@babel/plugin-proposal-optional-chaining',
