@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -26,7 +26,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@muil/templates-starter-kit": "^0.2.1",
+    "@muil/templates-starter-kit": "^0.2.7",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
