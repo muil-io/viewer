@@ -1,7 +1,7 @@
 import React from 'react';
 import './Simple.css';
 
-const HelloWorld = ({ name, callToActionUrl }) => {
+const Simple = ({ name, callToActionUrl }) => {
   return (
     <div className="root">
       <div className="content">
@@ -20,11 +20,11 @@ const HelloWorld = ({ name, callToActionUrl }) => {
   );
 };
 
-HelloWorld.displayName = 'Simple Template';
+Simple.displayName = 'Simple Template';
 
-HelloWorld.dynamicProps = {
+Simple.dynamicProps = {
   name: 'John',
   callToActionUrl: 'https://www.muil.io',
 };
 
-export default HelloWorld;
+export default Simple;
