@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "muil-io"
+    "prod": "muil-io",
+    "dev": "muil-dev"
   }
 }

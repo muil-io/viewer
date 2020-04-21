@@ -9,7 +9,7 @@
     "start:editor": "yarn workspace @muil/editor start -d \"./packages/templates-starter-kit\"",
     "start:charts": "yarn workspace @muil/editor start -d \"./packages/charts\"",
     "start:docs": "cd docusaurus/website && yarn start",
-    "deploy:docs": "cd docusaurus/website && yarn build && firebase deploy --only hosting:docs-muil",
+    "deploy:docs": "cd docusaurus/website && yarn build && firebase use prod && firebase deploy --only hosting:docs-muil && firebase use dev",
     "cli": "yarn workspace @muil/cli start",
     "cli:templates": "yarn workspace @muil/cli start -d \"./packages/templates-starter-kit\"",
     "cli:charts": "yarn workspace @muil/cli start -d \"./packages/charts\"",
