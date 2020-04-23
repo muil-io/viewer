@@ -1,8 +1,30 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 
 const fs = require('fs');
 
 const files = [];
+
+const readDynamicProperties = (properties, result) => {
+  properties.forEach(p => {
+    if (p.value.type === 'ObjectExpression') {
+      result[p.key.name] = {};
+      readDynamicProperties(p.value.properties, result[p.key.name]);
+    } else if (p.value.type === 'ArrayExpression') {
+      result[p.key.name] = [];
+      p.value.elements.forEach((item, index) => {
+        if (item.type === 'ObjectExpression') {
+          result[p.key.name][index] = {};
+          readDynamicProperties(item.properties, result[p.key.name][index]);
+        } else {
+          result[p.key.name][index] = item.value;
+        }
+      });
+    } else {
+      result[p.key.name] = p.value.value;
+    }
+  });
+};
 
 class DynamicPropsPlugin {
   apply(compiler) {
@@ -26,9 +48,7 @@ class DynamicPropsPlugin {
           );
           if (dynamicPropsExpression) {
             properties = (dynamicPropsExpression && dynamicPropsExpression.expression.right.properties) || [];
-            properties.forEach(p => {
-              dynamicProps[p.key.name] = p.value.value;
-            });
+            readDynamicProperties(properties, dynamicProps);
           } else {
             const staticDynamicPropsExpression = exp.body.find(
               ({ type, expression }) =>
@@ -39,9 +59,7 @@ class DynamicPropsPlugin {
             );
             properties =
               (staticDynamicPropsExpression && staticDynamicPropsExpression.expression.arguments[2].properties) || [];
-            properties.forEach(p => {
-              dynamicProps[p.key.name] = p.value.value;
-            });
+            readDynamicProperties(properties, dynamicProps);
           }
 
           // extracting displayName
