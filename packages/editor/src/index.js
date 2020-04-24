@@ -14,10 +14,14 @@ parent.postMessage(
 );
 
 const App = () => {
-  const { Template, dynamicProps } = useMemo(
+  const { Template, dynamicProps, error } = useMemo(
     () => getTemplateFromUrl({ search: window.location.search, templates }),
     [],
   );
+
+  if (error) {
+    throw error;
+  }
 
   if (!Template) {
     return <div className="no-templates">No Templates</div>;

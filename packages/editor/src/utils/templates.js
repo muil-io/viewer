@@ -20,7 +20,7 @@ export const getTemplateFromUrl = ({ search, templates }) => {
 
   const template = templates[templateId];
 
-  return { Template: template.Template, dynamicProps: parsedProps || template.dynamicProps };
+  return { Template: template.Template, dynamicProps: parsedProps || template.dynamicProps, error: template.error };
 };
 
 export const getTemplatesForParent = templates =>

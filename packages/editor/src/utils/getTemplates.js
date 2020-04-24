@@ -4,22 +4,29 @@ export default () => {
     const templateFiles = templateContext.keys();
 
     return templateFiles.reduce((templates, templateFileName) => {
+      const templateName = templateFileName.split('/');
+      const templateId = templateName[templateName.length - 1].replace(/.template.js/g, '').replace(/\.\//g, '');
+
       try {
-        const templateName = templateFileName.split('/');
-        const templateId = templateName[templateName.length - 1].replace(/.template.js/g, '').replace(/\.\//g, '');
         const Template = templateContext(templateFileName).default;
         return {
           ...templates,
           [templateId]: {
             id: templateId,
-            name: Template.displayName || templateFileName,
+            name: Template?.displayName || templateFileName,
             Template,
-            dynamicProps: Template.dynamicProps,
+            dynamicProps: Template?.dynamicProps,
           },
         };
-      } catch (err) {
-        console.error(err);
-        return templates;
+      } catch (error) {
+        return {
+          ...templates,
+          [templateId]: {
+            id: templateId,
+            name: templateFileName,
+            error,
+          },
+        };
       }
     }, {});
   } catch {
