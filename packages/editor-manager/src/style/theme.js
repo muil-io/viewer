@@ -1,23 +1,27 @@
 const colors = {
   primary: '#6735E0',
   primaryDark: '#332557',
-  secondary: '#f8f8f8',
   white: '#ffffff',
   dark: '#424242',
-  lightDark: '#adadad',
+  gray1: '#adadad',
+  gray2: '#d6d6d6',
+  gray3: '#f1f1f1',
+  gray4: '#f8f8f8',
+  error: '#fa4251',
+  success: '#46D39A',
   shadow: '#0000003d',
-  light: '#e6e6e6',
 };
 
 const theme = {
+  colors,
   app: {
     primaryBackground: `linear-gradient(to top right, ${colors.primaryDark}, ${colors.primary})`,
-    secondaryBackground: colors.secondary,
+    secondaryBackground: colors.gray4,
     contentBackground: colors.white,
   },
   page: {
     templateNameColor: colors.white,
-    screenInactiveColor: colors.secondary,
+    screenInactiveColor: colors.gray4,
     screenActiveColor: colors.primary,
     color: colors.primary,
   },
@@ -28,18 +32,18 @@ const theme = {
     linkIndicator: colors.primary,
     linkBackground: 'rgba(103,53,224, 0.1)',
     shadowColors: colors.shadow,
-    border: colors.light,
-    loading: colors.light,
+    border: colors.gray3,
+    loading: colors.gray2,
   },
   tabs: {
     border: colors.primary,
   },
   options: {
     color: colors.dark,
-    border: colors.light,
+    border: colors.gray2,
   },
   emptyState: {
-    color: colors.lightDark,
+    color: colors.gray1,
   },
 };
 

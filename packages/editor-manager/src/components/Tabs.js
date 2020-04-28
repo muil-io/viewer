@@ -19,10 +19,10 @@ const Wrapper = styled.div`
 
 const Tabs = ({ activeTab, onTabChange, children }) => {
   const count = useMemo(() => React.Children.count(children), [children]);
-  const selectedIndex = useMemo(() => children.findIndex(({ props: { name } }) => name === activeTab), [
-    children,
-    activeTab,
-  ]);
+  const selectedIndex = useMemo(
+    () => React.Children.toArray(children).findIndex(({ props: { name } }) => name === activeTab),
+    [children, activeTab],
+  );
 
   return (
     <Wrapper count={count} selectedIndex={selectedIndex}>

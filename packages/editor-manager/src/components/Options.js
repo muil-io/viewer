@@ -69,7 +69,7 @@ const Content = styled.div`
 const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('props');
-  const { dynamicProps } = selectedTemplate || {};
+  const { name, dynamicProps } = selectedTemplate || {};
 
   return (
     <Wrapper optionWidth={isVisible ? optionWidth : 0}>
@@ -97,7 +97,7 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
             />
           )}
 
-          {activeTab === 'api' && <Api />}
+          {activeTab === 'api' && <Api name={name} dynamicProps={dynamicProps} />}
         </Content>
       )}
     </Wrapper>
