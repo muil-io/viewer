@@ -29,7 +29,7 @@ export default async () => {
       type: 'text',
       name: 'name',
       message: 'Enter a key name',
-      validate: e => (e !== '' ? true : 'Please enter a key name'),
+      validate: (e) => (e !== '' ? true : 'Please enter a key name'),
     });
 
     logger.info('Generating a new api key...');
@@ -47,7 +47,7 @@ export default async () => {
       type: 'text',
       name: 'prefix',
       message: 'Enter a key id',
-      validate: e => (e !== '' ? true : 'Please enter a key id'),
+      validate: (e) => (e !== '' ? true : 'Please enter a key id'),
     });
 
     logger.info(`${choice === 'enable' ? 'Enabling' : 'Disabling'} api key...`);

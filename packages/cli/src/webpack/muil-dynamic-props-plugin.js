@@ -6,7 +6,7 @@ const fs = require('fs');
 const files = [];
 
 const readDynamicProperties = (properties, result) => {
-  properties.forEach(p => {
+  properties.forEach((p) => {
     if (p.value.type === 'ObjectExpression') {
       result[p.key.name] = {};
       readDynamicProperties(p.value.properties, result[p.key.name]);
@@ -28,9 +28,9 @@ const readDynamicProperties = (properties, result) => {
 
 class DynamicPropsPlugin {
   apply(compiler) {
-    compiler.hooks.normalModuleFactory.tap('DynamicPropsPlugin', factory => {
-      factory.hooks.parser.for('javascript/auto').tap('DynamicPropsPlugin', parser => {
-        parser.hooks.program.tap('DynamicPropsPlugin', exp => {
+    compiler.hooks.normalModuleFactory.tap('DynamicPropsPlugin', (factory) => {
+      factory.hooks.parser.for('javascript/auto').tap('DynamicPropsPlugin', (parser) => {
+        parser.hooks.program.tap('DynamicPropsPlugin', (exp) => {
           const {
             module: { resource },
           } = parser.state;
