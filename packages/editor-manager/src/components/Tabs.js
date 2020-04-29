@@ -26,7 +26,7 @@ const Tabs = ({ activeTab, onTabChange, children }) => {
 
   return (
     <Wrapper count={count} selectedIndex={selectedIndex}>
-      {Children.map(children, (child) =>
+      {Children.map(children, child =>
         cloneElement(child, {
           activeTab: activeTab === child.props.name,
           onClick: () => onTabChange(child.props.name),

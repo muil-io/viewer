@@ -26,7 +26,7 @@ const ScreenLink = styled.div`
 
 const ScreenOptions = ({ selectedSize, setSelectedSize }) => (
   <Wrapper>
-    {Object.keys(SCREEN_SIZES).map((sizeKey) => {
+    {Object.keys(SCREEN_SIZES).map(sizeKey => {
       const SizeIcon = SCREEN_SIZES[sizeKey].icon;
 
       return (

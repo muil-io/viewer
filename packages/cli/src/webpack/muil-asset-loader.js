@@ -11,7 +11,7 @@ const schema = {
   },
 };
 
-export default async function () {
+export default async function() {
   const options = getOptions(this) || {};
   validateOptions(schema, options, 'Muil Asset Loader');
 

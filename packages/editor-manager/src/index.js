@@ -24,7 +24,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
 
 if (module.hot) {
-  module.hot.accept((err) => {
+  module.hot.accept(err => {
     if (err) {
       console.error('Cannot apply HMR update.', err);
     }

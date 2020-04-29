@@ -73,7 +73,7 @@ const subtractMonths = (date, months) => {
   return d;
 };
 
-const formatTitle = (date) => {
+const formatTitle = date => {
   const month = date.getMonth();
   const year = date.getFullYear();
   return `${MONTHS[month]} ${year}`;

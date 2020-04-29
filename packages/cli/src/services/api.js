@@ -31,7 +31,7 @@ export const publish = async ({ token, projectId, branch = '' }) => {
   const bodyData = new FormData();
   const files = await fs.readdirSync(buildDirectory);
 
-  files.forEach((file) => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
+  files.forEach(file => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
 
   await axios.put(`${baseUrl}/templates/${projectId}/${branch}`, bodyData, {
     headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },

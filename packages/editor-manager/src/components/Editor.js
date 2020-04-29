@@ -48,7 +48,7 @@ const Editor = ({ value, onChange }) => {
   }, [value]);
 
   const handleChangeCode = useCallback(
-    (_code) => {
+    _code => {
       setCode(_code);
       try {
         const parsedValue = JSON.parse(_code);
@@ -66,7 +66,7 @@ const Editor = ({ value, onChange }) => {
       <BaseEditor
         value={code}
         onValueChange={handleChangeCode}
-        highlight={(_code) => highlight(_code, languages.json)}
+        highlight={_code => highlight(_code, languages.json)}
         className="container__editor"
       />
       <ErrorMessage>{hasError && 'Invalid JSON'}</ErrorMessage>

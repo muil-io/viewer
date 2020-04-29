@@ -11,7 +11,7 @@ const paths = {
   dist: path.resolve(__dirname, 'lib'),
 };
 
-const includedPaths = (templatesDirectory) => [
+const includedPaths = templatesDirectory => [
   path.resolve(__dirname, 'src'),
   path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
   path.resolve(process.env.INIT_CWD || __dirname, 'src'),

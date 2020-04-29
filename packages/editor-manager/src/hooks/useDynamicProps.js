@@ -5,7 +5,7 @@ const useDynamicProps = ({ defaultTemplates }) => {
 
   const handleChangeKnob = useCallback(
     ({ templateId, value }) =>
-      setTemplates((prevTemplates) => ({
+      setTemplates(prevTemplates => ({
         ...prevTemplates,
         [templateId]: {
           ...prevTemplates[templateId],
