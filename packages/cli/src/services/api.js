@@ -7,20 +7,24 @@ import { buildDirectory } from '../utils/paths';
 
 const baseUrl = 'https://us-central1-muil-io.cloudfunctions.net/v1';
 
-export const login = async ({ email, password }) => {
+export const login = async ({ email, password, refreshToken }) => {
   try {
     const {
-      data: {
-        data: { token },
-      },
-    } = await axios.post(`${baseUrl}/auth/login`, {
-      email,
-      password,
-    });
+      data: { data },
+    } = await axios.post(
+      `${baseUrl}/auth/${refreshToken ? 'refreshToken' : 'login'}`,
+      refreshToken ? { refreshToken } : { email, password },
+    );
 
-    return token;
-    // eslint-disable-next-line no-empty
-  } catch (err) {}
+    return data;
+  } catch (err) {
+    // empty
+  }
+};
+
+export const fetchRefreshToken = async ({ email, password }) => {
+  const data = await login({ email, password });
+  return data ? data.refreshToken : null;
 };
 
 export const publish = async ({ token, projectId, branch = '' }) => {

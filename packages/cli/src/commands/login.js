@@ -1,5 +1,5 @@
 import prompts from 'prompts';
-import { login } from '../services/api';
+import { fetchRefreshToken } from '../services/api';
 import { setCredentialsFile } from '../utils/credentials';
 import * as logger from '../utils/logger';
 
@@ -27,13 +27,13 @@ export default async ({ user, pass }) => {
     },
   );
 
-  const token = await login({ email, password });
-  if (typeof token !== 'string') {
+  const refreshToken = await fetchRefreshToken({ email, password });
+  if (typeof refreshToken !== 'string') {
     logger.error('Invalid username or password');
     return;
   }
 
-  setCredentialsFile({ email, password });
+  setCredentialsFile({ email, token: refreshToken });
 
   logger.success('Logged in successfully');
 };
