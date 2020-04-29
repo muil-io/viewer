@@ -3,12 +3,12 @@ import { configurationDirectory, credentialsFile } from './paths';
 import { login } from '../services/api';
 import * as logger from './logger';
 
-export const setCredentialsFile = ({ email, token }) => {
+export const setCredentialsFile = ({ email, accessKey }) => {
   if (!fs.existsSync(configurationDirectory)) {
     fs.mkdirSync(configurationDirectory);
   }
 
-  fs.writeFileSync(credentialsFile, `${JSON.stringify({ email, token }, null, 2)}\n`, {
+  fs.writeFileSync(credentialsFile, `${JSON.stringify({ email, accessKey }, null, 2)}\n`, {
     encoding: 'utf8',
     flag: 'w',
   });
@@ -29,8 +29,13 @@ export const getToken = async () => {
     return null;
   }
 
-  const { token: refreshToken } = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const { token } = await login({ refreshToken });
+  try {
+    const { accessKey: refreshToken } = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const { token } = await login({ refreshToken });
 
-  return token;
+    return token;
+  } catch (err) {
+    logger.error(`You are not logged in`);
+    return null;
+  }
 };

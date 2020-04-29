@@ -33,7 +33,7 @@ export default async ({ user, pass }) => {
     return;
   }
 
-  setCredentialsFile({ email, token: refreshToken });
+  setCredentialsFile({ email, accessKey: refreshToken });
 
   logger.success('Logged in successfully');
 };
