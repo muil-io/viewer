@@ -93,7 +93,7 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
           {activeTab === 'props' && (
             <DynamicProps
               dynamicProps={dynamicProps}
-              onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+              onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
             />
           )}
 

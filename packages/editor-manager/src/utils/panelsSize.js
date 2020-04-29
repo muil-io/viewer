@@ -11,5 +11,5 @@ const minMax = (newWidth, range) => {
   return newWidth;
 };
 
-export const minMaxSideBarWidth = newWidth => minMax(newWidth, SIDE_BAR_RANGE);
-export const minMaxOptionsWidth = newWidth => minMax(newWidth, OPTIONS_RANGE);
+export const minMaxSideBarWidth = (newWidth) => minMax(newWidth, SIDE_BAR_RANGE);
+export const minMaxOptionsWidth = (newWidth) => minMax(newWidth, OPTIONS_RANGE);

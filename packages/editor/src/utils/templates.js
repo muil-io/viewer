@@ -23,7 +23,7 @@ export const getTemplateFromUrl = ({ search, templates }) => {
   return { Template: template.Template, dynamicProps: parsedProps || template.dynamicProps, error: template.error };
 };
 
-export const getTemplatesForParent = templates =>
+export const getTemplatesForParent = (templates) =>
   Object.keys(templates).reduce(
     (prevTemplates, templateKey) => ({
       ...prevTemplates,

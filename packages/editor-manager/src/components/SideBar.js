@@ -43,7 +43,7 @@ const SideBar = ({ templates, sideBarWidth }) => {
     () =>
       templates &&
       Object.keys(templates)
-        .map(key => ({ key, name: templates[key].name }))
+        .map((key) => ({ key, name: templates[key].name }))
         .sort(({ name: nameA }, { name: nameB }) => nameA.localeCompare(nameB)),
     [templates],
   );

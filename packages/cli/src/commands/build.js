@@ -16,7 +16,7 @@ export default async ({ templatesDirectory, templatesExtension }) => {
   logger.info('Compiling templates...');
 
   // eslint-disable-next-line
-  const config = existsSync(configPath) ? require(configPath) : { webpack: config => config };
+  const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
   const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
   const defaultCompiler = webpackConfig({ templatesDirectory, templatesExtension, token, projectId, babelrc });

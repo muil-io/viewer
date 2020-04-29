@@ -11,13 +11,13 @@ export default async ({ user, pass }) => {
         type: 'text',
         name: 'email',
         message: 'username:',
-        validate: e => (e !== '' ? true : 'Please enter a username'),
+        validate: (e) => (e !== '' ? true : 'Please enter a username'),
       },
       {
         type: 'password',
         name: 'password',
         message: 'password:',
-        validate: e => (e !== '' ? true : 'Please enter a password'),
+        validate: (e) => (e !== '' ? true : 'Please enter a password'),
       },
     ],
     {
