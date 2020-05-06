@@ -14,6 +14,8 @@ or
 npm run muil-cli -- [options]
 ```
 
+> To use options with npm run `npm run muil -- <args>`. [See here](https://docs.npmjs.com/cli/run-script)
+
 ## Login
 
 Login to muil service
