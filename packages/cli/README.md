@@ -5,13 +5,13 @@ Visit [Muil Docs.](https://docs.muil.io)
 To start muil cli run:
 
 ```
-npm run muil-cli [options]
+yarn muil-cli [options]
 ```
 
 or
 
 ```
-yarn muil-cli [options]
+npm run muil-cli -- [options]
 ```
 
 ## Login

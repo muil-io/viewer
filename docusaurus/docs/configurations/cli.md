@@ -7,14 +7,16 @@ sidebar_label: CLI
 To start muil cli run:
 
 ```
-npm run muil-cli [options]
+yarn muil-cli [options]
 ```
 
 or
 
 ```
-yarn muil-cli [options]
+npm run muil-cli -- [options]
 ```
+
+> To use options with npm run `npm run muil -- <args>`. [See here](https://docs.npmjs.com/cli/run-script)
 
 ## Login
 

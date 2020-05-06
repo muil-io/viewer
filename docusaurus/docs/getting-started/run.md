@@ -9,14 +9,16 @@ sidebar_label: Run Muil Editor
 To start muil editor run:
 
 ```
-npm run muil
+yarn muil
 ```
 
 or
 
 ```
-yarn muil
+npm run muil
 ```
+
+> To use options with npm run `npm run muil -- <args>`. [See here](https://docs.npmjs.com/cli/run-script)
 
 ## Run Editor Options
 
