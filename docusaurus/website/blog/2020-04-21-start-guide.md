@@ -1,8 +1,5 @@
 ---
 title: Build Dynamic Email Templates using React
-author: Nir Avraham
-authorURL: http://twitter.com/ericnakagawa
-authorImageURL: https://scontent.ftlv5-1.fna.fbcdn.net/v/t31.0-1/cp0/p40x40/13411627_10207784128175070_1188973701029606411_o.jpg?_nc_cat=103&_nc_sid=dbb9e7&_nc_ohc=Q8RjAr8j3JkAX-3uJFA&_nc_ht=scontent.ftlv5-1.fna&oh=c0d926136771fe7ad1d0be3354ce51c9&oe=5EC66375
 ---
 
 Building an email template is hard. Building a dynamic email template is very hard. Adding variables, loops, dynamic text based on variables or even a chart is overhead. What if we could build an email using React? Fortunately, this is exactly what Muil is doing.
