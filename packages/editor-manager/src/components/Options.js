@@ -3,11 +3,8 @@ import styled from 'styled-components';
 import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
-import Tabs from './Tabs';
-import Tab from './Tab';
 import scrollbar from '../style/scrollbar';
 import DynamicProps from './DynamicProps';
-import Api from './Api';
 
 const Wrapper = styled.div.attrs(({ optionWidth }) => ({
   style: {
@@ -66,10 +63,17 @@ const Content = styled.div`
   ${scrollbar};
 `;
 
+const Title = styled.div`
+  align-self: start;
+  padding: 8px 21px;
+  cursor: default;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
+  font-size: 14px;
+`;
+
 const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [activeTab, setActiveTab] = useState('props');
-  const { name, dynamicProps } = selectedTemplate || {};
+  const { dynamicProps } = selectedTemplate || {};
 
   return (
     <Wrapper optionWidth={isVisible ? optionWidth : 0}>
@@ -84,20 +88,13 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
           <SideBarHeader>
             <CloseButton onClick={() => setIsVisible(false)} />
 
-            <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
-              <Tab name="props">Dynamic Props</Tab>
-              <Tab name="api">API</Tab>
-            </Tabs>
+            <Title>Dynamic Props</Title>
           </SideBarHeader>
 
-          {activeTab === 'props' && (
-            <DynamicProps
-              dynamicProps={dynamicProps}
-              onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
-            />
-          )}
-
-          {activeTab === 'api' && <Api name={name} dynamicProps={dynamicProps} />}
+          <DynamicProps
+            dynamicProps={dynamicProps}
+            onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+          />
         </Content>
       )}
     </Wrapper>
