@@ -1,6 +1,6 @@
 {
   "name": "@muil/charts",
-  "version": "0.2.14",
+  "version": "0.2.16",
   "license": "MIT",
   "scripts": {
     "prepublish": "webpack"
