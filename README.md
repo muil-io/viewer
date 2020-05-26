@@ -10,16 +10,16 @@ Run inside the directory:
 
 Run inside the directory:
 
-`npm install --dev @muil/editor`
+`npm install --dev @muil/viewer`
 or
-`yarn add --dev @muil/editor`
+`yarn add --dev @muil/viewer`
 
 Add to package.json:
 
 ```
  "scripts": {
     ...
-    "muil": "muil-editor",
+    "muil": "muil-viewer",
     "muil-cli": "muil-cli"
   },
 ```
@@ -41,10 +41,10 @@ root
 
 # Usage
 
-Run editor with `npm run muil` or `yarn muil` to edit your email.
+Run viewer with `npm run muil` or `yarn muil` to edit your email.
 
 ```
--p --port Editor port, default: 8000
+-p --port Viewer port, default: 8000
 -d --templatesDirectory Templates root directory, default: './templates'
 ```
 

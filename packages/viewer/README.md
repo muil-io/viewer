@@ -17,13 +17,13 @@ To get start with Muil you will need:
 1. Run this line inside you root directory:
 
 ```
-npm install --dev @muil/editor
+npm install --dev @muil/viewer
 ```
 
 or
 
 ```
-yarn add --dev @muil/editor
+yarn add --dev @muil/viewer
 ```
 
 2. Add these scripts to package.json:
@@ -31,7 +31,7 @@ yarn add --dev @muil/editor
 ```
  "scripts": {
     ...
-    "muil": "muil-editor",
+    "muil": "muil-viewer",
     "muil-cli": "muil-cli"
   },
 ```
@@ -53,7 +53,7 @@ root directory
 
 ## Usage
 
-To start muil editor run:
+To start muil viewer run:
 
 ```
 yarn muil
@@ -67,13 +67,13 @@ npm run muil
 
 > To use options with npm run `npm run muil -- <args>`. [See here](https://docs.npmjs.com/cli/run-script)
 
-## Editor Options
+## Viewer Options
 
 ```
 Usage: muil [options]
 
 Options:
-  -p --port <port>                              Editor port (default: 8000)
+  -p --port <port>                              Viewer port (default: 8000)
   -d --templatesDirectory <templatesDirectory>  Templates root directory (default: "./templates")
   -h, --help                                    output usage information
 ```

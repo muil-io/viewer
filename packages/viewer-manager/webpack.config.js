@@ -8,13 +8,13 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const paths = {
   managerSrc: path.resolve(__dirname, 'src/index.js'),
-  previewSrc: path.resolve(__dirname, '../editor/src/index.js'),
+  previewSrc: path.resolve(__dirname, '../viewer/src/index.js'),
   managerHtml: path.resolve(__dirname, 'src/index.html'),
-  previewHtml: path.resolve(__dirname, '../editor/src/index.html'),
+  previewHtml: path.resolve(__dirname, '../viewer/src/index.html'),
   favicon: path.resolve(__dirname, 'src/favicon.ico'),
   node_modules: path.resolve(__dirname, 'node_modules'),
   root_node_modules: path.resolve(__dirname, '../../node_modules'),
-  dist: path.resolve(__dirname, '../editor/lib'),
+  dist: path.resolve(__dirname, '../viewer/lib'),
 };
 
 const common = () => ({

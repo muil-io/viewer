@@ -1,5 +1,5 @@
 {
-  "name": "@muil/editor-manager",
+  "name": "@muil/viewer-manager",
   "version": "0.2.16",
   "main": "index.js",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "prismjs": "^1.19.0",
     "react-draggable": "^4.2.0",
     "react-router-dom": "^5.1.2",
-    "react-simple-code-editor": "^0.11.0",
+    "react-simple-code-viewer": "^0.11.0",
     "style-loader": "^1.1.2",
     "styled-components": "^5.0.1",
     "webpack": "^4.41.4",

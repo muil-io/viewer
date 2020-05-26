@@ -13,7 +13,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   const useYarn = Boolean(useNpm !== true) && hasYarn();
   let packageJson = await retrievePackageJson();
   const installDependencies = missingDependencies(packageJson);
-  sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', ...installDependencies, '@muil/editor', '-D']);
+  sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', ...installDependencies, '@muil/viewer', '-D']);
 
   logger.infoSuccess();
 
@@ -23,7 +23,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   packageJson.dependencies = packageJson.dependencies || {};
   packageJson.devDependencies = packageJson.devDependencies || {};
   packageJson.scripts = packageJson.scripts || {};
-  packageJson.scripts.muil = `muil-editor${templatesDirectoryArg}`;
+  packageJson.scripts.muil = `muil-viewer${templatesDirectoryArg}`;
   packageJson.scripts['muil-cli'] = 'muil-cli';
   writePackageJson(packageJson);
   logger.infoSuccess();
@@ -54,5 +54,5 @@ export default async ({ useNpm, templatesDirectory }) => {
   }
 
   logger.success('Muil installed successfully 💪');
-  console.log(`\n🌟 To run Muil editor, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
+  console.log(`\n🌟 To run Muil viewer, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
 };

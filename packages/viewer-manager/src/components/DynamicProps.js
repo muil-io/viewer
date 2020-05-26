@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { HEADER_HEIGHT } from '../constants';
-import Editor from './Editor';
+import Viewer from './Viewer';
 import EmptyState from './EmptyState';
 
 const Wrapper = styled.div`
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const DynamicProps = ({ dynamicProps, onChangeKnob }) => (
   <Wrapper>
     {dynamicProps ? (
-      <Editor value={dynamicProps} onChange={onChangeKnob} />
+      <Viewer value={dynamicProps} onChange={onChangeKnob} />
     ) : (
       <EmptyState>No Dynamic props defined</EmptyState>
     )}

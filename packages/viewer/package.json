@@ -1,14 +1,14 @@
 {
-  "name": "@muil/editor",
+  "name": "@muil/viewer",
   "version": "0.2.16",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn prepublish && node ./scripts/index.js editor -d \"../templates-starter-kit\"",
-    "prepublish": "yarn workspace @muil/editor-manager build && crlf --set=LF scripts/*.js"
+    "start": "yarn prepublish && node ./scripts/index.js viewer -d \"../templates-starter-kit\"",
+    "prepublish": "yarn workspace @muil/viewer-manager build && crlf --set=LF scripts/*.js"
   },
   "bin": {
-    "muil-editor": "./scripts/index.js"
+    "muil-viewer": "./scripts/index.js"
   },
   "files": [
     "src/**/*",
@@ -16,11 +16,11 @@
     "lib/**/*",
     "*.js"
   ],
-  "homepage": "https://github.com/shahafa/muil-editor/tree/master/packages/editor",
+  "homepage": "https://github.com/shahafa/muil-viewer/tree/master/packages/viewer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shahafa/muil-editor.git",
-    "directory": "packages/editor"
+    "url": "https://github.com/shahafa/muil-viewer.git",
+    "directory": "packages/viewer"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-0",

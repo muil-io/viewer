@@ -33,7 +33,7 @@ const ErrorMessage = styled.div`
   color: red;
 `;
 
-const Editor = ({ value, onChange }) => {
+const Viewer = ({ value, onChange }) => {
   const [code, setCode] = useState('');
   const [hasError, setHasError] = useState(false);
 
@@ -74,4 +74,4 @@ const Editor = ({ value, onChange }) => {
   );
 };
 
-export default Editor;
+export default Viewer;
