@@ -53,7 +53,7 @@ root directory
 
 ## Usage
 
-To start muil viewer run:
+To start muil templates viewer run:
 
 ```
 yarn muil

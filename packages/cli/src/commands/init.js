@@ -54,5 +54,5 @@ export default async ({ useNpm, templatesDirectory }) => {
   }
 
   logger.success('Muil installed successfully 💪');
-  console.log(`\n🌟 To run Muil viewer, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
+  console.log(`\n🌟 To run Muil templates viewer, type: ${chalk.green(`${useYarn ? 'yarn' : 'npm run'} muil`)}\n`);
 };
