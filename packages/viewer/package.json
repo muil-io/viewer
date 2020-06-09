@@ -16,6 +16,7 @@
     "lib/**/*",
     "*.js"
   ],
+  "homepage": "https://muil.io",
   "repository": {
     "type": "git",
     "url": "https://github.com/muil-io/muil-viewer.git",
