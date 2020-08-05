@@ -5,6 +5,34 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DynamicPropsPlugin = require('./muil-dynamic-props-plugin');
 const { rootDir, getTemplatesDirectory, buildDirectory } = require('../utils/paths');
 
+const ASSETS_LOADER_TYPES = {
+  MUIL: 'muil',
+  CLOUD: 'cloud',
+  IN_LINE: 'inLine',
+};
+
+const getAssetsLoaders = (token, projectId) => {
+  const loaderType = token && projectId ? ASSETS_LOADER_TYPES.MUIL : ASSETS_LOADER_TYPES.IN_LINE;
+
+  switch (loaderType) {
+    case ASSETS_LOADER_TYPES.MUIL:
+      return [
+        {
+          loader: path.resolve(__dirname, 'muil-asset-loader.js'),
+          options: { token, projectId },
+        },
+      ];
+    case ASSETS_LOADER_TYPES.IN_LINE:
+      return [
+        {
+          loader: 'url-loader',
+        },
+      ];
+    default:
+      return [];
+  }
+};
+
 module.exports = ({ templatesDirectory, templatesExtension, token, projectId, babelrc }) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
 
@@ -63,22 +91,8 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, ba
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: /\.(eot|otf|woff|woff2|ttf)?$/,
-          use: [
-            {
-              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: { token, projectId },
-            },
-          ],
-        },
-        {
-          test: /\.(bmp|gif|jpe?g|png)?$/,
-          use: [
-            {
-              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: { token, projectId },
-            },
-          ],
+          test: /\.(bmp|gif|jpe?g|png|eot|otf|woff|woff2|ttf)?$/,
+          use: getAssetsLoaders(token, projectId),
         },
       ],
     },

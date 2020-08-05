@@ -28,7 +28,6 @@
     "@babel/preset-react": "^7.7.4",
     "@muil/templates-starter-kit": "^0.3.0",
     "axios": "^0.19.1",
-    "babel-loader": "^8.0.6",
     "chalk": "^4.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "commander": "^4.1.1",
@@ -47,5 +46,8 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
   },
-  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439"
+  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439",
+  "devDependencies": {
+    "url-loader": "^4.1.0"
+  }
 }
