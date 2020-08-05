@@ -11,8 +11,13 @@ const ASSETS_LOADER_TYPES = {
   IN_LINE: 'inLine',
 };
 
-const getAssetsLoaders = (token, projectId) => {
-  const loaderType = token && projectId ? ASSETS_LOADER_TYPES.MUIL : ASSETS_LOADER_TYPES.IN_LINE;
+const getAssetsLoaders = ({ token, projectId, aws, gc, azur }) => {
+  const loaderType =
+    token && projectId
+      ? ASSETS_LOADER_TYPES.MUIL
+      : aws || gc || azur
+      ? ASSETS_LOADER_TYPES.CLOUD
+      : ASSETS_LOADER_TYPES.IN_LINE;
 
   switch (loaderType) {
     case ASSETS_LOADER_TYPES.MUIL:
@@ -28,12 +33,19 @@ const getAssetsLoaders = (token, projectId) => {
           loader: 'url-loader',
         },
       ];
+    case ASSETS_LOADER_TYPES.CLOUD:
+      return [
+        {
+          loader: path.resolve(__dirname, 'cloud-asset-loader.js'),
+          options: { aws, gc, azur },
+        },
+      ];
     default:
       return [];
   }
 };
 
-module.exports = ({ templatesDirectory, templatesExtension, token, projectId, babelrc }) => {
+module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aws, gc, azure, babelrc }) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
 
   return {
@@ -92,7 +104,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, ba
         },
         {
           test: /\.(bmp|gif|jpe?g|png|eot|otf|woff|woff2|ttf)?$/,
-          use: getAssetsLoaders(token, projectId),
+          use: getAssetsLoaders({ token, projectId, aws, gc, azure }),
         },
       ],
     },

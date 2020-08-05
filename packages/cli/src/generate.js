@@ -45,6 +45,10 @@ program
   .description('Build email templates')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
+  // aws
+  .option('--aws_access_key_id <aws_access_key_id>', 'aws aws_access_key_id')
+  .option('--aws_secrete_access_key <aws_secrete_access_key>', 'aws aws_secrete_access_key')
+  .option('--aws_bucket_name <aws_bucket_name>', 'aws aws_bucket_name')
   .action((options) => build(options));
 
 program
