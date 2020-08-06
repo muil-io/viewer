@@ -11,7 +11,8 @@ export default async ({
   aws_access_key_id,
   aws_secrete_access_key,
   aws_bucket_name,
-  gc,
+  gcs_key_file_path,
+  gsc_bucket_name,
   azure,
 }) => {
   logger.info('Compiling templates...');
@@ -30,7 +31,12 @@ export default async ({
           aws_bucket_name,
         }
       : undefined,
-    gc,
+    gcs: gcs_key_file_path
+      ? {
+          gcs_key_file_path,
+          gsc_bucket_name,
+        }
+      : undefined,
     azure,
     babelrc,
   });

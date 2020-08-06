@@ -11,11 +11,11 @@ const ASSETS_LOADER_TYPES = {
   IN_LINE: 'inLine',
 };
 
-const getAssetsLoaders = ({ token, projectId, aws, gc, azur }) => {
+const getAssetsLoaders = ({ token, projectId, aws, gcs, azur }) => {
   const loaderType =
     token && projectId
       ? ASSETS_LOADER_TYPES.MUIL
-      : aws || gc || azur
+      : aws || gcs || azur
       ? ASSETS_LOADER_TYPES.CLOUD
       : ASSETS_LOADER_TYPES.IN_LINE;
 
@@ -37,7 +37,7 @@ const getAssetsLoaders = ({ token, projectId, aws, gc, azur }) => {
       return [
         {
           loader: path.resolve(__dirname, 'cloud-asset-loader.js'),
-          options: { aws, gc, azur },
+          options: { aws, gcs, azur },
         },
       ];
     default:
@@ -45,9 +45,8 @@ const getAssetsLoaders = ({ token, projectId, aws, gc, azur }) => {
   }
 };
 
-module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aws, gc, azure, babelrc }) => {
+module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aws, gcs, azure, babelrc }) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
-
   return {
     mode: 'production',
     entry: glob.sync(`${templatesDir}/**/*.${templatesExtension}`).reduce(
@@ -104,7 +103,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aw
         },
         {
           test: /\.(bmp|gif|jpe?g|png|eot|otf|woff|woff2|ttf)?$/,
-          use: getAssetsLoaders({ token, projectId, aws, gc, azure }),
+          use: getAssetsLoaders({ token, projectId, aws, gcs, azure }),
         },
       ],
     },

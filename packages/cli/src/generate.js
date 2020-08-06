@@ -46,9 +46,12 @@ program
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   // aws
-  .option('--aws_access_key_id <aws_access_key_id>', 'aws aws_access_key_id')
-  .option('--aws_secrete_access_key <aws_secrete_access_key>', 'aws aws_secrete_access_key')
+  .option('--aws_access_key_id <aws_access_key_id>', 'aws access key id')
+  .option('--aws_secrete_access_key <aws_secrete_access_key>', 'aws secrete access key')
   .option('--aws_bucket_name <aws_bucket_name>', 'aws aws_bucket_name')
+  // gcs
+  .option('--gcs_key_file_path <gcs_key_file_path>', 'google cloud .json credential file path')
+  .option('--gsc_bucket_name <gsc_bucket_name>', 'google cloud storage bucket name')
   .action((options) => build(options));
 
 program
