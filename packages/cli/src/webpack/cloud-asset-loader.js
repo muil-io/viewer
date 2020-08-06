@@ -41,7 +41,6 @@ export default async function () {
 
       const bucket = await storage.bucket(gsc_bucket_name);
 
-      this.resourcePath.assetPath.split('.');
       const fileName = `${uuid()}.${this.resourcePath.split('.').pop()}`;
 
       const [
