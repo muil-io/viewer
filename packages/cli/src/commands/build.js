@@ -13,7 +13,10 @@ export default async ({
   aws_bucket_name,
   gcs_key_file_path,
   gsc_bucket_name,
-  azure,
+  azure_account_name,
+  azure_account_key,
+  azure_share_name,
+  azure_dir_name,
 }) => {
   logger.info('Compiling templates...');
 
@@ -37,7 +40,7 @@ export default async ({
           gsc_bucket_name,
         }
       : undefined,
-    azure,
+    azure: azure_account_name ? { azure_account_name, azure_account_key, azure_share_name, azure_dir_name } : undefined,
     babelrc,
   });
   const finalCompiler = config.webpack(defaultCompiler);

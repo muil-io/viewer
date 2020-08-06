@@ -52,6 +52,12 @@ program
   // gcs
   .option('--gcs_key_file_path <gcs_key_file_path>', 'google cloud .json credential file path')
   .option('--gsc_bucket_name <gsc_bucket_name>', 'google cloud storage bucket name')
+  // azure
+  .option('--azure_account_name <azure_account_name>', 'azure account name')
+  .option('--azure_account_key <azure_account_key>', 'azure account key')
+  .option('--azure_share_name <azure_share_name>', 'azure share name')
+  .option('--azure_dir_name <azure_dir_name>', 'azure dir name')
+
   .action((options) => build(options));
 
 program

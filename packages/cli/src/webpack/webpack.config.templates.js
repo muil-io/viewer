@@ -11,11 +11,11 @@ const ASSETS_LOADER_TYPES = {
   IN_LINE: 'inLine',
 };
 
-const getAssetsLoaders = ({ token, projectId, aws, gcs, azur }) => {
+const getAssetsLoaders = ({ token, projectId, aws, gcs, azure }) => {
   const loaderType =
     token && projectId
       ? ASSETS_LOADER_TYPES.MUIL
-      : aws || gcs || azur
+      : aws || gcs || azure
       ? ASSETS_LOADER_TYPES.CLOUD
       : ASSETS_LOADER_TYPES.IN_LINE;
 
@@ -37,7 +37,7 @@ const getAssetsLoaders = ({ token, projectId, aws, gcs, azur }) => {
       return [
         {
           loader: path.resolve(__dirname, 'cloud-asset-loader.js'),
-          options: { aws, gcs, azur },
+          options: { aws, gcs, azure },
         },
       ];
     default:
