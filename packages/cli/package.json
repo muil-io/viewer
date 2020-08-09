@@ -20,13 +20,16 @@
     "directory": "packages/cli"
   },
   "dependencies": {
+    "@azure/storage-file": "^10.3.0",
     "@babel/core": "^7.0.0-0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
+    "@google-cloud/storage": "^5.1.2",
     "@muil/templates-starter-kit": "^0.3.0",
+    "aws-sdk": "^2.726.0",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
     "chalk": "^4.0.0",
@@ -44,6 +47,8 @@
     "mini-css-extract-plugin": "^0.9.0",
     "prompts": "^2.3.0",
     "schema-utils": "^2.6.4",
+    "url-loader": "^4.1.0",
+    "uuid": "^8.3.0",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
   },

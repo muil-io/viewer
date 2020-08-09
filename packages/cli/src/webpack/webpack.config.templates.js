@@ -5,9 +5,48 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DynamicPropsPlugin = require('./muil-dynamic-props-plugin');
 const { rootDir, getTemplatesDirectory, buildDirectory } = require('../utils/paths');
 
-module.exports = ({ templatesDirectory, templatesExtension, token, projectId, babelrc }) => {
-  const templatesDir = getTemplatesDirectory(templatesDirectory);
+const ASSETS_LOADER_TYPES = {
+  MUIL: 'muil',
+  CLOUD: 'cloud',
+  IN_LINE: 'inLine',
+};
 
+const getAssetsLoaders = ({ token, projectId, aws, gcs, azure }) => {
+  const loaderType =
+    token && projectId
+      ? ASSETS_LOADER_TYPES.MUIL
+      : aws || gcs || azure
+      ? ASSETS_LOADER_TYPES.CLOUD
+      : ASSETS_LOADER_TYPES.IN_LINE;
+
+  switch (loaderType) {
+    case ASSETS_LOADER_TYPES.MUIL:
+      return [
+        {
+          loader: path.resolve(__dirname, 'muil-asset-loader.js'),
+          options: { token, projectId },
+        },
+      ];
+    case ASSETS_LOADER_TYPES.IN_LINE:
+      return [
+        {
+          loader: 'url-loader',
+        },
+      ];
+    case ASSETS_LOADER_TYPES.CLOUD:
+      return [
+        {
+          loader: path.resolve(__dirname, 'cloud-asset-loader.js'),
+          options: { aws, gcs, azure },
+        },
+      ];
+    default:
+      return [];
+  }
+};
+
+module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aws, gcs, azure, babelrc }) => {
+  const templatesDir = getTemplatesDirectory(templatesDirectory);
   return {
     mode: 'production',
     entry: glob.sync(`${templatesDir}/**/*.${templatesExtension}`).reduce(
@@ -63,22 +102,8 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, ba
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: /\.(eot|otf|woff|woff2|ttf)?$/,
-          use: [
-            {
-              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: { token, projectId },
-            },
-          ],
-        },
-        {
-          test: /\.(bmp|gif|jpe?g|png)?$/,
-          use: [
-            {
-              loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-              options: { token, projectId },
-            },
-          ],
+          test: /\.(bmp|gif|jpe?g|png|eot|otf|woff|woff2|ttf)?$/,
+          use: getAssetsLoaders({ token, projectId, aws, gcs, azure }),
         },
       ],
     },
