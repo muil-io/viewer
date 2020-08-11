@@ -15,7 +15,7 @@ const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
 const app = express();
 
 export default async ({ port, templatesDirectory }) => {
-  console.log(`${chalk.inverse('\n Starting Muil editor... \n')}`);
+  console.log(`${chalk.inverse('\n Starting Muil viewer... \n')}`);
 
   // eslint-disable-next-line
   const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
