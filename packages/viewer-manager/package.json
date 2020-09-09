@@ -1,6 +1,6 @@
 {
   "name": "@muil/viewer-manager",
-  "version": "0.3.6",
+  "version": "0.3.8",
   "main": "index.js",
   "license": "MIT",
   "private": true,
