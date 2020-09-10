@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom';
-import { renderToStaticMarkup } from 'react-dom/server';
 import getTemplates from './utils/getTemplates';
 import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
 
@@ -27,10 +26,14 @@ const App = () => {
     return <div className="no-templates">No Templates</div>;
   }
 
-  const html = renderToStaticMarkup(<Template {...dynamicProps} />);
-
+  // SSR and createGlobalStyle doesn't play well togther since styled-components v5.2, we need to figure out how to handle this
+  // https://github.com/styled-components/styled-components/blob/71c0fb8bc9eb2c40b0a7d78d67132f7d6ca3aee0/packages/styled-components/src/constructors/createGlobalStyle.js#L54
+  // const html = renderToString(<Template {...dynamicProps} />);
+  //
   // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  // return <div dangerouslySetInnerHTML={{ __html: html }} />;
+
+  return <Template {...dynamicProps} />;
 };
 
 const rootElement = document.getElementById('inner-root');
