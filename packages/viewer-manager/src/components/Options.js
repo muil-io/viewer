@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
-import scrollbar from '../style/scrollbar';
 import DynamicProps from './DynamicProps';
 
 const Wrapper = styled.div.attrs(({ optionWidth }) => ({
@@ -60,7 +59,6 @@ const SideBarHeader = styled(BaseSideBarHeader)`
 const Content = styled.div`
   overflow: hidden auto;
   height: 100%;
-  ${scrollbar};
 `;
 
 const Title = styled.div`
@@ -73,7 +71,7 @@ const Title = styled.div`
 
 const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const { dynamicProps } = selectedTemplate || {};
+  const { id, dynamicProps } = selectedTemplate || {};
 
   return (
     <Wrapper optionWidth={isVisible ? optionWidth : 0}>
@@ -88,12 +86,13 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
           <SideBarHeader>
             <CloseButton onClick={() => setIsVisible(false)} />
 
-            <Title>Dynamic Props</Title>
+            <Title>Details</Title>
           </SideBarHeader>
 
           <DynamicProps
+            id={id}
             dynamicProps={dynamicProps}
-            onChangeKnob={value => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+            onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
           />
         </Content>
       )}

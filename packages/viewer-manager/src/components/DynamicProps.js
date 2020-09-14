@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import scrollbar from '../style/scrollbar';
 import { HEADER_HEIGHT } from '../constants';
 import Viewer from './Viewer';
-import EmptyState from './EmptyState';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -13,15 +13,34 @@ const Wrapper = styled.div`
   overflow: auto;
   padding: 20px;
   background: #fff;
+  ${scrollbar};
 `;
 
-const DynamicProps = ({ dynamicProps, onChangeKnob }) => (
+const Title = styled.div`
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: ${({ theme }) => theme.colors.dark};
+
+  > strong {
+    font-weight: 500;
+    margin-right: 7px;
+  }
+`;
+
+const DynamicProps = ({ id, dynamicProps, onChangeKnob }) => (
   <Wrapper>
-    {dynamicProps ? (
-      <Viewer value={dynamicProps} onChange={onChangeKnob} />
-    ) : (
-      <EmptyState>No Dynamic props defined</EmptyState>
-    )}
+    <Title>
+      <strong>ID:</strong>
+      {id}
+    </Title>
+
+    <Title>
+      <strong>Props:</strong>
+      {dynamicProps ? '' : 'No Dynamic props defined'}
+    </Title>
+
+    {dynamicProps && <Viewer value={dynamicProps} onChange={onChangeKnob} />}
   </Wrapper>
 );
 
