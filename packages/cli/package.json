@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -28,7 +28,7 @@
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "@google-cloud/storage": "^5.1.2",
-    "@muil/templates-starter-kit": "^0.5.2",
+    "@muil/templates-starter-kit": "^0.5.3",
     "aws-sdk": "^2.726.0",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
@@ -52,5 +52,5 @@
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10"
   },
-  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439"
+  "gitHead": "4f7221da33938cc0d75367145da2819a4c66b615"
 }

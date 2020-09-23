@@ -1,8 +1,8 @@
 {
   "name": "@muil/templates-starter-kit",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "license": "MIT",
-  "gitHead": "41a73f328f746f69ffecbad2165079c1888cd439",
+  "gitHead": "4f7221da33938cc0d75367145da2819a4c66b615",
   "homepage": "https://muil.io",
   "repository": {
     "type": "git",
