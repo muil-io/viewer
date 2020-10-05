@@ -16,10 +16,12 @@ export default async function () {
     const { aws_access_key_id: accessKeyId, aws_secrete_access_key: secretAccessKey, aws_bucket_name } = options.aws;
 
     try {
-      const s3 = new AWS.S3({
-        accessKeyId,
-        secretAccessKey,
-      });
+      let s3;
+      if (accessKeyId && secretAccessKey) {
+        s3 = new AWS.S3({ accessKeyId, secretAccessKey });
+      } else {
+        s3 = new AWS.s3();
+      }
 
       const file = await readFile(this.resourcePath);
 

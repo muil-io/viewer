@@ -27,7 +27,7 @@ export default async ({
   const defaultCompiler = webpackConfig({
     templatesDirectory,
     templatesExtension,
-    aws: aws_access_key_id
+    aws: aws_bucket_name
       ? {
           aws_access_key_id,
           aws_secrete_access_key,
