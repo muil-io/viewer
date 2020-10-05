@@ -20,7 +20,7 @@ export default async function () {
       if (accessKeyId && secretAccessKey) {
         s3 = new AWS.S3({ accessKeyId, secretAccessKey });
       } else {
-        s3 = new AWS.s3();
+        s3 = new AWS.S3();
       }
 
       const file = await readFile(this.resourcePath);
