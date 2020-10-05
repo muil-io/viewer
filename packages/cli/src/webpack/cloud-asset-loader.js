@@ -2,7 +2,7 @@
 import { getOptions } from 'loader-utils';
 import fs from 'fs';
 import { promisify } from 'util';
-import { v4 as uuid } from 'uuid';
+import md5 from 'crypto-js/md5';
 import AWS from 'aws-sdk';
 import * as Azure from '@azure/storage-file';
 import { Storage } from '@google-cloud/storage';
@@ -24,9 +24,10 @@ export default async function () {
       }
 
       const file = await readFile(this.resourcePath);
+      const filename = `${md5(this.resourcePath)}.${this.resourcePath.split('.').pop()}`;
 
       const { Location: url } = await s3
-        .upload({ Bucket: aws_bucket_name, Body: JSON.stringify(file), Key: uuid() })
+        .upload({ Bucket: aws_bucket_name, Body: JSON.stringify(file), Key: filename })
         .promise();
 
       return `export default ${JSON.stringify(url)}`;
@@ -42,15 +43,14 @@ export default async function () {
       const storage = new Storage({ keyFilename: gcs_key_file_path });
 
       const bucket = await storage.bucket(gsc_bucket_name);
-
-      const fileName = `${uuid()}.${this.resourcePath.split('.').pop()}`;
+      const filename = `${md5(this.resourcePath)}.${this.resourcePath.split('.').pop()}`;
 
       const [
         {
           metadata: { mediaLink },
         },
       ] = await bucket.upload(this.resourcePath, {
-        destination: fileName,
+        destination: filename,
       });
 
       return `export default ${JSON.stringify(mediaLink)}`;
@@ -79,12 +79,12 @@ export default async function () {
 
       const directoryURL = DirectoryURL.fromShareURL(shareURL, azure_dir_name);
 
-      const fileName = `${uuid()}.${this.resourcePath.split('.').pop()}`;
+      const filename = `${md5(this.resourcePath)}.${this.resourcePath.split('.').pop()}`;
 
       let file = await readFile(this.resourcePath);
       file = JSON.stringify(file);
 
-      const fileURL = await FileURL.fromDirectoryURL(directoryURL, fileName);
+      const fileURL = await FileURL.fromDirectoryURL(directoryURL, filename);
 
       await fileURL.create(Aborter.none, file.length);
       await fileURL.uploadRange(Aborter.none, file, 0, file.length);
