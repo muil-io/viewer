@@ -26,9 +26,7 @@ export default async function () {
       const file = await readFile(this.resourcePath);
       const filename = `${md5(this.resourcePath)}.${this.resourcePath.split('.').pop()}`;
 
-      const { Location: url } = await s3
-        .upload({ Bucket: aws_bucket_name, Body: JSON.stringify(file), Key: filename })
-        .promise();
+      const { Location: url } = await s3.upload({ Bucket: aws_bucket_name, Body: file, Key: filename }).promise();
 
       return `export default ${JSON.stringify(url)}`;
     } catch (error) {
@@ -81,8 +79,7 @@ export default async function () {
 
       const filename = `${md5(this.resourcePath)}.${this.resourcePath.split('.').pop()}`;
 
-      let file = await readFile(this.resourcePath);
-      file = JSON.stringify(file);
+      const file = await readFile(this.resourcePath);
 
       const fileURL = await FileURL.fromDirectoryURL(directoryURL, filename);
 
