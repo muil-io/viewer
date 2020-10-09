@@ -45,26 +45,6 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
         },
       },
       {
-        test: /\.module\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: {
-                localIdentName: '[local]___[hash:base64:5]',
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        exclude: /\.module\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.(eot|otf|woff|woff2|ttf)?$/,
         use: ['file-loader'],
       },

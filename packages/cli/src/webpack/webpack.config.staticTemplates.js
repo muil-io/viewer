@@ -42,7 +42,18 @@ module.exports = ({ templatesDirectory, templatesExtension, babelrc }) => {
         },
         {
           test: /\.module\.css$/,
-          use: ['style-loader', 'css-loader'],
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: {
+                  localIdentName: '[local]___[hash:base64:5]',
+                },
+              },
+            },
+          ],
         },
         {
           test: /\.css$/,
