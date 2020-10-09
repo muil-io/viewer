@@ -5,6 +5,7 @@ import logout from './commands/logout';
 import publish from './commands/publish';
 import unpublish from './commands/unpublish';
 import build from './commands/build';
+import buildStatic from './commands/buildStatic';
 import apikey from './commands/apikey';
 
 program
@@ -59,6 +60,13 @@ program
   .option('--azure_dir_name <azure_dir_name>', 'azure dir name')
 
   .action((options) => build(options));
+
+program
+  .command('build-static')
+  .description('Build email templates static')
+  .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
+  .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
+  .action((options) => buildStatic(options));
 
 program
   .command('apikey')

@@ -11,6 +11,7 @@ node_modules
 # production
 build
 .muil/build
+.muil/static
 lib
 
 # misc

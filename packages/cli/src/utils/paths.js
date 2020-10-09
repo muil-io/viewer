@@ -14,3 +14,5 @@ export const configPath = path.resolve(rootDir, '.muil/config.js');
 export const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
 
 export const getTemplatesDirectory = (directory) => path.resolve(rootDir, directory);
+
+export const buildStaticDirectory = path.resolve(rootDir, '.muil/static');
