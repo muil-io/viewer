@@ -2,10 +2,18 @@
 import { existsSync, readFileSync, copyFileSync } from 'fs';
 import path from 'path';
 import webpack from 'webpack';
-import webpackConfigStaticTemplates from '../webpack/webpack.config.staticTemplates.js';
+import webpackConfigStaticTemplates from '../webpack/webpack.config.templates.js';
 import webpackConfigStaticIframe from '../webpack/webpack.config.staticIframe.js';
 import * as logger from '../utils/logger';
 import { configPath, babelrcPath, buildStaticDirectory } from '../utils/paths';
+
+const TEMPLATES_OUTPUT = path.join(buildStaticDirectory, 'templates');
+
+const copyViewerManagerFiles = () => {
+  copyFileSync(path.resolve(__dirname, '../../lib/index.html'), path.join(buildStaticDirectory, 'index.html'));
+  copyFileSync(path.resolve(__dirname, '../../lib/index.js'), path.join(buildStaticDirectory, 'index.js'));
+  copyFileSync(path.resolve(__dirname, '../../lib/favicon.ico'), path.join(buildStaticDirectory, 'favicon.ico'));
+};
 
 export default async ({ templatesDirectory, templatesExtension }) => {
   logger.info('Compiling templates...');
@@ -14,14 +22,16 @@ export default async ({ templatesDirectory, templatesExtension }) => {
   const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
   const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-  const defaultCompiler = webpackConfigStaticTemplates({
+  const staticTemplatesCompiler = webpackConfigStaticTemplates({
     templatesDirectory,
     templatesExtension,
     babelrc,
+    inlineCss: true,
+    outputPath: TEMPLATES_OUTPUT,
   });
-  const finalCompiler = config.webpack(defaultCompiler);
+  const finalStaticTemplatesCompiler = config.webpack(staticTemplatesCompiler);
 
-  webpack(finalCompiler, (err, stats) => {
+  webpack(finalStaticTemplatesCompiler, (err, stats) => {
     if (err || stats.hasErrors()) {
       logger.error(err || stats.toString('errors-only'));
       return;
@@ -29,9 +39,10 @@ export default async ({ templatesDirectory, templatesExtension }) => {
 
     logger.infoSuccess();
 
-    logger.info('Compiling iframe...');
+    logger.info('Compiling Muil viewer...');
     const iframeCompiler = webpackConfigStaticIframe({
-      templatesDirectory: path.join(buildStaticDirectory, 'templates'),
+      templatesDirectory: TEMPLATES_OUTPUT,
+      outputPath: buildStaticDirectory,
     });
 
     webpack(iframeCompiler, (errIframe, statsIframe) => {
@@ -42,9 +53,7 @@ export default async ({ templatesDirectory, templatesExtension }) => {
 
       logger.infoSuccess();
 
-      copyFileSync(path.resolve(__dirname, '../../lib/index.html'), path.join(buildStaticDirectory, 'index.html'));
-      copyFileSync(path.resolve(__dirname, '../../lib/index.js'), path.join(buildStaticDirectory, 'index.js'));
-      copyFileSync(path.resolve(__dirname, '../../lib/favicon.ico'), path.join(buildStaticDirectory, 'favicon.ico'));
+      copyViewerManagerFiles();
     });
   });
 };

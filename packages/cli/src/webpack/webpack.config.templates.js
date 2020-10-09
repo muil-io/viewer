@@ -45,7 +45,18 @@ const getAssetsLoaders = ({ token, projectId, aws, gcs, azure }) => {
   }
 };
 
-module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aws, gcs, azure, babelrc }) => {
+module.exports = ({
+  templatesDirectory,
+  templatesExtension,
+  token,
+  projectId,
+  aws,
+  gcs,
+  azure,
+  babelrc,
+  inlineCss = false,
+  outputPath = buildDirectory,
+}) => {
   const templatesDir = getTemplatesDirectory(templatesDirectory);
   return {
     mode: 'production',
@@ -57,7 +68,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aw
       {},
     ),
     output: {
-      path: buildDirectory,
+      path: outputPath,
       filename: '[name].js',
       libraryTarget: 'commonjs2',
     },
@@ -84,7 +95,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aw
         {
           test: /\.module\.css$/,
           use: [
-            MiniCssExtractPlugin.loader,
+            inlineCss ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
@@ -99,7 +110,7 @@ module.exports = ({ templatesDirectory, templatesExtension, token, projectId, aw
         {
           test: /\.css$/,
           exclude: /\.module\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: [inlineCss ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
           test: /\.(bmp|gif|jpe?g|png|eot|otf|woff|woff2|ttf)?$/,

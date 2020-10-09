@@ -1,30 +1,24 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
-const { buildStaticDirectory } = require('../utils/paths');
 
 const paths = {
   src: path.resolve(__dirname, '../../iframe/index.js'),
   html: path.resolve(__dirname, '../../iframe/index.html'),
-  node_modules: path.resolve(__dirname, '../../node_modules'),
-  root_node_modules: path.resolve(__dirname, '../../../../node_modules'),
-  dist: buildStaticDirectory,
 };
 
 const includedPaths = (templatesDirectory) => [
   path.resolve(__dirname, '../../iframe'),
   path.resolve(process.env.INIT_CWD || __dirname, templatesDirectory),
-  path.resolve(process.env.INIT_CWD || __dirname, 'src'),
 ];
 
-module.exports = ({ templatesDirectory, babelrc }) => ({
+module.exports = ({ templatesDirectory, babelrc, outputPath }) => ({
   entry: paths.src,
   mode: 'production',
   devtool: 'none',
   output: {
     filename: 'iframe.js',
-    path: paths.dist,
+    path: outputPath,
   },
   module: {
     rules: [
@@ -44,22 +38,10 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
           },
         },
       },
-      {
-        test: /\.(eot|otf|woff|woff2|ttf)?$/,
-        use: ['file-loader'],
-      },
-      {
-        test: /\.(bmp|gif|jpe?g|png)?$/,
-        use: ['file-loader'],
-      },
     ],
   },
   plugins: [
-    new ErrorOverlayPlugin(),
-    new HtmlWebPackPlugin({
-      template: paths.html,
-      filename: 'iframe.html',
-    }),
+    new HtmlWebPackPlugin({ template: paths.html, filename: 'iframe.html' }),
     new webpack.DefinePlugin({
       'process.env.templatesDirectory': JSON.stringify(templatesDirectory),
     }),
