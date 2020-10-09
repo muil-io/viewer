@@ -24,9 +24,9 @@ const Content = ({ selectedTemplate }) => {
     <Wrapper>
       <Frame
         title="content"
-        src={`${window.location.origin}${window.location.pathname}iframe.html?templateId=${
-          currentTemplate?.id
-        }&dynamicProps=${encodeURIComponent(JSON.stringify(currentTemplate?.dynamicProps))}`}
+        src={`iframe.html?templateId=${currentTemplate?.id}&dynamicProps=${encodeURIComponent(
+          JSON.stringify(currentTemplate?.dynamicProps),
+        )}`}
       />
     </Wrapper>
   );

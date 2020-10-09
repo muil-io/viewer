@@ -19,9 +19,9 @@ const includedPaths = (templatesDirectory) => [
 ];
 
 module.exports = ({ templatesDirectory, babelrc }) => ({
-  entry: [paths.src, 'webpack-hot-middleware/client'],
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
+  entry: paths.src,
+  mode: 'production',
+  devtool: 'none',
   output: {
     filename: 'iframe.js',
     path: paths.dist,
@@ -75,7 +75,6 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       template: paths.html,

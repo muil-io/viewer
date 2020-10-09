@@ -7,8 +7,6 @@ export const getTemplateFromUrl = ({ search, templates }) => {
   const [, templateId] = templateStr.split('=');
   const [, dynamicProps] = dynamicPropsStr.split('=');
 
-  console.log(templateId);
-
   let parsedProps = null;
   try {
     parsedProps = JSON.parse(decodeURIComponent(dynamicProps));

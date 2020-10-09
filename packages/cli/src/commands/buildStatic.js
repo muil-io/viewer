@@ -7,6 +7,11 @@ import webpackConfigStaticIframe from '../webpack/webpack.config.staticIframe.js
 import * as logger from '../utils/logger';
 import { configPath, babelrcPath, buildStaticDirectory } from '../utils/paths';
 
+import express from 'express';
+import bodyParser from 'body-parser';
+
+const app = express();
+
 export default async ({ templatesDirectory, templatesExtension }) => {
   logger.info('Compiling templates...');
 
@@ -45,6 +50,19 @@ export default async ({ templatesDirectory, templatesExtension }) => {
       copyFileSync(path.resolve(__dirname, '../../lib/index.html'), path.join(buildStaticDirectory, 'index.html'));
       copyFileSync(path.resolve(__dirname, '../../lib/index.js'), path.join(buildStaticDirectory, 'index.js'));
       copyFileSync(path.resolve(__dirname, '../../lib/favicon.ico'), path.join(buildStaticDirectory, 'favicon.ico'));
+
+      // app.use(bodyParser.urlencoded({ extended: false }));
+      // app.use(bodyParser.json());
+      // app.use(express.static(buildStaticDirectory));
+      // // app.get('/', (req, res) => {
+      // //   res.sendFile(path.resolve(buildStaticDirectory, 'index.html'));
+      // // });
+
+      // app.get('/iframe', (req, res) => {
+      //   res.sendFile(path.resolve(buildStaticDirectory, 'iframe.html'));
+      // });
+
+      // app.listen(5000, () => console.log(`✨ Muil templates viewer is running at http://localhost:${5000}/`));
     });
   });
 };
