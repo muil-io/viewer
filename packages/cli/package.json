@@ -12,7 +12,8 @@
   },
   "files": [
     "src/**/*",
-    "lib/**/*"
+    "lib/**/*",
+    "iframe/**/*"
   ],
   "homepage": "https://muil.io",
   "repository": {
