@@ -16,7 +16,7 @@ module.exports = ({ templatesDirectory, templatesExtension, babelrc }) => {
       {},
     ),
     output: {
-      path: buildStaticDirectory,
+      path: path.join(buildStaticDirectory, 'templates'),
       filename: '[name].js',
       libraryTarget: 'commonjs2',
     },

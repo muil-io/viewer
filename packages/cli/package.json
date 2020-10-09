@@ -11,7 +11,8 @@
     "muil-cli": "./src/index.js"
   },
   "files": [
-    "src/**/*"
+    "src/**/*",
+    "lib/**/*"
   ],
   "homepage": "https://muil.io",
   "repository": {

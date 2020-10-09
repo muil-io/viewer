@@ -15,6 +15,7 @@ const paths = {
   node_modules: path.resolve(__dirname, 'node_modules'),
   root_node_modules: path.resolve(__dirname, '../../node_modules'),
   dist: path.resolve(__dirname, '../viewer/lib'),
+  distStatic: path.resolve(__dirname, '../cli/lib'),
 };
 
 const common = () => ({
@@ -79,14 +80,14 @@ const common = () => ({
   ],
 });
 
-const production = () => ({
+const production = (dist = paths.dist) => ({
   entry: {
     manager: paths.managerSrc,
   },
   devtool: 'none',
   mode: 'production',
   output: {
-    path: paths.dist,
+    path: dist,
     filename: 'index.js',
   },
 });
@@ -121,7 +122,7 @@ const development = ({ templatesDirectory }) => ({
 module.exports = () => {
   switch (process.env.NODE_ENV) {
     case 'production':
-      return merge(common(), production());
+      return [merge(common(), production()), merge(common(), production(paths.distStatic))];
     default:
       return merge(common(), development({ templatesDirectory: '../../../templates-starter-kit' }));
   }
