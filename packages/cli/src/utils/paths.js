@@ -15,4 +15,4 @@ export const babelrcPath = path.resolve(rootDir, '.muil/.babelrc');
 
 export const getTemplatesDirectory = (directory) => path.resolve(rootDir, directory);
 
-export const buildStaticDirectory = path.resolve(rootDir, '.muil/static');
+export const buildStaticDirectory = path.resolve(rootDir, 'muil-static');
