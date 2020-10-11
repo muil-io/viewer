@@ -28,6 +28,7 @@ module.exports = ({ templatesDirectory, babelrc, outputPath }) => ({
         use: {
           loader: 'babel-loader',
           options: babelrc || {
+            sourceType: 'unambiguous',
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
               ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
