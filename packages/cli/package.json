@@ -34,6 +34,7 @@
     "aws-sdk": "^2.726.0",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
+    "base64-font-loader": "^0.0.4",
     "chalk": "^4.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "commander": "^4.1.1",

@@ -113,8 +113,15 @@ module.exports = ({
           use: [inlineCss ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader'],
         },
         {
-          test: /\.(bmp|gif|jpe?g|png|eot|otf|woff|woff2|ttf)?$/,
+          test: /\.(gif|jpe?g|png)?$/,
           use: getAssetsLoaders({ token, projectId, aws, gcs, azure }),
+        },
+        {
+          test: /\.(bmp|eot|otf|woff|woff2|ttf)?$/,
+          loader: 'base64-font-loader',
+          options: {
+            context: process.cwd(),
+          },
         },
       ],
     },
