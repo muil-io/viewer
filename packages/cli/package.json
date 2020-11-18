@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "0.5.17",
+  "version": "0.5.18",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
