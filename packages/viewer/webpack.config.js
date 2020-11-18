@@ -65,7 +65,7 @@ module.exports = ({ templatesDirectory, babelrc }) => ({
       },
       {
         test: /\.(eot|otf|woff|woff2|ttf)?$/,
-        use: ['file-loader'],
+        loader: 'url-loader',
       },
       {
         test: /\.(bmp|gif|jpe?g|png)?$/,
