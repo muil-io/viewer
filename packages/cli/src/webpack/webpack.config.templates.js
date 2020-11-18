@@ -118,10 +118,7 @@ module.exports = ({
         },
         {
           test: /\.(bmp|eot|otf|woff|woff2|ttf)?$/,
-          loader: 'base64-font-loader',
-          options: {
-            context: process.cwd(),
-          },
+          loader: 'url-loader',
         },
       ],
     },
