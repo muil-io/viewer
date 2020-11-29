@@ -4,28 +4,9 @@ import fs from 'fs';
 import path from 'path';
 import md5 from 'crypto-js/md5';
 import { buildDirectory } from '../utils/paths';
+import { getHost } from '../utils/credentials';
 
-const baseUrl = 'https://us-central1-muil-io.cloudfunctions.net/v1';
-
-export const login = async ({ email, password, refreshToken }) => {
-  try {
-    const {
-      data: { data },
-    } = await axios.post(
-      `${baseUrl}/auth/${refreshToken ? 'refreshToken' : 'login'}`,
-      refreshToken ? { refreshToken } : { email, password },
-    );
-
-    return data;
-  } catch (err) {
-    // empty
-  }
-};
-
-export const fetchRefreshToken = async ({ email, password }) => {
-  const data = await login({ email, password });
-  return data ? data.refreshToken : null;
-};
+const baseUrl = getHost() || 'https://muil.io/api';
 
 export const publish = async ({ token, projectId, branch = '' }) => {
   const bodyData = new FormData();
@@ -72,28 +53,3 @@ export const getProjects = async ({ token }) => {
 
   return projects.map(({ id, name }) => ({ title: name, value: id }));
 };
-
-export const createNewKey = async ({ token, projectId, name }) => {
-  const {
-    data: {
-      data: { id, apiKey },
-    },
-  } = await axios.post(
-    `${baseUrl}/apiKeys/${projectId}`,
-    { name },
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    },
-  );
-
-  return { id, apiKey };
-};
-
-export const enableOrDisableKey = async ({ token, projectId, prefix, enable }) =>
-  axios.post(
-    `${baseUrl}/apiKeys/${projectId}/${prefix}/${enable ? 'enable' : 'disable'}`,
-    {},
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    },
-  );

@@ -7,6 +7,8 @@ export const configurationDirectory = `${homedir()}/.muil`;
 
 export const credentialsFile = `${homedir()}/.muil/credentials`;
 
+export const configFile = path.resolve(rootDir, '.muilrc');
+
 export const buildDirectory = path.resolve(rootDir, '.muil/build');
 
 export const configPath = path.resolve(rootDir, '.muil/config.js');

@@ -1,41 +1,43 @@
 import fs from 'fs';
-import { configurationDirectory, credentialsFile } from './paths';
-import { login } from '../services/api';
+import { configFile } from './paths';
 import * as logger from './logger';
 
-export const setCredentialsFile = ({ email, accessKey }) => {
-  if (!fs.existsSync(configurationDirectory)) {
-    fs.mkdirSync(configurationDirectory);
-  }
-
-  fs.writeFileSync(credentialsFile, `${JSON.stringify({ email, accessKey }, null, 2)}\n`, {
-    encoding: 'utf8',
-    flag: 'w',
-  });
-};
-
-export const getCredentialsFile = () => {
-  if (!fs.existsSync(credentialsFile)) {
-    logger.error(`You are not logged in`);
+const getConfigFile = () => {
+  if (!fs.existsSync(configFile)) {
+    logger.error(`.muilrc is not exists!`);
     return null;
   }
 
-  return credentialsFile;
+  return configFile;
 };
 
-export const getToken = async () => {
-  const file = getCredentialsFile();
+export const getToken = () => {
+  const file = getConfigFile();
   if (!file) {
     return null;
   }
 
   try {
-    const { accessKey: refreshToken } = JSON.parse(fs.readFileSync(file, 'utf8'));
-    const { token } = await login({ refreshToken });
-
-    return token;
+    const { apiKey } = JSON.parse(fs.readFileSync(file, 'utf8'));
+    return apiKey;
   } catch (err) {
-    logger.error(`You are not logged in`);
+    logger.error(`No api key exists!`);
+    return null;
+  }
+};
+
+export const getHost = () => {
+  const file = getConfigFile();
+  if (!file) {
+    return null;
+  }
+
+  try {
+    const { host } = JSON.parse(fs.readFileSync(file, 'utf8'));
+
+    return host;
+  } catch (err) {
+    logger.error(`No host exists!`);
     return null;
   }
 };
