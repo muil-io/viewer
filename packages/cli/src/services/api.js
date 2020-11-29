@@ -12,55 +12,45 @@ const baseUrl = getHost() || 'https://muil.io/api';
 axios.interceptors.response.use(
   (response) => response,
   async (err) => {
-    if (err.response.status === 403) {
+    if (err.response.status !== 200) {
+      console.log(err.config);
+
       logger.error('host is not accepting request. please check host or change to valid api key');
     }
     throw err;
   },
 );
 
-export const publish = async ({ token, projectId, branch = '' }) => {
+export const publish = async ({ token, branch = '' }) => {
   const bodyData = new FormData();
   const files = await fs.readdirSync(buildDirectory);
 
-  files.forEach((file) => bodyData.append('templateFile', fs.createReadStream(path.resolve(buildDirectory, file))));
+  files.forEach((file) => bodyData.append('file', fs.createReadStream(path.resolve(buildDirectory, file))));
 
-  await axios.put(`${baseUrl}/templates/${projectId}/${branch}`, bodyData, {
-    headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
+  await axios.put(`${baseUrl}/templates/${branch}`, bodyData, {
+    headers: { ...bodyData.getHeaders(), 'x-api-key': token },
   });
 };
 
-export const unpublish = async ({ token, projectId, branch = '' }) => {
+export const unpublish = async ({ token, branch = '' }) => {
   const bodyData = new FormData();
 
-  await axios.delete(`${baseUrl}/templates/${projectId}/${branch}`, {
-    headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
+  await axios.delete(`${baseUrl}/templates/${branch}`, {
+    headers: { ...bodyData.getHeaders(), 'x-api-key': token },
   });
 };
 
-export const uploadAsset = async ({ token, projectId, assetPath }) => {
+export const uploadAsset = async ({ token, assetPath }) => {
   const filename = `${md5(assetPath)}.${assetPath.split('.').pop()}`;
 
   const bodyData = new FormData();
   bodyData.append('file', fs.createReadStream(assetPath), { filename });
 
   const {
-    data: {
-      data: { url },
-    },
-  } = await axios.post(`${baseUrl}/assets/${projectId}/${filename}`, bodyData, {
-    headers: { ...bodyData.getHeaders(), Authorization: `Bearer ${token}` },
+    data: { url },
+  } = await axios.post(`${baseUrl}/assets/${filename}`, bodyData, {
+    headers: { ...bodyData.getHeaders(), 'x-api-key': token },
   });
 
   return url;
-};
-
-export const getProjects = async ({ token }) => {
-  const {
-    data: { data: projects },
-  } = await axios.get(`${baseUrl}/projects`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-
-  return projects.map(({ id, name }) => ({ title: name, value: id }));
 };

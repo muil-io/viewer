@@ -6,14 +6,10 @@ import { publish } from '../services/api';
 import { getToken } from '../utils/credentials';
 import * as logger from '../utils/logger';
 import { configPath, babelrcPath } from '../utils/paths';
-import { selectProject } from '../utils/projectManager';
 
 export default async ({ templatesDirectory, templatesExtension, branch }) => {
   const token = await getToken();
   if (!token) return;
-
-  const projectId = await selectProject({ token });
-  if (!projectId) return;
 
   const { confirm } = await prompts({
     type: 'confirm',
@@ -29,7 +25,7 @@ export default async ({ templatesDirectory, templatesExtension, branch }) => {
   const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
   const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-  const defaultCompiler = webpackConfig({ templatesDirectory, templatesExtension, token, projectId, babelrc });
+  const defaultCompiler = webpackConfig({ templatesDirectory, templatesExtension, token, babelrc });
   const finalCompiler = config.webpack(defaultCompiler);
 
   webpack(finalCompiler, async (err, stats) => {
@@ -40,7 +36,7 @@ export default async ({ templatesDirectory, templatesExtension, branch }) => {
     logger.infoSuccess();
 
     logger.info('Uploading templates...');
-    await publish({ token, projectId, branch });
+    await publish({ token, branch });
     logger.infoSuccess('Templates uploaded successfully\n');
   });
 };

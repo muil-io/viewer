@@ -11,20 +11,19 @@ const ASSETS_LOADER_TYPES = {
   IN_LINE: 'inLine',
 };
 
-const getAssetsLoaders = ({ token, projectId, aws, gcs, azure }) => {
-  const loaderType =
-    token && projectId
-      ? ASSETS_LOADER_TYPES.MUIL
-      : aws || gcs || azure
-      ? ASSETS_LOADER_TYPES.CLOUD
-      : ASSETS_LOADER_TYPES.IN_LINE;
+const getAssetsLoaders = ({ token, aws, gcs, azure }) => {
+  const loaderType = token
+    ? ASSETS_LOADER_TYPES.MUIL
+    : aws || gcs || azure
+    ? ASSETS_LOADER_TYPES.CLOUD
+    : ASSETS_LOADER_TYPES.IN_LINE;
 
   switch (loaderType) {
     case ASSETS_LOADER_TYPES.MUIL:
       return [
         {
           loader: path.resolve(__dirname, 'muil-asset-loader.js'),
-          options: { token, projectId },
+          options: { token },
         },
       ];
     case ASSETS_LOADER_TYPES.IN_LINE:
@@ -49,7 +48,6 @@ module.exports = ({
   templatesDirectory,
   templatesExtension,
   token,
-  projectId,
   aws,
   gcs,
   azure,
@@ -114,7 +112,7 @@ module.exports = ({
         },
         {
           test: /\.(gif|jpe?g|png)?$/,
-          use: getAssetsLoaders({ token, projectId, aws, gcs, azure }),
+          use: getAssetsLoaders({ token, aws, gcs, azure }),
         },
         {
           test: /\.(bmp|eot|otf|woff|woff2|ttf)?$/,
