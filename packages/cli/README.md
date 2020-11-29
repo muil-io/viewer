@@ -16,33 +16,20 @@ npm run muil-cli -- [options]
 
 > To use options with npm run `npm run muil -- <args>`. [See here](https://docs.npmjs.com/cli/run-script)
 
-## Login
+## Initialization
 
-Login to muil service
+Before you can publish templates you should add `.npmrc` file to your root folder:
 
-```
-Usage: muil-cli login [options]
-
-Login to Muil
-
-Options:
-  -u --user <user>  Username
-  -p --pass <pass>  Password
-  -h, --help        output usage information
+```json
+{
+  "host": "YOUR_HOST_ADDRESS",
+  "apiKey": "YOUR_API_KEY"
+}
 ```
 
-## Logout
+`host` - is optional - if you are using our SaaS option you can remove it. if you are using the on-premise solution you should change it to the address of the server.
 
-Logout from muil service
-
-```
-Usage: muil-cli logout [options]
-
-Logout from Muil
-
-Options:
-  -h, --help  output usage information
-```
+`apiKey` - is required - go to the portal and create a new api key and paste it here.
 
 ## Publish
 
@@ -77,21 +64,3 @@ Options:
 ```
 
 > This action will clear all templates in this branch!
-
-## Api Keys
-
-Using this command you can:
-
-- Create a new api key
-- Enable/Disable keys
-
-```
-Usage: muil-cli apikey [options]
-
-API keys management
-
-Options:
-  -h, --help  output usage information
-```
-
-> API keys are useful to send emails through your server. [Read More.](api/authorization.md#authorized-request-using-api-key)
