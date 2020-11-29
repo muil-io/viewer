@@ -5,8 +5,19 @@ import path from 'path';
 import md5 from 'crypto-js/md5';
 import { buildDirectory } from '../utils/paths';
 import { getHost } from '../utils/credentials';
+import * as logger from '../utils/logger';
 
 const baseUrl = getHost() || 'https://muil.io/api';
+
+axios.interceptors.response.use(
+  (response) => response,
+  async (err) => {
+    if (err.response.status === 403) {
+      logger.error('host is not accepting request. please check host or change to valid api key');
+    }
+    throw err;
+  },
+);
 
 export const publish = async ({ token, projectId, branch = '' }) => {
   const bodyData = new FormData();

@@ -2,42 +2,30 @@ import fs from 'fs';
 import { configFile } from './paths';
 import * as logger from './logger';
 
-const getConfigFile = () => {
+const getConfigKey = (key) => {
   if (!fs.existsSync(configFile)) {
     logger.error(`.muilrc is not exists!`);
     return null;
   }
 
-  return configFile;
+  try {
+    const configuration = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+    return configuration[key];
+  } catch (err) {
+    logger.error(`.muilrc is not a valid json!`);
+    return null;
+  }
 };
 
 export const getToken = () => {
-  const file = getConfigFile();
-  if (!file) {
-    return null;
-  }
+  const apiKey = getConfigKey('apiKey');
 
-  try {
-    const { apiKey } = JSON.parse(fs.readFileSync(file, 'utf8'));
-    return apiKey;
-  } catch (err) {
+  if (!apiKey) {
     logger.error(`No api key exists!`);
     return null;
   }
+
+  return apiKey;
 };
 
-export const getHost = () => {
-  const file = getConfigFile();
-  if (!file) {
-    return null;
-  }
-
-  try {
-    const { host } = JSON.parse(fs.readFileSync(file, 'utf8'));
-
-    return host;
-  } catch (err) {
-    logger.error(`No host exists!`);
-    return null;
-  }
-};
+export const getHost = () => getConfigKey('host');
