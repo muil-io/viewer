@@ -7,7 +7,7 @@ import { buildDirectory } from '../utils/paths';
 import { getHost } from '../utils/credentials';
 import * as logger from '../utils/logger';
 
-const baseUrl = getHost() || 'https://muil.io/api';
+const baseUrl = getHost() || 'https://app.muil.io';
 
 axios.interceptors.response.use(
   (response) => response,
