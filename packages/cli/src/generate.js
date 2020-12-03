@@ -1,12 +1,9 @@
 import program from 'commander';
 import initiate from './commands/init';
-import login from './commands/login';
-import logout from './commands/logout';
 import publish from './commands/publish';
 import unpublish from './commands/unpublish';
 import build from './commands/build';
 import buildStatic from './commands/buildStatic';
-import apikey from './commands/apikey';
 
 program
   .command('init')
@@ -14,18 +11,6 @@ program
   .option('-n --use-npm', 'Use npm to install deps')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory')
   .action((options) => initiate(options));
-
-program
-  .command('login')
-  .description('Login to Muil')
-  .option('-u --user <user>', 'Username')
-  .option('-p --pass <pass>', 'Password')
-  .action((options) => login(options));
-
-program
-  .command('logout')
-  .description('Logout from Muil')
-  .action(() => logout());
 
 program
   .command('publish')
@@ -67,11 +52,6 @@ program
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   .action((options) => buildStatic(options));
-
-program
-  .command('apikey')
-  .description('API keys management')
-  .action((options) => apikey(options));
 
 program.name('muil').usage('<command> [options]').parse(process.argv);
 

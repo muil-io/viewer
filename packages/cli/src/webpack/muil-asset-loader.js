@@ -15,6 +15,6 @@ export default async function () {
   const options = getOptions(this) || {};
   validateOptions(schema, options, 'Muil Asset Loader');
 
-  const url = await uploadAsset({ token: options.token, projectId: options.projectId, assetPath: this.resourcePath });
+  const url = await uploadAsset({ token: options.token, assetPath: this.resourcePath });
   return `export default ${JSON.stringify(url)}`;
 }
