@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "@google-cloud/storage": "^5.1.2",
-    "@muil/templates-starter-kit": "^1.0.0",
+    "@muil/templates-starter-kit": "^1.0.2",
     "aws-sdk": "^2.726.0",
     "axios": "^0.19.1",
     "babel-loader": "^8.0.6",
