@@ -7,15 +7,14 @@ import { buildDirectory } from '../utils/paths';
 import { getHost } from '../utils/credentials';
 import * as logger from '../utils/logger';
 
-const baseUrl = getHost() || 'https://app.muil.io';
+const getBaseUrl = () => getHost() || 'https://app.muil.io';
 
 axios.interceptors.response.use(
   (response) => response,
   async (err) => {
-    if (err.response.status !== 200) {
-      console.log(err.config);
-
-      logger.error('host is not accepting request. please check host or change to valid api key');
+    if (!err.response || err.response.status !== 200) {
+      const host = getBaseUrl();
+      logger.error(`Host ${host} is not accepting request. please check host or change to valid api key`);
     }
     throw err;
   },
@@ -27,7 +26,7 @@ export const publish = async ({ token, branch = '' }) => {
 
   files.forEach((file) => bodyData.append('file', fs.createReadStream(path.resolve(buildDirectory, file))));
 
-  await axios.put(`${baseUrl}/templates/${branch}`, bodyData, {
+  await axios.put(`${getBaseUrl()}/templates/${branch}`, bodyData, {
     headers: { ...bodyData.getHeaders(), 'x-api-key': token },
   });
 };
@@ -35,7 +34,7 @@ export const publish = async ({ token, branch = '' }) => {
 export const unpublish = async ({ token, branch = '' }) => {
   const bodyData = new FormData();
 
-  await axios.delete(`${baseUrl}/templates/${branch}`, {
+  await axios.delete(`${getBaseUrl()}/templates/${branch}`, {
     headers: { ...bodyData.getHeaders(), 'x-api-key': token },
   });
 };
@@ -48,7 +47,7 @@ export const uploadAsset = async ({ token, assetPath }) => {
 
   const {
     data: { url },
-  } = await axios.post(`${baseUrl}/assets/${filename}`, bodyData, {
+  } = await axios.post(`${getBaseUrl()}/assets/${filename}`, bodyData, {
     headers: { ...bodyData.getHeaders(), 'x-api-key': token },
   });
 

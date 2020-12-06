@@ -2,9 +2,9 @@ import fs from 'fs';
 import { configFile } from './paths';
 import * as logger from './logger';
 
-const getConfigKey = (key) => {
+const getConfigKey = (key, nullable) => {
   if (!fs.existsSync(configFile)) {
-    logger.error(`.muilrc is not exists!`);
+    if (!nullable) logger.error(`.muilrc is not exists!`);
     return null;
   }
 
@@ -17,11 +17,11 @@ const getConfigKey = (key) => {
   }
 };
 
-export const getToken = () => {
-  const apiKey = getConfigKey('apiKey');
+export const getToken = (nullable = false) => {
+  const apiKey = getConfigKey('apiKey', nullable);
 
   if (!apiKey) {
-    logger.error(`No api key exists!`);
+    if (!nullable) logger.error(`No api key exists!`);
     return null;
   }
 
