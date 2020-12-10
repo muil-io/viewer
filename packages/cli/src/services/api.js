@@ -14,7 +14,8 @@ axios.interceptors.response.use(
   async (err) => {
     if (!err.response || err.response.status !== 200) {
       const host = getBaseUrl();
-      logger.error(`Host ${host} is not accepting request. please check host or change to valid api key`);
+      logger.error(`Host ${host} is not accepting the request. please check host or change to valid api key`);
+      if (err.response.data) console.log(err.response.data);
     }
     throw err;
   },
@@ -53,3 +54,6 @@ export const uploadAsset = async ({ token, assetPath }) => {
 
   return url;
 };
+
+export const cloudSettings = async ({ token }) =>
+  axios.get(`${getBaseUrl()}/assetsSettings`, { headers: { 'x-api-key': token } });
