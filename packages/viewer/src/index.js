@@ -1,22 +1,17 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import getTemplates from './utils/getTemplates';
-import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
+import { getTemplatesForParent } from './utils/templates';
+import useTemplate from './utils/useTemplate';
 
+// Get templates from context
 const templates = getTemplates();
+// Send templates to parent
 // eslint-disable-next-line no-restricted-globals
-parent.postMessage(
-  {
-    templates: getTemplatesForParent(templates),
-  },
-  '*',
-);
+parent.postMessage({ templates: getTemplatesForParent(templates) }, '*');
 
 const App = () => {
-  const { Template, dynamicProps, error } = useMemo(
-    () => getTemplateFromUrl({ search: window.location.search, templates }),
-    [],
-  );
+  const { Template, dynamicProps, error } = useTemplate(templates);
 
   if (error) {
     throw error;
