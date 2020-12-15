@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import useDebounce from '../hooks/useDebounce';
 
@@ -18,16 +18,17 @@ const Frame = styled.iframe`
 `;
 
 const Content = ({ selectedTemplate }) => {
+  const iframeRef = useRef();
   const debounceTemplate = useDebounce(selectedTemplate, 300);
   const currentTemplate = selectedTemplate?.id !== debounceTemplate?.id ? selectedTemplate : debounceTemplate;
+
+  useEffect(() => {
+    iframeRef.current.contentWindow.postMessage({ dynamicProps: currentTemplate?.dynamicProps });
+  }, [currentTemplate]);
+
   return (
     <Wrapper>
-      <Frame
-        title="content"
-        src={`iframe.html?templateId=${currentTemplate?.id}&dynamicProps=${encodeURIComponent(
-          JSON.stringify(currentTemplate?.dynamicProps),
-        )}`}
-      />
+      <Frame ref={iframeRef} title="content" src={`iframe.html?templateId=${currentTemplate?.id}`} />
     </Wrapper>
   );
 };

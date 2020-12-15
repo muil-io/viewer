@@ -1,18 +1,10 @@
 export const getTemplateFromUrl = ({ search, templates }) => {
-  const [templateStr, dynamicPropsStr] = search.slice(1).split('&');
+  const [templateStr] = search.slice(1).split('&');
   if (!templateStr) {
     return {};
   }
 
   const [, templateId] = templateStr.split('=');
-  const [, dynamicProps] = dynamicPropsStr.split('=');
-
-  let parsedProps = null;
-  try {
-    parsedProps = JSON.parse(decodeURIComponent(dynamicProps));
-  } catch (err) {
-    parsedProps = null;
-  }
 
   if (!templateId || !templates[templateId]) {
     return {};
@@ -20,7 +12,7 @@ export const getTemplateFromUrl = ({ search, templates }) => {
 
   const template = templates[templateId];
 
-  return { Template: template.Template, dynamicProps: parsedProps || template.dynamicProps, error: template.error };
+  return { Template: template.Template, dynamicProps: template.dynamicProps, error: template.error };
 };
 
 export const getTemplatesForParent = (templates) =>

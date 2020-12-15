@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import getTemplates from './utils/getTemplates';
 import { getTemplateFromUrl, getTemplatesForParent } from './utils/templates';
@@ -13,10 +13,21 @@ parent.postMessage(
 );
 
 const App = () => {
-  const { Template, dynamicProps, error } = useMemo(
+  const { Template, dynamicProps: defaultDynamicProps, error } = useMemo(
     () => getTemplateFromUrl({ search: window.location.search, templates }),
     [],
   );
+
+  const [dynamicProps, setDynamicProps] = useState(defaultDynamicProps);
+
+  const handleReceiveMessage = useCallback(({ data }) => data.dynamicProps && setDynamicProps(data?.dynamicProps), []);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-restricted-globals
+    window.addEventListener('message', handleReceiveMessage);
+    // eslint-disable-next-line no-restricted-globals
+    return () => window.removeEventListener('message', handleReceiveMessage);
+  }, [handleReceiveMessage]);
 
   if (error) {
     throw error;
