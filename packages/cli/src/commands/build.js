@@ -4,7 +4,6 @@ import webpack from 'webpack';
 import webpackConfig from '../webpack/webpack.config.templates.js';
 import * as logger from '../utils/logger';
 import { configPath, babelrcPath } from '../utils/paths';
-import { getToken } from '../utils/credentials';
 
 export default async ({
   templatesDirectory,
@@ -25,12 +24,9 @@ export default async ({
   const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
   const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-  const token = await getToken(true);
-
   const defaultCompiler = webpackConfig({
     templatesDirectory,
     templatesExtension,
-    token,
     aws: aws_bucket_name
       ? {
           aws_access_key_id,
