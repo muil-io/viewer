@@ -61,7 +61,10 @@ module.exports = ({
     entry: glob.sync(`${templatesDir}/**/*.${templatesExtension}`).reduce(
       (obj, el) => ({
         ...obj,
-        [path.parse(el).base.slice(0, -(templatesExtension.length + 1))]: el,
+        [path
+          .parse(el)
+          .base.slice(0, -(templatesExtension.length + 1))
+          .toLowerCase()]: el,
       }),
       {},
     ),

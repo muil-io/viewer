@@ -86,7 +86,7 @@ class DynamicPropsPlugin {
             }
           }
 
-          const filename = /[^/|^\\]*$/.exec(resource)[0].replace('template.js', 'json');
+          const filename = /[^/|^\\]*$/.exec(resource)[0].replace('template.js', 'json').toLowerCase();
           files.push({
             path: `${compiler.options.output.path}/${filename}`,
             data: JSON.stringify({ dynamicProps, displayName }),
