@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./src/index.js",
-    "prepublish": "crlf --set=LF src/**/**"
+    "prepublish": "yarn workspace @muil/viewer-manager build && crlf --set=LF src/**/**"
   },
   "bin": {
     "muil-cli": "./src/index.js"
