@@ -94,6 +94,28 @@ module.exports = ({
           exclude: path.resolve(rootDir, 'node_modules'),
         },
         {
+          test: /\.ts(x?)$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: babelrc || {
+                babelrc: false,
+                presets: ['@babel/preset-env', '@babel/preset-react'],
+                plugins: [
+                  ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
+                  '@babel/plugin-proposal-class-properties',
+                  '@babel/plugin-proposal-nullish-coalescing-operator',
+                  '@babel/plugin-proposal-optional-chaining',
+                ],
+              },
+            },
+            {
+              loader: 'ts-loader',
+            },
+          ],
+          exclude: path.resolve(rootDir, 'node_modules'),
+        },
+        {
           test: /\.module\.css$/,
           use: [
             inlineCss ? 'style-loader' : MiniCssExtractPlugin.loader,

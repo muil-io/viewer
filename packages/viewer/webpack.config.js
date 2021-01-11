@@ -41,6 +41,16 @@ module.exports = ({ templatesDirectory, babelrc }) => {
           use: babelLoader,
         },
         {
+          test: /\.ts(x?)$/,
+          exclude: /node_modules/,
+          use: [
+            babelLoader,
+            {
+              loader: 'ts-loader',
+            },
+          ],
+        },
+        {
           test: /\.js$/,
           include: path.resolve(__dirname, 'src'),
           use: babelLoader,
