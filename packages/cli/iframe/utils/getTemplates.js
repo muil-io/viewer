@@ -1,11 +1,11 @@
 export default () => {
   try {
-    const templateContext = require.context(process.env.templatesDirectory, true, /\.js$/);
+    const templateContext = require.context(process.env.templatesDirectory, true, /\.(t|j)sx$/);
     const templateFiles = templateContext.keys();
 
     return templateFiles.reduce((templates, templateFileName) => {
       const templateName = templateFileName.split('/');
-      const templateId = templateName[templateName.length - 1].replace(/.js/g, '').replace(/\.\//g, '');
+      const templateId = templateName[templateName.length - 1].replace(/\.(t|j)sx$/g, '').replace(/\.\//g, '');
 
       try {
         const Template = templateContext(templateFileName).default;

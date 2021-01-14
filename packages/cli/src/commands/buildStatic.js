@@ -15,7 +15,7 @@ const copyViewerManagerFiles = () => {
   copyFileSync(path.resolve(__dirname, '../../lib/favicon.ico'), path.join(buildStaticDirectory, 'favicon.ico'));
 };
 
-export default async ({ templatesDirectory, templatesExtension }) => {
+export default async ({ templatesDirectory }) => {
   logger.info('Compiling templates...');
 
   // eslint-disable-next-line
@@ -24,7 +24,6 @@ export default async ({ templatesDirectory, templatesExtension }) => {
 
   const staticTemplatesCompiler = webpackConfigStaticTemplates({
     templatesDirectory,
-    templatesExtension,
     babelrc,
     inlineCss: true,
     outputPath: TEMPLATES_OUTPUT,

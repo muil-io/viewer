@@ -46,7 +46,6 @@ const getAssetsLoaders = ({ token, aws, gcs, azure }) => {
 
 module.exports = ({
   templatesDirectory,
-  templatesExtension,
   token,
   aws,
   gcs,
@@ -58,16 +57,17 @@ module.exports = ({
   const templatesDir = getTemplatesDirectory(templatesDirectory);
   return {
     mode: 'production',
-    entry: glob.sync(`${templatesDir}/**/*.${templatesExtension}`).reduce(
-      (obj, el) => ({
-        ...obj,
-        [path
-          .parse(el)
-          .base.slice(0, -(templatesExtension.length + 1))
-          .toLowerCase()]: el,
-      }),
-      {},
-    ),
+    entry: () =>
+      glob.sync(`${templatesDir}/**/*.template.{ts,tsx,js,jsx}`).reduce(
+        (obj, el) => ({
+          ...obj,
+          [path
+            .parse(el)
+            .base.replace(/\.template\.(j|t)sx?$/, '')
+            .toLowerCase()]: el,
+        }),
+        {},
+      ),
     output: {
       path: outputPath,
       filename: '[name].js',
@@ -94,7 +94,7 @@ module.exports = ({
           exclude: path.resolve(rootDir, 'node_modules'),
         },
         {
-          test: /\.ts(x?)$/,
+          test: /\.tsx?$/,
           use: [
             {
               loader: 'babel-loader',

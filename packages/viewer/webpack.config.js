@@ -36,12 +36,12 @@ module.exports = ({ templatesDirectory, babelrc }) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
           use: babelLoader,
         },
         {
-          test: /\.ts(x?)$/,
+          test: /\.tsx?$/,
           exclude: /node_modules/,
           use: [
             babelLoader,
@@ -51,9 +51,19 @@ module.exports = ({ templatesDirectory, babelrc }) => {
           ],
         },
         {
-          test: /\.js$/,
+          test: /\.jsx?$/,
           include: path.resolve(__dirname, 'src'),
           use: babelLoader,
+        },
+        {
+          test: /\.tsx?$/,
+          include: path.resolve(__dirname, 'src'),
+          use: [
+            babelLoader,
+            {
+              loader: 'ts-loader',
+            },
+          ],
         },
         {
           test: /\.module\.css$/,

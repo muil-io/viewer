@@ -23,7 +23,7 @@ module.exports = ({ templatesDirectory, babelrc, outputPath }) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: includedPaths(templatesDirectory),
         use: {
           loader: 'babel-loader',
@@ -40,7 +40,7 @@ module.exports = ({ templatesDirectory, babelrc, outputPath }) => ({
         },
       },
       {
-        test: /\.ts(x?)$/,
+        test: /\.tsx?$/,
         include: includedPaths(templatesDirectory),
         use: [
           {

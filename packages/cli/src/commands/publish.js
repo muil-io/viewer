@@ -7,7 +7,7 @@ import { getToken, getHost } from '../utils/credentials';
 import * as logger from '../utils/logger';
 import { configPath, babelrcPath } from '../utils/paths';
 
-export default async ({ templatesDirectory, templatesExtension, branch }) => {
+export default async ({ templatesDirectory, branch }) => {
   const token = await getToken();
   if (!token) return;
 
@@ -35,7 +35,7 @@ export default async ({ templatesDirectory, templatesExtension, branch }) => {
   const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
   const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-  const defaultCompiler = webpackConfig({ templatesDirectory, templatesExtension, token: newToken, babelrc });
+  const defaultCompiler = webpackConfig({ templatesDirectory, token: newToken, babelrc });
   const finalCompiler = config.webpack(defaultCompiler);
 
   webpack(finalCompiler, async (err, stats) => {

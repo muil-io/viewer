@@ -22,7 +22,7 @@ const common = () => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: [paths.root_node_modules, paths.node_modules],
         use: {
           loader: 'babel-loader',
@@ -38,7 +38,7 @@ const common = () => ({
         },
       },
       {
-        test: /\.ts(x?)$/,
+        test: /\.tsx?$/,
         exclude: [paths.root_node_modules, paths.node_modules],
         use: [
           {
