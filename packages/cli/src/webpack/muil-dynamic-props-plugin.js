@@ -34,7 +34,9 @@ class DynamicPropsPlugin {
           const {
             module: { resource },
           } = parser.state;
-          if (!resource.endsWith('.template.js')) return;
+
+          const match = resource.match(/\.template\.(j|t)sx?$/);
+          if (!match) return;
 
           // extracting dynamicProps
           const dynamicProps = {};
@@ -86,7 +88,10 @@ class DynamicPropsPlugin {
             }
           }
 
-          const filename = /[^/|^\\]*$/.exec(resource)[0].replace('template.js', 'json').toLowerCase();
+          const filename = /[^/|^\\]*$/
+            .exec(resource)[0]
+            .replace(/\.template\.(j|t)sx?$/, '.json')
+            .toLowerCase();
           files.push({
             path: `${compiler.options.output.path}/${filename}`,
             data: JSON.stringify({ dynamicProps, displayName }),

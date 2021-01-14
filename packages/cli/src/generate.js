@@ -17,7 +17,6 @@ program
   .description('Publish email templates')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .option('-b --branch <branch>', 'templates branch (default: "master")')
-  .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   .action((options) => publish(options));
 
 program
@@ -30,7 +29,6 @@ program
   .command('build')
   .description('Build email templates')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
-  .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   // aws
   .option('--aws_access_key_id <aws_access_key_id>', 'aws access key id')
   .option('--aws_secrete_access_key <aws_secrete_access_key>', 'aws secrete access key')
@@ -50,7 +48,6 @@ program
   .command('build-static')
   .description('Build email templates static')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
-  .option('-e --templatesExtension <templatesExtension>', 'comma separated list of templates path', 'template.js')
   .action((options) => buildStatic(options));
 
 program.name('muil').usage('<command> [options]').parse(process.argv);

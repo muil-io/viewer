@@ -43,7 +43,6 @@ Publish email templates
 Options:
   -d --templatesDirectory <templatesDirectory>  Templates root directory (default: "./templates")
   -b --branch <branch>                          templates branch (default: "master")
-  -e --templatesExtension <templatesExtension>  comma separated list of templates path (default: "template.js")
   -h, --help                                    output usage information
 ```
 
