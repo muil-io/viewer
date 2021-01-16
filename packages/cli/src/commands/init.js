@@ -28,7 +28,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   writePackageJson(packageJson);
   logger.infoSuccess();
 
-  fs.appendFileSync('.gitignore', '\n# muil build folder\n.muil/build\n.muil/temp\n');
+  fs.appendFileSync('.gitignore', '\n# muil\n.muilrc\n.muil/build\n.muil/temp\n');
 
   if (
     !fs.existsSync(templatesDirectory || './templates') &&

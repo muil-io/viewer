@@ -28,4 +28,4 @@ export const getToken = (nullable = false) => {
   return apiKey;
 };
 
-export const getHost = () => getConfigKey('host');
+export const getHost = () => (getConfigKey('host') ? `${getConfigKey('host')}/api` : null);
