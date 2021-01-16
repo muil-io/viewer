@@ -22,12 +22,12 @@ const common = () => ({
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(j|t)sx?$/,
         exclude: [paths.root_node_modules, paths.node_modules],
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
             plugins: [
               ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
               '@babel/plugin-proposal-class-properties',
@@ -36,27 +36,6 @@ const common = () => ({
             ],
           },
         },
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: [paths.root_node_modules, paths.node_modules],
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: [
-                ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
-                '@babel/plugin-proposal-class-properties',
-                '@babel/plugin-proposal-nullish-coalescing-operator',
-                '@babel/plugin-proposal-optional-chaining',
-              ],
-            },
-          },
-          {
-            loader: 'ts-loader',
-          },
-        ],
       },
       {
         test: /\.module\.css$/,

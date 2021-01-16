@@ -15,7 +15,7 @@ module.exports = ({ templatesDirectory, babelrc }) => {
   const babelLoader = {
     loader: 'babel-loader',
     options: babelrc || {
-      presets: ['@babel/preset-env', '@babel/preset-react'],
+      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
       plugins: [
         ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
         '@babel/plugin-proposal-class-properties',
@@ -36,34 +36,14 @@ module.exports = ({ templatesDirectory, babelrc }) => {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
+          test: /\.(j|t)sx?$/,
           exclude: /node_modules/,
           use: babelLoader,
         },
         {
-          test: /\.tsx?$/,
-          exclude: /node_modules/,
-          use: [
-            babelLoader,
-            {
-              loader: 'ts-loader',
-            },
-          ],
-        },
-        {
-          test: /\.jsx?$/,
+          test: /\.(j|t)sx?$/,
           include: path.resolve(__dirname, 'src'),
           use: babelLoader,
-        },
-        {
-          test: /\.tsx?$/,
-          include: path.resolve(__dirname, 'src'),
-          use: [
-            babelLoader,
-            {
-              loader: 'ts-loader',
-            },
-          ],
         },
         {
           test: /\.module\.css$/,
