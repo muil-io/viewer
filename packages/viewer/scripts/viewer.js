@@ -1,7 +1,12 @@
 import chalk from 'chalk';
 import express from 'express';
+import path from 'path';
 import open from 'open';
+import bodyParser from 'body-parser';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import build from '@muil/cli/src/commands/build';
+import { buildDirectory } from '@muil/cli/src/utils/paths';
+import { renderTemplate } from '@muil/templates-renderer';
 import viewerMiddleware from './viewerMiddleware';
 
 const app = express();
@@ -14,6 +19,37 @@ export default async ({ port, templatesDirectory }) => {
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
   app.use(express.static(viewerDirectory));
+
+  // internal post request to build and render template
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+  app.post('/api/renderTemplate', async (req, res) => {
+    const { id, props, type } = req.body;
+    await build({ templatesDirectory });
+    const data = await renderTemplate({
+      type,
+      templatePath: path.resolve(buildDirectory, `${id}.js`),
+      templateCssPath: path.resolve(buildDirectory, `${id}.css`),
+      props,
+    });
+
+    switch (type) {
+      case 'html':
+        res.set('Content-Type', 'text/html');
+        break;
+      case 'png':
+        res.set('Content-Type', 'image/png');
+        break;
+      case 'pdf':
+        res.set('Content-Type', 'application/pdf');
+        break;
+      default:
+        res.set('Content-Type', 'text/html');
+        break;
+    }
+
+    return res.send(data);
+  });
 
   middleware.waitUntilValid(() => {
     app.listen(port, () => console.log(`✨ Muil templates viewer is running at http://localhost:${port}/`));

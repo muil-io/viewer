@@ -4,6 +4,9 @@ import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
 import DynamicProps from './DynamicProps';
+import Tabs from './Tabs';
+import Tab from './Tab';
+import Api from './Api';
 
 const Wrapper = styled.div.attrs(({ optionWidth }) => ({
   style: {
@@ -61,16 +64,10 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const Title = styled.div`
-  align-self: start;
-  padding: 8px 21px;
-  cursor: default;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
-  font-size: 14px;
-`;
-
 const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [activeTab, setActiveTab] = useState('details');
+
   const { id, dynamicProps } = selectedTemplate || {};
 
   return (
@@ -86,14 +83,21 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
           <SideBarHeader>
             <CloseButton onClick={() => setIsVisible(false)} />
 
-            <Title>Details</Title>
+            <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
+              <Tab name="details">Details</Tab>
+              <Tab name="api">API</Tab>
+            </Tabs>
           </SideBarHeader>
 
-          <DynamicProps
-            id={id}
-            dynamicProps={dynamicProps}
-            onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
-          />
+          {activeTab === 'details' && (
+            <DynamicProps
+              id={id}
+              dynamicProps={dynamicProps}
+              onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+            />
+          )}
+
+          {activeTab === 'api' && <Api id={id} dynamicProps={dynamicProps} />}
         </Content>
       )}
     </Wrapper>
