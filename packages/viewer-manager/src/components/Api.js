@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import downloadFile from '../utils/downloadFile';
 
@@ -15,33 +15,51 @@ const Button = styled.button`
   cursor: pointer;
   display: block;
   margin: 10px 0px;
+
+  &:disabled {
+    background: ${({ theme }) => theme.colors.gray2};
+    cursor: no-drop;
+  }
 `;
 
 const BASE_API = '/api/renderTemplate';
 
 const Api = ({ id, dynamicProps }) => {
+  const [isLoadingType, setIsLoading] = useState();
+
   const handleDownload = useCallback(
     async (selectedType) => {
       try {
-        const data = await fetch(BASE_API, {
+        setIsLoading(selectedType);
+        const result = await fetch(BASE_API, {
           method: 'post',
           body: JSON.stringify({ id, props: dynamicProps, type: selectedType }),
           headers: { Accept: 'application/json', 'Content-Type': 'application/json', responseType: 'blob' },
         });
 
-        const output = await data.blob();
-        downloadFile(output, id);
+        const data = await result.blob();
+        // eslint-disable-next-line no-unused-expressions
+        result.status === 200 && downloadFile(data, id);
         // eslint-disable-next-line no-empty
-      } catch (err) {}
+      } catch (err) {
+      } finally {
+        setIsLoading();
+      }
     },
     [dynamicProps, id],
   );
 
   return (
     <Wrapper>
-      <Button onClick={() => handleDownload('pdf')}>Download PDF</Button>
-      <Button onClick={() => handleDownload('png')}>Download Image</Button>
-      <Button onClick={() => handleDownload('html')}>Download HTML</Button>
+      <Button disabled={isLoadingType} onClick={() => handleDownload('pdf')}>
+        {isLoadingType === 'pdf' ? 'Downloading PDF...' : 'Download PDF'}
+      </Button>
+      <Button disabled={isLoadingType} onClick={() => handleDownload('png')}>
+        {isLoadingType === 'png' ? 'Downloading Image...' : 'Download Image'}
+      </Button>
+      <Button disabled={isLoadingType} onClick={() => handleDownload('html')}>
+        {isLoadingType === 'html' ? 'Downloading HTML...' : 'Download HTML'}
+      </Button>
     </Wrapper>
   );
 };

@@ -45,6 +45,7 @@ const getAssetsLoaders = ({ token, aws, gcs, azure }) => {
 };
 
 module.exports = ({
+  templateId,
   templatesDirectory,
   token,
   aws,
@@ -58,7 +59,7 @@ module.exports = ({
   return {
     mode: 'production',
     entry: () =>
-      glob.sync(`${templatesDir}/**/*.template.{ts,tsx,js,jsx}`).reduce(
+      glob.sync(`${templatesDir}/**/${templateId || '*'}.template.{ts,tsx,js,jsx}`).reduce(
         (obj, el) => ({
           ...obj,
           [path

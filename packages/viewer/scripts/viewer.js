@@ -25,30 +25,35 @@ export default async ({ port, templatesDirectory }) => {
   app.use(bodyParser.json());
   app.post('/api/renderTemplate', async (req, res) => {
     const { id, props, type } = req.body;
-    await build({ templatesDirectory });
-    const data = await renderTemplate({
-      type,
-      templatePath: path.resolve(buildDirectory, `${id}.js`),
-      templateCssPath: path.resolve(buildDirectory, `${id}.css`),
-      props,
-    });
+    try {
+      await build({ templateId: id, templatesDirectory });
+      const data = await renderTemplate({
+        type,
+        templatePath: path.resolve(buildDirectory, `${id.toLowerCase()}.js`),
+        templateCssPath: path.resolve(buildDirectory, `${id.toLowerCase()}.css`),
+        props,
+      });
 
-    switch (type) {
-      case 'html':
-        res.set('Content-Type', 'text/html');
-        break;
-      case 'png':
-        res.set('Content-Type', 'image/png');
-        break;
-      case 'pdf':
-        res.set('Content-Type', 'application/pdf');
-        break;
-      default:
-        res.set('Content-Type', 'text/html');
-        break;
+      switch (type) {
+        case 'html':
+          res.set('Content-Type', 'text/html');
+          break;
+        case 'png':
+          res.set('Content-Type', 'image/png');
+          break;
+        case 'pdf':
+          res.set('Content-Type', 'application/pdf');
+          break;
+        default:
+          res.set('Content-Type', 'text/html');
+          break;
+      }
+
+      return res.send(data);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send();
     }
-
-    return res.send(data);
   });
 
   middleware.waitUntilValid(() => {

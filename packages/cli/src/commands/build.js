@@ -6,6 +6,7 @@ import * as logger from '../utils/logger';
 import { configPath, babelrcPath } from '../utils/paths';
 
 export default async ({
+  templateId,
   templatesDirectory,
   aws_access_key_id,
   aws_secrete_access_key,
@@ -16,39 +17,44 @@ export default async ({
   azure_account_key,
   azure_share_name,
   azure_dir_name,
-}) => {
-  logger.info('Compiling templates...');
+}) =>
+  new Promise((res, rej) => {
+    logger.info('Compiling templates...');
 
-  // eslint-disable-next-line
-  const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
-  const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
+    // eslint-disable-next-line
+    const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
+    const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-  const defaultCompiler = webpackConfig({
-    templatesDirectory,
-    aws: aws_bucket_name
-      ? {
-          aws_access_key_id,
-          aws_secrete_access_key,
-          aws_bucket_name,
-        }
-      : undefined,
-    gcs: gcs_key_file_path
-      ? {
-          gcs_key_file_path,
-          gsc_bucket_name,
-        }
-      : undefined,
-    azure: azure_account_name ? { azure_account_name, azure_account_key, azure_share_name, azure_dir_name } : undefined,
-    babelrc,
+    const defaultCompiler = webpackConfig({
+      templateId,
+      templatesDirectory,
+      aws: aws_bucket_name
+        ? {
+            aws_access_key_id,
+            aws_secrete_access_key,
+            aws_bucket_name,
+          }
+        : undefined,
+      gcs: gcs_key_file_path
+        ? {
+            gcs_key_file_path,
+            gsc_bucket_name,
+          }
+        : undefined,
+      azure: azure_account_name
+        ? { azure_account_name, azure_account_key, azure_share_name, azure_dir_name }
+        : undefined,
+      babelrc,
+    });
+    const finalCompiler = config.webpack(defaultCompiler);
+
+    webpack(finalCompiler, (err, stats) => {
+      if (err || stats.hasErrors()) {
+        logger.error(err || stats.toString('errors-only'));
+        return rej(err || stats.toString('errors-only'));
+      }
+
+      logger.infoSuccess();
+      return res();
+    });
   });
-  const finalCompiler = config.webpack(defaultCompiler);
-
-  webpack(finalCompiler, (err, stats) => {
-    if (err || stats.hasErrors()) {
-      logger.error(err || stats.toString('errors-only'));
-      return;
-    }
-
-    logger.infoSuccess();
-  });
-};
