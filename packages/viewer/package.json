@@ -32,7 +32,6 @@
     "@babel/preset-typescript": "^7.12.7",
     "@muil/cli": "^1.0.12",
     "@muil/templates-starter-kit": "^1.0.7",
-    "babel-loader": "^8.0.6",
     "babel-plugin-react-css-modules": "^5.2.6",
     "chalk": "^4.0.0",
     "commander": "^4.1.1",
@@ -50,6 +49,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
+    "babel-loader": "^8.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
