@@ -23,6 +23,7 @@ const useDynamicProps = ({ defaultTemplates }) => {
             ...prevTemplates,
             [templateId]: {
               ...defaultTemplates[templateId],
+              defaultDynamicProps: defaultTemplates[templateId].dynamicProps,
               dynamicProps: defaultTemplates[templateId].dynamicProps,
             },
           }),

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import getTemplates from './utils/getTemplates';
 import { getTemplatesForParent } from './utils/templates';
@@ -11,24 +11,36 @@ const templates = getTemplates();
 parent.postMessage({ templates: getTemplatesForParent(templates) }, '*');
 
 const App = () => {
-  const { Template, dynamicProps, error } = useTemplate(templates);
+  const [html, setHtml] = useState('');
+  const { templateId, dynamicProps, error } = useTemplate(templates);
+
+  const renderHtml = useCallback(async () => {
+    const result = await fetch('/api/renderTemplate', {
+      method: 'post',
+      body: JSON.stringify({ id: templateId, props: dynamicProps, type: 'html' }),
+      headers: { Accept: 'application/json', 'Content-Type': 'application/json', responseType: 'blob' },
+    });
+    const data = await result.text();
+    setHtml(data);
+  }, [dynamicProps, templateId]);
+
+  useEffect(() => {
+    if (templateId) {
+      renderHtml();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [templateId, dynamicProps]);
 
   if (error) {
     throw error;
   }
 
-  if (!Template) {
+  if (!templateId) {
     return <div className="no-templates">No Templates</div>;
   }
 
-  // SSR and createGlobalStyle doesn't play well togther since styled-components v5.2, we need to figure out how to handle this
-  // https://github.com/styled-components/styled-components/blob/71c0fb8bc9eb2c40b0a7d78d67132f7d6ca3aee0/packages/styled-components/src/constructors/createGlobalStyle.js#L54
-  // const html = renderToString(<Template {...dynamicProps} />);
-  //
   // eslint-disable-next-line react/no-danger
-  // return <div dangerouslySetInnerHTML={{ __html: html }} />;
-
-  return <Template {...dynamicProps} />;
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 const rootElement = document.getElementById('inner-root');

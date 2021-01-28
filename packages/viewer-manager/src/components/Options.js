@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
@@ -68,7 +68,13 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [activeTab, setActiveTab] = useState('details');
 
-  const { id, dynamicProps } = selectedTemplate || {};
+  const { id, dynamicProps, defaultDynamicProps } = selectedTemplate || {};
+
+  useEffect(() => {
+    if (id) {
+      onChangeKnob({ templateId: id, value: defaultDynamicProps });
+    }
+  }, [defaultDynamicProps, id, onChangeKnob]);
 
   return (
     <Wrapper optionWidth={isVisible ? optionWidth : 0}>
