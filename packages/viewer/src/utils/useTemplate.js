@@ -6,7 +6,7 @@ let dynamicPropsRef;
 
 // This hooks receives templates and selecting the template by url and getting dynamic props from post-message
 const useTemplate = (templates) => {
-  const { templateId, dynamicProps: defaultDynamicProps, error } = useMemo(
+  const { templateId, Template, dynamicProps: defaultDynamicProps, error } = useMemo(
     () => getTemplateFromUrl({ search: window.location.search, templates }),
     [templates],
   );
@@ -27,7 +27,7 @@ const useTemplate = (templates) => {
     return () => window.removeEventListener('message', handleReceiveMessage);
   }, [handleReceiveMessage]);
 
-  return { templateId, dynamicProps, error };
+  return { templateId, Template, dynamicProps, error };
 };
 
 export default useTemplate;

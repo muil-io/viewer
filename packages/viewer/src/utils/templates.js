@@ -12,7 +12,7 @@ export const getTemplateFromUrl = ({ search, templates }) => {
 
   const template = templates[templateId];
 
-  return { templateId, dynamicProps: template.dynamicProps, error: template.error };
+  return { templateId, Template: template.Template, dynamicProps: template.dynamicProps, error: template.error };
 };
 
 export const getTemplatesForParent = (templates) =>

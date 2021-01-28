@@ -12,7 +12,7 @@ parent.postMessage({ templates: getTemplatesForParent(templates) }, '*');
 
 const App = () => {
   const [html, setHtml] = useState('');
-  const { templateId, dynamicProps, error } = useTemplate(templates);
+  const { templateId, Template, dynamicProps, error } = useTemplate(templates);
 
   const renderHtml = useCallback(async () => {
     const result = await fetch('/api/renderTemplate', {
@@ -39,8 +39,16 @@ const App = () => {
     return <div className="no-templates">No Templates</div>;
   }
 
-  // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  if (html) {
+    // eslint-disable-next-line react/no-danger
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  }
+
+  if (Template) {
+    return <Template {...dynamicProps} />;
+  }
+
+  return null;
 };
 
 const rootElement = document.getElementById('inner-root');
