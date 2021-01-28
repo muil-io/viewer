@@ -4,7 +4,7 @@ import getTemplates from './utils/getTemplates';
 import { getTemplatesForParent } from './utils/templates';
 import useTemplate from './utils/useTemplate';
 
-// Get templates from context
+// Get templates from context (id, name, default dynamicProps)
 const templates = getTemplates();
 // Send templates to parent
 // eslint-disable-next-line no-restricted-globals
