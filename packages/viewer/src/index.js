@@ -29,7 +29,7 @@ const App = () => {
       renderHtml();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [templateId, dynamicProps]);
+  }, [templateId]);
 
   if (error) {
     throw error;
