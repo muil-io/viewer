@@ -40,8 +40,7 @@ const App = () => {
   }
 
   if (html) {
-    // eslint-disable-next-line react/no-danger
-    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+    return <iframe style={{ width: '100%', height: '100vh' }} title="iframe" srcDoc={html} />;
   }
 
   if (Template) {
