@@ -1,4 +1,4 @@
-import * as logger from './logger';
+import { getCraPackageJson } from './packageManager';
 
 const MUST_INCLUDE_DEPENDENCIES = ['react', 'react-dom'];
 
@@ -16,25 +16,24 @@ const missingDependencies = (packageJson) => {
   });
 
   const isReactScriptsInstalled = packageJson.dependencies && packageJson.dependencies['react-scripts'];
-  logger.info('isReactScriptsInstalled', isReactScriptsInstalled);
   if (!isReactScriptsInstalled) {
     let found = false;
-    logger.info('packageJson.dependencies', packageJson.dependencies);
     if (packageJson.dependencies) {
       found = packageJson.dependencies['babel-loader'];
     }
-    logger.info('packageJson.devDependencies', packageJson.devDependencies);
     if (packageJson.devDependencies) {
       found = found || packageJson.devDependencies['babel-loader'];
     }
 
-    logger.info('found', found);
     if (!found) {
       missing.push('babel-loader');
     }
+  } else {
+    const craPackageJson = getCraPackageJson();
+    const babelLoaderVersion = craPackageJson.dependencies['babel-loader'];
+    missing.push(`babel-loader@${babelLoaderVersion}`);
   }
 
-  logger.info('missing', missing);
   return missing;
 };
 
