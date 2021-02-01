@@ -29,6 +29,7 @@ export default async ({ port, templatesDirectory }) => {
       await build({ templateId: id, templatesDirectory, suppressLogs: true });
       const data = await renderTemplate({
         type,
+        sandbox: false,
         templatePath: path.resolve(buildDirectory, `${id.toLowerCase()}.js`),
         templateCssPath: path.resolve(buildDirectory, `${id.toLowerCase()}.css`),
         props,
@@ -51,6 +52,7 @@ export default async ({ port, templatesDirectory }) => {
 
       return res.send(data);
     } catch (err) {
+      console.log(err);
       res.status(500).send();
     }
   });
