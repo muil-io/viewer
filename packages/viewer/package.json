@@ -1,6 +1,6 @@
 {
   "name": "@muil/viewer",
-  "version": "1.0.13-alpha.2",
+  "version": "1.0.13-alpha.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
