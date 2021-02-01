@@ -28,7 +28,7 @@ export default async ({
     const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
     const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
 
-    const defaultCompiler = webpackConfig({
+    const defaultConfig = webpackConfig({
       templateId,
       templatesDirectory,
       aws: aws_bucket_name
@@ -49,9 +49,10 @@ export default async ({
         : undefined,
       babelrc,
     });
-    const finalCompiler = config.webpack(defaultCompiler);
 
-    webpack(finalCompiler, (err, stats) => {
+    const finalConfig = config.webpack(defaultConfig);
+
+    const compiler = webpack(finalConfig, (err, stats) => {
       if (err || stats.hasErrors()) {
         if (!suppressLogs) {
           logger.error(err || stats.toString('errors-only'));
@@ -62,6 +63,9 @@ export default async ({
       if (!suppressLogs) {
         logger.infoSuccess();
       }
+    });
+
+    compiler.hooks.done.tap('done', () => {
       return res();
     });
   });
