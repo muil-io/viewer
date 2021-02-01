@@ -13,6 +13,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   const useYarn = Boolean(useNpm !== true) && hasYarn();
   let packageJson = await retrievePackageJson();
   const installDependencies = missingDependencies(packageJson);
+  logger.info('installDependencies', installDependencies);
   sync(useYarn ? 'yarn' : 'npm', [useYarn ? 'add' : 'install', ...installDependencies, '@muil/viewer', '-D']);
 
   logger.infoSuccess();

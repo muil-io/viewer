@@ -1,3 +1,5 @@
+import * as logger from './logger';
+
 const MUST_INCLUDE_DEPENDENCIES = ['react', 'react-dom'];
 
 const missingDependencies = (packageJson) => {
@@ -14,25 +16,25 @@ const missingDependencies = (packageJson) => {
   });
 
   const isReactScriptsInstalled = packageJson.dependencies && packageJson.dependencies['react-scripts'];
-  console.log('isReactScriptsInstalled', isReactScriptsInstalled);
+  logger.info('isReactScriptsInstalled', isReactScriptsInstalled);
   if (!isReactScriptsInstalled) {
     let found = false;
-    console.log('packageJson.dependencies', packageJson.dependencies);
+    logger.info('packageJson.dependencies', packageJson.dependencies);
     if (packageJson.dependencies) {
       found = packageJson.dependencies['babel-loader'];
     }
-    console.log('packageJson.devDependencies', packageJson.devDependencies);
+    logger.info('packageJson.devDependencies', packageJson.devDependencies);
     if (packageJson.devDependencies) {
       found = found || packageJson.devDependencies['babel-loader'];
     }
 
-    console.log('found', found);
+    logger.info('found', found);
     if (!found) {
       missing.push('babel-loader');
     }
   }
 
-  console.log('missing', missing);
+  logger.info('missing', missing);
   return missing;
 };
 
