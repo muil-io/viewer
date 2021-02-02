@@ -37,7 +37,7 @@ const Button = styled.div`
     `}
 `;
 
-const TYPES = ['pdf', 'png', 'html'];
+const TYPES = ['html', 'pdf', 'png'];
 const BASE_API = '/api/renderTemplate';
 
 const ScreenOptions = ({ selectedTemplate }) => {

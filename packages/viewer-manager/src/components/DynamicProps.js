@@ -32,7 +32,7 @@ const DynamicProps = ({ id, dynamicProps, onChangeKnob }) => (
   <Wrapper>
     <Title>
       <strong>ID:</strong>
-      {id}
+      {id?.toLowerCase()}
     </Title>
 
     <Title>

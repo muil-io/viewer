@@ -26,7 +26,7 @@ export default async ({ port, templatesDirectory }) => {
   app.post('/api/renderTemplate', async (req, res) => {
     const { id, props, type } = req.body;
     try {
-      await build({ templateId: id, templatesDirectory });
+      await build({ templateId: id, templatesDirectory, suppressLogs: true });
       const data = await renderTemplate({
         type,
         templatePath: path.resolve(buildDirectory, `${id.toLowerCase()}.js`),

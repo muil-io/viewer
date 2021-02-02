@@ -17,9 +17,12 @@ export default async ({
   azure_account_key,
   azure_share_name,
   azure_dir_name,
+  suppressLogs = false,
 }) =>
   new Promise((res, rej) => {
-    logger.info('Compiling templates...');
+    if (!suppressLogs) {
+      logger.info('Compiling templates...');
+    }
 
     // eslint-disable-next-line
     const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
@@ -54,7 +57,9 @@ export default async ({
         return rej(err || stats.toString('errors-only'));
       }
 
-      logger.infoSuccess();
+      if (!suppressLogs) {
+        logger.infoSuccess();
+      }
       return res();
     });
   });
