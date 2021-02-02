@@ -23,6 +23,7 @@ const TopBar = styled.div`
   padding: 24px 80px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 `;
 
 const TemplateName = styled.div`

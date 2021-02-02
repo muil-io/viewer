@@ -1,28 +1,36 @@
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import downloadFile from '../utils/downloadFile';
+import DownloadIcon from '../assets/download.svg';
 
 const Wrapper = styled.div`
   display: flex;
 `;
 
-const ScreenLink = styled.div`
-  display: inline-block;
-  cursor: ${({ $isLoading }) => ($isLoading ? 'no-drop' : 'pointer')};
+const Button = styled.div`
+  background: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
+  border: none;
+  padding: 7px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  transition: 200ms;
 
   > svg {
-    padding: 5px;
-    width: 25px;
-    box-sizing: content-box;
-
-    path {
-      fill: ${({ theme, $isLoading }) => ($isLoading ? theme.colors.gray1 : theme.colors.gray2)};
-      transition: 200ms;
-    }
+    margin-left: 6px;
+    width: 16px;
   }
 
-  &:hover > svg path {
-    fill: ${({ theme }) => theme.colors.white};
+  &:hover {
+    background: ${({ theme }) => theme.colors.primaryDark};
+  }
+
+  &:disabled {
+    background: ${({ theme }) => theme.colors.gray2};
+    cursor: no-drop;
   }
 `;
 
@@ -58,15 +66,12 @@ const ScreenOptions = ({ selectedTemplate }) => {
 
   return (
     <Wrapper>
-      {TYPES.map((type) => {
-        // eslint-disable-next-line
-        const SizeIcon = require(`../assets/${type}.svg`).default;
-        return (
-          <ScreenLink key={type} $isLoading={isLoading} onClick={() => handleDownload(type)}>
-            <SizeIcon />
-          </ScreenLink>
-        );
-      })}
+      {TYPES.map((type) => (
+        <Button key={type} disabled={isLoading} onClick={() => handleDownload(type)}>
+          {type.toUpperCase()}
+          <DownloadIcon />
+        </Button>
+      ))}
     </Wrapper>
   );
 };

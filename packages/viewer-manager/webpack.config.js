@@ -60,7 +60,12 @@ const common = () => ({
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: { svgo: false, ref: true },
+          },
+        ],
       },
       {
         test: /\.(eot|otf|woff|woff2|ttf|bmp|gif|jpe?g|png)?$/,
