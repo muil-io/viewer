@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import downloadFile from '../utils/downloadFile';
 import DownloadIcon from '../assets/download.svg';
 
@@ -17,6 +17,7 @@ const Button = styled.div`
   display: flex;
   align-items: center;
   margin-left: 10px;
+  font-size: 13px;
   transition: 200ms;
 
   > svg {
@@ -28,10 +29,12 @@ const Button = styled.div`
     background: ${({ theme }) => theme.colors.primaryDark};
   }
 
-  &:disabled {
-    background: ${({ theme }) => theme.colors.gray2};
-    cursor: no-drop;
-  }
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background: ${({ theme }) => theme.colors.gray2}!important;
+      cursor: no-drop;
+    `}
 `;
 
 const TYPES = ['pdf', 'png', 'html'];
