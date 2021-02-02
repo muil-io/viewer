@@ -21,8 +21,6 @@ const theme = {
   },
   page: {
     templateNameColor: colors.white,
-    screenInactiveColor: colors.gray4,
-    screenActiveColor: colors.primary,
     color: colors.primary,
   },
   sidebar: {

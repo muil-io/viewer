@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ScreenOptions from './ScreenOptions';
-import { SCREEN_SIZES, HEADER_HEIGHT, HEADER_BACKGROUND_HEIGHT } from '../constants';
+import { HEADER_HEIGHT, HEADER_BACKGROUND_HEIGHT } from '../constants';
 import ellipsis from '../style/ellipsis';
 
 const Wrapper = styled.div`
@@ -37,7 +37,7 @@ const Container = styled.div`
   margin: ${HEADER_HEIGHT}px 80px 40px;
   border-radius: 8px;
   width: calc(100% - 160px);
-  max-width: ${({ selectedSize }) => SCREEN_SIZES[selectedSize].size};
+  max-width: calc(100% - 160px);
   height: 100%;
   z-index: 1;
   transition: 200ms;
@@ -58,19 +58,44 @@ const Container = styled.div`
         point-events: none;
       }
     `}
+
+  &:after {
+    text-align: right;
+    content: '${({ $dimensions }) => `${$dimensions.width} x ${$dimensions.height}`}';
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+    color: ${({ theme }) => theme.colors.dark};
+  }
 `;
 
-const Page = ({ selectedTemplate, selectedSize, setSelectedSize, isDragging, children }) => (
-  <Wrapper>
-    <TopBar>
-      <TemplateName>{selectedTemplate?.name || 'No Template Selected'}</TemplateName>
-      <ScreenOptions selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
-    </TopBar>
+const Page = ({ selectedTemplate, isDragging, children }) => {
+  const containerRef = useRef();
+  const [dimensions, setDimensions] = useState({});
 
-    <Container selectedSize={selectedSize} isDragging={isDragging}>
-      {children}
-    </Container>
-  </Wrapper>
-);
+  const handleChangeDimension = useCallback(() => {
+    setDimensions(containerRef.current.getBoundingClientRect());
+  }, []);
+
+  useEffect(() => {
+    handleChangeDimension();
+    window.addEventListener('resize', handleChangeDimension);
+    return () => window.removeEventListener('resize', handleChangeDimension);
+  }, [handleChangeDimension]);
+
+  return (
+    <Wrapper>
+      <TopBar>
+        <TemplateName>{selectedTemplate?.name || 'No Template Selected'}</TemplateName>
+        <ScreenOptions selectedTemplate={selectedTemplate} />
+      </TopBar>
+
+      <Container ref={containerRef} isDragging={isDragging} $dimensions={dimensions}>
+        {children}
+      </Container>
+    </Wrapper>
+  );
+};
 
 export default Page;

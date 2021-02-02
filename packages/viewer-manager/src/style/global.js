@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		min-width: 1280px;
+		min-width: 900px;
 		overflow: auto hidden;
 		${scrollbar};
 	}

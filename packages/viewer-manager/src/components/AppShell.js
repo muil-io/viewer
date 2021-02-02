@@ -18,7 +18,6 @@ const Wrapper = styled.div`
 `;
 
 const AppShell = () => {
-  const [selectedSize, setSelectedSize] = useState('full');
   const defaultTemplates = useTemplates();
   const { templates, handleChangeKnob } = useDynamicProps({ defaultTemplates });
   const { templateId } = useParams();
@@ -39,12 +38,7 @@ const AppShell = () => {
         setIsDragging={setIsDragging}
       />
 
-      <Page
-        selectedTemplate={selectedTemplate}
-        selectedSize={selectedSize}
-        setSelectedSize={setSelectedSize}
-        isDragging={isDragging}
-      >
+      <Page selectedTemplate={selectedTemplate} isDragging={isDragging}>
         <Content selectedTemplate={selectedTemplate} />
       </Page>
 
