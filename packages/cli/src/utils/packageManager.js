@@ -26,6 +26,16 @@ export function getPackageJson() {
   return JSON.parse(jsonContent);
 }
 
+export function getCraPackageJson() {
+  const packageJsonPath = path.resolve('node_modules', 'react-scripts', 'package.json');
+  if (!fs.existsSync(packageJsonPath)) {
+    return false;
+  }
+
+  const jsonContent = fs.readFileSync(packageJsonPath, 'utf8');
+  return JSON.parse(jsonContent);
+}
+
 export default function npmInit() {
   const results = spawn.sync(hasYarn() ? 'yarn' : 'npm', ['init', '-y'], {
     cwd: process.cwd(),
