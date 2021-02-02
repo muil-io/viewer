@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "1.0.18",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -31,7 +31,7 @@
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.12.7",
     "@google-cloud/storage": "^5.1.2",
-    "@muil/templates-starter-kit": "^1.0.18",
+    "@muil/templates-starter-kit": "^1.1.0",
     "aws-sdk": "^2.726.0",
     "axios": "^0.19.1",
     "chalk": "^4.0.0",
