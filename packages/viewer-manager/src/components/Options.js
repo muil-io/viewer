@@ -4,9 +4,6 @@ import ArrowIcon from '../assets/arrow.svg';
 import CloseIcon from '../assets/close.svg';
 import BaseSideBarHeader from './SideBarHeader';
 import DynamicProps from './DynamicProps';
-import Tabs from './Tabs';
-import Tab from './Tab';
-import Api from './Api';
 
 const Wrapper = styled.div.attrs(({ optionWidth }) => ({
   style: {
@@ -17,6 +14,14 @@ const Wrapper = styled.div.attrs(({ optionWidth }) => ({
   background: ${({ theme }) => theme.app.contentBackground};
   box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
   position: relative;
+`;
+
+const Title = styled.div`
+  align-self: start;
+  padding: 8px 21px;
+  cursor: default;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
+  font-size: 14px;
 `;
 
 const ToggleButton = styled.div`
@@ -66,7 +71,6 @@ const Content = styled.div`
 
 const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [activeTab, setActiveTab] = useState('details');
 
   const { id, dynamicProps } = selectedTemplate || {};
 
@@ -83,21 +87,14 @@ const Options = ({ selectedTemplate, onChangeKnob, optionWidth }) => {
           <SideBarHeader>
             <CloseButton onClick={() => setIsVisible(false)} />
 
-            <Tabs activeTab={activeTab} onTabChange={setActiveTab}>
-              <Tab name="details">Details</Tab>
-              <Tab name="api">API</Tab>
-            </Tabs>
+            <Title>Details</Title>
           </SideBarHeader>
 
-          {activeTab === 'details' && (
-            <DynamicProps
-              id={id}
-              dynamicProps={dynamicProps}
-              onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
-            />
-          )}
-
-          {activeTab === 'api' && <Api id={id} dynamicProps={dynamicProps} />}
+          <DynamicProps
+            id={id}
+            dynamicProps={dynamicProps}
+            onChangeKnob={(value) => onChangeKnob({ templateId: selectedTemplate?.id, value })}
+          />
         </Content>
       )}
     </Wrapper>
