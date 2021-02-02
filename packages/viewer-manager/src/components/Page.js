@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import ScreenOptions from './ScreenOptions';
+import DownloadOptions from './DownloadOptions';
 import { HEADER_HEIGHT, HEADER_BACKGROUND_HEIGHT } from '../constants';
 import ellipsis from '../style/ellipsis';
 
@@ -89,7 +89,7 @@ const Page = ({ selectedTemplate, isDragging, children }) => {
     <Wrapper>
       <TopBar>
         <TemplateName>{selectedTemplate?.name || 'No Template Selected'}</TemplateName>
-        <ScreenOptions selectedTemplate={selectedTemplate} />
+        <DownloadOptions selectedTemplate={selectedTemplate} />
       </TopBar>
 
       <Container ref={containerRef} isDragging={isDragging} $dimensions={dimensions}>
