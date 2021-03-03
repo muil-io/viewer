@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import downloadFile from '../utils/downloadFile';
 import DownloadIcon from '../assets/download.svg';
+import Toaster from './Toaster';
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,6 +45,7 @@ const ScreenOptions = ({ selectedTemplate }) => {
   const { id, dynamicProps } = selectedTemplate || {};
 
   const [isLoading, setIsLoading] = useState(false);
+  const [toasterError, setToasterError] = useState();
 
   const handleDownload = useCallback(
     async (selectedType) => {
@@ -55,11 +57,15 @@ const ScreenOptions = ({ selectedTemplate }) => {
           headers: { Accept: 'application/json', 'Content-Type': 'application/json', responseType: 'blob' },
         });
 
-        const data = await result.blob();
-        // eslint-disable-next-line no-unused-expressions
-        result.status === 200 && downloadFile(data, id);
-        // eslint-disable-next-line no-empty
+        if (result.status === 200) {
+          const data = await result.blob();
+          downloadFile(data, id);
+        } else {
+          const error = await result.json();
+          setToasterError(error?.error);
+        }
       } catch (err) {
+        setToasterError('Error');
       } finally {
         setIsLoading(false);
       }
@@ -68,14 +74,18 @@ const ScreenOptions = ({ selectedTemplate }) => {
   );
 
   return (
-    <Wrapper>
-      {TYPES.map((type) => (
-        <Button key={type} disabled={isLoading} onClick={() => handleDownload(type)}>
-          {type.toUpperCase()}
-          <DownloadIcon />
-        </Button>
-      ))}
-    </Wrapper>
+    <>
+      <Wrapper>
+        {TYPES.map((type) => (
+          <Button key={type} disabled={isLoading} onClick={() => handleDownload(type)}>
+            {type.toUpperCase()}
+            <DownloadIcon />
+          </Button>
+        ))}
+      </Wrapper>
+
+      {toasterError && <Toaster text={toasterError} onClose={() => setToasterError()} />}
+    </>
   );
 };
 

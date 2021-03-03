@@ -51,8 +51,7 @@ export default async ({ port, templatesDirectory }) => {
 
       return res.send(data);
     } catch (err) {
-      console.log(err);
-      res.status(500).send();
+      return res.status(500).send({ error: err ? err.message : '' });
     }
   });
 
