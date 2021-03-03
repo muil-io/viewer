@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import downloadFile from '../utils/downloadFile';
 import DownloadIcon from '../assets/download.svg';
-import Toaster from './Toaster';
+import Modal from './Modal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ const ScreenOptions = ({ selectedTemplate }) => {
   const { id, dynamicProps } = selectedTemplate || {};
 
   const [isLoading, setIsLoading] = useState(false);
-  const [toasterError, setToasterError] = useState();
+  const [modalError, setModalError] = useState();
 
   const handleDownload = useCallback(
     async (selectedType) => {
@@ -62,10 +62,10 @@ const ScreenOptions = ({ selectedTemplate }) => {
           downloadFile(data, id);
         } else {
           const error = await result.json();
-          setToasterError(error?.error);
+          setModalError(error?.error);
         }
       } catch (err) {
-        setToasterError('Error');
+        setModalError('Error');
       } finally {
         setIsLoading(false);
       }
@@ -84,7 +84,7 @@ const ScreenOptions = ({ selectedTemplate }) => {
         ))}
       </Wrapper>
 
-      {toasterError && <Toaster text={toasterError} onClose={() => setToasterError()} />}
+      {modalError && <Modal title="Template Rendering Failed:" text={modalError} onSubmit={() => setModalError()} />}
     </>
   );
 };
