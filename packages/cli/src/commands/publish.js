@@ -7,17 +7,19 @@ import { getToken, getHost } from '../utils/credentials';
 import * as logger from '../utils/logger';
 import { configPath, babelrcPath } from '../utils/paths';
 
-export default async ({ templatesDirectory, branch }) => {
+export default async ({ templatesDirectory, branch, force = false }) => {
   const token = await getToken();
   if (!token) return;
 
-  const { confirm } = await prompts({
-    type: 'confirm',
-    name: 'confirm',
-    message: `Are you sure you want to publish current changes${branch ? ` to branch '${branch}'` : ''}?`,
-    initial: false,
-  });
-  if (!confirm) return;
+  if (!force) {
+    const { confirm } = await prompts({
+      type: 'confirm',
+      name: 'confirm',
+      message: `Are you sure you want to publish current changes${branch ? ` to branch '${branch}'` : ''}?`,
+      initial: false,
+    });
+    if (!confirm) return;
+  }
 
   let newToken = token;
   const host = await getHost();

@@ -17,6 +17,7 @@ program
   .description('Publish email templates')
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .option('-b --branch <branch>', 'templates branch (default: "master")')
+  .option('-f --force', 'publish without prompts for additional input')
   .action((options) => publish(options));
 
 program
