@@ -21,8 +21,6 @@ const Box = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 600px;
-  height: 300px;
-  padding: 20px;
   background-color: white;
   border-radius: 5px;
 `;
@@ -31,15 +29,29 @@ const Body = styled.div`
   color: #4c4949;
   display: flex;
   flex-direction: column;
-  > h2 {
-    text-decoration: underline;
-    margin-bottom: 0;
-  }
+`;
+
+const Title = styled.div`
+  border-bottom: 1px solid #dee2e6;
+  padding: 16px 20px;
+  font-weight: 500;
+`;
+
+const Text = styled.div`
+  padding: 20px;
+  width: 600px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  white-space: pre-wrap;
 `;
 
 const Footer = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  padding: 16px 20px;
+
   > button {
     background-color: rgb(118, 39, 190);
     opacity: 0.9;
@@ -61,8 +73,8 @@ const Modal = ({ title, text, onSubmit }) =>
     <Wrapper>
       <Box>
         <Body>
-          <h2>{title}</h2>
-          <h3>{text}</h3>
+          <Title>{title}</Title>
+          <Text>{text}</Text>
         </Body>
         <Footer>
           <button onClick={onSubmit}>OK</button>
