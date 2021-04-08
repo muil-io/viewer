@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
+import useDimension from '../hooks/useDimension';
 import DownloadOptions from './DownloadOptions';
 import { HEADER_HEIGHT, HEADER_BACKGROUND_HEIGHT } from '../constants';
 import ellipsis from '../style/ellipsis';
@@ -73,17 +74,7 @@ const Container = styled.div`
 
 const Page = ({ selectedTemplate, isDragging, children }) => {
   const containerRef = useRef();
-  const [dimensions, setDimensions] = useState({});
-
-  const handleChangeDimension = useCallback(() => {
-    setDimensions(containerRef.current.getBoundingClientRect());
-  }, []);
-
-  useEffect(() => {
-    handleChangeDimension();
-    window.addEventListener('resize', handleChangeDimension);
-    return () => window.removeEventListener('resize', handleChangeDimension);
-  }, [handleChangeDimension]);
+  const { width, height } = useDimension(containerRef);
 
   return (
     <Wrapper>
@@ -92,7 +83,7 @@ const Page = ({ selectedTemplate, isDragging, children }) => {
         <DownloadOptions selectedTemplate={selectedTemplate} />
       </TopBar>
 
-      <Container ref={containerRef} isDragging={isDragging} $dimensions={dimensions}>
+      <Container ref={containerRef} isDragging={isDragging} $dimensions={{ width, height }}>
         {children}
       </Container>
     </Wrapper>
