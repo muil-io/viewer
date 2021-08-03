@@ -17,7 +17,7 @@ const viewerMiddleware = ({ templatesDirectory }) => {
   const defaultCompiler = previewConfig({ templatesDirectory: path.resolve(rootDir, templatesDirectory), babelrc });
   const finalCompiler = config.webpack(defaultCompiler);
   const compiler = webpack(finalCompiler);
-  const middleware = new webpackDevMiddleware(compiler, { publicPath: '/', logLevel: 'error' });
+  const middleware = new webpackDevMiddleware(compiler, { publicPath: '/' });
 
   return { compiler, middleware, viewerDirectory: distDirectory };
 };

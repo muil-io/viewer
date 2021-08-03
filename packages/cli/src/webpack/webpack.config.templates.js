@@ -129,6 +129,6 @@ module.exports = ({
       'react-dom': 'react-dom',
       'styled-components': 'styled-components',
     },
-    plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin('[name].css'), new DynamicPropsPlugin()],
+    plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name].css' }), new DynamicPropsPlugin()],
   };
 };

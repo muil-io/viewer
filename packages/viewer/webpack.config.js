@@ -29,6 +29,9 @@ module.exports = ({ templatesDirectory, babelrc }) => {
     entry: [paths.src, 'webpack-hot-middleware/client'],
     mode: 'development',
     devtool: 'cheap-module-source-map',
+    infrastructureLogging: {
+      level: 'error',
+    },
     output: {
       filename: 'iframe.js',
       path: paths.dist,
