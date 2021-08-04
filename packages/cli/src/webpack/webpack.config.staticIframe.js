@@ -15,6 +15,9 @@ const includedPaths = (templatesDirectory) => [
 module.exports = ({ templatesDirectory, babelrc, outputPath }) => ({
   entry: paths.src,
   mode: 'production',
+  resolve: {
+    fallback: { os: false, stream: false },
+  },
   output: {
     filename: 'iframe.js',
     path: outputPath,
