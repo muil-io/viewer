@@ -58,6 +58,9 @@ module.exports = ({
   const templatesDir = getTemplatesDirectory(templatesDirectory);
   return {
     mode: 'production',
+    resolve: {
+      fallback: { os: false, stream: false },
+    },
     entry: () =>
       glob.sync(`${templatesDir}/**/${templateId || '*'}.template.{ts,tsx,js,jsx}`).reduce(
         (obj, el) => ({
