@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import GlobalStyle from './style/global';
@@ -21,8 +21,7 @@ const App = () => (
 );
 
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
-root.render(<App />);
+ReactDOM.render(<App />, rootElement);
 
 if (module.hot) {
   module.hot.accept((err) => {

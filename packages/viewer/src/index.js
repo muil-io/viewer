@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import getTemplates from './utils/getTemplates';
 import { getTemplatesForParent } from './utils/templates';
 import useTemplate from './utils/useTemplate';
@@ -32,8 +32,7 @@ const App = () => {
 };
 
 const rootElement = document.getElementById('inner-root');
-const root = createRoot(rootElement);
-root.render(<App />);
+ReactDOM.render(<App />, rootElement);
 
 if (module.hot) {
   module.hot.accept((err) => {
