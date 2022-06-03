@@ -33,7 +33,7 @@ const App = () => {
 
 const rootElement = document.getElementById('inner-root');
 const root = createRoot(rootElement);
-root.render(<App />, rootElement);
+root.render(<App />);
 
 if (module.hot) {
   module.hot.accept((err) => {
