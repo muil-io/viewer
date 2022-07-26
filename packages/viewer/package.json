@@ -39,7 +39,7 @@
     "chalk": "^4.1.2",
     "commander": "^4.1.1",
     "css-loader": "^3.4.0",
-    "error-overlay-webpack-plugin": "^0.4.2",
+    "error-overlay-webpack-plugin": "^1.1.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
