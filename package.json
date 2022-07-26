@@ -15,8 +15,8 @@
     "lint": "eslint packages"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
     "@types/react": "^17.0.15",
-    "babel-eslint": "^10.0.3",
     "crlf": "^1.1.1",
     "eslint": "^8.20.0",
     "eslint-config-airbnb": "^19.0.4",
