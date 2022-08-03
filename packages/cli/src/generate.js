@@ -1,9 +1,9 @@
-import program from 'commander';
-import initiate from './commands/init';
-import publish from './commands/publish';
-import unpublish from './commands/unpublish';
-import build from './commands/build';
-import buildStatic from './commands/buildStatic';
+const { program } = require('commander');
+const initiate = require('./commands/init');
+const publish = require('./commands/publish');
+const unpublish = require('./commands/unpublish');
+const build = require('./commands/build');
+const buildStatic = require('./commands/buildStatic');
 
 program
   .command('init')

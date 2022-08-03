@@ -1,5 +1,5 @@
-import program from 'commander';
-import viewer from './viewer';
+const program = require('commander');
+const viewer = require('./viewer');
 
 program
   .name('muil')

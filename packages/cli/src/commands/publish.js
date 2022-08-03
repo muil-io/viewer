@@ -1,13 +1,13 @@
-import { existsSync, readFileSync } from 'fs';
-import webpack from 'webpack';
-import prompts from 'prompts';
-import webpackConfig from '../webpack/webpack.config.templates.js';
-import { cloudSettings, publish } from '../services/api';
-import { getToken, getHost } from '../utils/credentials';
-import * as logger from '../utils/logger';
-import { configPath, babelrcPath } from '../utils/paths';
+const { existsSync, readFileSync } = require('fs');
+const webpack = require('webpack');
+const prompts = require('prompts');
+const webpackConfig = require('../webpack/webpack.config.templates.js');
+const { cloudSettings, publish } = require('../services/api');
+const { getToken, getHost } = require('../utils/credentials');
+const logger = require('../utils/logger');
+const paths = require('../utils/paths');
 
-export default async ({ templatesDirectory, branch, force = false }) => {
+module.exports = async ({ templatesDirectory, branch, force = false }) => {
   const token = await getToken();
   if (!token) return;
 
@@ -34,8 +34,8 @@ export default async ({ templatesDirectory, branch, force = false }) => {
   logger.info('Compiling templates...');
 
   // eslint-disable-next-line
-  const config = existsSync(configPath) ? require(configPath) : { webpack: (config) => config };
-  const babelrc = existsSync(babelrcPath) ? JSON.parse(readFileSync(babelrcPath, 'utf-8')) : null;
+  const config = existsSync(paths.configPath) ? require(paths.configPath) : { webpack: (config) => config };
+  const babelrc = existsSync(paths.babelrcPath) ? JSON.parse(readFileSync(paths.babelrcPath, 'utf-8')) : null;
 
   const defaultCompiler = webpackConfig({ templatesDirectory, token: newToken, babelrc });
   const finalCompiler = config.webpack(defaultCompiler);

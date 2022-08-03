@@ -1,17 +1,20 @@
-import chalk from 'chalk';
-import express from 'express';
-import path from 'path';
-import open from 'open';
-import bodyParser from 'body-parser';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import build from '@muil/cli/src/commands/build';
-import { buildDirectory } from '@muil/cli/src/utils/paths';
-import { renderTemplate } from '@muil/templates-renderer';
-import viewerMiddleware from './viewerMiddleware';
+const chalk = require('chalk');
+const express = require('express');
+const path = require('path');
+const open = require('open');
+const bodyParser = require('body-parser');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const build = require('@muil/cli/src/commands/build');
+const { buildDirectory } = require('@muil/cli/src/utils/paths');
+const { renderTemplate } = require('@muil/templates-renderer');
+const viewerMiddleware = require('./viewerMiddleware');
 
 const app = express();
 
-export default async ({ port, templatesDirectory }) => {
+module.exports = async (program) => {
+  program.parse();
+  const { port, templatesDirectory } = program.opts();
+
   console.log(`${chalk.inverse('\n Starting Muil viewer... \n')}`);
 
   const { middleware, compiler, viewerDirectory } = viewerMiddleware({ templatesDirectory });

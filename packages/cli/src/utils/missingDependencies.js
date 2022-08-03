@@ -1,4 +1,4 @@
-import { getCraPackageJson } from './packageManager';
+const { getCraPackageJson } = require('./packageManager');
 
 const MUST_INCLUDE_DEPENDENCIES = ['react', 'react-dom'];
 
@@ -37,4 +37,4 @@ const missingDependencies = (packageJson) => {
   return missing;
 };
 
-export default missingDependencies;
+module.exports = missingDependencies;

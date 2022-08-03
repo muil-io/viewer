@@ -1,12 +1,12 @@
-import fs from 'fs';
-import fse from 'fs-extra';
-import chalk from 'chalk';
-import { sync } from 'cross-spawn';
-import * as logger from '../utils/logger';
-import { hasYarn, retrievePackageJson, writePackageJson } from '../utils/packageManager';
-import missingDependencies from '../utils/missingDependencies';
+const fs = require('fs');
+const fse = require('fs-extra');
+const chalk = require('chalk');
+const { sync } = require('cross-spawn');
+const logger = require('../utils/logger');
+const { hasYarn, retrievePackageJson, writePackageJson } = require('../utils/packageManager');
+const missingDependencies = require('../utils/missingDependencies');
 
-export default async ({ useNpm, templatesDirectory }) => {
+module.exports = async ({ useNpm, templatesDirectory }) => {
   logger.title('\n Adding Muil to project... \n');
 
   logger.info('Installing packages...');
@@ -18,7 +18,7 @@ export default async ({ useNpm, templatesDirectory }) => {
   logger.infoSuccess();
 
   logger.info('Adding scripts...');
-  const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '';
+  const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '');
   packageJson = await retrievePackageJson();
   packageJson.dependencies = packageJson.dependencies || {};
   packageJson.devDependencies = packageJson.devDependencies || {};

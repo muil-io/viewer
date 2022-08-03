@@ -1,15 +1,15 @@
-import fs from 'fs';
-import { configFile } from './paths';
-import * as logger from './logger';
+const fs = require('fs');
+const paths = require('./paths');
+const logger = require('./logger');
 
 const getConfigKey = (key, nullable) => {
-  if (!fs.existsSync(configFile)) {
+  if (!fs.existsSync(paths.configFile)) {
     if (!nullable) logger.error(`.muilrc is not exists!`);
     return null;
   }
 
   try {
-    const configuration = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+    const configuration = JSON.parse(fs.readFileSync(paths.configFile, 'utf8'));
     return configuration[key];
   } catch (err) {
     logger.error(`.muilrc is not a valid json!`);
@@ -17,7 +17,7 @@ const getConfigKey = (key, nullable) => {
   }
 };
 
-export const getToken = (nullable = false) => {
+const getToken = (nullable = false) => {
   const apiKey = getConfigKey('apiKey', nullable);
 
   if (!apiKey) {
@@ -28,4 +28,9 @@ export const getToken = (nullable = false) => {
   return apiKey;
 };
 
-export const getHost = () => (getConfigKey('host') ? `${getConfigKey('host')}/api` : null);
+const getHost = () => (getConfigKey('host') ? `${getConfigKey('host')}/api` : null);
+
+module.exports = {
+  getToken,
+  getHost,
+};
