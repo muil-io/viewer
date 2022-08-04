@@ -1,4 +1,4 @@
-const getTemplateFromUrl = ({ search, templates }) => {
+export const getTemplateFromUrl = ({ search, templates }) => {
   const [templateStr] = search.slice(1).split('&');
   if (!templateStr) {
     return {};
@@ -15,7 +15,7 @@ const getTemplateFromUrl = ({ search, templates }) => {
   return { Template: template.Template, dynamicProps: template.dynamicProps, error: template.error };
 };
 
-const getTemplatesForParent = (templates) =>
+export const getTemplatesForParent = (templates) =>
   Object.keys(templates).reduce(
     (prevTemplates, templateKey) => ({
       ...prevTemplates,
@@ -27,5 +27,3 @@ const getTemplatesForParent = (templates) =>
     }),
     {},
   );
-
-module.exports = { getTemplatesForParent, getTemplateFromUrl };
