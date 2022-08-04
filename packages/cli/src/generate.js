@@ -1,4 +1,4 @@
-const { program } = require('commander');
+const program = require('commander');
 const initiate = require('./commands/init');
 const publish = require('./commands/publish');
 const unpublish = require('./commands/unpublish');

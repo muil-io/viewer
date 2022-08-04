@@ -18,7 +18,7 @@ module.exports = async ({ useNpm, templatesDirectory }) => {
   logger.infoSuccess();
 
   logger.info('Adding scripts...');
-  const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '');
+  const templatesDirectoryArg = templatesDirectory ? ` -d ${templatesDirectory}` : '';
   packageJson = await retrievePackageJson();
   packageJson.dependencies = packageJson.dependencies || {};
   packageJson.devDependencies = packageJson.devDependencies || {};
