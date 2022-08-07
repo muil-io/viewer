@@ -38,7 +38,7 @@
     "body-parser": "^1.19.0",
     "chalk": "^4.1.2",
     "commander": "^9.4.0",
-    "css-loader": "^6.7.1",
+    "css-loader": "^3.4.0",
     "error-overlay-webpack-plugin": "^1.1.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
