@@ -1,9 +1,13 @@
-const program = require('commander');
+const { Command } = require('commander');
 const initiate = require('./commands/init');
 const publish = require('./commands/publish');
 const unpublish = require('./commands/unpublish');
 const build = require('./commands/build');
 const buildStatic = require('./commands/buildStatic');
+
+const program = new Command();
+
+program.name('muil').usage('<command> [options]');
 
 program
   .command('init')
@@ -42,7 +46,6 @@ program
   .option('--azure_account_key <azure_account_key>', 'azure account key')
   .option('--azure_share_name <azure_share_name>', 'azure share name')
   .option('--azure_dir_name <azure_dir_name>', 'azure dir name')
-
   .action((options) => build(options));
 
 program
@@ -51,8 +54,8 @@ program
   .option('-d --templatesDirectory <templatesDirectory>', 'Templates root directory', './templates')
   .action((options) => buildStatic(options));
 
-program.name('muil').usage('<command> [options]').parse(process.argv);
-
-if (program.rawArgs.length < 3) {
+if (process.argv.length < 3) {
   program.help();
 }
+
+program.parse();
