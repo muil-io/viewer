@@ -1,6 +1,6 @@
-import { getOptions } from 'loader-utils';
-import { validate } from 'schema-utils';
-import { uploadAsset } from '../services/api';
+const { getOptions } = require('loader-utils');
+const { validate } = require('schema-utils');
+const { uploadAsset } = require('../services/api');
 
 const schema = {
   type: 'object',
@@ -11,10 +11,10 @@ const schema = {
   },
 };
 
-export default async function () {
+module.exports = async function () {
   const options = getOptions(this) || {};
   validate(schema, options, 'Muil Asset Loader');
 
   const url = await uploadAsset({ token: options.token, assetPath: this.resourcePath });
   return `export default ${JSON.stringify(url)}`;
-}
+};

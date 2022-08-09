@@ -1,9 +1,9 @@
-import prompts from 'prompts';
-import { unpublish } from '../services/api';
-import { getToken } from '../utils/credentials';
-import * as logger from '../utils/logger';
+const prompts = require('prompts');
+const { unpublish } = require('../services/api');
+const { getToken } = require('../utils/credentials');
+const logger = require('../utils/logger');
 
-export default async ({ branch }) => {
+module.exports = async ({ branch }) => {
   const token = await getToken();
   if (!token) return;
 

@@ -1,9 +1,9 @@
-import fs from 'fs';
-import { spawn, sync as spawnSync } from 'cross-spawn';
-import path from 'path';
-import findUp from 'find-up';
+const fs = require('fs');
+const { spawn, sync: spawnSync } = require('cross-spawn');
+const path = require('path');
+const findUp = require('find-up');
 
-export const hasYarn = () => {
+const hasYarn = () => {
   const yarnAvailable = spawnSync('yarn', ['--version'], { silent: true });
   const npmAvailable = spawnSync('npm', ['--version'], { silent: true });
 
@@ -16,7 +16,7 @@ export const hasYarn = () => {
   return false;
 };
 
-export function getPackageJson() {
+function getPackageJson() {
   const packageJsonPath = path.resolve('package.json');
   if (!fs.existsSync(packageJsonPath)) {
     return false;
@@ -26,7 +26,7 @@ export function getPackageJson() {
   return JSON.parse(jsonContent);
 }
 
-export function getCraPackageJson() {
+function getCraPackageJson() {
   const packageJsonPath = path.resolve('node_modules', 'react-scripts', 'package.json');
   if (!fs.existsSync(packageJsonPath)) {
     return false;
@@ -36,7 +36,7 @@ export function getCraPackageJson() {
   return JSON.parse(jsonContent);
 }
 
-export default function npmInit() {
+function npmInit() {
   const results = spawn.sync(hasYarn() ? 'yarn' : 'npm', ['init', '-y'], {
     cwd: process.cwd(),
     env: process.env,
@@ -47,7 +47,7 @@ export default function npmInit() {
   return results.stdout;
 }
 
-export async function retrievePackageJson() {
+async function retrievePackageJson() {
   const existing = getPackageJson();
   if (existing) {
     return existing;
@@ -59,9 +59,11 @@ export async function retrievePackageJson() {
   return getPackageJson() || {};
 }
 
-export function writePackageJson(packageJson) {
+function writePackageJson(packageJson) {
   const content = `${JSON.stringify(packageJson, null, 2)}\n`;
   const packageJsonPath = path.resolve('package.json');
 
   fs.writeFileSync(packageJsonPath, content, 'utf8');
 }
+
+module.exports = { writePackageJson, retrievePackageJson, npmInit, getCraPackageJson, hasYarn, getPackageJson };

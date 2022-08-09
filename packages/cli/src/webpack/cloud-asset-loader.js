@@ -1,15 +1,15 @@
 /* eslint-disable camelcase */
-import { getOptions } from 'loader-utils';
-import fs from 'fs';
-import { promisify } from 'util';
-import md5 from 'crypto-js/md5';
-import AWS from 'aws-sdk';
-import * as Azure from '@azure/storage-file';
-import { Storage } from '@google-cloud/storage';
+const { getOptions } = require('loader-utils');
+const fs = require('fs');
+const { promisify } = require('util');
+const md5 = require('crypto-js/md5');
+const AWS = require('aws-sdk');
+const Azure = require('@azure/storage-file');
+const { Storage } = require('@google-cloud/storage');
 
 const readFile = promisify(fs.readFile);
 
-export default async function () {
+module.exports = async function () {
   const options = getOptions(this) || {};
 
   if (options.aws) {
@@ -91,4 +91,4 @@ export default async function () {
       return error;
     }
   }
-}
+};

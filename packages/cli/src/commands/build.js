@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-import { existsSync, readFileSync } from 'fs';
-import webpack from 'webpack';
-import webpackConfig from '../webpack/webpack.config.templates.js';
-import * as logger from '../utils/logger';
-import { configPath, babelrcPath } from '../utils/paths';
+const { existsSync, readFileSync } = require('fs');
+const webpack = require('webpack');
+const webpackConfig = require('../webpack/webpack.config.templates.js');
+const logger = require('../utils/logger');
+const { configPath, babelrcPath } = require('../utils/paths');
 
-export default async ({
+module.exports = async ({
   templateId,
   templatesDirectory,
   aws_access_key_id,
