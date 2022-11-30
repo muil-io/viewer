@@ -30,6 +30,7 @@ module.exports = async function () {
 
       return `export default ${JSON.stringify(url)}`;
     } catch (error) {
+      console.log(error);
       return error;
     }
   }
