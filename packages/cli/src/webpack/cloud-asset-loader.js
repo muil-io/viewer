@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-const { getOptions } = require('loader-utils');
 const fs = require('fs');
 const { promisify } = require('util');
 const md5 = require('crypto-js/md5');
@@ -10,7 +9,7 @@ const { Storage } = require('@google-cloud/storage');
 const readFile = promisify(fs.readFile);
 
 module.exports = async function () {
-  const options = getOptions(this) || {};
+  const options = this.getOptions() || {};
 
   if (options.aws) {
     const { aws_access_key_id: accessKeyId, aws_secrete_access_key: secretAccessKey, aws_bucket_name } = options.aws;
