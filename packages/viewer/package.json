@@ -1,6 +1,6 @@
 {
   "name": "@muil/viewer",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -30,9 +30,9 @@
     "@babel/preset-env": "^7.14.9",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
-    "@muil/cli": "^3.0.5",
+    "@muil/cli": "^3.0.6",
     "@muil/templates-renderer": "^1.5.3",
-    "@muil/templates-starter-kit": "^3.0.5",
+    "@muil/templates-starter-kit": "^3.0.6",
     "babel-loader": "^8.0.6",
     "babel-plugin-react-css-modules": "^5.2.6",
     "body-parser": "^1.19.0",
