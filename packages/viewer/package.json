@@ -1,6 +1,6 @@
 {
   "name": "@muil/viewer",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.14.9",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
-    "@muil/cli": "^3.0.7",
+    "@muil/cli": "^3.0.8",
     "@muil/templates-renderer": "^1.5.3",
     "@muil/templates-starter-kit": "^3.0.7",
     "babel-loader": "^8.0.6",
