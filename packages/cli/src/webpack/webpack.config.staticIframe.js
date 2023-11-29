@@ -16,7 +16,20 @@ module.exports = ({ templatesDirectory, babelrc, outputPath }) => ({
   entry: paths.src,
   mode: 'production',
   resolve: {
-    fallback: { os: false, stream: false },
+    fallback: {
+      os: false,
+      stream: false,
+      crypto: false,
+      fs: false,
+      https: false,
+      net: false,
+      tls: false,
+      tty: false,
+      zlib: false,
+      http: false,
+      path: false,
+      child_process: false,
+    },
   },
   output: {
     filename: 'iframe.js',
