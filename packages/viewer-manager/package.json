@@ -19,7 +19,6 @@
     "@svgr/webpack": "^7.0.0",
     "babel-plugin-react-css-modules": "^5.2.6",
     "css-loader": "^3.4.0",
-    "error-overlay-webpack-plugin": "^1.1.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^5.3.2",
     "lodash.isequal": "^4.5.0",

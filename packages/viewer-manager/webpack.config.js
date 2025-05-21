@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const paths = {
@@ -74,7 +73,6 @@ const common = () => ({
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ErrorOverlayPlugin(),
     new HtmlWebPackPlugin({
       chunks: ['manager'],
       template: paths.managerHtml,

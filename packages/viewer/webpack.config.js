@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 const paths = {
   src: path.resolve(__dirname, 'src/index.js'),
@@ -80,7 +79,6 @@ module.exports = ({ templatesDirectory, babelrc }) => {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new ErrorOverlayPlugin(),
       new HtmlWebPackPlugin({
         template: paths.html,
         filename: 'iframe.html',
