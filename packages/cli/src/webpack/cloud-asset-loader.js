@@ -2,7 +2,8 @@
 const fs = require('fs');
 const { promisify } = require('util');
 const md5 = require('crypto-js/md5');
-const AWS = require('aws-sdk');
+const { S3Client } = require('@aws-sdk/client-s3');
+const { Upload } = require('@aws-sdk/lib-storage');
 const Azure = require('@azure/storage-file');
 const { Storage } = require('@google-cloud/storage');
 
@@ -15,17 +16,19 @@ module.exports = async function () {
     const { aws_access_key_id: accessKeyId, aws_secrete_access_key: secretAccessKey, aws_bucket_name } = options.aws;
 
     try {
-      let s3;
-      if (accessKeyId && secretAccessKey) {
-        s3 = new AWS.S3({ accessKeyId, secretAccessKey });
-      } else {
-        s3 = new AWS.S3();
-      }
+      const clientConfig = accessKeyId && secretAccessKey
+        ? { credentials: { accessKeyId, secretAccessKey } }
+        : {};
+      const s3 = new S3Client(clientConfig);
 
       const file = await readFile(this.resourcePath);
       const filename = `${md5(this.resourcePath)}.${this.resourcePath.split('.').pop()}`;
 
-      const { Location: url } = await s3.upload({ Bucket: aws_bucket_name, Body: file, Key: filename }).promise();
+      const upload = new Upload({
+        client: s3,
+        params: { Bucket: aws_bucket_name, Body: file, Key: filename },
+      });
+      const { Location: url } = await upload.done();
 
       return `export default ${JSON.stringify(url)}`;
     } catch (error) {
