@@ -1860,9 +1860,9 @@
   integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
 
 "@muil/templates-renderer@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@muil/templates-renderer/-/templates-renderer-2.2.3.tgz#fb27c52f94b8bb7885054e5ce8d170b74aac6b44"
-  integrity sha512-EtotAa5BlZFFYmnuSasVpgnhbZhzFNZZOQ9PhG2mXdqqJIel9qWV77uc7u2mzzzj6bq9JzvrinwXPMR4+2f12A==
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@muil/templates-renderer/-/templates-renderer-2.2.6.tgz#b248c8346910120f280ff65540fb3c2e1c8d0c77"
+  integrity sha512-XjFmaLSRXHJtWm5OaijZI127FcFIGF4HVaEeDUnKyYWUPro8bj5lavqhCo2hOo4s6ED5/Izg/amO1tyQxWt30w==
   dependencies:
     "@nestjs/common" "^11.1.1"
     he "^1.2.0"
