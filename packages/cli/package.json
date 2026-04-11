@@ -1,6 +1,6 @@
 {
   "name": "@muil/cli",
-  "version": "4.1.9",
+  "version": "4.1.10",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -33,7 +33,7 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
     "@google-cloud/storage": "^7.2.0",
-    "@muil/templates-starter-kit": "^4.1.9",
+    "@muil/templates-starter-kit": "^4.1.10",
     "axios": "^1.9.0",
     "chalk": "^4.1.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
@@ -58,5 +58,5 @@
   "devDependencies": {
     "babel-loader": "^8.0.6"
   },
-  "gitHead": "51e5ba08d8081be2f747696666acc0926faec434"
+  "gitHead": "0e65fc8a3634fa76ff2b0d5384e65f696329e624"
 }
