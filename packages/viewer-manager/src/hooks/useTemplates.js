@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import isEqual from 'lodash.isequal';
 
 const useTemplates = () => {
   const [defaultTemplates, setDefaultTemplates] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
 
   const handleReceiveMessage = useCallback(
@@ -13,11 +13,11 @@ const useTemplates = () => {
         setDefaultTemplates(data.templates);
 
         if (location.pathname === '/') {
-          history.push(Object.values(data.templates)?.[0]?.id || '/');
+          navigate(`/${Object.values(data.templates)?.[0]?.id || ''}`);
         }
       }
     },
-    [defaultTemplates, history, location],
+    [defaultTemplates, navigate, location],
   );
 
   useEffect(() => {

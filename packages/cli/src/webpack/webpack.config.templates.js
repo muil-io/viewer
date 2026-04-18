@@ -86,13 +86,7 @@ module.exports = ({
             loader: 'babel-loader',
             options: babelrc || {
               babelrc: false,
-              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-              plugins: [
-                ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
-                '@babel/plugin-proposal-class-properties',
-                '@babel/plugin-proposal-nullish-coalescing-operator',
-                '@babel/plugin-proposal-optional-chaining',
-              ],
+              presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }], '@babel/preset-typescript'],
             },
           },
           exclude: path.resolve(rootDir, 'node_modules'),
@@ -107,6 +101,8 @@ module.exports = ({
                 importLoaders: 1,
                 modules: {
                   localIdentName: '[local]___[hash:base64:5]',
+                  namedExport: false,
+                  exportLocalsConvention: 'as-is',
                 },
               },
             },

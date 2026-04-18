@@ -1,23 +1,23 @@
 import React from 'react';
 import logo from './logo.png';
-import './GettingStarted.module.css';
+import styles from './GettingStarted.module.css';
 
 const GettingStarted = ({ name }) => (
-  <div styleName="root">
+  <div className={styles.root}>
     <div>
-      <img src={logo} styleName="logo" alt="logo" />
+      <img src={logo} className={styles.logo} alt="logo" />
     </div>
 
-    <div styleName="title">Welcome to Muil</div>
+    <div className={styles.title}>Welcome to Muil</div>
 
-    <div styleName="text">
+    <div className={styles.text}>
       <b>{name}</b>, now that you&apos;ve set up Muil it&apos;s time to write your first template{' '}
       <span role="img" aria-label="fire">
         🔥
       </span>
     </div>
 
-    <a href="https://www.muil.io" target="_blank" rel="noopener noreferrer" styleName="get-started">
+    <a href="https://www.muil.io" target="_blank" rel="noopener noreferrer" className={styles['get-started']}>
       Get Started →
     </a>
   </div>

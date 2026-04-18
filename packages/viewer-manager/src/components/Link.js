@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const Link = ({ link, text }) => (
-  <Wrapper as={BaseLink} to={link} activeClassName="active">
+  <Wrapper as={BaseLink} to={`/${link}`} className={({ isActive }) => (isActive ? 'active' : '')}>
     {text}
   </Wrapper>
 );

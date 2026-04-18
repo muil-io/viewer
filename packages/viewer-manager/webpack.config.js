@@ -25,13 +25,9 @@ const common = () => ({
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+            presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }], '@babel/preset-typescript'],
             plugins: [
               ['@babel/plugin-transform-runtime', { regenerator: true }],
-              ['react-css-modules', { generateScopedName: '[local]___[hash:base64:5]' }],
-              '@babel/plugin-proposal-class-properties',
-              '@babel/plugin-proposal-nullish-coalescing-operator',
-              '@babel/plugin-proposal-optional-chaining',
             ],
           },
         },
@@ -46,6 +42,8 @@ const common = () => ({
               importLoaders: 1,
               modules: {
                 localIdentName: '[local]___[hash:base64:5]',
+                namedExport: false,
+                exportLocalsConvention: 'as-is',
               },
             },
           },

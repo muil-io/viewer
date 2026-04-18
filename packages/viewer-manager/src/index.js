@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './style/global';
 import AppShell from './components/AppShell';
 import theme from './style/theme';
@@ -12,16 +12,16 @@ const App = () => (
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <Router>
-        <Switch>
-          <Route path="/:templateId?" component={AppShell} />
-        </Switch>
+        <Routes>
+          <Route path="/:templateId?" element={<AppShell />} />
+        </Routes>
       </Router>
     </ThemeProvider>
   </>
 );
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+createRoot(rootElement).render(<App />);
 
 if (module.hot) {
   module.hot.accept((err) => {
