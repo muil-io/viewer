@@ -1,5 +1,3 @@
-Visit [Muil Docs.](https://docs.muil.io)
-
 ## Templates Starter Kit
 
 #### Includes:

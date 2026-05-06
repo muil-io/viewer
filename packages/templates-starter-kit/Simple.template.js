@@ -24,7 +24,7 @@ Simple.displayName = 'Simple Template';
 
 Simple.dynamicProps = {
   name: 'John',
-  callToActionUrl: 'https://www.muil.io',
+  callToActionUrl: 'https://www.google.com',
 };
 
 export default Simple;

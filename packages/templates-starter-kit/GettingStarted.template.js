@@ -17,7 +17,7 @@ const GettingStarted = ({ name }) => (
       </span>
     </div>
 
-    <a href="https://www.muil.io" target="_blank" rel="noopener noreferrer" className={styles['get-started']}>
+    <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" className={styles['get-started']}>
       Get Started →
     </a>
   </div>

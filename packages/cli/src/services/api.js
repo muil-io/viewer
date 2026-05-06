@@ -7,7 +7,7 @@ const paths = require('../utils/paths');
 const { getHost } = require('../utils/credentials');
 const logger = require('../utils/logger');
 
-const getBaseUrl = () => getHost() || 'https://app.muil.io/api';
+const getBaseUrl = () => getHost();
 
 axios.interceptors.response.use(
   (response) => response,

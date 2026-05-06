@@ -1,5 +1,3 @@
-Visit [Muil Docs.](https://docs.muil.io)
-
 ## Automate Installation
 
 Get started using the automatic command line tool. This command installs and adds everything you need to get start with Muil.

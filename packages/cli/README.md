@@ -1,5 +1,3 @@
-Visit [Muil Docs.](https://docs.muil.io)
-
 ## Run Muil CLI
 
 To start muil cli run:
