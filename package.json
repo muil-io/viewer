@@ -14,9 +14,6 @@
     "lerna:publish:all": "lerna publish --force-publish",
     "lint": "eslint packages"
   },
-  "resolutions": {
-    "fast-xml-parser": "^5.7.2"
-  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",
     "@types/react": "^19.0.0",
