@@ -5,7 +5,7 @@
   "gitHead": "50f355d054c27ffb8b9713ab86838a23551abb57",
   "repository": {
     "type": "git",
-    "url": "https://github.com/muil-io/muil-viewer.git",
+    "url": "https://github.com/muil-io/muil.git",
     "directory": "packages/templates-starter-kit"
   }
 }
