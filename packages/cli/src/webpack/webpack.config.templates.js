@@ -62,7 +62,7 @@ module.exports = ({
       fallback: { os: false, stream: false },
     },
     entry: () =>
-      glob.sync(`${templatesDir}/**/${templateId || '*'}.template.{ts,tsx,js,jsx}`).reduce(
+      glob.sync(`${templatesDir.split(path.sep).join('/')}/**/${templateId || '*'}.template.{ts,tsx,js,jsx}`).reduce(
         (obj, el) => ({
           ...obj,
           [path
